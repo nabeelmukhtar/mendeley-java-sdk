@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -30,397 +30,382 @@ import java.util.logging.Logger;
 import com.mendeley.oapi.schema.ValueEnum;
 
 /**
- * The Class GitHubApiUrls.
+ * The Class MendeleyApiUrls.
  */
 public final class MendeleyApiUrls {
 
     /** The Constant API_URLS_FILE. */
-    public static final String API_URLS_FILE = "GitHubApiUrls.properties";
+    public static final String API_URLS_FILE = "MendeleyApiUrls.properties";
 
     /** The Constant logger. */
     private static final Logger logger = Logger.getLogger(MendeleyApiUrls.class.getCanonicalName());
     
-    /** The Constant gitHubApiUrls. */
-    private static final Properties gitHubApiUrls = new Properties();
+    /** The Constant mendeleyApiUrls. */
+    private static final Properties mendeleyApiUrls = new Properties();
 
     static {
         try {
-            gitHubApiUrls.load(MendeleyApiUrls.class.getResourceAsStream(API_URLS_FILE));
+            mendeleyApiUrls.load(MendeleyApiUrls.class.getResourceAsStream(API_URLS_FILE));
         } catch (IOException e) {
         	logger.log(Level.SEVERE, "An error occurred while loading urls.", e);
         }
     }
     
     /**
-	 * The Interface OAuthUrls.
-	 */
+     * The Interface OAuthUrls.
+     */
     public static interface OAuthUrls {
     	
 	    /** The Constant AUTHORIZE_URL. */
-	    public static final String AUTHORIZE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.oauthService.authorize");
+	    public static final String AUTHORIZE_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.oauthService.authorize");
     	
+	    /** The Constant REQUEST_TOKEN_URL. */
+	    public static final String REQUEST_TOKEN_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.oauthService.requestToken");
+	    
 	    /** The Constant ACCESS_TOKEN_URL. */
-	    public static final String ACCESS_TOKEN_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.oauthService.accessToken");
+	    public static final String ACCESS_TOKEN_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.oauthService.accessToken");
     }
     
     /**
-	 * The Interface UserApiUrls.
-	 */
-    public static interface UserApiUrls {
+     * The Interface ProfileApiUrls.
+     */
+    public static interface ProfileApiUrls {
     	
 	    /** The Constant SEARCH_USERS_BY_NAME_URL. */
-	    public static final String SEARCH_USERS_BY_NAME_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.searchUsersByName");
+	    public static final String SEARCH_USERS_BY_NAME_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.searchUsersByName");
     	
 	    /** The Constant SEARCH_USERS_BY_EMAIL_URL. */
-	    public static final String SEARCH_USERS_BY_EMAIL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.searchUsersByEmail");
+	    public static final String SEARCH_USERS_BY_EMAIL_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.searchUsersByEmail");
     	
 	    /** The Constant GET_USER_URL. */
-	    public static final String GET_USER_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.getUser");
+	    public static final String GET_USER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.getUser");
     	
 	    /** The Constant GET_CURRENT_USER_URL. */
-	    public static final String GET_CURRENT_USER_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.getCurrentUser");
+	    public static final String GET_CURRENT_USER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.getCurrentUser");
     	
 	    /** The Constant UPDATE_USER_URL. */
-	    public static final String UPDATE_USER_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.updateUser");
+	    public static final String UPDATE_USER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.updateUser");
     	
 	    /** The Constant GET_USER_FOLLOWERS_URL. */
-	    public static final String GET_USER_FOLLOWERS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.getUserFollowers");
+	    public static final String GET_USER_FOLLOWERS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.getUserFollowers");
     	
 	    /** The Constant GET_USER_FOLLOWING_URL. */
-	    public static final String GET_USER_FOLLOWING_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.getUserFollowing");
+	    public static final String GET_USER_FOLLOWING_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.getUserFollowing");
     	
 	    /** The Constant FOLLOW_USER_URL. */
-	    public static final String FOLLOW_USER_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.followUser");
+	    public static final String FOLLOW_USER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.followUser");
     	
 	    /** The Constant UNFOLLOW_USER_URL. */
-	    public static final String UNFOLLOW_USER_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.unfollowUser");
+	    public static final String UNFOLLOW_USER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.unfollowUser");
     	
 	    /** The Constant GET_WATCHED_REPOSITORIES_URL. */
-	    public static final String GET_WATCHED_REPOSITORIES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.getWatchedRepositories");
+	    public static final String GET_WATCHED_REPOSITORIES_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.getWatchedRepositories");
     	
 	    /** The Constant GET_KEYS_URL. */
-	    public static final String GET_KEYS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.getKeys");
+	    public static final String GET_KEYS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.getKeys");
     	
 	    /** The Constant ADD_KEY_URL. */
-	    public static final String ADD_KEY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.addKey");
+	    public static final String ADD_KEY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.addKey");
     	
 	    /** The Constant REMOVE_KEY_URL. */
-	    public static final String REMOVE_KEY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.removeKey");
+	    public static final String REMOVE_KEY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.removeKey");
     	
 	    /** The Constant GET_EMAILS_URL. */
-	    public static final String GET_EMAILS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.getEmails");
+	    public static final String GET_EMAILS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.getEmails");
     	
 	    /** The Constant ADD_EMAIL_URL. */
-	    public static final String ADD_EMAIL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.addEmail");
+	    public static final String ADD_EMAIL_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.addEmail");
     	
 	    /** The Constant REMOVE_EMAIL_URL. */
-	    public static final String REMOVE_EMAIL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.removeEmail");
+	    public static final String REMOVE_EMAIL_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.removeEmail");
 	    
 	    /** The Constant GET_USER_ORGANIZATIONS. */
-	    public static final String GET_USER_ORGANIZATIONS = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.getUserOrganizations");
+	    public static final String GET_USER_ORGANIZATIONS = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.userService.getUserOrganizations");
 	    
     }
 
     /**
-	 * The Interface IssueApiUrls.
-	 */
-    public static interface IssueApiUrls {
+     * The Interface CollectionApiUrls.
+     */
+    public static interface CollectionApiUrls {
     	
 	    /** The Constant SEARCH_ISSUES_URL. */
-	    public static final String SEARCH_ISSUES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.searchIssues");
+	    public static final String SEARCH_ISSUES_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.issueService.searchIssues");
     	
 	    /** The Constant GET_ISSUES_URL. */
-	    public static final String GET_ISSUES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getIssues");
+	    public static final String GET_ISSUES_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.issueService.getIssues");
     	
 	    /** The Constant GET_ISSUE_URL. */
-	    public static final String GET_ISSUE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getIssue");
+	    public static final String GET_ISSUE_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.issueService.getIssue");
     	
 	    /** The Constant GET_ISSUE_COMMENTS_URL. */
-	    public static final String GET_ISSUE_COMMENTS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getIssueComments");
+	    public static final String GET_ISSUE_COMMENTS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.issueService.getIssueComments");
     	
 	    /** The Constant CREATE_ISSUE_URL. */
-	    public static final String CREATE_ISSUE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.createIssue");
+	    public static final String CREATE_ISSUE_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.issueService.createIssue");
     	
 	    /** The Constant CLOSE_ISSUE_URL. */
-	    public static final String CLOSE_ISSUE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.closeIssue");
+	    public static final String CLOSE_ISSUE_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.issueService.closeIssue");
     	
 	    /** The Constant REOPEN_ISSUE_URL. */
-	    public static final String REOPEN_ISSUE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.reopenIssue");
+	    public static final String REOPEN_ISSUE_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.issueService.reopenIssue");
     	
 	    /** The Constant UPDATE_ISSUE_URL. */
-	    public static final String UPDATE_ISSUE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.updateIssue");
+	    public static final String UPDATE_ISSUE_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.issueService.updateIssue");
     	
 	    /** The Constant GET_ISSUE_LABELS_URL. */
-	    public static final String GET_ISSUE_LABELS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getIssueLabels");
+	    public static final String GET_ISSUE_LABELS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.issueService.getIssueLabels");
     	
 	    /** The Constant ADD_LABEL_URL. */
-	    public static final String ADD_LABEL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.addLabel");
+	    public static final String ADD_LABEL_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.issueService.addLabel");
     	
 	    /** The Constant REMOVE_LABEL_URL. */
-	    public static final String REMOVE_LABEL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.removeLabel");
+	    public static final String REMOVE_LABEL_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.issueService.removeLabel");
     	
 	    /** The Constant ADD_COMMENT_URL. */
-	    public static final String ADD_COMMENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.addComment");
+	    public static final String ADD_COMMENT_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.issueService.addComment");
 
 		/** The Constant GET_ISSUES_BY_LABEL_URL. */
-		public static final String GET_ISSUES_BY_LABEL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getIssuesByLabel");
+		public static final String GET_ISSUES_BY_LABEL_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.issueService.getIssuesByLabel");
     }
     
     /**
-	 * The Interface GistApiUrls.
-	 */
-    public static interface GistApiUrls {
+     * The Interface PrivateGroupApiUrls.
+     */
+    public static interface PrivateGroupApiUrls {
     	
 	    /** The Constant GET_GIST_URL. */
-	    public static final String GET_GIST_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.getGist");
+	    public static final String GET_GIST_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.gistService.getGist");
     	
 	    /** The Constant GET_GIST_CONTENT_URL. */
-	    public static final String GET_GIST_CONTENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.getGistContent");
+	    public static final String GET_GIST_CONTENT_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.gistService.getGistContent");
     	
 	    /** The Constant GET_USER_GISTS_URL. */
-	    public static final String GET_USER_GISTS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.getUserGists");
+	    public static final String GET_USER_GISTS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.gistService.getUserGists");
     }
     
     /**
-	 * The Interface NetworkApiUrls.
-	 */
-    public static interface NetworkApiUrls {
+     * The Interface SharedCollectionApiUrls.
+     */
+    public static interface SharedCollectionApiUrls {
     	
 	    /** The Constant GET_NETWORK_META_URL. */
-	    public static final String GET_NETWORK_META_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.networkService.getNetworkMeta");
+	    public static final String GET_NETWORK_META_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.networkService.getNetworkMeta");
     	
 	    /** The Constant GET_NETWORK_DATA_URL. */
-	    public static final String GET_NETWORK_DATA_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.networkService.getNetworkData");
+	    public static final String GET_NETWORK_DATA_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.networkService.getNetworkData");
     }
     
     /**
-	 * The Interface RepositoryApiUrls.
-	 */
-    public static interface RepositoryApiUrls {
+     * The Interface PublicGroupApiUrls.
+     */
+    public static interface PublicGroupApiUrls {
     	
 	    /** The Constant SEARCH_REPOSITORIES_URL. */
-	    public static final String SEARCH_REPOSITORIES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.searchRepositories");
+	    public static final String SEARCH_REPOSITORIES_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.searchRepositories");
     	
 	    /** The Constant GET_REPOSITORY_URL. */
-	    public static final String GET_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getRepository");
+	    public static final String GET_REPOSITORY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.getRepository");
     	
 	    /** The Constant UPDATE_REPOSITORY_URL. */
-	    public static final String UPDATE_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.updateRepository");
+	    public static final String UPDATE_REPOSITORY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.updateRepository");
     	
 	    /** The Constant GET_REPOSITORIES_URL. */
-	    public static final String GET_REPOSITORIES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getRepositories");
+	    public static final String GET_REPOSITORIES_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.getRepositories");
     	
 	    /** The Constant WATCH_REPOSITORY_URL. */
-	    public static final String WATCH_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.watchRepository");
+	    public static final String WATCH_REPOSITORY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.watchRepository");
     	
 	    /** The Constant UNWATCH_REPOSITORY_URL. */
-	    public static final String UNWATCH_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.unwatchRepository");
+	    public static final String UNWATCH_REPOSITORY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.unwatchRepository");
     	
 	    /** The Constant FORK_REPOSITORY_URL. */
-	    public static final String FORK_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.forkRepository");
+	    public static final String FORK_REPOSITORY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.forkRepository");
     	
 	    /** The Constant CREATE_REPOSITORY_URL. */
-	    public static final String CREATE_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.createRepository");
+	    public static final String CREATE_REPOSITORY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.createRepository");
     	
 	    /** The Constant DELETE_REPOSITORY_URL. */
-	    public static final String DELETE_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.deleteRepository");
+	    public static final String DELETE_REPOSITORY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.deleteRepository");
     	
 	    /** The Constant CHANGE_VISIBILITY_URL. */
-	    public static final String CHANGE_VISIBILITY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.changeVisibility");
+	    public static final String CHANGE_VISIBILITY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.changeVisibility");
     	
 	    /** The Constant GET_DEPLOY_KEYS_URL. */
-	    public static final String GET_DEPLOY_KEYS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getKeys");
+	    public static final String GET_DEPLOY_KEYS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.getKeys");
     	
 	    /** The Constant ADD_DEPLOY_KEY_URL. */
-	    public static final String ADD_DEPLOY_KEY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.addKey");
+	    public static final String ADD_DEPLOY_KEY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.addKey");
     	
 	    /** The Constant REMOVE_DEPLOY_KEY_URL. */
-	    public static final String REMOVE_DEPLOY_KEY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.removeKey");
+	    public static final String REMOVE_DEPLOY_KEY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.removeKey");
     	
 	    /** The Constant GET_COLLABORATORS_URL. */
-	    public static final String GET_COLLABORATORS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getCollaborators");
+	    public static final String GET_COLLABORATORS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.getCollaborators");
     	
 	    /** The Constant ADD_COLLABORATOR_URL. */
-	    public static final String ADD_COLLABORATOR_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.addCollaborator");
+	    public static final String ADD_COLLABORATOR_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.addCollaborator");
     	
 	    /** The Constant REMOVE_COLLABORATOR_URL. */
-	    public static final String REMOVE_COLLABORATOR_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.removeCollaborator");
+	    public static final String REMOVE_COLLABORATOR_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.removeCollaborator");
     	
 	    /** The Constant GET_PUSHABLE_REPOSITORIES_URL. */
-	    public static final String GET_PUSHABLE_REPOSITORIES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getPushableRepositories");
+	    public static final String GET_PUSHABLE_REPOSITORIES_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.getPushableRepositories");
     	
 	    /** The Constant GET_CONTRIBUTORS_URL. */
-	    public static final String GET_CONTRIBUTORS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getContributors");
+	    public static final String GET_CONTRIBUTORS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.getContributors");
     	
 	    /** The Constant GET_WATCHERS_URL. */
-	    public static final String GET_WATCHERS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getWatchers");
+	    public static final String GET_WATCHERS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.getWatchers");
     	
 	    /** The Constant GET_FORKS_URL. */
-	    public static final String GET_FORKS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getForks");
+	    public static final String GET_FORKS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.getForks");
     	
 	    /** The Constant GET_LANGUAGE_BREAKDOWN_URL. */
-	    public static final String GET_LANGUAGE_BREAKDOWN_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getLanguageBreakdown");
+	    public static final String GET_LANGUAGE_BREAKDOWN_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.getLanguageBreakdown");
     	
 	    /** The Constant GET_TAGS_URL. */
-	    public static final String GET_TAGS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getTags");
+	    public static final String GET_TAGS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.getTags");
     	
 	    /** The Constant GET_BRANCHES_URL. */
-	    public static final String GET_BRANCHES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getBranches");
+	    public static final String GET_BRANCHES_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.getBranches");
 
 	    /** The Constant GET_REPOSITORY_ARCHIVE_URL. */
-	    public static final String GET_REPOSITORY_ARCHIVE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getRepositoryArchive");
+	    public static final String GET_REPOSITORY_ARCHIVE_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.repositoryService.getRepositoryArchive");
     }
     
     /**
-	 * The Interface CommitApiUrls.
-	 */
-    public static interface CommitApiUrls {
+     * The Interface PrivateStatsApiUrls.
+     */
+    public static interface PrivateStatsApiUrls {
     	
 	    /** The Constant GET_COMMITS_URL. */
-	    public static final String GET_COMMITS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.commitService.getCommits");
+	    public static final String GET_COMMITS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.commitService.getCommits");
     	
 	    /** The Constant GET_COMMITS_FILE_URL. */
-	    public static final String GET_COMMITS_FILE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.commitService.getCommitsFile");
+	    public static final String GET_COMMITS_FILE_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.commitService.getCommitsFile");
     	
 	    /** The Constant GET_COMMIT_URL. */
-	    public static final String GET_COMMIT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.commitService.getCommit");
+	    public static final String GET_COMMIT_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.commitService.getCommit");
     }
     
     /**
-	 * The Interface ObjectApiUrls.
-	 */
-    public static interface ObjectApiUrls {
-    	
-	    /** The Constant GET_TREE_URL. */
-	    public static final String GET_TREE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.objectService.getTree");
-    	
-	    /** The Constant GET_BLOB_URL. */
-	    public static final String GET_BLOB_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.objectService.getBlob");
-    	
-	    /** The Constant GET_BLOBS_URL. */
-	    public static final String GET_BLOBS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.objectService.getBlobs");
-    	
-	    /** The Constant GET_OBJECT_CONTENT_URL. */
-	    public static final String GET_OBJECT_CONTENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.objectService.getObjectContent");
-    }
-    
-    /**
-	 * The Interface OrganizationApiUrls.
-	 */
-    public static interface OrganizationApiUrls {
+     * The Interface PublicStatsApiUrls.
+     */
+    public static interface PublicStatsApiUrls {
     	
 	    /** The Constant GET_ORGANIZATION_URL. */
-	    public static final String GET_ORGANIZATION_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getOrganization");
+	    public static final String GET_ORGANIZATION_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.getOrganization");
 	    
 	    /** The Constant GET_ORGANIZATIONS_URL. */
-	    public static final String GET_ORGANIZATIONS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getOrganizations");
+	    public static final String GET_ORGANIZATIONS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.getOrganizations");
 	    
 	    /** The Constant UPDATE_ORGANIZATION_URL. */
-	    public static final String UPDATE_ORGANIZATION_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.updateOrganization");
+	    public static final String UPDATE_ORGANIZATION_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.updateOrganization");
 	    
 	    /** The Constant GET_ALL_REPOSITORIES_URL. */
-	    public static final String GET_ALL_REPOSITORIES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getAllRepositories");
+	    public static final String GET_ALL_REPOSITORIES_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.getAllRepositories");
 
 	    /** The Constant GET_PUBLIC_REPOSITORIES_URL. */
-	    public static final String GET_PUBLIC_REPOSITORIES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getPublicRepositories");
+	    public static final String GET_PUBLIC_REPOSITORIES_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.getPublicRepositories");
 
 	    /** The Constant GET_PUBLIC_MEMBERS_URL. */
-	    public static final String GET_PUBLIC_MEMBERS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getPublicMembers");
+	    public static final String GET_PUBLIC_MEMBERS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.getPublicMembers");
 
 	    /** The Constant GET_TEAMS_URL. */
-	    public static final String GET_TEAMS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getTeams");
+	    public static final String GET_TEAMS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.getTeams");
 
 	    /** The Constant CREATE_TEAM_URL. */
-	    public static final String CREATE_TEAM_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.createTeam");
+	    public static final String CREATE_TEAM_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.createTeam");
 
 	    /** The Constant GET_TEAM_URL. */
-	    public static final String GET_TEAM_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getTeam");
+	    public static final String GET_TEAM_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.getTeam");
 
 	    /** The Constant UPDATE_TEAM_URL. */
-	    public static final String UPDATE_TEAM_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.updateTeam");
+	    public static final String UPDATE_TEAM_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.updateTeam");
 
 	    /** The Constant DELETE_TEAM_URL. */
-	    public static final String DELETE_TEAM_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.deleteTeam");
+	    public static final String DELETE_TEAM_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.deleteTeam");
 
 	    /** The Constant GET_TEAM_MEMBERS_URL. */
-	    public static final String GET_TEAM_MEMBERS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getTeamMembers");
+	    public static final String GET_TEAM_MEMBERS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.getTeamMembers");
 
 	    /** The Constant ADD_TEAM_MEMBER_URL. */
-	    public static final String ADD_TEAM_MEMBER_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.addTeamMember");
+	    public static final String ADD_TEAM_MEMBER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.addTeamMember");
 
 	    /** The Constant REMOVE_TEAM_MEMBER_URL. */
-	    public static final String REMOVE_TEAM_MEMBER_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.removeTeamMember");
+	    public static final String REMOVE_TEAM_MEMBER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.removeTeamMember");
 	    
 	    /** The Constant GET_TEAM_REPOSITORIES_URL. */
-	    public static final String GET_TEAM_REPOSITORIES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getTeamRepositories");
+	    public static final String GET_TEAM_REPOSITORIES_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.getTeamRepositories");
 
 	    /** The Constant ADD_TEAM_REPOSITORY_URL. */
-	    public static final String ADD_TEAM_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.addTeamRepository");
+	    public static final String ADD_TEAM_REPOSITORY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.addTeamRepository");
 	    
 	    /** The Constant REMOVE_TEAM_REPOSITORY_URL. */
-	    public static final String REMOVE_TEAM_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.removeTeamRepository");
+	    public static final String REMOVE_TEAM_REPOSITORY_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.organizationService.removeTeamRepository");
     }
     
     /**
-	 * The Interface PullRequestApiUrls.
-	 */
-    public static interface PullRequestApiUrls {
+     * The Interface SearchApiUrls.
+     */
+    public static interface SearchApiUrls {
     	
 	    /** The Constant CREATE_PULL_REQUEST_URL. */
-	    public static final String CREATE_PULL_REQUEST_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.pullRequestService.createPullRequest");
+	    public static final String CREATE_PULL_REQUEST_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.pullRequestService.createPullRequest");
     	
 	    /** The Constant GET_PULL_REQUESTS_URL. */
-	    public static final String GET_PULL_REQUESTS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.pullRequestService.getPullRequests");
+	    public static final String GET_PULL_REQUESTS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.pullRequestService.getPullRequests");
     	
 	    /** The Constant GET_PULL_REQUEST_URL. */
-	    public static final String GET_PULL_REQUEST_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.pullRequestService.getPullRequest");
+	    public static final String GET_PULL_REQUEST_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.pullRequestService.getPullRequest");
     }
     
     
     /**
-	 * The Interface FeedUrls.
-	 */
-    public static interface FeedUrls {
+     * The Interface DocumentApiUrls.
+     */
+    public static interface DocumentApiUrls {
 	    
     	/** The Constant GET_PUBLIC_USER_FEED_URL. */
-	    public static final String GET_PUBLIC_USER_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getPublicUserFeed");
+	    public static final String GET_PUBLIC_USER_FEED_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.feedService.getPublicUserFeed");
 
 	    /** The Constant GET_PRIVATE_USER_FEED_URL. */
-	    public static final String GET_PRIVATE_USER_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getPrivateUserFeed");
+	    public static final String GET_PRIVATE_USER_FEED_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.feedService.getPrivateUserFeed");
 
 	    /** The Constant GET_COMMIT_FEED_URL. */
-	    public static final String GET_COMMIT_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getCommitFeed");
+	    public static final String GET_COMMIT_FEED_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.feedService.getCommitFeed");
 
 	    /** The Constant GET_NETWORK_FEED_URL. */
-	    public static final String GET_NETWORK_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getNetworkFeed");
+	    public static final String GET_NETWORK_FEED_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.feedService.getNetworkFeed");
 
 	    /** The Constant GET_WIKI_FEED_URL. */
-	    public static final String GET_WIKI_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getWikiFeed");
+	    public static final String GET_WIKI_FEED_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.feedService.getWikiFeed");
 
 	    /** The Constant GET_PUBLIC_TIMELINE_FEED_URL. */
-	    public static final String GET_PUBLIC_TIMELINE_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getPublicTimelineFeed");
+	    public static final String GET_PUBLIC_TIMELINE_FEED_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.feedService.getPublicTimelineFeed");
 	    
 	    /** The Constant GET_DISCUSSIONS_FEED_URL. */
-	    public static final String GET_DISCUSSIONS_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getDiscussionsFeed");
+	    public static final String GET_DISCUSSIONS_FEED_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.feedService.getDiscussionsFeed");
 
 	    /** The Constant GET_DISCUSSIONS_FEED_BY_TOPIC_URL. */
-	    public static final String GET_DISCUSSIONS_FEED_BY_TOPIC_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getDiscussionsFeedByTopic");
+	    public static final String GET_DISCUSSIONS_FEED_BY_TOPIC_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.feedService.getDiscussionsFeedByTopic");
 
 	    /** The Constant GET_JOB_POSITIONS_FEED_URL. */
-	    public static final String GET_JOB_POSITIONS_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getJobPositionsFeed");
+	    public static final String GET_JOB_POSITIONS_FEED_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.feedService.getJobPositionsFeed");
 
 	    /** The Constant GET_BLOG_FEED_URL. */
-	    public static final String GET_BLOG_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getBlogFeed");
+	    public static final String GET_BLOG_FEED_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.feedService.getBlogFeed");
     }
     
     /**
-	 * Instantiates a new git hub api urls.
-	 */
+     * Instantiates a new mendeley api urls.
+     */
     private MendeleyApiUrls() {}
 
     /**
-	 * The Class GitHubApiUrlBuilder.
-	 */
+     * The Class MendeleyApiUrlBuilder.
+     */
     public static class MendeleyApiUrlBuilder {
         
         /** The Constant API_URLS_PLACEHOLDER_START. */
@@ -439,25 +424,21 @@ public final class MendeleyApiUrls {
 		private Map<String, String> fieldsMap = new HashMap<String, String>();
 	    
     	/**
-		 * Instantiates a new git hub api url builder.
-		 * 
-		 * @param urlFormat
-		 *            the url format
-		 */
+	     * Instantiates a new mendeley api url builder.
+	     * 
+	     * @param urlFormat the url format
+	     */
 	    public MendeleyApiUrlBuilder(String urlFormat) {
 	    	this(urlFormat, ApplicationConstants.DEFAULT_API_VERSION, ApplicationConstants.DEFAULT_FORMAT);
     	}
     	
     	/**
-		 * Instantiates a new git hub api url builder.
-		 * 
-		 * @param urlFormat
-		 *            the url format
-		 * @param apiVersion
-		 *            the api version
-		 * @param format
-		 *            the format
-		 */
+	     * Instantiates a new mendeley api url builder.
+	     * 
+	     * @param urlFormat the url format
+	     * @param apiVersion the api version
+	     * @param format the format
+	     */
 	    public MendeleyApiUrlBuilder(String urlFormat, String apiVersion, String format) {
     		this.urlFormat = urlFormat;
     		fieldsMap.put(ParameterNames.VERSION, apiVersion);
@@ -465,15 +446,13 @@ public final class MendeleyApiUrls {
     	}
 	    
     	/**
-		 * With parameter.
-		 * 
-		 * @param name
-		 *            the name
-		 * @param value
-		 *            the value
-		 * 
-		 * @return the git hub api url builder
-		 */
+	     * With parameter.
+	     * 
+	     * @param name the name
+	     * @param value the value
+	     * 
+	     * @return the mendeley api url builder
+	     */
 	    public MendeleyApiUrlBuilder withParameter(String name, String value) {
 	    	if (value != null && value.length() > 0) {
 	    		parametersMap.put(name, encodeUrl(value));
@@ -483,15 +462,13 @@ public final class MendeleyApiUrls {
     	}
     	
     	/**
-		 * With parameter enum.
-		 * 
-		 * @param name
-		 *            the name
-		 * @param value
-		 *            the value
-		 * 
-		 * @return the git hub api url builder
-		 */
+	     * With parameter enum.
+	     * 
+	     * @param name the name
+	     * @param value the value
+	     * 
+	     * @return the mendeley api url builder
+	     */
 	    public MendeleyApiUrlBuilder withParameterEnum(String name, ValueEnum value) {
 	    	withParameter(name, value.value());
     		
@@ -499,17 +476,14 @@ public final class MendeleyApiUrls {
     	}
 	    
     	/**
-		 * With parameter enum set.
-		 * 
-		 * @param name
-		 *            the name
-		 * @param enumSet
-		 *            the enum set
-		 * @param separator
-		 *            the separator
-		 * 
-		 * @return the git hub api url builder
-		 */
+	     * With parameter enum set.
+	     * 
+	     * @param name the name
+	     * @param enumSet the enum set
+	     * @param separator the separator
+	     * 
+	     * @return the mendeley api url builder
+	     */
 	    public MendeleyApiUrlBuilder withParameterEnumSet(String name, Set<? extends ValueEnum> enumSet, String separator) {
 	    	StringBuilder builder = new StringBuilder();
 	    	
@@ -528,10 +502,9 @@ public final class MendeleyApiUrls {
 		/**
 		 * With empty field.
 		 * 
-		 * @param name
-		 *            the name
+		 * @param name the name
 		 * 
-		 * @return the git hub api url builder
+		 * @return the mendeley api url builder
 		 */
 		public MendeleyApiUrlBuilder withEmptyField(String name) {
 			fieldsMap.put(name, "");
@@ -542,12 +515,10 @@ public final class MendeleyApiUrls {
 		/**
 		 * With field.
 		 * 
-		 * @param name
-		 *            the name
-		 * @param value
-		 *            the value
+		 * @param name the name
+		 * @param value the value
 		 * 
-		 * @return the git hub api url builder
+		 * @return the mendeley api url builder
 		 */
 		public MendeleyApiUrlBuilder withField(String name, String value) {
 			withField(name, value, false);
@@ -558,14 +529,11 @@ public final class MendeleyApiUrls {
 		/**
 		 * With field.
 		 * 
-		 * @param name
-		 *            the name
-		 * @param value
-		 *            the value
-		 * @param escape
-		 *            the escape
+		 * @param name the name
+		 * @param value the value
+		 * @param escape the escape
 		 * 
-		 * @return the git hub api url builder
+		 * @return the mendeley api url builder
 		 */
 		public MendeleyApiUrlBuilder withField(String name, String value,
 				boolean escape) {
@@ -581,12 +549,10 @@ public final class MendeleyApiUrls {
 		/**
 		 * With field enum.
 		 * 
-		 * @param name
-		 *            the name
-		 * @param value
-		 *            the value
+		 * @param name the name
+		 * @param value the value
 		 * 
-		 * @return the git hub api url builder
+		 * @return the mendeley api url builder
 		 */
 		public MendeleyApiUrlBuilder withFieldEnum(String name, ValueEnum value) {
 			if (value.value() == null || value.value().length() == 0) {
@@ -651,13 +617,12 @@ public final class MendeleyApiUrls {
 		}
     	
         /**
-		 * Encode url.
-		 * 
-		 * @param original
-		 *            the original
-		 * 
-		 * @return the string
-		 */
+         * Encode url.
+         * 
+         * @param original the original
+         * 
+         * @return the string
+         */
         private static String encodeUrl(String original) {
         	try {
     			return URLEncoder.encode(original, ApplicationConstants.CONTENT_ENCODING);

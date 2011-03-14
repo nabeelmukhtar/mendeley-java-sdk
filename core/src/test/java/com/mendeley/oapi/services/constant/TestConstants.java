@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -156,7 +156,7 @@ public final class TestConstants {
 	public static final String TEST_PULL_REQUEST_NUMBER = testConstants.getProperty("com.github.api.v2.services.testPullRequestNumber");
 	
     /**
-	 * Instantiates a new test constants.
-	 */
+     * Instantiates a new test constants.
+     */
     private TestConstants() {}
 }

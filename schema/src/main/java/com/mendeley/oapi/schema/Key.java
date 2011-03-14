@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -45,8 +45,7 @@ public class Key extends SchemaEntity {
 	/**
 	 * Sets the id.
 	 * 
-	 * @param id
-	 *            the new id
+	 * @param id the new id
 	 */
 	public void setId(String id) {
 		this.id = id;
@@ -64,8 +63,7 @@ public class Key extends SchemaEntity {
 	/**
 	 * Sets the title.
 	 * 
-	 * @param title
-	 *            the new title
+	 * @param title the new title
 	 */
 	public void setTitle(String title) {
 		this.title = title;
@@ -83,8 +81,7 @@ public class Key extends SchemaEntity {
 	/**
 	 * Sets the key.
 	 * 
-	 * @param key
-	 *            the new key
+	 * @param key the new key
 	 */
 	public void setKey(String key) {
 		this.key = key;

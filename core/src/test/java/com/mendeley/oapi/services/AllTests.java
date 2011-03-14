@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -32,17 +32,15 @@ public class AllTests {
 	public static Test suite() {
 		TestSuite suite = new TestSuite("Test for com.github.api.v2.services");
 		//$JUnit-BEGIN$
-		suite.addTestSuite(CommitServiceTest.class);
-		suite.addTestSuite(IssueServiceTest.class);
-		suite.addTestSuite(NetworkServiceTest.class);
-		suite.addTestSuite(GistServiceTest.class);
-		suite.addTestSuite(OrganizationServiceTest.class);
-		suite.addTestSuite(FeedServiceTest.class);
-		suite.addTestSuite(RepositoryServiceTest.class);
-		suite.addTestSuite(PullRequestServiceTest.class);
+		suite.addTestSuite(PrivateStatsServiceTest.class);
+		suite.addTestSuite(CollectionServiceTest.class);
+		suite.addTestSuite(SharedCollectionServiceTest.class);
+		suite.addTestSuite(PrivateGroupServiceTest.class);
+		suite.addTestSuite(DocumentServiceTest.class);
+		suite.addTestSuite(PublicGroupServiceTest.class);
+		suite.addTestSuite(SearchServiceTest.class);
 //		suite.addTestSuite(OAuthServiceTest.class);
-		suite.addTestSuite(ObjectServiceTest.class);
-		suite.addTestSuite(UserServiceTest.class);
+		suite.addTestSuite(ProfileServiceTest.class);
 		//$JUnit-END$
 		return suite;
 	}

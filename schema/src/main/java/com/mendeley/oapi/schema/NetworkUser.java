@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -48,8 +48,7 @@ public class NetworkUser extends SchemaEntity {
 	/**
 	 * Sets the name.
 	 * 
-	 * @param name
-	 *            the new name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -67,8 +66,7 @@ public class NetworkUser extends SchemaEntity {
 	/**
 	 * Sets the repo.
 	 * 
-	 * @param repo
-	 *            the new repo
+	 * @param repo the new repo
 	 */
 	public void setRepo(String repo) {
 		this.repo = repo;
@@ -86,8 +84,7 @@ public class NetworkUser extends SchemaEntity {
 	/**
 	 * Sets the heads.
 	 * 
-	 * @param heads
-	 *            the new heads
+	 * @param heads the new heads
 	 */
 	public void setHeads(List<Head> heads) {
 		this.heads = heads;

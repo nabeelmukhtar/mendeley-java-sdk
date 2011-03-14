@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -56,8 +56,7 @@ public class Comment extends SchemaEntity {
 	/**
 	 * Sets the created at.
 	 * 
-	 * @param createdAt
-	 *            the new created at
+	 * @param createdAt the new created at
 	 */
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
@@ -75,8 +74,7 @@ public class Comment extends SchemaEntity {
 	/**
 	 * Sets the body.
 	 * 
-	 * @param body
-	 *            the new body
+	 * @param body the new body
 	 */
 	public void setBody(String body) {
 		this.body = body;
@@ -94,8 +92,7 @@ public class Comment extends SchemaEntity {
 	/**
 	 * Sets the updated at.
 	 * 
-	 * @param updatedAt
-	 *            the new updated at
+	 * @param updatedAt the new updated at
 	 */
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
@@ -113,8 +110,7 @@ public class Comment extends SchemaEntity {
 	/**
 	 * Sets the id.
 	 * 
-	 * @param id
-	 *            the new id
+	 * @param id the new id
 	 */
 	public void setId(long id) {
 		this.id = id;
@@ -132,8 +128,7 @@ public class Comment extends SchemaEntity {
 	/**
 	 * Sets the user.
 	 * 
-	 * @param user
-	 *            the new user
+	 * @param user the new user
 	 */
 	public void setUser(String user) {
 		this.user = user;
@@ -151,8 +146,7 @@ public class Comment extends SchemaEntity {
 	/**
 	 * Sets the gravatar id.
 	 * 
-	 * @param gravatarId
-	 *            the new gravatar id
+	 * @param gravatarId the new gravatar id
 	 */
 	public void setGravatarId(String gravatarId) {
 		this.gravatarId = gravatarId;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -54,8 +54,7 @@ public class Blob extends SchemaEntity {
 	/**
 	 * Sets the name.
 	 * 
-	 * @param name
-	 *            the new name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -73,8 +72,7 @@ public class Blob extends SchemaEntity {
 	/**
 	 * Sets the size.
 	 * 
-	 * @param size
-	 *            the new size
+	 * @param size the new size
 	 */
 	public void setSize(int size) {
 		this.size = size;
@@ -92,8 +90,7 @@ public class Blob extends SchemaEntity {
 	/**
 	 * Sets the sha.
 	 * 
-	 * @param sha
-	 *            the new sha
+	 * @param sha the new sha
 	 */
 	public void setSha(String sha) {
 		this.sha = sha;
@@ -111,8 +108,7 @@ public class Blob extends SchemaEntity {
 	/**
 	 * Sets the mode.
 	 * 
-	 * @param mode
-	 *            the new mode
+	 * @param mode the new mode
 	 */
 	public void setMode(String mode) {
 		this.mode = mode;
@@ -130,8 +126,7 @@ public class Blob extends SchemaEntity {
 	/**
 	 * Sets the mime type.
 	 * 
-	 * @param mimeType
-	 *            the new mime type
+	 * @param mimeType the new mime type
 	 */
 	public void setMimeType(String mimeType) {
 		this.mimeType = mimeType;
@@ -149,8 +144,7 @@ public class Blob extends SchemaEntity {
 	/**
 	 * Sets the data.
 	 * 
-	 * @param data
-	 *            the new data
+	 * @param data the new data
 	 */
 	public void setData(String data) {
 		this.data = data;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -54,8 +54,7 @@ public class NetworkMeta extends SchemaEntity {
 	/**
 	 * Sets the focus.
 	 * 
-	 * @param focus
-	 *            the new focus
+	 * @param focus the new focus
 	 */
 	public void setFocus(int focus) {
 		this.focus = focus;
@@ -73,8 +72,7 @@ public class NetworkMeta extends SchemaEntity {
 	/**
 	 * Sets the nethash.
 	 * 
-	 * @param nethash
-	 *            the new nethash
+	 * @param nethash the new nethash
 	 */
 	public void setNethash(String nethash) {
 		this.nethash = nethash;
@@ -92,8 +90,7 @@ public class NetworkMeta extends SchemaEntity {
 	/**
 	 * Sets the dates.
 	 * 
-	 * @param dates
-	 *            the new dates
+	 * @param dates the new dates
 	 */
 	public void setDates(List<Date> dates) {
 		this.dates = dates;
@@ -111,8 +108,7 @@ public class NetworkMeta extends SchemaEntity {
 	/**
 	 * Sets the users.
 	 * 
-	 * @param users
-	 *            the new users
+	 * @param users the new users
 	 */
 	public void setUsers(List<NetworkUser> users) {
 		this.users = users;
@@ -130,8 +126,7 @@ public class NetworkMeta extends SchemaEntity {
 	/**
 	 * Sets the blocks.
 	 * 
-	 * @param blocks
-	 *            the new blocks
+	 * @param blocks the new blocks
 	 */
 	public void setBlocks(List<Block> blocks) {
 		this.blocks = blocks;

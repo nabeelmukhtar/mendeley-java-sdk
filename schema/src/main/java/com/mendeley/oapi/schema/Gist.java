@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -52,11 +52,10 @@ public class Gist extends SchemaEntity {
 	    private final String value;
 	    
 	    /**
-		 * Instantiates a new visibility.
-		 * 
-		 * @param value
-		 *            the value
-		 */
+    	 * Instantiates a new visibility.
+    	 * 
+    	 * @param value the value
+    	 */
 	    Visibility(String value) {
 	        this.value = value;
 	    }
@@ -72,8 +71,7 @@ public class Gist extends SchemaEntity {
 		/**
 		 * From value.
 		 * 
-		 * @param value
-		 *            the value
+		 * @param value the value
 		 * 
 		 * @return the visibility
 		 */
@@ -116,8 +114,7 @@ public class Gist extends SchemaEntity {
 	/**
 	 * Sets the description.
 	 * 
-	 * @param description
-	 *            the new description
+	 * @param description the new description
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -135,8 +132,7 @@ public class Gist extends SchemaEntity {
 	/**
 	 * Sets the repo.
 	 * 
-	 * @param repo
-	 *            the new repo
+	 * @param repo the new repo
 	 */
 	public void setRepo(String repo) {
 		this.repo = repo;
@@ -154,8 +150,7 @@ public class Gist extends SchemaEntity {
 	/**
 	 * Sets the visibility.
 	 * 
-	 * @param visibility
-	 *            the new visibility
+	 * @param visibility the new visibility
 	 */
 	public void setVisibility(Visibility visibility) {
 		this.visibility = (visibility == Visibility.PUBLIC);
@@ -173,8 +168,7 @@ public class Gist extends SchemaEntity {
 	/**
 	 * Sets the created at.
 	 * 
-	 * @param createdAt
-	 *            the new created at
+	 * @param createdAt the new created at
 	 */
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
@@ -192,8 +186,7 @@ public class Gist extends SchemaEntity {
 	/**
 	 * Sets the files.
 	 * 
-	 * @param files
-	 *            the new files
+	 * @param files the new files
 	 */
 	public void setFiles(List<String> files) {
 		this.files = files;
@@ -211,8 +204,7 @@ public class Gist extends SchemaEntity {
 	/**
 	 * Sets the owner.
 	 * 
-	 * @param owner
-	 *            the new owner
+	 * @param owner the new owner
 	 */
 	public void setOwner(String owner) {
 		this.owner = owner;

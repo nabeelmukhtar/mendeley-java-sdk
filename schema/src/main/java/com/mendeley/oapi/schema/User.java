@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -107,8 +107,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the score.
 	 * 
-	 * @param score
-	 *            the new score
+	 * @param score the new score
 	 */
 	public void setScore(double score) {
 		this.score = score;
@@ -126,8 +125,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the name.
 	 * 
-	 * @param name
-	 *            the new name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -145,8 +143,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the location.
 	 * 
-	 * @param location
-	 *            the new location
+	 * @param location the new location
 	 */
 	public void setLocation(String location) {
 		this.location = location;
@@ -164,8 +161,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the fullname.
 	 * 
-	 * @param fullname
-	 *            the new fullname
+	 * @param fullname the new fullname
 	 */
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
@@ -183,8 +179,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the username.
 	 * 
-	 * @param username
-	 *            the new username
+	 * @param username the new username
 	 */
 	public void setUsername(String username) {
 		this.username = username;
@@ -202,8 +197,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the email.
 	 * 
-	 * @param email
-	 *            the new email
+	 * @param email the new email
 	 */
 	public void setEmail(String email) {
 		this.email = email;
@@ -221,8 +215,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the blog.
 	 * 
-	 * @param blog
-	 *            the new blog
+	 * @param blog the new blog
 	 */
 	public void setBlog(String blog) {
 		this.blog = blog;
@@ -240,8 +233,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the company.
 	 * 
-	 * @param company
-	 *            the new company
+	 * @param company the new company
 	 */
 	public void setCompany(String company) {
 		this.company = company;
@@ -259,8 +251,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the id.
 	 * 
-	 * @param id
-	 *            the new id
+	 * @param id the new id
 	 */
 	public void setId(String id) {
 		this.id = id;
@@ -278,8 +269,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the login.
 	 * 
-	 * @param login
-	 *            the new login
+	 * @param login the new login
 	 */
 	public void setLogin(String login) {
 		this.login = login;
@@ -297,8 +287,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the following count.
 	 * 
-	 * @param followingCount
-	 *            the new following count
+	 * @param followingCount the new following count
 	 */
 	public void setFollowingCount(int followingCount) {
 		this.followingCount = followingCount;
@@ -316,8 +305,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the followers count.
 	 * 
-	 * @param followersCount
-	 *            the new followers count
+	 * @param followersCount the new followers count
 	 */
 	public void setFollowersCount(int followersCount) {
 		this.followersCount = followersCount;
@@ -335,8 +323,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the public gist count.
 	 * 
-	 * @param publicGistCount
-	 *            the new public gist count
+	 * @param publicGistCount the new public gist count
 	 */
 	public void setPublicGistCount(int publicGistCount) {
 		this.publicGistCount = publicGistCount;
@@ -354,8 +341,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the public repo count.
 	 * 
-	 * @param publicRepoCount
-	 *            the new public repo count
+	 * @param publicRepoCount the new public repo count
 	 */
 	public void setPublicRepoCount(int publicRepoCount) {
 		this.publicRepoCount = publicRepoCount;
@@ -373,8 +359,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the total private repo count.
 	 * 
-	 * @param totalPrivateRepoCount
-	 *            the new total private repo count
+	 * @param totalPrivateRepoCount the new total private repo count
 	 */
 	public void setTotalPrivateRepoCount(int totalPrivateRepoCount) {
 		this.totalPrivateRepoCount = totalPrivateRepoCount;
@@ -392,8 +377,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the collaborators.
 	 * 
-	 * @param collaborators
-	 *            the new collaborators
+	 * @param collaborators the new collaborators
 	 */
 	public void setCollaborators(int collaborators) {
 		this.collaborators = collaborators;
@@ -411,8 +395,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the disk usage.
 	 * 
-	 * @param diskUsage
-	 *            the new disk usage
+	 * @param diskUsage the new disk usage
 	 */
 	public void setDiskUsage(int diskUsage) {
 		this.diskUsage = diskUsage;
@@ -430,8 +413,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the owned private repo count.
 	 * 
-	 * @param ownedPrivateRepoCount
-	 *            the new owned private repo count
+	 * @param ownedPrivateRepoCount the new owned private repo count
 	 */
 	public void setOwnedPrivateRepoCount(int ownedPrivateRepoCount) {
 		this.ownedPrivateRepoCount = ownedPrivateRepoCount;
@@ -449,8 +431,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the private gist count.
 	 * 
-	 * @param privateGistCount
-	 *            the new private gist count
+	 * @param privateGistCount the new private gist count
 	 */
 	public void setPrivateGistCount(int privateGistCount) {
 		this.privateGistCount = privateGistCount;
@@ -468,8 +449,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the plan.
 	 * 
-	 * @param plan
-	 *            the new plan
+	 * @param plan the new plan
 	 */
 	public void setPlan(Plan plan) {
 		this.plan = plan;
@@ -487,8 +467,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the created at.
 	 * 
-	 * @param createdAt
-	 *            the new created at
+	 * @param createdAt the new created at
 	 */
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
@@ -506,8 +485,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the gravatar id.
 	 * 
-	 * @param gravatarId
-	 *            the new gravatar id
+	 * @param gravatarId the new gravatar id
 	 */
 	public void setGravatarId(String gravatarId) {
 		this.gravatarId = gravatarId;
@@ -525,8 +503,7 @@ public class User extends SchemaEntity {
 	/**
 	 * Sets the permission.
 	 * 
-	 * @param permission
-	 *            the new permission
+	 * @param permission the new permission
 	 */
 	public void setPermission(Permission permission) {
 		this.permission = permission;

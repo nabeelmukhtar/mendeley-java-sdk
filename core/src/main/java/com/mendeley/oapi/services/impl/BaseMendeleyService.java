@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -49,9 +49,9 @@ import com.mendeley.oapi.services.constant.ApplicationConstants;
 import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
 
 /**
- * The Class BaseGitHubService.
+ * The Class BaseMendeleyService.
  */
-public abstract class BaseMendeleyService extends GitHubApiGateway implements MendeleyService {
+public abstract class BaseMendeleyService extends MendeleyApiGateway implements MendeleyService {
 	
 	/** The Constant UTF_8_CHAR_SET. */
 	protected static final Charset UTF_8_CHAR_SET = Charset.forName(ApplicationConstants.CONTENT_ENCODING);
@@ -63,7 +63,7 @@ public abstract class BaseMendeleyService extends GitHubApiGateway implements Me
     private List<AsyncResponseHandler<List<? extends SchemaEntity>>> handlers = new ArrayList<AsyncResponseHandler<List<? extends SchemaEntity>>>();
     
 	/**
-	 * Instantiates a new base git hub service.
+	 * Instantiates a new base mendeley service.
 	 */
 	public BaseMendeleyService() {
         // by default we compress contents
@@ -71,10 +71,9 @@ public abstract class BaseMendeleyService extends GitHubApiGateway implements Me
 	}
 
 	/**
-	 * Instantiates a new base git hub service.
+	 * Instantiates a new base mendeley service.
 	 * 
-	 * @param apiVersion
-	 *            the api version
+	 * @param apiVersion the api version
 	 */
 	public BaseMendeleyService(String apiVersion) {
 		setApiVersion(apiVersion);
@@ -83,10 +82,8 @@ public abstract class BaseMendeleyService extends GitHubApiGateway implements Me
 	/**
 	 * Unmarshall.
 	 * 
-	 * @param typeToken
-	 *            the type token
-	 * @param response
-	 *            the response
+	 * @param typeToken the type token
+	 * @param response the response
 	 * 
 	 * @return the t
 	 */
@@ -99,8 +96,7 @@ public abstract class BaseMendeleyService extends GitHubApiGateway implements Me
 	/**
 	 * Notify observers.
 	 * 
-	 * @param response
-	 *            the response
+	 * @param response the response
 	 */
 	protected void notifyObservers(List<? extends SchemaEntity> response) {
 		for(AsyncResponseHandler<List<? extends SchemaEntity>> handler : handlers) {
@@ -114,8 +110,7 @@ public abstract class BaseMendeleyService extends GitHubApiGateway implements Me
 	/**
 	 * Adds the resonse handler.
 	 * 
-	 * @param handler
-	 *            the handler
+	 * @param handler the handler
 	 */
 	public void addResonseHandler(AsyncResponseHandler<List<? extends SchemaEntity>> handler) {
 		handlers.add(handler);
@@ -192,8 +187,7 @@ public abstract class BaseMendeleyService extends GitHubApiGateway implements Me
 	/**
 	 * Unmarshall.
 	 * 
-	 * @param jsonContent
-	 *            the json content
+	 * @param jsonContent the json content
 	 * 
 	 * @return the json object
 	 */
@@ -215,10 +209,9 @@ public abstract class BaseMendeleyService extends GitHubApiGateway implements Me
 	/**
 	 * Creates the git hub api url builder.
 	 * 
-	 * @param urlFormat
-	 *            the url format
+	 * @param urlFormat the url format
 	 * 
-	 * @return the git hub api url builder
+	 * @return the mendeley api url builder
 	 */
 	protected MendeleyApiUrlBuilder createGitHubApiUrlBuilder(String urlFormat) {
 		return new MendeleyApiUrlBuilder(urlFormat);

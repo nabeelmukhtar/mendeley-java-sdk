@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -51,11 +51,10 @@ public class Issue extends SchemaEntity {
 	    private final String value;
 	    
 	    /**
-		 * Instantiates a new state.
-		 * 
-		 * @param value
-		 *            the value
-		 */
+    	 * Instantiates a new state.
+    	 * 
+    	 * @param value the value
+    	 */
 	    State(String value) {
 	        this.value = value;
 	    }
@@ -71,8 +70,7 @@ public class Issue extends SchemaEntity {
 		/**
 		 * From value.
 		 * 
-		 * @param value
-		 *            the value
+		 * @param value the value
 		 * 
 		 * @return the state
 		 */
@@ -135,8 +133,7 @@ public class Issue extends SchemaEntity {
 	/**
 	 * Sets the closed at.
 	 * 
-	 * @param closedAt
-	 *            the new closed at
+	 * @param closedAt the new closed at
 	 */
 	public void setClosedAt(Date closedAt) {
 		this.closedAt = closedAt;
@@ -154,8 +151,7 @@ public class Issue extends SchemaEntity {
 	/**
 	 * Sets the labels.
 	 * 
-	 * @param labels
-	 *            the new labels
+	 * @param labels the new labels
 	 */
 	public void setLabels(List<String> labels) {
 		this.labels = labels;
@@ -173,8 +169,7 @@ public class Issue extends SchemaEntity {
 	/**
 	 * Sets the user.
 	 * 
-	 * @param user
-	 *            the new user
+	 * @param user the new user
 	 */
 	public void setUser(String user) {
 		this.user = user;
@@ -192,8 +187,7 @@ public class Issue extends SchemaEntity {
 	/**
 	 * Sets the gravatar id.
 	 * 
-	 * @param gravatarId
-	 *            the new gravatar id
+	 * @param gravatarId the new gravatar id
 	 */
 	public void setGravatarId(String gravatarId) {
 		this.gravatarId = gravatarId;
@@ -211,8 +205,7 @@ public class Issue extends SchemaEntity {
 	/**
 	 * Sets the updated at.
 	 * 
-	 * @param updatedAt
-	 *            the new updated at
+	 * @param updatedAt the new updated at
 	 */
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
@@ -230,8 +223,7 @@ public class Issue extends SchemaEntity {
 	/**
 	 * Sets the votes.
 	 * 
-	 * @param votes
-	 *            the new votes
+	 * @param votes the new votes
 	 */
 	public void setVotes(int votes) {
 		this.votes = votes;
@@ -249,8 +241,7 @@ public class Issue extends SchemaEntity {
 	/**
 	 * Sets the number.
 	 * 
-	 * @param number
-	 *            the new number
+	 * @param number the new number
 	 */
 	public void setNumber(int number) {
 		this.number = number;
@@ -268,8 +259,7 @@ public class Issue extends SchemaEntity {
 	/**
 	 * Sets the position.
 	 * 
-	 * @param position
-	 *            the new position
+	 * @param position the new position
 	 */
 	public void setPosition(double position) {
 		this.position = position;
@@ -287,8 +277,7 @@ public class Issue extends SchemaEntity {
 	/**
 	 * Sets the title.
 	 * 
-	 * @param title
-	 *            the new title
+	 * @param title the new title
 	 */
 	public void setTitle(String title) {
 		this.title = title;
@@ -306,8 +295,7 @@ public class Issue extends SchemaEntity {
 	/**
 	 * Sets the body.
 	 * 
-	 * @param body
-	 *            the new body
+	 * @param body the new body
 	 */
 	public void setBody(String body) {
 		this.body = body;
@@ -325,8 +313,7 @@ public class Issue extends SchemaEntity {
 	/**
 	 * Sets the state.
 	 * 
-	 * @param state
-	 *            the new state
+	 * @param state the new state
 	 */
 	public void setState(State state) {
 		this.state = state;
@@ -344,8 +331,7 @@ public class Issue extends SchemaEntity {
 	/**
 	 * Sets the created at.
 	 * 
-	 * @param createdAt
-	 *            the new created at
+	 * @param createdAt the new created at
 	 */
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
@@ -363,8 +349,7 @@ public class Issue extends SchemaEntity {
 	/**
 	 * Sets the comments.
 	 * 
-	 * @param comments
-	 *            the new comments
+	 * @param comments the new comments
 	 */
 	public void setComments(int comments) {
 		this.comments = comments;

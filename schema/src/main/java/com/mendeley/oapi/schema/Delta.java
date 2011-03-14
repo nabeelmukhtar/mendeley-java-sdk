@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -42,8 +42,7 @@ public class Delta extends SchemaEntity {
 	/**
 	 * Sets the diff.
 	 * 
-	 * @param diff
-	 *            the new diff
+	 * @param diff the new diff
 	 */
 	public void setDiff(String diff) {
 		this.diff = diff;
@@ -61,8 +60,7 @@ public class Delta extends SchemaEntity {
 	/**
 	 * Sets the filename.
 	 * 
-	 * @param filename
-	 *            the new filename
+	 * @param filename the new filename
 	 */
 	public void setFilename(String filename) {
 		this.filename = filename;

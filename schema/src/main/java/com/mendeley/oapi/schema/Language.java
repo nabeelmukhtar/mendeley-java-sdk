@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -199,11 +199,10 @@ public enum Language implements ValueEnum {
     private final String value;
     
     /**
-	 * Instantiates a new language.
-	 * 
-	 * @param value
-	 *            the value
-	 */
+     * Instantiates a new language.
+     * 
+     * @param value the value
+     */
     Language(String value) {
         this.value = value;
     }
@@ -219,8 +218,7 @@ public enum Language implements ValueEnum {
 	/**
 	 * From value.
 	 * 
-	 * @param value
-	 *            the value
+	 * @param value the value
 	 * 
 	 * @return the language
 	 */

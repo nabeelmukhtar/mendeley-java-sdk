@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -20,40 +20,55 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import com.mendeley.oapi.services.MendeleyServiceFactory;
-import com.mendeley.oapi.services.OAuthService;
+import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
+import com.mendeley.oapi.services.oauth.MendeleyOAuthService;
+import com.mendeley.oapi.services.oauth.MendeleyOAuthServiceFactory;
+import com.mendeley.oapi.services.oauth.MendeleyRequestToken;
 
 /**
  * The Class OAuthExample.
  */
 public class OAuthExample {
 	
-	/** The Constant CLIENT_ID. */
-	private static final String CLIENT_ID = "18790e7033ab0148f05c";
+	/** The Constant CONSUMER_KEY. */
+	private static final String CONSUMER_KEY = "fb5f4f918e29a86d60ccede660d3d68b04d37e9f6";
 	
-	/** The Constant CLIENT_SECRET. */
-	private static final String CLIENT_SECRET = "52695c3febf1721b8bc6f569c5210d38d043696c";
+	/** The Constant CONSUMER_SECRET. */
+	private static final String CONSUMER_SECRET = "ecde8b6a67627dc6f3dd53ba59ba4553";
 	
-	/** The Constant CALLBACK_URL. */
-	private static final String CALLBACK_URL = "http://www.githubapitest.com";
-
 	/**
 	 * The main method.
 	 * 
-	 * @param args
-	 *            the arguments
+	 * @param args the arguments
 	 * 
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static void main(String[] args) throws IOException {
-		OAuthService service = MendeleyServiceFactory.newInstance().createOAuthService(CLIENT_ID, CLIENT_SECRET);
-		String autorizationUrl = service.getAuthorizationUrl(CALLBACK_URL);
-		System.out.println("Visit this url to get code and enter it.\n" + autorizationUrl);
+		final MendeleyOAuthService oauthService = MendeleyOAuthServiceFactory.getInstance().createMendeleyOAuthService(CONSUMER_KEY, CONSUMER_SECRET);
+		
+		System.out.println("Fetching request token from Mendeley...");
+		
+		MendeleyRequestToken requestToken = oauthService.getOAuthRequestToken();
+		
+        String authUrl = requestToken.getAuthorizationUrl();
+
+        System.out.println("Request token: " + requestToken.getToken());
+        System.out.println("Token secret: " + requestToken.getTokenSecret());
+        System.out.println("Expiration time: " + requestToken.getExpirationTime());
+
+        System.out.println("Now visit:\n" + authUrl
+                + "\n... and grant this app authorization");
+        System.out.println("Enter the PIN code and hit ENTER when you're done:");
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String code = br.readLine();
-		String accessToken = service.getAccessToken(CALLBACK_URL, code);
-		System.out.println("Access Token:" + accessToken);
+        String pin = br.readLine();
+
+        System.out.println("Fetching access token from Mendeley...");
+        
+        MendeleyAccessToken accessToken = oauthService.getOAuthAccessToken(requestToken, pin);
+
+        System.out.println("Access token: " + accessToken.getToken());
+        System.out.println("Token secret: " + accessToken.getTokenSecret());
 	}
 
 }

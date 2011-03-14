@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -107,8 +107,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the user.
 	 * 
-	 * @param user
-	 *            the new user
+	 * @param user the new user
 	 */
 	public void setUser(User user) {
 		this.user = user;
@@ -126,8 +125,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the gravatar id.
 	 * 
-	 * @param gravatarId
-	 *            the new gravatar id
+	 * @param gravatarId the new gravatar id
 	 */
 	public void setGravatarId(String gravatarId) {
 		this.gravatarId = gravatarId;
@@ -149,8 +147,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the issue updated at.
 	 * 
-	 * @param updatedAt
-	 *            the new issue updated at
+	 * @param updatedAt the new issue updated at
 	 */
 	public void setIssueUpdatedAt(Date updatedAt) {
 		this.issueUpdatedAt = DATE_FORMAT.format(updatedAt);
@@ -168,8 +165,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the votes.
 	 * 
-	 * @param votes
-	 *            the new votes
+	 * @param votes the new votes
 	 */
 	public void setVotes(int votes) {
 		this.votes = votes;
@@ -187,8 +183,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the number.
 	 * 
-	 * @param number
-	 *            the new number
+	 * @param number the new number
 	 */
 	public void setNumber(int number) {
 		this.number = number;
@@ -206,8 +201,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the position.
 	 * 
-	 * @param position
-	 *            the new position
+	 * @param position the new position
 	 */
 	public void setPosition(double position) {
 		this.position = position;
@@ -225,8 +219,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the title.
 	 * 
-	 * @param title
-	 *            the new title
+	 * @param title the new title
 	 */
 	public void setTitle(String title) {
 		this.title = title;
@@ -244,8 +237,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the body.
 	 * 
-	 * @param body
-	 *            the new body
+	 * @param body the new body
 	 */
 	public void setBody(String body) {
 		this.body = body;
@@ -263,8 +255,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the state.
 	 * 
-	 * @param state
-	 *            the new state
+	 * @param state the new state
 	 */
 	public void setState(State state) {
 		this.state = state;
@@ -286,8 +277,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the created at.
 	 * 
-	 * @param createdAt
-	 *            the new created at
+	 * @param createdAt the new created at
 	 */
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = DATE_FORMAT.format(createdAt);
@@ -305,8 +295,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the comments.
 	 * 
-	 * @param comments
-	 *            the new comments
+	 * @param comments the new comments
 	 */
 	public void setComments(int comments) {
 		this.comments = comments;
@@ -328,8 +317,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the issue created at.
 	 * 
-	 * @param issueCreatedAt
-	 *            the new issue created at
+	 * @param issueCreatedAt the new issue created at
 	 */
 	public void setIssueCreatedAt(Date issueCreatedAt) {
 		this.issueCreatedAt = DATE_FORMAT.format(issueCreatedAt);
@@ -347,8 +335,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the html url.
 	 * 
-	 * @param htmlUrl
-	 *            the new html url
+	 * @param htmlUrl the new html url
 	 */
 	public void setHtmlUrl(String htmlUrl) {
 		this.htmlUrl = htmlUrl;
@@ -366,8 +353,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the diff url.
 	 * 
-	 * @param diffUrl
-	 *            the new diff url
+	 * @param diffUrl the new diff url
 	 */
 	public void setDiffUrl(String diffUrl) {
 		this.diffUrl = diffUrl;
@@ -385,8 +371,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the patch url.
 	 * 
-	 * @param patchUrl
-	 *            the new patch url
+	 * @param patchUrl the new patch url
 	 */
 	public void setPatchUrl(String patchUrl) {
 		this.patchUrl = patchUrl;
@@ -404,8 +389,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the issue user.
 	 * 
-	 * @param issueUser
-	 *            the new issue user
+	 * @param issueUser the new issue user
 	 */
 	public void setIssueUser(User issueUser) {
 		this.issueUser = issueUser;
@@ -423,8 +407,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the base.
 	 * 
-	 * @param base
-	 *            the new base
+	 * @param base the new base
 	 */
 	public void setBase(Version base) {
 		this.base = base;
@@ -442,8 +425,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the head.
 	 * 
-	 * @param head
-	 *            the new head
+	 * @param head the new head
 	 */
 	public void setHead(Version head) {
 		this.head = head;
@@ -461,8 +443,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the labels.
 	 * 
-	 * @param labels
-	 *            the new labels
+	 * @param labels the new labels
 	 */
 	public void setLabels(List<String> labels) {
 		this.labels = labels;
@@ -480,8 +461,7 @@ public class PullRequest extends SchemaEntity {
 	/**
 	 * Sets the discussion.
 	 * 
-	 * @param discussion
-	 *            the new discussion
+	 * @param discussion the new discussion
 	 */
 	public void setDiscussion(List<Discussion> discussion) {
 		this.discussion = discussion;

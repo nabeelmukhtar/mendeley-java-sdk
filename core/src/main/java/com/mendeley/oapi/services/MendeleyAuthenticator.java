@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -16,35 +16,32 @@
  */
 package com.mendeley.oapi.services;
 
-import com.mendeley.oapi.services.auth.Authentication;
+import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 
 
 /**
- * The Interface GitHubAuthenticator.
+ * The Interface MendeleyAuthenticator.
  */
 public interface MendeleyAuthenticator extends MendeleyCommunicator {
 
     /**
-	 * Sets the authentication.
-	 * 
-	 * @param authentication
-	 *            the new authentication
-	 */
-    public void setAuthentication(Authentication authentication);
+     * Sets the authentication.
+     * 
+     * @param authentication the new authentication
+     */
+    public void setAuthentication(MendeleyAccessToken authentication);
 
 	/**
 	 * Sets the user ip address.
 	 * 
-	 * @param userIpAddress
-	 *            the new user ip address
+	 * @param userIpAddress the new user ip address
 	 */
 	public void setUserIpAddress(String userIpAddress);
 
 	/**
 	 * Sets the referrer.
 	 * 
-	 * @param referrer
-	 *            the new referrer
+	 * @param referrer the new referrer
 	 */
 	public void setReferrer(String referrer);
 }

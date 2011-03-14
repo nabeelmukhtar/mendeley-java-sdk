@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -48,8 +48,7 @@ public class Plan extends SchemaEntity {
 	/**
 	 * Sets the name.
 	 * 
-	 * @param name
-	 *            the new name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -67,8 +66,7 @@ public class Plan extends SchemaEntity {
 	/**
 	 * Sets the collaborators.
 	 * 
-	 * @param collaborators
-	 *            the new collaborators
+	 * @param collaborators the new collaborators
 	 */
 	public void setCollaborators(int collaborators) {
 		this.collaborators = collaborators;
@@ -86,8 +84,7 @@ public class Plan extends SchemaEntity {
 	/**
 	 * Sets the space.
 	 * 
-	 * @param space
-	 *            the new space
+	 * @param space the new space
 	 */
 	public void setSpace(long space) {
 		this.space = space;
@@ -105,8 +102,7 @@ public class Plan extends SchemaEntity {
 	/**
 	 * Sets the private repos.
 	 * 
-	 * @param privateRepos
-	 *            the new private repos
+	 * @param privateRepos the new private repos
 	 */
 	public void setPrivateRepos(int privateRepos) {
 		this.privateRepos = privateRepos;

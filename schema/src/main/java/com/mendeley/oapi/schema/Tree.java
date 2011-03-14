@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -48,11 +48,10 @@ public class Tree extends SchemaEntity {
 	    private final String value;
 	    
 	    /**
-		 * Instantiates a new type.
-		 * 
-		 * @param value
-		 *            the value
-		 */
+    	 * Instantiates a new type.
+    	 * 
+    	 * @param value the value
+    	 */
 	    Type(String value) {
 	        this.value = value;
 	    }
@@ -68,8 +67,7 @@ public class Tree extends SchemaEntity {
 		/**
 		 * From value.
 		 * 
-		 * @param value
-		 *            the value
+		 * @param value the value
 		 * 
 		 * @return the type
 		 */
@@ -105,8 +103,7 @@ public class Tree extends SchemaEntity {
 	/**
 	 * Sets the name.
 	 * 
-	 * @param name
-	 *            the new name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -124,8 +121,7 @@ public class Tree extends SchemaEntity {
 	/**
 	 * Sets the sha.
 	 * 
-	 * @param sha
-	 *            the new sha
+	 * @param sha the new sha
 	 */
 	public void setSha(String sha) {
 		this.sha = sha;
@@ -143,8 +139,7 @@ public class Tree extends SchemaEntity {
 	/**
 	 * Sets the mode.
 	 * 
-	 * @param mode
-	 *            the new mode
+	 * @param mode the new mode
 	 */
 	public void setMode(String mode) {
 		this.mode = mode;
@@ -162,8 +157,7 @@ public class Tree extends SchemaEntity {
 	/**
 	 * Sets the type.
 	 * 
-	 * @param type
-	 *            the new type
+	 * @param type the new type
 	 */
 	public void setType(Type type) {
 		this.type = type;

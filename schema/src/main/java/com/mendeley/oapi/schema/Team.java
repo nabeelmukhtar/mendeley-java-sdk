@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -51,8 +51,7 @@ public class Team extends SchemaEntity {
 	/**
 	 * Sets the id.
 	 * 
-	 * @param id
-	 *            the new id
+	 * @param id the new id
 	 */
 	public void setId(String id) {
 		this.id = id;
@@ -70,8 +69,7 @@ public class Team extends SchemaEntity {
 	/**
 	 * Sets the name.
 	 * 
-	 * @param name
-	 *            the new name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -89,8 +87,7 @@ public class Team extends SchemaEntity {
 	/**
 	 * Sets the permission.
 	 * 
-	 * @param permission
-	 *            the new permission
+	 * @param permission the new permission
 	 */
 	public void setPermission(Permission permission) {
 		this.permission = permission;
@@ -108,8 +105,7 @@ public class Team extends SchemaEntity {
 	/**
 	 * Sets the repo names.
 	 * 
-	 * @param repoNames
-	 *            the new repo names
+	 * @param repoNames the new repo names
 	 */
 	public void setRepoNames(List<String> repoNames) {
 		this.repoNames = repoNames;

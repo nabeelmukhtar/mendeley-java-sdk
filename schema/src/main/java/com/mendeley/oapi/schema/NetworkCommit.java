@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -66,8 +66,7 @@ public class NetworkCommit extends SchemaEntity {
 	/**
 	 * Sets the message.
 	 * 
-	 * @param message
-	 *            the new message
+	 * @param message the new message
 	 */
 	public void setMessage(String message) {
 		this.message = message;
@@ -85,8 +84,7 @@ public class NetworkCommit extends SchemaEntity {
 	/**
 	 * Sets the time.
 	 * 
-	 * @param time
-	 *            the new time
+	 * @param time the new time
 	 */
 	public void setTime(long time) {
 		this.time = time;
@@ -104,8 +102,7 @@ public class NetworkCommit extends SchemaEntity {
 	/**
 	 * Sets the parents.
 	 * 
-	 * @param parents
-	 *            the new parents
+	 * @param parents the new parents
 	 */
 	public void setParents(List<List<String>> parents) {
 		this.parents = parents;
@@ -123,8 +120,7 @@ public class NetworkCommit extends SchemaEntity {
 	/**
 	 * Sets the date.
 	 * 
-	 * @param date
-	 *            the new date
+	 * @param date the new date
 	 */
 	public void setDate(Date date) {
 		this.date = date;
@@ -142,8 +138,7 @@ public class NetworkCommit extends SchemaEntity {
 	/**
 	 * Sets the author.
 	 * 
-	 * @param author
-	 *            the new author
+	 * @param author the new author
 	 */
 	public void setAuthor(String author) {
 		this.author = author;
@@ -161,8 +156,7 @@ public class NetworkCommit extends SchemaEntity {
 	/**
 	 * Sets the id.
 	 * 
-	 * @param id
-	 *            the new id
+	 * @param id the new id
 	 */
 	public void setId(String id) {
 		this.id = id;
@@ -180,8 +174,7 @@ public class NetworkCommit extends SchemaEntity {
 	/**
 	 * Sets the space.
 	 * 
-	 * @param space
-	 *            the new space
+	 * @param space the new space
 	 */
 	public void setSpace(int space) {
 		this.space = space;
@@ -199,8 +192,7 @@ public class NetworkCommit extends SchemaEntity {
 	/**
 	 * Sets the gravatar.
 	 * 
-	 * @param gravatar
-	 *            the new gravatar
+	 * @param gravatar the new gravatar
 	 */
 	public void setGravatar(String gravatar) {
 		this.gravatar = gravatar;
@@ -218,8 +210,7 @@ public class NetworkCommit extends SchemaEntity {
 	/**
 	 * Sets the login.
 	 * 
-	 * @param login
-	 *            the new login
+	 * @param login the new login
 	 */
 	public void setLogin(String login) {
 		this.login = login;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -57,8 +57,7 @@ public class FeedEntry extends SchemaEntity {
 	/**
 	 * Sets the title.
 	 * 
-	 * @param title
-	 *            the new title
+	 * @param title the new title
 	 */
 	public void setTitle(String title) {
 		this.title = title;
@@ -76,8 +75,7 @@ public class FeedEntry extends SchemaEntity {
 	/**
 	 * Sets the link.
 	 * 
-	 * @param link
-	 *            the new link
+	 * @param link the new link
 	 */
 	public void setLink(String link) {
 		this.link = link;
@@ -95,8 +93,7 @@ public class FeedEntry extends SchemaEntity {
 	/**
 	 * Sets the author.
 	 * 
-	 * @param author
-	 *            the new author
+	 * @param author the new author
 	 */
 	public void setAuthor(String author) {
 		this.author = author;
@@ -114,8 +111,7 @@ public class FeedEntry extends SchemaEntity {
 	/**
 	 * Sets the published date.
 	 * 
-	 * @param publishedDate
-	 *            the new published date
+	 * @param publishedDate the new published date
 	 */
 	public void setPublishedDate(Date publishedDate) {
 		this.publishedDate = publishedDate;
@@ -133,8 +129,7 @@ public class FeedEntry extends SchemaEntity {
 	/**
 	 * Sets the content.
 	 * 
-	 * @param content
-	 *            the new content
+	 * @param content the new content
 	 */
 	public void setContent(String content) {
 		this.content = content;
@@ -152,8 +147,7 @@ public class FeedEntry extends SchemaEntity {
 	/**
 	 * Sets the categories.
 	 * 
-	 * @param categories
-	 *            the new categories
+	 * @param categories the new categories
 	 */
 	public void setCategories(List<String> categories) {
 		this.categories = categories;

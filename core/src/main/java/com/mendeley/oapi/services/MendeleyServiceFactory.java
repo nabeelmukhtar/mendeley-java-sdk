@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -16,142 +16,120 @@
  */
 package com.mendeley.oapi.services;
 
-import com.mendeley.oapi.services.impl.CommitServiceImpl;
-import com.mendeley.oapi.services.impl.FeedServiceImpl;
-import com.mendeley.oapi.services.impl.GistServiceImpl;
-import com.mendeley.oapi.services.impl.IssueServiceImpl;
-import com.mendeley.oapi.services.impl.NetworkServiceImpl;
-import com.mendeley.oapi.services.impl.OAuthServiceImpl;
-import com.mendeley.oapi.services.impl.ObjectServiceImpl;
-import com.mendeley.oapi.services.impl.OrganizationServiceImpl;
-import com.mendeley.oapi.services.impl.PullRequestServiceImpl;
-import com.mendeley.oapi.services.impl.RepositoryServiceImpl;
-import com.mendeley.oapi.services.impl.UserServiceImpl;
+import com.mendeley.oapi.services.impl.CollectionServiceImpl;
+import com.mendeley.oapi.services.impl.DocumentServiceImpl;
+import com.mendeley.oapi.services.impl.PrivateGroupServiceImpl;
+import com.mendeley.oapi.services.impl.PrivateStatsServiceImpl;
+import com.mendeley.oapi.services.impl.ProfileServiceImpl;
+import com.mendeley.oapi.services.impl.PublicGroupServiceImpl;
+import com.mendeley.oapi.services.impl.PublicStatsServiceImpl;
+import com.mendeley.oapi.services.impl.SearchServiceImpl;
+import com.mendeley.oapi.services.impl.SharedCollectionServiceImpl;
 
 
 
 
 /**
- * A factory for creating GitHubService objects.
+ * A factory for creating MendeleyService objects.
  */
 public class MendeleyServiceFactory {
 
     /**
-	 * Instantiates a new git hub service factory.
-	 */
+     * Instantiates a new mendeley service factory.
+     */
 	private MendeleyServiceFactory() {
     }
 	
     /**
-	 * New instance.
-	 * 
-	 * @return the git hub service factory
-	 */
+     * New instance.
+     * 
+     * @return the mendeley service factory
+     */
     public static MendeleyServiceFactory newInstance() {
         return new MendeleyServiceFactory();
     }
     
     /**
-	 * Creates a new GitHubService object.
-	 * 
-	 * @return the commit service
-	 */
-    public CommitService createCommitService() {
-    	return new CommitServiceImpl();
+     * Creates a new MendeleyService object.
+     * 
+     * @return the private stats service
+     */
+    public PrivateStatsService createPrivateStatsService() {
+    	return new PrivateStatsServiceImpl();
     }
     
     /**
-	 * Creates a new GitHubService object.
-	 * 
-	 * @return the gist service
-	 */
-    public GistService createGistService() {
-    	return new GistServiceImpl();
+     * Creates a new MendeleyService object.
+     * 
+     * @return the private group service
+     */
+    public PrivateGroupService createPrivateGroupService() {
+    	return new PrivateGroupServiceImpl();
     }
     
     /**
-	 * Creates a new GitHubService object.
-	 * 
-	 * @return the issue service
-	 */
-    public IssueService createIssueService() {
-    	return new IssueServiceImpl();
+     * Creates a new MendeleyService object.
+     * 
+     * @return the collection service
+     */
+    public CollectionService createCollectionService() {
+    	return new CollectionServiceImpl();
     }
     
     /**
-	 * Creates a new GitHubService object.
-	 * 
-	 * @return the network service
-	 */
-    public NetworkService createNetworkService() {
-    	return new NetworkServiceImpl();
+     * Creates a new MendeleyService object.
+     * 
+     * @return the shared collection service
+     */
+    public SharedCollectionService createSharedCollectionService() {
+    	return new SharedCollectionServiceImpl();
     }
 
     /**
-	 * Creates a new GitHubService object.
-	 * 
-	 * @return the object service
-	 */
-    public ObjectService createObjectService() {
-    	return new ObjectServiceImpl();
+     * Creates a new MendeleyService object.
+     * 
+     * @return the public group service
+     */
+    public PublicGroupService createPublicGroupService() {
+    	return new PublicGroupServiceImpl();
     }
     
     /**
-	 * Creates a new GitHubService object.
-	 * 
-	 * @return the repository service
-	 */
-    public RepositoryService createRepositoryService() {
-    	return new RepositoryServiceImpl();
+     * Creates a new MendeleyService object.
+     * 
+     * @return the profile service
+     */
+    public ProfileService createProfileService() {
+    	return new ProfileServiceImpl();
     }
     
     /**
-	 * Creates a new GitHubService object.
-	 * 
-	 * @return the organization service
-	 */
-    public OrganizationService createOrganizationService() {
-    	return new OrganizationServiceImpl();
+     * Creates a new MendeleyService object.
+     * 
+     * @param clientId the client id
+     * @param secret the secret
+     * 
+     * @return the public stats service
+     */
+    public PublicStatsService createPublicStatsService(String clientId, String secret) {
+    	return new PublicStatsServiceImpl(clientId, secret);    	
     }
     
     /**
-	 * Creates a new GitHubService object.
-	 * 
-	 * @return the user service
-	 */
-    public UserService createUserService() {
-    	return new UserServiceImpl();
+     * Creates a new MendeleyService object.
+     * 
+     * @return the document service
+     */
+    public DocumentService createDocumentService() {
+    	return new DocumentServiceImpl();    	
     }
     
     /**
-	 * Creates a new GitHubService object.
-	 * 
-	 * @param clientId
-	 *            the client id
-	 * @param secret
-	 *            the secret
-	 * 
-	 * @return the o auth service
-	 */
-    public OAuthService createOAuthService(String clientId, String secret) {
-    	return new OAuthServiceImpl(clientId, secret);    	
-    }
-    
-    /**
-	 * Creates a new GitHubService object.
-	 * 
-	 * @return the feed service
-	 */
-    public FeedService createFeedService() {
-    	return new FeedServiceImpl();    	
-    }
-    
-    /**
-	 * Creates a new GitHubService object.
-	 * 
-	 * @return the pull request service
-	 */
-    public PullRequestService createPullRequestService() {
-    	return new PullRequestServiceImpl();    	
+     * Creates a new MendeleyService object.
+     * 
+     * @return the search service
+     */
+    public SearchService createSearchService() {
+    	return new SearchServiceImpl();    	
     }
 }

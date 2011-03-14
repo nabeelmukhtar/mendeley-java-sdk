@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -70,30 +70,28 @@ public final class ApplicationConstants {
     public static final Pattern ACCESS_DENIED_PATTERN = getPatternProperty("com.github.api.v2.services.accessDeniedPattern");
     
     /**
-	 * Instantiates a new application constants.
-	 */
+     * Instantiates a new application constants.
+     */
     private ApplicationConstants() {}
 
     /**
-	 * Gets the property.
-	 * 
-	 * @param key
-	 *            the key
-	 * 
-	 * @return the property
-	 */
+     * Gets the property.
+     * 
+     * @param key the key
+     * 
+     * @return the property
+     */
     public static String getProperty(String key) {
         return applicationConstants.getProperty(key);
     }
 
     /**
-	 * Gets the int property.
-	 * 
-	 * @param key
-	 *            the key
-	 * 
-	 * @return the int property
-	 */
+     * Gets the int property.
+     * 
+     * @param key the key
+     * 
+     * @return the int property
+     */
     public static int getIntProperty(String key) {
         String property = applicationConstants.getProperty(key);
 
@@ -105,13 +103,12 @@ public final class ApplicationConstants {
     }
 
     /**
-	 * Gets the boolean property.
-	 * 
-	 * @param key
-	 *            the key
-	 * 
-	 * @return the boolean property
-	 */
+     * Gets the boolean property.
+     * 
+     * @param key the key
+     * 
+     * @return the boolean property
+     */
     public static boolean getBooleanProperty(String key) {
         String property = applicationConstants.getProperty(key);
 
@@ -123,13 +120,12 @@ public final class ApplicationConstants {
     }
 
     /**
-	 * Gets the double property.
-	 * 
-	 * @param key
-	 *            the key
-	 * 
-	 * @return the double property
-	 */
+     * Gets the double property.
+     * 
+     * @param key the key
+     * 
+     * @return the double property
+     */
     public static double getDoubleProperty(String key) {
         String property = applicationConstants.getProperty(key);
 
@@ -141,13 +137,12 @@ public final class ApplicationConstants {
     }
 
     /**
-	 * Gets the long property.
-	 * 
-	 * @param key
-	 *            the key
-	 * 
-	 * @return the long property
-	 */
+     * Gets the long property.
+     * 
+     * @param key the key
+     * 
+     * @return the long property
+     */
     public static long getLongProperty(String key) {
         String property = applicationConstants.getProperty(key);
 
@@ -159,13 +154,12 @@ public final class ApplicationConstants {
     }
     
     /**
-	 * Gets the pattern property.
-	 * 
-	 * @param key
-	 *            the key
-	 * 
-	 * @return the pattern property
-	 */
+     * Gets the pattern property.
+     * 
+     * @param key the key
+     * 
+     * @return the pattern property
+     */
     public static Pattern getPatternProperty(String key) {
         String property = applicationConstants.getProperty(key);
 
@@ -177,13 +171,12 @@ public final class ApplicationConstants {
     }
 
     /**
-	 * Checks if is null or empty.
-	 * 
-	 * @param s
-	 *            the s
-	 * 
-	 * @return true, if is null or empty
-	 */
+     * Checks if is null or empty.
+     * 
+     * @param s the s
+     * 
+     * @return true, if is null or empty
+     */
     private static boolean isNullOrEmpty(String s) {
         return ((s == null) || s.length() == 0);
     }

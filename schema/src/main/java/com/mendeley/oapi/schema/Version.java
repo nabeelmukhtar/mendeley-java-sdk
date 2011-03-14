@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -52,8 +52,7 @@ public class Version extends SchemaEntity {
 	/**
 	 * Sets the label.
 	 * 
-	 * @param label
-	 *            the new label
+	 * @param label the new label
 	 */
 	public void setLabel(String label) {
 		this.label = label;
@@ -71,8 +70,7 @@ public class Version extends SchemaEntity {
 	/**
 	 * Sets the sha.
 	 * 
-	 * @param sha
-	 *            the new sha
+	 * @param sha the new sha
 	 */
 	public void setSha(String sha) {
 		this.sha = sha;
@@ -90,8 +88,7 @@ public class Version extends SchemaEntity {
 	/**
 	 * Sets the ref.
 	 * 
-	 * @param ref
-	 *            the new ref
+	 * @param ref the new ref
 	 */
 	public void setRef(String ref) {
 		this.ref = ref;
@@ -109,8 +106,7 @@ public class Version extends SchemaEntity {
 	/**
 	 * Sets the repository.
 	 * 
-	 * @param repository
-	 *            the new repository
+	 * @param repository the new repository
 	 */
 	public void setRepository(Repository repository) {
 		this.repository = repository;
@@ -128,8 +124,7 @@ public class Version extends SchemaEntity {
 	/**
 	 * Sets the user.
 	 * 
-	 * @param user
-	 *            the new user
+	 * @param user the new user
 	 */
 	public void setUser(User user) {
 		this.user = user;

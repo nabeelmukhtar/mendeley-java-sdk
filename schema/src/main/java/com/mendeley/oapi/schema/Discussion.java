@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -43,6 +43,7 @@ public class Discussion extends SchemaEntity {
 		
 		/** The ISSU e_ comment. */
 		ISSUE_COMMENT("IssueComment"), 
+ 
  /** The PUL l_ reques t_ revie w_ comment. */
  PULL_REQUEST_REVIEW_COMMENT("PullRequestReviewComment"),
  
@@ -62,11 +63,10 @@ public class Discussion extends SchemaEntity {
 	    private final String value;
 	    
 	    /**
-		 * Instantiates a new type.
-		 * 
-		 * @param value
-		 *            the value
-		 */
+    	 * Instantiates a new type.
+    	 * 
+    	 * @param value the value
+    	 */
 	    Type(String value) {
 	        this.value = value;
 	    }
@@ -82,8 +82,7 @@ public class Discussion extends SchemaEntity {
 		/**
 		 * From value.
 		 * 
-		 * @param value
-		 *            the value
+		 * @param value the value
 		 * 
 		 * @return the type
 		 */
@@ -170,8 +169,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the type.
 	 * 
-	 * @param type
-	 *            the new type
+	 * @param type the new type
 	 */
 	public void setType(Type type) {
 		this.type = type;
@@ -189,8 +187,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the created at.
 	 * 
-	 * @param createdAt
-	 *            the new created at
+	 * @param createdAt the new created at
 	 */
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
@@ -208,8 +205,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the body.
 	 * 
-	 * @param body
-	 *            the new body
+	 * @param body the new body
 	 */
 	public void setBody(String body) {
 		this.body = body;
@@ -227,8 +223,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the updated at.
 	 * 
-	 * @param updatedAt
-	 *            the new updated at
+	 * @param updatedAt the new updated at
 	 */
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
@@ -246,8 +241,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the id.
 	 * 
-	 * @param id
-	 *            the new id
+	 * @param id the new id
 	 */
 	public void setId(String id) {
 		this.id = id;
@@ -265,8 +259,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the user.
 	 * 
-	 * @param user
-	 *            the new user
+	 * @param user the new user
 	 */
 	public void setUser(User user) {
 		this.user = user;
@@ -284,8 +277,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the gravatar id.
 	 * 
-	 * @param gravatarId
-	 *            the new gravatar id
+	 * @param gravatarId the new gravatar id
 	 */
 	public void setGravatarId(String gravatarId) {
 		this.gravatarId = gravatarId;
@@ -303,8 +295,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the sha.
 	 * 
-	 * @param sha
-	 *            the new sha
+	 * @param sha the new sha
 	 */
 	public void setSha(String sha) {
 		this.sha = sha;
@@ -322,8 +313,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the author.
 	 * 
-	 * @param author
-	 *            the new author
+	 * @param author the new author
 	 */
 	public void setAuthor(User author) {
 		this.author = author;
@@ -341,8 +331,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the subject.
 	 * 
-	 * @param subject
-	 *            the new subject
+	 * @param subject the new subject
 	 */
 	public void setSubject(String subject) {
 		this.subject = subject;
@@ -360,8 +349,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the email.
 	 * 
-	 * @param email
-	 *            the new email
+	 * @param email the new email
 	 */
 	public void setEmail(String email) {
 		this.email = email;
@@ -379,8 +367,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the diff hunk.
 	 * 
-	 * @param diffHunk
-	 *            the new diff hunk
+	 * @param diffHunk the new diff hunk
 	 */
 	public void setDiffHunk(String diffHunk) {
 		this.diffHunk = diffHunk;
@@ -398,8 +385,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the path.
 	 * 
-	 * @param path
-	 *            the new path
+	 * @param path the new path
 	 */
 	public void setPath(String path) {
 		this.path = path;
@@ -417,8 +403,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the position.
 	 * 
-	 * @param position
-	 *            the new position
+	 * @param position the new position
 	 */
 	public void setPosition(int position) {
 		this.position = position;
@@ -436,8 +421,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the commit id.
 	 * 
-	 * @param commitId
-	 *            the new commit id
+	 * @param commitId the new commit id
 	 */
 	public void setCommitId(String commitId) {
 		this.commitId = commitId;
@@ -455,8 +439,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the original commit id.
 	 * 
-	 * @param originalCommitId
-	 *            the new original commit id
+	 * @param originalCommitId the new original commit id
 	 */
 	public void setOriginalCommitId(String originalCommitId) {
 		this.originalCommitId = originalCommitId;
@@ -493,8 +476,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the committer.
 	 * 
-	 * @param committer
-	 *            the new committer
+	 * @param committer the new committer
 	 */
 	public void setCommitter(User committer) {
 		this.committer = committer;
@@ -512,8 +494,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the tree.
 	 * 
-	 * @param tree
-	 *            the new tree
+	 * @param tree the new tree
 	 */
 	public void setTree(String tree) {
 		this.tree = tree;
@@ -539,8 +520,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the committed date.
 	 * 
-	 * @param committedDate
-	 *            the new committed date
+	 * @param committedDate the new committed date
 	 */
 	public void setCommittedDate(Date committedDate) {
 		this.committedDate = (committedDate == null)? null : getDateFormat().format(committedDate);
@@ -566,8 +546,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the authored date.
 	 * 
-	 * @param authoredDate
-	 *            the new authored date
+	 * @param authoredDate the new authored date
 	 */
 	public void setAuthoredDate(Date authoredDate) {
 		this.authoredDate = (authoredDate == null)? null : getDateFormat().format(authoredDate);
@@ -585,8 +564,7 @@ public class Discussion extends SchemaEntity {
 	/**
 	 * Sets the parents.
 	 * 
-	 * @param parents
-	 *            the new parents
+	 * @param parents the new parents
 	 */
 	public void setParents(List<Id> parents) {
 		this.parents = parents;

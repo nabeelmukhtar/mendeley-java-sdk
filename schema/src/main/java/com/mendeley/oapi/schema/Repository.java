@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -51,11 +51,10 @@ public class Repository extends SchemaEntity {
 	    private final String value;
 	    
 	    /**
-		 * Instantiates a new visibility.
-		 * 
-		 * @param value
-		 *            the value
-		 */
+    	 * Instantiates a new visibility.
+    	 * 
+    	 * @param value the value
+    	 */
 	    Visibility(String value) {
 	        this.value = value;
 	    }
@@ -71,8 +70,7 @@ public class Repository extends SchemaEntity {
 		/**
 		 * From value.
 		 * 
-		 * @param value
-		 *            the value
+		 * @param value the value
 		 * 
 		 * @return the visibility
 		 */
@@ -181,8 +179,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the watchers.
 	 * 
-	 * @param watchers
-	 *            the new watchers
+	 * @param watchers the new watchers
 	 */
 	public void setWatchers(int watchers) {
 		this.watchers = watchers;
@@ -200,8 +197,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the owner.
 	 * 
-	 * @param owner
-	 *            the new owner
+	 * @param owner the new owner
 	 */
 	public void setOwner(String owner) {
 		this.owner = owner;
@@ -219,8 +215,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the name.
 	 * 
-	 * @param name
-	 *            the new name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -238,8 +233,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the description.
 	 * 
-	 * @param description
-	 *            the new description
+	 * @param description the new description
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -257,8 +251,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the visibility.
 	 * 
-	 * @param visibility
-	 *            the new visibility
+	 * @param visibility the new visibility
 	 */
 	public void setVisibility(Visibility visibility) {
 		this.visibility = (visibility == Visibility.PRIVATE);
@@ -276,8 +269,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the url.
 	 * 
-	 * @param url
-	 *            the new url
+	 * @param url the new url
 	 */
 	public void setUrl(String url) {
 		this.url = url;
@@ -295,8 +287,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the open issues.
 	 * 
-	 * @param openIssues
-	 *            the new open issues
+	 * @param openIssues the new open issues
 	 */
 	public void setOpenIssues(int openIssues) {
 		this.openIssues = openIssues;
@@ -314,8 +305,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the fork.
 	 * 
-	 * @param fork
-	 *            the new fork
+	 * @param fork the new fork
 	 */
 	public void setFork(boolean fork) {
 		this.fork = fork;
@@ -333,8 +323,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the homepage.
 	 * 
-	 * @param homepage
-	 *            the new homepage
+	 * @param homepage the new homepage
 	 */
 	public void setHomepage(String homepage) {
 		this.homepage = homepage;
@@ -352,8 +341,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the forks.
 	 * 
-	 * @param forks
-	 *            the new forks
+	 * @param forks the new forks
 	 */
 	public void setForks(int forks) {
 		this.forks = forks;
@@ -371,8 +359,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the score.
 	 * 
-	 * @param score
-	 *            the new score
+	 * @param score the new score
 	 */
 	public void setScore(double score) {
 		this.score = score;
@@ -390,8 +377,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the actions.
 	 * 
-	 * @param actions
-	 *            the new actions
+	 * @param actions the new actions
 	 */
 	public void setActions(int actions) {
 		this.actions = actions;
@@ -409,8 +395,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the size.
 	 * 
-	 * @param size
-	 *            the new size
+	 * @param size the new size
 	 */
 	public void setSize(long size) {
 		this.size = size;
@@ -428,8 +413,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the language.
 	 * 
-	 * @param language
-	 *            the new language
+	 * @param language the new language
 	 */
 	public void setLanguage(Language language) {
 		this.language = language;
@@ -447,8 +431,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the followers.
 	 * 
-	 * @param followers
-	 *            the new followers
+	 * @param followers the new followers
 	 */
 	public void setFollowers(int followers) {
 		this.followers = followers;
@@ -466,8 +449,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the username.
 	 * 
-	 * @param username
-	 *            the new username
+	 * @param username the new username
 	 */
 	public void setUsername(String username) {
 		this.username = username;
@@ -485,8 +467,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the type.
 	 * 
-	 * @param type
-	 *            the new type
+	 * @param type the new type
 	 */
 	public void setType(String type) {
 		this.type = type;
@@ -504,8 +485,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the id.
 	 * 
-	 * @param id
-	 *            the new id
+	 * @param id the new id
 	 */
 	public void setId(String id) {
 		this.id = id;
@@ -523,8 +503,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the pushed at.
 	 * 
-	 * @param pushedAt
-	 *            the new pushed at
+	 * @param pushedAt the new pushed at
 	 */
 	public void setPushedAt(Date pushedAt) {
 		this.pushedAt = pushedAt;
@@ -542,8 +521,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the created.
 	 * 
-	 * @param createdAt
-	 *            the new created
+	 * @param createdAt the new created
 	 */
 	public void setCreated(Date createdAt) {
 		this.createdAt = createdAt;
@@ -561,8 +539,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the source.
 	 * 
-	 * @param source
-	 *            the new source
+	 * @param source the new source
 	 */
 	public void setSource(String source) {
 		this.source = source;
@@ -580,8 +557,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the parent.
 	 * 
-	 * @param parent
-	 *            the new parent
+	 * @param parent the new parent
 	 */
 	public void setParent(String parent) {
 		this.parent = parent;
@@ -599,8 +575,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the checks for wiki.
 	 * 
-	 * @param hasWiki
-	 *            the new checks for wiki
+	 * @param hasWiki the new checks for wiki
 	 */
 	public void setHasWiki(boolean hasWiki) {
 		this.hasWiki = hasWiki;
@@ -618,8 +593,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the checks for issues.
 	 * 
-	 * @param hasIssues
-	 *            the new checks for issues
+	 * @param hasIssues the new checks for issues
 	 */
 	public void setHasIssues(boolean hasIssues) {
 		this.hasIssues = hasIssues;
@@ -637,8 +611,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the checks for downloads.
 	 * 
-	 * @param hasDownloads
-	 *            the new checks for downloads
+	 * @param hasDownloads the new checks for downloads
 	 */
 	public void setHasDownloads(boolean hasDownloads) {
 		this.hasDownloads = hasDownloads;
@@ -656,8 +629,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the organization.
 	 * 
-	 * @param organization
-	 *            the new organization
+	 * @param organization the new organization
 	 */
 	public void setOrganization(String organization) {
 		this.organization = organization;
@@ -675,8 +647,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the permission.
 	 * 
-	 * @param permission
-	 *            the new permission
+	 * @param permission the new permission
 	 */
 	public void setPermission(Permission permission) {
 		this.permission = permission;

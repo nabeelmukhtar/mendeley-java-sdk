@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -45,8 +45,7 @@ public class Block extends SchemaEntity {
 	/**
 	 * Sets the name.
 	 * 
-	 * @param name
-	 *            the new name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -64,8 +63,7 @@ public class Block extends SchemaEntity {
 	/**
 	 * Sets the start.
 	 * 
-	 * @param start
-	 *            the new start
+	 * @param start the new start
 	 */
 	public void setStart(int start) {
 		this.start = start;
@@ -83,8 +81,7 @@ public class Block extends SchemaEntity {
 	/**
 	 * Sets the count.
 	 * 
-	 * @param count
-	 *            the new count
+	 * @param count the new count
 	 */
 	public void setCount(int count) {
 		this.count = count;

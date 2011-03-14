@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -90,8 +90,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the message.
 	 * 
-	 * @param message
-	 *            the new message
+	 * @param message the new message
 	 */
 	public void setMessage(String message) {
 		this.message = message;
@@ -109,8 +108,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the time.
 	 * 
-	 * @param time
-	 *            the new time
+	 * @param time the new time
 	 */
 	public void setTime(long time) {
 		this.time = time;
@@ -128,8 +126,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the parents.
 	 * 
-	 * @param parents
-	 *            the new parents
+	 * @param parents the new parents
 	 */
 	public void setParents(List<Id> parents) {
 		this.parents = parents;
@@ -147,8 +144,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the date.
 	 * 
-	 * @param date
-	 *            the new date
+	 * @param date the new date
 	 */
 	public void setDate(Date date) {
 		this.date = date;
@@ -166,8 +162,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the author.
 	 * 
-	 * @param author
-	 *            the new author
+	 * @param author the new author
 	 */
 	public void setAuthor(User author) {
 		this.author = author;
@@ -185,8 +180,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the id.
 	 * 
-	 * @param id
-	 *            the new id
+	 * @param id the new id
 	 */
 	public void setId(String id) {
 		this.id = id;
@@ -204,8 +198,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the space.
 	 * 
-	 * @param space
-	 *            the new space
+	 * @param space the new space
 	 */
 	public void setSpace(int space) {
 		this.space = space;
@@ -223,8 +216,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the gravatar.
 	 * 
-	 * @param gravatar
-	 *            the new gravatar
+	 * @param gravatar the new gravatar
 	 */
 	public void setGravatar(String gravatar) {
 		this.gravatar = gravatar;
@@ -242,8 +234,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the login.
 	 * 
-	 * @param login
-	 *            the new login
+	 * @param login the new login
 	 */
 	public void setLogin(String login) {
 		this.login = login;
@@ -261,8 +252,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the url.
 	 * 
-	 * @param url
-	 *            the new url
+	 * @param url the new url
 	 */
 	public void setUrl(String url) {
 		this.url = url;
@@ -280,8 +270,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the committed date.
 	 * 
-	 * @param committedDate
-	 *            the new committed date
+	 * @param committedDate the new committed date
 	 */
 	public void setCommittedDate(Date committedDate) {
 		this.committedDate = committedDate;
@@ -299,8 +288,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the authored date.
 	 * 
-	 * @param authoredDate
-	 *            the new authored date
+	 * @param authoredDate the new authored date
 	 */
 	public void setAuthoredDate(Date authoredDate) {
 		this.authoredDate = authoredDate;
@@ -318,8 +306,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the tree.
 	 * 
-	 * @param tree
-	 *            the new tree
+	 * @param tree the new tree
 	 */
 	public void setTree(String tree) {
 		this.tree = tree;
@@ -337,8 +324,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the committer.
 	 * 
-	 * @param committer
-	 *            the new committer
+	 * @param committer the new committer
 	 */
 	public void setCommitter(User committer) {
 		this.committer = committer;
@@ -356,8 +342,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the added.
 	 * 
-	 * @param added
-	 *            the new added
+	 * @param added the new added
 	 */
 	public void setAdded(List<String> added) {
 		this.added = added;
@@ -375,8 +360,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the removed.
 	 * 
-	 * @param removed
-	 *            the new removed
+	 * @param removed the new removed
 	 */
 	public void setRemoved(List<String> removed) {
 		this.removed = removed;
@@ -394,8 +378,7 @@ public class Commit extends SchemaEntity {
 	/**
 	 * Sets the modified.
 	 * 
-	 * @param modified
-	 *            the new modified
+	 * @param modified the new modified
 	 */
 	public void setModified(List<Delta> modified) {
 		this.modified = modified;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -47,11 +47,10 @@ import java.util.Map;
 	    private final String value;
 	    
 	    /**
-		 * Instantiates a new permission.
-		 * 
-		 * @param value
-		 *            the value
-		 */
+    	 * Instantiates a new permission.
+    	 * 
+    	 * @param value the value
+    	 */
 	    Permission(String value) {
 	        this.value = value;
 	    }
@@ -67,8 +66,7 @@ import java.util.Map;
 		/**
 		 * From value.
 		 * 
-		 * @param value
-		 *            the value
+		 * @param value the value
 		 * 
 		 * @return the permission
 		 */

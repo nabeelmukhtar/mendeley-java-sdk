@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Nabeel Mukhtar 
+ * Copyright 2010-2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -27,12 +27,11 @@ import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 
-import com.mendeley.oapi.services.auth.Authentication;
-import com.mendeley.oapi.services.auth.LoginTokenAuthentication;
 import com.mendeley.oapi.services.constant.TestConstants;
+import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 
 /**
- * The Class BaseGitHubServiceTest.
+ * The Class BaseMendeleyServiceTest.
  */
 public class BaseMendeleyServiceTest extends TestCase {
     
@@ -43,7 +42,7 @@ public class BaseMendeleyServiceTest extends TestCase {
 	protected MendeleyServiceFactory factory;
 	
 	/** The authentication. */
-	protected Authentication authentication;
+	protected MendeleyAccessToken authentication;
 	
 	/* (non-Javadoc)
 	 * @see junit.framework.TestCase#setUp()
@@ -53,7 +52,7 @@ public class BaseMendeleyServiceTest extends TestCase {
 		super.setUp();
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test API Key."), TestConstants.TEST_API_KEY);
-    	authentication = new LoginTokenAuthentication(TestConstants.TEST_USER_NAME, TestConstants.TEST_API_KEY);
+    	authentication = new MendeleyAccessToken(TestConstants.TEST_USER_NAME, TestConstants.TEST_API_KEY);
 		factory = MendeleyServiceFactory.newInstance();
 		
 	}
@@ -70,10 +69,8 @@ public class BaseMendeleyServiceTest extends TestCase {
 	/**
 	 * Assert not null or empty.
 	 * 
-	 * @param message
-	 *            the message
-	 * @param value
-	 *            the value
+	 * @param message the message
+	 * @param value the value
 	 */
 	protected static void assertNotNullOrEmpty(String message, String value) {
 		assertNotNull(message, value);
@@ -83,10 +80,8 @@ public class BaseMendeleyServiceTest extends TestCase {
 	/**
 	 * Assert not null or empty.
 	 * 
-	 * @param message
-	 *            the message
-	 * @param value
-	 *            the value
+	 * @param message the message
+	 * @param value the value
 	 */
 	protected static void assertNotNullOrEmpty(String message, Collection<?> value) {
 		assertNotNull(message, value);
@@ -96,8 +91,7 @@ public class BaseMendeleyServiceTest extends TestCase {
 	/**
 	 * Convert stream to string.
 	 * 
-	 * @param is
-	 *            the is
+	 * @param is the is
 	 * 
 	 * @return the string
 	 */
