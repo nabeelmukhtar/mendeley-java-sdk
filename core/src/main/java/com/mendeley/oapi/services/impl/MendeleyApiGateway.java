@@ -37,6 +37,9 @@ import java.util.zip.GZIPInputStream;
 import com.mendeley.oapi.services.MendeleyException;
 import com.mendeley.oapi.services.constant.ApplicationConstants;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
+import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
+import com.mendeley.oapi.services.oauth.MendeleyOAuthService;
+import com.mendeley.oapi.services.oauth.MendeleyOAuthServiceFactory;
 
 /**
  * The Class MendeleyApiGateway.
@@ -66,6 +69,8 @@ public abstract class MendeleyApiGateway {
 	
 	/** The access token. */
 	private MendeleyAccessToken accessToken;
+	
+	private MendeleyApiConsumer apiConsumer;
 	
 	/**
 	 * Gets the api version.
@@ -149,6 +154,15 @@ public abstract class MendeleyApiGateway {
     	this.accessToken = accessToken;
     }
 	
+    /**
+     * Sets the api consumer.
+     * 
+     * @param apiConsumer the new api consumer
+     */
+    public void setApiConsumer(MendeleyApiConsumer apiConsumer) {
+    	this.apiConsumer = apiConsumer;
+    }
+    
 	/**
 	 * Convert stream to string.
 	 * 
@@ -228,6 +242,7 @@ public abstract class MendeleyApiGateway {
 	            request.setRequestProperty(headerName, requestHeaders.get(headerName));
 	        }
 	        
+	        signRequest(request);
 	        request.connect();
 	        
 	        if (request.getResponseCode() != expected) {
@@ -284,6 +299,8 @@ public abstract class MendeleyApiGateway {
 
             request.setRequestMethod("POST");
             request.setDoOutput(true);
+            
+            signRequest(request);
 
             PrintStream out = new PrintStream(new BufferedOutputStream(request.getOutputStream()));
             
@@ -346,6 +363,8 @@ public abstract class MendeleyApiGateway {
 	        
             request.setRequestMethod("DELETE");
             
+            signRequest(request);
+            
 	        request.connect();
 	        
 	        if (request.getResponseCode() != expected) {
@@ -361,6 +380,19 @@ public abstract class MendeleyApiGateway {
 	}
 	
 	
+	/**
+	 * 
+	 * @param request
+	 */
+	protected void signRequest(HttpURLConnection request) {
+		if (apiConsumer != null && accessToken != null) {
+            MendeleyOAuthService oAuthService =
+            	MendeleyOAuthServiceFactory.getInstance().createMendeleyOAuthService(apiConsumer.getConsumerKey(),
+                    apiConsumer.getConsumerSecret());
+            oAuthService.signRequestWithToken(request, accessToken);
+		}
+	}
+
 	/**
 	 * Gets the parameters string.
 	 * 

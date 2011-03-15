@@ -42,7 +42,7 @@ public class CollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public void addComment(String userName, String repositoryName,
 			int issueNumber, String comment) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.ADD_COMMENT_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.ADD_COMMENT_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put(ParameterNames.COMMENT, comment);
@@ -55,7 +55,7 @@ public class CollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public List<String> addLabel(String userName, String repositoryName,
 			int issueNumber, String label) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.ADD_LABEL_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.ADD_LABEL_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.LABEL, label).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
         JsonObject json = unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
         
@@ -68,7 +68,7 @@ public class CollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public void closeIssue(String userName, String repositoryName,
 			int issueNumber) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.CLOSE_ISSUE_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.CLOSE_ISSUE_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
 		callApiPost(apiUrl, new HashMap<String, String>());
 	}
@@ -79,7 +79,7 @@ public class CollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public void createIssue(String userName, String repositoryName,
 			String title, String body) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.CREATE_ISSUE_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.CREATE_ISSUE_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put(ParameterNames.TITLE, title);
@@ -95,7 +95,7 @@ public class CollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public Issue getIssue(String userName, String repositoryName,
 			int issueNumber) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_ISSUE_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_ISSUE_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -108,7 +108,7 @@ public class CollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public List<Comment> getIssueComments(String userName,
 			String repositoryName, int issueNumber) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_ISSUE_COMMENTS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_ISSUE_COMMENTS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -120,7 +120,7 @@ public class CollectionServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<String> getIssueLabels(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_ISSUE_LABELS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_ISSUE_LABELS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -133,7 +133,7 @@ public class CollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public List<Issue> getIssues(String userName, String repositoryName,
 			State state) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_ISSUES_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_ISSUES_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withFieldEnum(ParameterNames.STATE, state).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -146,7 +146,7 @@ public class CollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public List<String> removeLabel(String userName, String repositoryName,
 			int issueNumber, String label) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.REMOVE_LABEL_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.REMOVE_LABEL_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.LABEL, label).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
         JsonObject json = unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
         
@@ -159,7 +159,7 @@ public class CollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public void reopenIssue(String userName, String repositoryName,
 			int issueNumber) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.REOPEN_ISSUE_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.REOPEN_ISSUE_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
 		callApiPost(apiUrl, new HashMap<String, String>());
 	}
@@ -170,7 +170,7 @@ public class CollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public List<Issue> searchIssues(String userName, String repositoryName,
 			State state, String keyword) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.SEARCH_ISSUES_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.SEARCH_ISSUES_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withFieldEnum(ParameterNames.STATE, state).withField(ParameterNames.KEYWORD, keyword).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -183,7 +183,7 @@ public class CollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public List<Issue> getIssues(String userName, String repositoryName,
 			String label) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_ISSUES_BY_LABEL_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_ISSUES_BY_LABEL_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.LABEL, label).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -196,7 +196,7 @@ public class CollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public void updateIssue(String userName, String repositoryName,
 			int issueNumber, String title, String body) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.UPDATE_ISSUE_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.UPDATE_ISSUE_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put(ParameterNames.TITLE, title);

@@ -43,7 +43,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void addEmail(String email) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.ADD_EMAIL_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.ADD_EMAIL_URL);
         String                apiUrl  = builder.buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put(ParameterNames.EMAIL, email);
@@ -55,7 +55,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void addKey(String title, String key) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.ADD_KEY_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.ADD_KEY_URL);
         String                apiUrl  = builder.buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put(ParameterNames.TITLE, title);
@@ -68,7 +68,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void followUser(String userName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.FOLLOW_USER_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.FOLLOW_USER_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
 		callApiPost(apiUrl, new HashMap<String, String>());
 	}
@@ -78,7 +78,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public User getCurrentUser() {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_CURRENT_USER_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_CURRENT_USER_URL);
         String                apiUrl  = builder.buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -90,7 +90,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<String> getEmails() {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_EMAILS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_EMAILS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -102,7 +102,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<Key> getKeys() {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_KEYS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_KEYS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -114,7 +114,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public User getUserByUsername(String userName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_USER_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_USER_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -126,7 +126,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<String> getUserFollowers(String userName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_USER_FOLLOWERS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_USER_FOLLOWERS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -138,7 +138,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<String> getUserFollowing(String userName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_USER_FOLLOWING_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_USER_FOLLOWING_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -150,7 +150,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<Repository> getWatchedRepositories(String userName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_WATCHED_REPOSITORIES_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_WATCHED_REPOSITORIES_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -162,7 +162,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void removeEmail(String email) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.REMOVE_EMAIL_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.REMOVE_EMAIL_URL);
         String                apiUrl  = builder.buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put(ParameterNames.EMAIL, email);
@@ -174,7 +174,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void removeKey(String id) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.REMOVE_KEY_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.REMOVE_KEY_URL);
         String                apiUrl  = builder.buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put(ParameterNames.ID, id);
@@ -186,7 +186,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public User getUserByEmail(String email) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.SEARCH_USERS_BY_EMAIL_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.SEARCH_USERS_BY_EMAIL_URL);
         String                apiUrl  = builder.withField(ParameterNames.EMAIL, email).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -198,7 +198,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<User> searchUsersByName(String name) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.SEARCH_USERS_BY_NAME_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.SEARCH_USERS_BY_NAME_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, name).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -211,7 +211,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void unfollowUser(String userName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.UNFOLLOW_USER_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.UNFOLLOW_USER_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
 		callApiPost(apiUrl, new HashMap<String, String>());
 	}
@@ -221,7 +221,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<Organization> getUserOrganizations(String userName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_USER_ORGANIZATIONS);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_USER_ORGANIZATIONS);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -233,7 +233,7 @@ public class ProfileServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void updateUser(User user) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.UPDATE_USER_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.UPDATE_USER_URL);
 		String userName = (user.getUsername() == null) ? user.getLogin() : user.getUsername();
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();

@@ -41,7 +41,7 @@ public class SharedCollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public List<NetworkCommit> getNetworkData(String userName, String repositoryName,
 			String networkHash) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.GET_NETWORK_DATA_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.GET_NETWORK_DATA_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameter(ParameterNames.NET_HASH, networkHash).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -54,7 +54,7 @@ public class SharedCollectionServiceImpl extends BaseMendeleyService implements
 	@Override
 	public List<NetworkCommit> getNetworkData(String userName, String repositoryName,
 			String networkHash, int startIndex, int endIndex) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.GET_NETWORK_DATA_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.GET_NETWORK_DATA_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameter(ParameterNames.NET_HASH, networkHash).withParameter(ParameterNames.START_INDEX, String.valueOf(startIndex)).withParameter(ParameterNames.END_INDEX, String.valueOf(endIndex)).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -66,7 +66,7 @@ public class SharedCollectionServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public NetworkMeta getNetworkMeta(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.GET_NETWORK_META_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.GET_NETWORK_META_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         

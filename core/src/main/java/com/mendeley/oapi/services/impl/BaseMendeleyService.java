@@ -213,7 +213,7 @@ public abstract class BaseMendeleyService extends MendeleyApiGateway implements 
 	 * 
 	 * @return the mendeley api url builder
 	 */
-	protected MendeleyApiUrlBuilder createGitHubApiUrlBuilder(String urlFormat) {
+	protected MendeleyApiUrlBuilder createMendeleyApiUrlBuilder(String urlFormat) {
 		return new MendeleyApiUrlBuilder(urlFormat);
 	}
 }

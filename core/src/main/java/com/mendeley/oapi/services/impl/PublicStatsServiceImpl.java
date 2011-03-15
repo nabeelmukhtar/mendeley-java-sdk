@@ -53,7 +53,7 @@ public class PublicStatsServiceImpl extends BaseMendeleyService implements Publi
      */
     @Override
 	public String getAuthorizationUrl(String callBackUrl) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.OAuthUrls.AUTHORIZE_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.OAuthUrls.AUTHORIZE_URL);
 		builder.withParameter(ParameterNames.CLIENT_ID, clientId).withParameter(ParameterNames.REDIRECT_URI, callBackUrl);
 		return builder.buildUrl();
 	}
@@ -64,7 +64,7 @@ public class PublicStatsServiceImpl extends BaseMendeleyService implements Publi
 	@Override
 	public String getAuthorizationUrl(String callBackUrl,
 			Set<Scope> permissions) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.OAuthUrls.AUTHORIZE_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.OAuthUrls.AUTHORIZE_URL);
 		builder.withParameter(ParameterNames.CLIENT_ID, clientId).withParameter(ParameterNames.REDIRECT_URI, callBackUrl);
 		builder.withParameterEnumSet(ParameterNames.SCOPE, permissions, ",");
 		return builder.buildUrl();
@@ -76,7 +76,7 @@ public class PublicStatsServiceImpl extends BaseMendeleyService implements Publi
     @Override
 	public String getAccessToken(String callBackUrl, String code) {
     	try {
-    		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.OAuthUrls.ACCESS_TOKEN_URL);
+    		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.OAuthUrls.ACCESS_TOKEN_URL);
     		builder.withParameter(ParameterNames.CLIENT_ID, clientId);
     		builder.withParameter(ParameterNames.CLIENT_SECRET, secret);
     		builder.withParameter(ParameterNames.REDIRECT_URI, callBackUrl);

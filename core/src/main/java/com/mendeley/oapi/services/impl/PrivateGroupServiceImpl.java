@@ -38,7 +38,7 @@ public class PrivateGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Gist getGist(String gistId) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_GIST_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_GIST_URL);
         String                apiUrl  = builder.withField(ParameterNames.GIST_ID, gistId).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -51,7 +51,7 @@ public class PrivateGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public InputStream getGistContent(String gistId, String fileName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_GIST_CONTENT_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_GIST_CONTENT_URL);
         String                apiUrl  = builder.withField(ParameterNames.GIST_ID, gistId).withField(ParameterNames.FILE_NAME, fileName).buildUrl();
         return callApiGet(apiUrl);
 	}
@@ -61,7 +61,7 @@ public class PrivateGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<Gist> getUserGists(String userName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_USER_GISTS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_USER_GISTS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         

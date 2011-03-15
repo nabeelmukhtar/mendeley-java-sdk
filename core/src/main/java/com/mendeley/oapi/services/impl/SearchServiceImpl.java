@@ -40,7 +40,7 @@ public class SearchServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public PullRequest getPullRequest(String userName, String repositoryName, int issueNumber) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.GET_PULL_REQUEST_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.GET_PULL_REQUEST_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -52,7 +52,7 @@ public class SearchServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<PullRequest> getPullRequests(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.GET_PULL_REQUESTS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.GET_PULL_REQUESTS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.STATE, "").buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -64,7 +64,7 @@ public class SearchServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<PullRequest> getPullRequests(String userName, String repositoryName, State state) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.GET_PULL_REQUESTS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.GET_PULL_REQUESTS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.STATE, state.value()).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -75,7 +75,7 @@ public class SearchServiceImpl extends BaseMendeleyService implements
 	 * @see com.github.api.v2.services.ObjectService#getObjectContent(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public PullRequest createPullRequest(String userName, String repositoryName, String base, String head, String title, String body) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.CREATE_PULL_REQUEST_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.CREATE_PULL_REQUEST_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put("pull[" + ParameterNames.BASE + "]", base);

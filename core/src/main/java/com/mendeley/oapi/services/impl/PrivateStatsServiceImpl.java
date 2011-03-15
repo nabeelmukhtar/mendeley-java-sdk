@@ -38,7 +38,7 @@ public class PrivateStatsServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Commit getCommit(String userName, String repositoryName, String sha) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_COMMIT_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_COMMIT_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.SHA, sha).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -60,7 +60,7 @@ public class PrivateStatsServiceImpl extends BaseMendeleyService implements
 	@Override
 	public List<Commit> getCommits(String userName, String repositoryName,
 			String branch, int pageNumber) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_COMMITS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_COMMITS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branch).withParameter(ParameterNames.PAGE, String.valueOf(pageNumber)).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -73,7 +73,7 @@ public class PrivateStatsServiceImpl extends BaseMendeleyService implements
 	@Override
 	public List<Commit> getCommits(String userName, String repositoryName,
 			String branch, String filePath) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_COMMITS_FILE_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_COMMITS_FILE_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branch).withField(ParameterNames.FILE_PATH, filePath).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         

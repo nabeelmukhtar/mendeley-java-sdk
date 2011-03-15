@@ -46,7 +46,7 @@ public class DocumentServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Feed getCommitFeed(String userName, String repositoryName, String branchName, int count) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_COMMIT_FEED_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_COMMIT_FEED_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branchName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
@@ -56,7 +56,7 @@ public class DocumentServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Feed getNetworkFeed(String userName, String repositoryName, int count) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_NETWORK_FEED_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_NETWORK_FEED_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
@@ -66,7 +66,7 @@ public class DocumentServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Feed getPrivateUserFeed(String userName, int count) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_PRIVATE_USER_FEED_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_PRIVATE_USER_FEED_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
@@ -76,7 +76,7 @@ public class DocumentServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Feed getPublicTimelineFeed(int count) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_PUBLIC_TIMELINE_FEED_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_PUBLIC_TIMELINE_FEED_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
@@ -86,7 +86,7 @@ public class DocumentServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Feed getPublicUserFeed(String userName, int count) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_PUBLIC_USER_FEED_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_PUBLIC_USER_FEED_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
@@ -96,7 +96,7 @@ public class DocumentServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Feed getWikiFeed(String userName, String repositoryName, int count) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_WIKI_FEED_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_WIKI_FEED_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
@@ -106,7 +106,7 @@ public class DocumentServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Feed getBlogFeed(int count) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_BLOG_FEED_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_BLOG_FEED_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
@@ -116,7 +116,7 @@ public class DocumentServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Feed getDiscussionsFeed(int count) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_DISCUSSIONS_FEED_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_DISCUSSIONS_FEED_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
@@ -126,7 +126,7 @@ public class DocumentServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Feed getDiscussionsFeed(String topic, int count) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_DISCUSSIONS_FEED_BY_TOPIC_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_DISCUSSIONS_FEED_BY_TOPIC_URL);
         String                apiUrl  = builder.withField(ParameterNames.KEYWORD, topic).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
@@ -136,7 +136,7 @@ public class DocumentServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Feed getJobPositionsFeed(int count) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_JOB_POSITIONS_FEED_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_JOB_POSITIONS_FEED_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}

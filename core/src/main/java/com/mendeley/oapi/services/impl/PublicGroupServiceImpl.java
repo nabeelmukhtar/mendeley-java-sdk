@@ -44,7 +44,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void addCollaborator(String userName, String repositoryName, String collaboratorName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.ADD_COLLABORATOR_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.ADD_COLLABORATOR_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.COLLABORATOR_NAME, collaboratorName).buildUrl();
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
@@ -54,7 +54,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<Key> addDeployKey(String repositoryName, String title, String key) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.ADD_DEPLOY_KEY_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.ADD_DEPLOY_KEY_URL);
         String                apiUrl  = builder.withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put(ParameterNames.TITLE, title);
@@ -69,7 +69,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void changeVisibility(String repositoryName, Visibility visibility) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.CHANGE_VISIBILITY_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.CHANGE_VISIBILITY_URL);
         String                apiUrl  = builder.withField(ParameterNames.REPOSITORY_NAME, repositoryName).withFieldEnum(ParameterNames.VISIBILITY, visibility).buildUrl();
         JsonObject json = unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
         
@@ -82,7 +82,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	@Override
 	public Repository createRepository(String name, String description,
 			String homePage, Visibility visibility) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.CREATE_REPOSITORY_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.CREATE_REPOSITORY_URL);
         String                apiUrl  = builder.buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put(ParameterNames.NAME, name);
@@ -99,7 +99,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void deleteRepository(String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.DELETE_REPOSITORY_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.DELETE_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
         if (json.has("delete_token")) {
@@ -114,7 +114,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Repository forkRepository(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.FORK_REPOSITORY_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.FORK_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
         return unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
@@ -125,7 +125,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Map<String, String> getBranches(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_BRANCHES_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_BRANCHES_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -137,7 +137,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<String> getCollaborators(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_COLLABORATORS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_COLLABORATORS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -149,7 +149,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<User> getContributors(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_CONTRIBUTORS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_CONTRIBUTORS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -161,7 +161,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<Repository> getForks(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_FORKS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_FORKS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -173,7 +173,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<Key> getDeployKeys(String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_DEPLOY_KEYS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_DEPLOY_KEYS_URL);
         String                apiUrl  = builder.withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -186,7 +186,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	@Override
 	public Map<Language, Long> getLanguageBreakdown(String userName,
 			String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_LANGUAGE_BREAKDOWN_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_LANGUAGE_BREAKDOWN_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -198,7 +198,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<Repository> getPushableRepositories() {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_PUSHABLE_REPOSITORIES_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_PUSHABLE_REPOSITORIES_URL);
         String                apiUrl  = builder.buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -210,7 +210,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<Repository> getRepositories(String userName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_REPOSITORIES_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_REPOSITORIES_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -222,7 +222,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Repository getRepository(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_REPOSITORY_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -234,7 +234,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public Map<String, String> getTags(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_TAGS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_TAGS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -246,7 +246,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<String> getWatchers(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_WATCHERS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_WATCHERS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -259,7 +259,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	@Override
 	public void removeCollaborator(String userName, String repositoryName,
 			String collaboratorName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.REMOVE_COLLABORATOR_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.REMOVE_COLLABORATOR_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.COLLABORATOR_NAME, collaboratorName).buildUrl();
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
@@ -269,7 +269,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void removeDeployKey(String repositoryName, String id) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.REMOVE_DEPLOY_KEY_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.REMOVE_DEPLOY_KEY_URL);
         String                apiUrl  = builder.withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put(ParameterNames.ID, id);
@@ -281,7 +281,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<Repository> searchRepositories(String query) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.SEARCH_REPOSITORIES_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.SEARCH_REPOSITORIES_URL);
         String                apiUrl  = builder.withField(ParameterNames.KEYWORD, query).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -293,7 +293,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<Repository> searchRepositories(String query, Language language) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.SEARCH_REPOSITORIES_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.SEARCH_REPOSITORIES_URL);
         String                apiUrl  = builder.withField(ParameterNames.KEYWORD, query).withParameterEnum(ParameterNames.LANGUAGE, language).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -305,7 +305,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public List<Repository> searchRepositories(String query, int pageNumber) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.SEARCH_REPOSITORIES_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.SEARCH_REPOSITORIES_URL);
         String                apiUrl  = builder.withField(ParameterNames.KEYWORD, query).withParameter(ParameterNames.START_PAGE, String.valueOf(pageNumber)).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -318,7 +318,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	@Override
 	public List<Repository> searchRepositories(String query, Language language,
 			int pageNumber) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.SEARCH_REPOSITORIES_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.SEARCH_REPOSITORIES_URL);
         String                apiUrl  = builder.withField(ParameterNames.KEYWORD, query).withParameterEnum(ParameterNames.LANGUAGE, language).withParameter(ParameterNames.START_PAGE, String.valueOf(pageNumber)).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
@@ -330,7 +330,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void unwatchRepository(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.UNWATCH_REPOSITORY_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.UNWATCH_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
@@ -340,7 +340,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void updateRepository(Repository repository) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.UPDATE_REPOSITORY_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.UPDATE_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, repository.getOwner()).withField(ParameterNames.REPOSITORY_NAME, repository.getName()).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put("values[" + ParameterNames.DESCRIPTION + "]", repository.getDescription());
@@ -358,7 +358,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public void watchRepository(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.WATCH_REPOSITORY_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.WATCH_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
@@ -368,7 +368,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyService implements
 	 */
 	@Override
 	public ZipInputStream getRepositoryArchive(String userName, String repositoryName, String branchName) {
-		MendeleyApiUrlBuilder builder = createGitHubApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_REPOSITORY_ARCHIVE_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_REPOSITORY_ARCHIVE_URL);
 	    String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branchName).buildUrl();
 	    return new ZipInputStream(callApiGet(apiUrl));
 	}
