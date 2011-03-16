@@ -16,12 +16,7 @@
  */
 package com.mendeley.oapi.services;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.EnumSet;
-
-import com.mendeley.oapi.services.PublicStatsService.Scope;
-import com.mendeley.oapi.services.constant.TestConstants;
+import org.junit.Test;
 
 /**
  * The Class PublicStatsServiceTest.
@@ -36,9 +31,7 @@ public class PublicStatsServiceTest extends BaseMendeleyServiceTest {
 	 */
 	public void setUp() throws Exception {
 		super.setUp();
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test consumer key."), TestConstants.TEST_CLIENT_ID);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test consumer secret."), TestConstants.TEST_CLIENT_SECRET);
-		service = factory.createPublicStatsService(TestConstants.TEST_CLIENT_ID, TestConstants.TEST_CLIENT_SECRET);
+		service = factory.createPublicStatsService();
 	}
 
 	/* (non-Javadoc)
@@ -50,50 +43,82 @@ public class PublicStatsServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test get authorization url.
+	 * Test get authors.
 	 */
-	public void testGetAuthorizationUrl() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test callback URL."), TestConstants.TEST_CALLBACK_URL);
-		String authorizationUrl = service.getAuthorizationUrl(TestConstants.TEST_CALLBACK_URL);
-		assertNotNullOrEmpty("Authorization URL should not be null.", authorizationUrl);
-		try {
-            URL               url     = new URL(authorizationUrl);
-            HttpURLConnection request = (HttpURLConnection) url.openConnection();
-			
-			if (request.getResponseCode() != HttpURLConnection.HTTP_OK) {
-				fail(convertStreamToString(request.getErrorStream()));
-			}
-		} catch (Exception e) {
-			fail(e.getMessage());
-		}
+	@Test
+	public void testGetAuthors() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test get authorization url set.
+	 * Test get authors string.
 	 */
-	public void testGetAuthorizationUrlSet() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test callback URL."), TestConstants.TEST_CALLBACK_URL);
-		String authorizationUrl = service.getAuthorizationUrl(TestConstants.TEST_CALLBACK_URL, EnumSet.of(Scope.USER, Scope.REPOSITORY));
-		assertNotNullOrEmpty("Authorization URL should not be null.", authorizationUrl);
-		try {
-            URL               url     = new URL(authorizationUrl);
-            HttpURLConnection request = (HttpURLConnection) url.openConnection();
-			
-			if (request.getResponseCode() != HttpURLConnection.HTTP_OK) {
-				fail(convertStreamToString(request.getErrorStream()));
-			}
-		} catch (Exception e) {
-			fail(e.getMessage());
-		}
+	@Test
+	public void testGetAuthorsString() {
+		fail("Not yet implemented");
 	}
-	
+
 	/**
-	 * Test get access token.
+	 * Test get authors string boolean.
 	 */
-	public void testGetAccessToken() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test callback URL."), TestConstants.TEST_CALLBACK_URL);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test code."), TestConstants.TEST_CODE);
-		String accessToken = service.getAccessToken(TestConstants.TEST_CALLBACK_URL, TestConstants.TEST_CODE);
-		assertNotNullOrEmpty("Access token should not be null.", accessToken);
+	@Test
+	public void testGetAuthorsStringBoolean() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get papers.
+	 */
+	@Test
+	public void testGetPapers() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get papers string.
+	 */
+	@Test
+	public void testGetPapersString() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get papers string boolean.
+	 */
+	@Test
+	public void testGetPapersStringBoolean() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get publications.
+	 */
+	@Test
+	public void testGetPublications() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get publications string.
+	 */
+	@Test
+	public void testGetPublicationsString() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get publications string boolean.
+	 */
+	@Test
+	public void testGetPublicationsStringBoolean() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get tags.
+	 */
+	@Test
+	public void testGetTags() {
+		fail("Not yet implemented");
 	}
 }

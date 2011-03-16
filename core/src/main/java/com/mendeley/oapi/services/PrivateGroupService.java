@@ -16,10 +16,13 @@
  */
 package com.mendeley.oapi.services;
 
-import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
-import com.mendeley.oapi.schema.Gist;
+import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.schema.Group;
+import com.mendeley.oapi.schema.User;
+
 
 /**
  * The Interface PrivateGroupService.
@@ -27,30 +30,58 @@ import com.mendeley.oapi.schema.Gist;
 public interface PrivateGroupService extends MendeleyService {
 	
 	/**
-	 * Gets the gist.
+	 * Gets the groups.
 	 * 
-	 * @param gistId the gist id
-	 * 
-	 * @return the gist
+	 * @return the groups
 	 */
-	public Gist getGist(String gistId);
+	public PagedList<Group> getGroups();
 	
 	/**
-	 * Gets the gist content.
+	 * Gets the group people.
 	 * 
-	 * @param gistId the gist id
-	 * @param fileName the file name
+	 * @param groupId the group id
 	 * 
-	 * @return the gist content
+	 * @return the group people
 	 */
-	public InputStream getGistContent(String gistId, String fileName);
+	public Map<Group.MembershipType, List<User>> getGroupPeople(String groupId);
 	
 	/**
-	 * Gets the user gists.
+	 * Gets the group details.
 	 * 
-	 * @param userName the user name
+	 * @param groupId the group id
 	 * 
-	 * @return the user gists
+	 * @return the group details
 	 */
-	public List<Gist> getUserGists(String userName);
+	public Group getGroupDetails(String groupId);
+	
+	/**
+	 * Creates the group.
+	 * 
+	 * @param name the name
+	 * @param type the type
+	 * 
+	 * @return the group
+	 */
+	public Group createGroup(String name, Group.Type type);
+	
+	/**
+	 * Delete group.
+	 * 
+	 * @param groupId the group id
+	 */
+	public void deleteGroup(String groupId);
+	
+	/**
+	 * Leave group.
+	 * 
+	 * @param groupId the group id
+	 */
+	public void leaveGroup(String groupId);
+	
+	/**
+	 * Unfollow group.
+	 * 
+	 * @param groupId the group id
+	 */
+	public void unfollowGroup(String groupId);
 }

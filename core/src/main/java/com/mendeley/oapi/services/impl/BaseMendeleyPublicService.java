@@ -18,7 +18,7 @@ package com.mendeley.oapi.services.impl;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,32 +26,23 @@ import java.util.List;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-import com.mendeley.oapi.schema.Discussion;
-import com.mendeley.oapi.schema.Gist;
-import com.mendeley.oapi.schema.Issue;
-import com.mendeley.oapi.schema.Language;
-import com.mendeley.oapi.schema.Organization;
-import com.mendeley.oapi.schema.Permission;
-import com.mendeley.oapi.schema.Repository;
 import com.mendeley.oapi.schema.SchemaEntity;
-import com.mendeley.oapi.schema.Tree;
 import com.mendeley.oapi.services.AsyncResponseHandler;
+import com.mendeley.oapi.services.MendeleyCommunicator;
 import com.mendeley.oapi.services.MendeleyException;
 import com.mendeley.oapi.services.MendeleyService;
 import com.mendeley.oapi.services.constant.ApplicationConstants;
 import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
+import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
 /**
- * The Class BaseMendeleyService.
+ * The Class BaseMendeleyPublicService.
  */
-public abstract class BaseMendeleyService extends MendeleyApiGateway implements MendeleyService {
+public abstract class BaseMendeleyPublicService extends MendeleyApiGateway implements MendeleyService, MendeleyCommunicator {
 	
 	/** The Constant UTF_8_CHAR_SET. */
 	protected static final Charset UTF_8_CHAR_SET = Charset.forName(ApplicationConstants.CONTENT_ENCODING);
@@ -62,21 +53,27 @@ public abstract class BaseMendeleyService extends MendeleyApiGateway implements 
     /** The handlers. */
     private List<AsyncResponseHandler<List<? extends SchemaEntity>>> handlers = new ArrayList<AsyncResponseHandler<List<? extends SchemaEntity>>>();
     
+	/** The api consumer. */
+	protected MendeleyApiConsumer apiConsumer;
+    
 	/**
-	 * Instantiates a new base mendeley service.
+	 * Instantiates a new base mendeley public service.
+	 * 
+	 * @param apiConsumer the api consumer
 	 */
-	public BaseMendeleyService() {
+	public BaseMendeleyPublicService(MendeleyApiConsumer apiConsumer) {
+		this.apiConsumer = apiConsumer;
         // by default we compress contents
         requestHeaders.put("Accept-Encoding", "gzip, deflate");
 	}
 
-	/**
-	 * Instantiates a new base mendeley service.
-	 * 
-	 * @param apiVersion the api version
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.MendeleyCommunicator#setApiConsumer(com.mendeley.oapi.services.oauth.MendeleyApiConsumer)
 	 */
-	public BaseMendeleyService(String apiVersion) {
-		setApiVersion(apiVersion);
+	@Override
+	public void setApiConsumer(MendeleyApiConsumer apiConsumer) {
+		this.apiConsumer = apiConsumer;
+		requestParameters.put("", apiConsumer.getConsumerKey());
 	}
 	
 	/**
@@ -125,64 +122,22 @@ public abstract class BaseMendeleyService extends MendeleyApiGateway implements 
 		GsonBuilder builder = new GsonBuilder();
 		builder.setDateFormat(ApplicationConstants.DATE_FORMAT);
 		builder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
-		builder.registerTypeAdapter(Issue.State.class, new JsonDeserializer<Issue.State>() {
-			@Override
-			public Issue.State deserialize(JsonElement arg0, Type arg1,
-					JsonDeserializationContext arg2) throws JsonParseException {
-				return Issue.State.fromValue(arg0.getAsString());
-			}
-		});
-		builder.registerTypeAdapter(Repository.Visibility.class, new JsonDeserializer<Repository.Visibility>() {
-			@Override
-			public Repository.Visibility deserialize(JsonElement arg0, Type arg1,
-					JsonDeserializationContext arg2) throws JsonParseException {
-				return (arg0.getAsBoolean())? Repository.Visibility.PRIVATE : Repository.Visibility.PUBLIC;
-			}
-		});
-		builder.registerTypeAdapter(Gist.Visibility.class, new JsonDeserializer<Gist.Visibility>() {
-			@Override
-			public Gist.Visibility deserialize(JsonElement arg0, Type arg1,
-					JsonDeserializationContext arg2) throws JsonParseException {
-				return (arg0.getAsBoolean())? Gist.Visibility.PUBLIC : Gist.Visibility.PRIVATE;
-			}
-		});
-		builder.registerTypeAdapter(Language.class, new JsonDeserializer<Language>() {
-			@Override
-			public Language deserialize(JsonElement arg0, Type arg1,
-					JsonDeserializationContext arg2) throws JsonParseException {
-				return Language.fromValue(arg0.getAsString());
-			}
-		});
-		builder.registerTypeAdapter(Tree.Type.class, new JsonDeserializer<Tree.Type>() {
-			@Override
-			public Tree.Type deserialize(JsonElement arg0, Type arg1,
-					JsonDeserializationContext arg2) throws JsonParseException {
-				return Tree.Type.fromValue(arg0.getAsString());
-			}
-		});
-		builder.registerTypeAdapter(Organization.Type.class, new JsonDeserializer<Organization.Type>() {
-			@Override
-			public Organization.Type deserialize(JsonElement arg0, Type arg1,
-					JsonDeserializationContext arg2) throws JsonParseException {
-				return Organization.Type.fromValue(arg0.getAsString());
-			}
-		});
-		builder.registerTypeAdapter(Discussion.Type.class, new JsonDeserializer<Discussion.Type>() {
-			@Override
-			public Discussion.Type deserialize(JsonElement arg0, Type arg1,
-					JsonDeserializationContext arg2) throws JsonParseException {
-				return Discussion.Type.fromValue(arg0.getAsString());
-			}
-		});
-		builder.registerTypeAdapter(Permission.class, new JsonDeserializer<Permission>() {
-			@Override
-			public Permission deserialize(JsonElement arg0, Type arg1,
-					JsonDeserializationContext arg2) throws JsonParseException {
-				return Permission.fromValue(arg0.getAsString());
-			}
-		});
+//		builder.registerTypeAdapter(Issue.State.class, new JsonDeserializer<Issue.State>() {
+//			@Override
+//			public Issue.State deserialize(JsonElement arg0, Type arg1,
+//					JsonDeserializationContext arg2) throws JsonParseException {
+//				return Issue.State.fromValue(arg0.getAsString());
+//			}
+//		});
 		return builder;
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.impl.MendeleyApiGateway#signRequest(java.net.HttpURLConnection)
+	 */
+	protected void signRequest(HttpURLConnection request) {
+	}
+	
     
 	/**
 	 * Unmarshall.
@@ -207,7 +162,7 @@ public abstract class BaseMendeleyService extends MendeleyApiGateway implements 
 	}
 	
 	/**
-	 * Creates the git hub api url builder.
+	 * Creates the mendeley api url builder.
 	 * 
 	 * @param urlFormat the url format
 	 * 

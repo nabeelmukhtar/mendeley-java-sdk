@@ -14,41 +14,40 @@
  * limitations under the License. 
  * 
  */
-package com.mendeley.oapi.schema;
+package com.mendeley.oapi.common;
+
+import java.util.List;
 
 /**
- * The Class Id.
+ * The Interface PagedList.
  */
-public class Id extends SchemaEntity {
+public interface PagedList<E> extends List<E> {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 9155892708485181542L;
-	
-	/** The id. */
-	private String id;
+	/**
+	 * Page.
+	 * 
+	 * @return the long
+	 */
+	public long page();
 	
 	/**
-	 * Gets the id.
+	 * Pages.
 	 * 
-	 * @return the id
+	 * @return the long
 	 */
-	public String getId() {
-		return id;
-	}
+	public long pages();
 	
 	/**
-	 * Sets the id.
+	 * Per page.
 	 * 
-	 * @param id the new id
+	 * @return the long
 	 */
-	public void setId(String id) {
-		this.id = id;
-	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	public long perPage();
+	
+	/**
+	 * Total.
+	 * 
+	 * @return the long
 	 */
-	@Override
-	public String toString() {
-		return "Id [id=" + id + "]";
-	}
+	public long total();
 }

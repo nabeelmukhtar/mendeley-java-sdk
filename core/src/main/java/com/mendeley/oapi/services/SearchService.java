@@ -16,10 +16,9 @@
  */
 package com.mendeley.oapi.services;
 
-import java.util.List;
+import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.schema.Document;
 
-import com.mendeley.oapi.schema.PullRequest;
-import com.mendeley.oapi.schema.Issue.State;
 
 /**
  * The Interface SearchService.
@@ -27,48 +26,111 @@ import com.mendeley.oapi.schema.Issue.State;
 public interface SearchService extends MendeleyService {
 	
 	/**
-	 * Gets the pull requests.
+	 * Search.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
+	 * @param terms the terms
 	 * 
-	 * @return the pull requests
+	 * @return the paged list< document>
 	 */
-	public List<PullRequest> getPullRequests(String userName, String repositoryName);
+	public PagedList<Document> search(String... terms);
 	
 	/**
-	 * Gets the pull requests.
+	 * Search.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param state the state
+	 * @param terms the terms
+	 * @param page the page
+	 * @param itemsPerPage the items per page
 	 * 
-	 * @return the pull requests
+	 * @return the paged list< document>
 	 */
-	public List<PullRequest> getPullRequests(String userName, String repositoryName, State state);
-
-	/**
-	 * Gets the pull request.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param issueNumber the issue number
-	 * 
-	 * @return the pull request
-	 */
-	public PullRequest getPullRequest(String userName, String repositoryName, int issueNumber);
+	public PagedList<Document> search(String terms, int page, int itemsPerPage);
 	
 	/**
-	 * Creates the pull request.
+	 * Gets the document details.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param base the base
-	 * @param head the head
-	 * @param title the title
-	 * @param body the body
+	 * @param documentId the document id
 	 * 
-	 * @return the pull request
+	 * @return the document details
 	 */
-	public PullRequest createPullRequest(String userName, String repositoryName, String base, String head, String title, String body);
+	public Document getDocumentDetails(String documentId);
+	
+	/**
+	 * Gets the document details.
+	 * 
+	 * @param documentId the document id
+	 * @param type the type
+	 * 
+	 * @return the document details
+	 */
+	public Document getDocumentDetails(String documentId, Document.Type type);
+	
+	/**
+	 * Gets the related documents.
+	 * 
+	 * @param documentId the document id
+	 * 
+	 * @return the related documents
+	 */
+	public PagedList<Document> getRelatedDocuments(String documentId);
+	
+	/**
+	 * Gets the documents by author.
+	 * 
+	 * @param authorName the author name
+	 * 
+	 * @return the documents by author
+	 */
+	public PagedList<Document> getDocumentsByAuthor(String authorName);
+	
+	/**
+	 * Gets the documents by author.
+	 * 
+	 * @param authorName the author name
+	 * @param year the year
+	 * 
+	 * @return the documents by author
+	 */
+	public PagedList<Document> getDocumentsByAuthor(String authorName, int year);
+	
+	/**
+	 * Gets the documents by author.
+	 * 
+	 * @param authorName the author name
+	 * @param page the page
+	 * @param itemsPerPage the items per page
+	 * 
+	 * @return the documents by author
+	 */
+	public PagedList<Document> getDocumentsByAuthor(String authorName, int page, int itemsPerPage);
+	
+	/**
+	 * Gets the documents by tag.
+	 * 
+	 * @param tag the tag
+	 * 
+	 * @return the documents by tag
+	 */
+	public PagedList<Document> getDocumentsByTag(String tag);
+	
+	/**
+	 * Gets the documents by tag.
+	 * 
+	 * @param tag the tag
+	 * @param page the page
+	 * @param itemsPerPage the items per page
+	 * 
+	 * @return the documents by tag
+	 */
+	public PagedList<Document> getDocumentsByTag(String tag, int page, int itemsPerPage);
+	
+	/**
+	 * Gets the documents by tag.
+	 * 
+	 * @param tag the tag
+	 * @param category the category
+	 * @param subCategory the sub category
+	 * 
+	 * @return the documents by tag
+	 */
+	public PagedList<Document> getDocumentsByTag(String tag, String category, String subCategory);
 }

@@ -18,13 +18,11 @@ package com.mendeley.oapi.services;
 
 import java.util.List;
 import java.util.Map;
-import java.util.zip.ZipInputStream;
 
-import com.mendeley.oapi.schema.Key;
-import com.mendeley.oapi.schema.Language;
-import com.mendeley.oapi.schema.Repository;
+import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.schema.Document;
+import com.mendeley.oapi.schema.Group;
 import com.mendeley.oapi.schema.User;
-import com.mendeley.oapi.schema.Repository.Visibility;
 
 /**
  * The Interface PublicGroupService.
@@ -32,255 +30,54 @@ import com.mendeley.oapi.schema.Repository.Visibility;
 public interface PublicGroupService extends MendeleyService {
 	
 	/**
-	 * Search repositories.
+	 * Gets the groups.
 	 * 
-	 * @param query the query
-	 * 
-	 * @return the list< repository>
+	 * @return the groups
 	 */
-	public List<Repository> searchRepositories(String query);
+	public PagedList<Group> getGroups();
 	
 	/**
-	 * Search repositories.
+	 * Gets the group people.
 	 * 
-	 * @param query the query
-	 * @param language the language
+	 * @param groupId the group id
 	 * 
-	 * @return the list< repository>
+	 * @return the group people
 	 */
-	public List<Repository> searchRepositories(String query, Language language);
+	public Map<Group.MembershipType, List<User>> getGroupPeople(String groupId);
 	
 	/**
-	 * Search repositories.
+	 * Gets the group details.
 	 * 
-	 * @param query the query
-	 * @param pageNumber the page number
+	 * @param groupId the group id
 	 * 
-	 * @return the list< repository>
+	 * @return the group details
 	 */
-	public List<Repository> searchRepositories(String query, int pageNumber);
+	public Group getGroupDetails(String groupId);
 	
 	/**
-	 * Search repositories.
+	 * Gets the group documents.
 	 * 
-	 * @param query the query
-	 * @param language the language
-	 * @param pageNumber the page number
-	 * 
-	 * @return the list< repository>
+	 * @return the group documents
 	 */
-	public List<Repository> searchRepositories(String query, Language language, int pageNumber);
+	public PagedList<Document> getGroupDocuments();
 	
 	/**
-	 * Gets the repository.
+	 * Gets the group documents.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
+	 * @param details the details
 	 * 
-	 * @return the repository
+	 * @return the group documents
 	 */
-	public Repository getRepository(String userName, String repositoryName);
+	public PagedList<Document> getGroupDocuments(boolean details);
 	
 	/**
-	 * Update repository.
+	 * Gets the group documents.
 	 * 
-	 * @param repository the repository
+	 * @param details the details
+	 * @param page the page
+	 * @param itemsPerPage the items per page
+	 * 
+	 * @return the group documents
 	 */
-	public void updateRepository(Repository repository);
-	
-	/**
-	 * Gets the repositories.
-	 * 
-	 * @param userName the user name
-	 * 
-	 * @return the repositories
-	 */
-	public List<Repository> getRepositories(String userName);
-	
-	/**
-	 * Watch repository.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 */
-	public void watchRepository(String userName, String repositoryName);
-	
-	/**
-	 * Unwatch repository.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 */
-	public void unwatchRepository(String userName, String repositoryName);
-	
-	/**
-	 * Fork repository.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * 
-	 * @return the repository
-	 */
-	public Repository forkRepository(String userName, String repositoryName);
-	
-	/**
-	 * Creates the repository.
-	 * 
-	 * @param name the name
-	 * @param description the description
-	 * @param homePage the home page
-	 * @param visibility the visibility
-	 * 
-	 * @return the repository
-	 */
-	public Repository createRepository(String name, String description, String homePage, Visibility visibility);
-	
-	/**
-	 * Delete repository.
-	 * 
-	 * @param repositoryName the repository name
-	 */
-	public void deleteRepository(String repositoryName);
-	
-	/**
-	 * Change visibility.
-	 * 
-	 * @param repositoryName the repository name
-	 * @param visibility the visibility
-	 */
-	public void changeVisibility(String repositoryName, Visibility visibility);
-	
-	/**
-	 * Gets the deploy keys.
-	 * 
-	 * @param repositoryName the repository name
-	 * 
-	 * @return the deploy keys
-	 */
-	public List<Key> getDeployKeys(String repositoryName);
-	
-	/**
-	 * Adds the deploy key.
-	 * 
-	 * @param repositoryName the repository name
-	 * @param title the title
-	 * @param key the key
-	 * 
-	 * @return the list< key>
-	 */
-	public List<Key> addDeployKey(String repositoryName, String title, String key);
-	
-	/**
-	 * Removes the deploy key.
-	 * 
-	 * @param repository the repository
-	 * @param id the id
-	 */
-	public void removeDeployKey(String repository, String id);
-	
-	/**
-	 * Gets the collaborators.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * 
-	 * @return the collaborators
-	 */
-	public List<String> getCollaborators(String userName, String repositoryName);
-	
-	/**
-	 * Adds the collaborator.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param collaboratorName the collaborator name
-	 */
-	public void addCollaborator(String userName, String repositoryName, String collaboratorName);
-	
-	/**
-	 * Removes the collaborator.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param collaboratorName the collaborator name
-	 */
-	public void removeCollaborator(String userName, String repositoryName, String collaboratorName);
-	
-	/**
-	 * Gets the pushable repositories.
-	 * 
-	 * @return the pushable repositories
-	 */
-	public List<Repository> getPushableRepositories();
-	
-	/**
-	 * Gets the contributors.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * 
-	 * @return the contributors
-	 */
-	public List<User> getContributors(String userName, String repositoryName);
-	
-	/**
-	 * Gets the watchers.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * 
-	 * @return the watchers
-	 */
-	public List<String> getWatchers(String userName, String repositoryName);
-	
-	/**
-	 * Gets the forks.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * 
-	 * @return the forks
-	 */
-	public List<Repository> getForks(String userName, String repositoryName);
-	
-	/**
-	 * Gets the language breakdown.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * 
-	 * @return the language breakdown
-	 */
-	public Map<Language, Long> getLanguageBreakdown(String userName, String repositoryName);
-	
-	/**
-	 * Gets the tags.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * 
-	 * @return the tags
-	 */
-	public Map<String, String> getTags(String userName, String repositoryName);
-	
-	/**
-	 * Gets the branches.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * 
-	 * @return the branches
-	 */
-	public Map<String, String> getBranches(String userName, String repositoryName);
-	
-	/**
-	 * Gets the repository archive.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param branchName the branch name
-	 * 
-	 * @return the repository archive
-	 */
-	public ZipInputStream getRepositoryArchive(String userName, String repositoryName, String branchName);
+	public PagedList<Document> getGroupDocuments(boolean details, int page, int itemsPerPage);
 }

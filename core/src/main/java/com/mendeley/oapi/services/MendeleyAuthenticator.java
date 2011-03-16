@@ -25,11 +25,12 @@ import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 public interface MendeleyAuthenticator extends MendeleyCommunicator {
 
     /**
-     * Sets the authentication.
+     * Sets the access token.
      * 
-     * @param authentication the new authentication
+     * @param accessToken the new access token
      */
-    public void setAuthentication(MendeleyAccessToken authentication);
+    public void setAccessToken(MendeleyAccessToken accessToken);
+    
 
 	/**
 	 * Sets the user ip address.

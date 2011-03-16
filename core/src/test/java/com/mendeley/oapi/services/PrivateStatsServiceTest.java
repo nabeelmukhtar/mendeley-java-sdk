@@ -16,15 +16,9 @@
  */
 package com.mendeley.oapi.services;
 
-import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.mendeley.oapi.schema.Commit;
-import com.mendeley.oapi.schema.Repository;
-import com.mendeley.oapi.services.constant.TestConstants;
 
 /**
  * The Class PrivateStatsServiceTest.
@@ -40,8 +34,7 @@ public class PrivateStatsServiceTest extends BaseMendeleyServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		service = factory.createPrivateStatsService();
-		service.setAuthentication(authentication);
+		service = factory.createPrivateStatsService(authentication);
 	}
 
 	/* (non-Javadoc)
@@ -54,38 +47,26 @@ public class PrivateStatsServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test get commit.
+	 * Test get authors.
 	 */
 	@Test
-	public void testGetCommit() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test SHA."), TestConstants.TEST_COMMIT_HASH);
-		Commit commit = service.getCommit(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_COMMIT_HASH);
-		assertNotNull("Commit cannot be null", commit);
+	public void testGetAuthors() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test get commits string string string.
+	 * Test get publications.
 	 */
 	@Test
-	public void testGetCommitsStringStringString() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test SHA."), TestConstants.TEST_COMMIT_HASH);
-		List<Commit> commits = service.getCommits(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Repository.MASTER);
-		assertNotNullOrEmpty("Commits cannot be null or empty", commits);
+	public void testGetPublications() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test get commits string string string string.
+	 * Test get tags.
 	 */
 	@Test
-	public void testGetCommitsStringStringStringString() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test SHA."), TestConstants.TEST_COMMIT_HASH);
-		List<Commit> commits = service.getCommits(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Repository.MASTER);
-		assertNotNullOrEmpty("Commits cannot be null or empty", commits);
+	public void testGetTags() {
+		fail("Not yet implemented");
 	}
 }

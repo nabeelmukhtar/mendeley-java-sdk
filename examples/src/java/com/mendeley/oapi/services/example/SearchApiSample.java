@@ -18,7 +18,7 @@ package com.mendeley.oapi.services.example;
 
 import java.util.List;
 
-import com.mendeley.oapi.schema.PullRequest;
+import com.mendeley.oapi.schema.Document;
 import com.mendeley.oapi.services.MendeleyServiceFactory;
 import com.mendeley.oapi.services.SearchService;
 
@@ -27,28 +27,32 @@ import com.mendeley.oapi.services.SearchService;
  */
 public class SearchApiSample {
 
+	/** The Constant CONSUMER_KEY. */
+	private static final String CONSUMER_KEY = "fb5f4f918e29a86d60ccede660d3d68b04d37e9f6";
+	
+	/** The Constant CONSUMER_SECRET. */
+	private static final String CONSUMER_SECRET = "ecde8b6a67627dc6f3dd53ba59ba4553";
+
     /**
      * The main method.
      * 
      * @param args the arguments
      */
 	public static void main(String[] args) {
-		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance();
+		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance(CONSUMER_KEY, CONSUMER_SECRET);
 		SearchService service = factory.createSearchService();
-		List<PullRequest> pullRequests = service.getPullRequests("technoweenie", "faraday");
-		for (PullRequest pullRequest : pullRequests) {
-			printResult(pullRequest);    			
+		List<Document> documents = service.search("hadoop");
+		for (Document document : documents) {
+			printResult(document);
 		}
-		PullRequest pullRequest = service.getPullRequest("technoweenie", "faraday", 15);
-		printResult(pullRequest);
 	}
     
 	/**
 	 * Prints the result.
 	 * 
-	 * @param pullRequest the pull request
+	 * @param document the document
 	 */
-	private static void printResult(PullRequest pullRequest) {
-		System.out.println(pullRequest);
+	private static void printResult(Document document) {
+		System.out.println(document);
 	}
 }

@@ -14,7 +14,7 @@
  * limitations under the License. 
  * 
  */
-package com.mendeley.oapi.schema;
+package com.mendeley.oapi.common;
 
 /**
  * The Interface ValueEnum.

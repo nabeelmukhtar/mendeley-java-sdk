@@ -18,41 +18,49 @@ package com.mendeley.oapi.services.example;
 
 import java.util.List;
 
-import com.mendeley.oapi.schema.Commit;
-import com.mendeley.oapi.schema.Repository;
-import com.mendeley.oapi.services.PrivateStatsService;
+import com.mendeley.oapi.schema.Publication;
 import com.mendeley.oapi.services.MendeleyServiceFactory;
+import com.mendeley.oapi.services.PrivateStatsService;
+import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 
 /**
  * The Class PrivateStatsApiSample.
  */
 public class PrivateStatsApiSample {
 
+	/** The Constant CONSUMER_KEY. */
+	private static final String CONSUMER_KEY = "fb5f4f918e29a86d60ccede660d3d68b04d37e9f6";
+	
+	/** The Constant CONSUMER_SECRET. */
+	private static final String CONSUMER_SECRET = "ecde8b6a67627dc6f3dd53ba59ba4553";
+	
+	/** The Constant ACCESS_TOKEN. */
+	private static final String ACCESS_TOKEN = "564d0e4e13273906aa55d53b903d48e204d7e0501";
+	
+	/** The Constant TOKEN_SECRET. */
+	private static final String TOKEN_SECRET = "1c8e2290a0a894bc1d1cbf4b0cc07484";
+	
     /**
      * The main method.
      * 
      * @param args the arguments
      */
 	public static void main(String[] args) {
-		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance();
-		PrivateStatsService service = factory.createPrivateStatsService();
-		
-		List<Commit> commits = service.getCommits("facebook", "tornado", Repository.MASTER, "setup.py");
-		System.out.println(commits.size());
-		for (Commit commit : commits) {
-			printResult(commit);
+		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance(CONSUMER_KEY, CONSUMER_SECRET);
+		PrivateStatsService service = factory.createPrivateStatsService(new MendeleyAccessToken(ACCESS_TOKEN, TOKEN_SECRET));
+		List<Publication> publications = service.getPublications();
+		for (Publication publication : publications) {
+			printResult(publication);
 		}
-		Commit commit = service.getCommit("facebook", "tornado", "7b80c2f4db226d6fa3a7");
-		printResult(commit);
 	}
     
 
 	/**
 	 * Prints the result.
 	 * 
-	 * @param commit the commit
+	 * @param publication the publication
 	 */
-	private static void printResult(Commit commit) {
-		System.out.println(commit);
+	private static void printResult(Publication publication) {
+		System.out.println(publication);
 	}
 }

@@ -29,6 +29,7 @@ import org.junit.Before;
 
 import com.mendeley.oapi.services.constant.TestConstants;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
+import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
 /**
  * The Class BaseMendeleyServiceTest.
@@ -44,6 +45,9 @@ public class BaseMendeleyServiceTest extends TestCase {
 	/** The authentication. */
 	protected MendeleyAccessToken authentication;
 	
+	/** The api consumer. */
+	protected MendeleyApiConsumer apiConsumer;
+	
 	/* (non-Javadoc)
 	 * @see junit.framework.TestCase#setUp()
 	 */
@@ -53,7 +57,8 @@ public class BaseMendeleyServiceTest extends TestCase {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test API Key."), TestConstants.TEST_API_KEY);
     	authentication = new MendeleyAccessToken(TestConstants.TEST_USER_NAME, TestConstants.TEST_API_KEY);
-		factory = MendeleyServiceFactory.newInstance();
+    	apiConsumer = new MendeleyApiConsumer(TestConstants.TEST_CLIENT_ID, TestConstants.TEST_CLIENT_SECRET);
+		factory = MendeleyServiceFactory.newInstance(apiConsumer);
 		
 	}
 

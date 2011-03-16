@@ -36,10 +36,6 @@ import java.util.zip.GZIPInputStream;
 
 import com.mendeley.oapi.services.MendeleyException;
 import com.mendeley.oapi.services.constant.ApplicationConstants;
-import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
-import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
-import com.mendeley.oapi.services.oauth.MendeleyOAuthService;
-import com.mendeley.oapi.services.oauth.MendeleyOAuthServiceFactory;
 
 /**
  * The Class MendeleyApiGateway.
@@ -66,11 +62,6 @@ public abstract class MendeleyApiGateway {
 	
 	/** The api version. */
 	protected String apiVersion = ApplicationConstants.DEFAULT_API_VERSION;
-	
-	/** The access token. */
-	private MendeleyAccessToken accessToken;
-	
-	private MendeleyApiConsumer apiConsumer;
 	
 	/**
 	 * Gets the api version.
@@ -145,24 +136,6 @@ public abstract class MendeleyApiGateway {
 		this.userIpAddress = userIpAddress;
 	}
 
-    /**
-     * Sets the authentication.
-     * 
-     * @param accessToken the new authentication
-     */
-    public void setAuthentication(MendeleyAccessToken accessToken) {
-    	this.accessToken = accessToken;
-    }
-	
-    /**
-     * Sets the api consumer.
-     * 
-     * @param apiConsumer the new api consumer
-     */
-    public void setApiConsumer(MendeleyApiConsumer apiConsumer) {
-    	this.apiConsumer = apiConsumer;
-    }
-    
 	/**
 	 * Convert stream to string.
 	 * 
@@ -381,17 +354,11 @@ public abstract class MendeleyApiGateway {
 	
 	
 	/**
+	 * Sign request.
 	 * 
-	 * @param request
+	 * @param request the request
 	 */
-	protected void signRequest(HttpURLConnection request) {
-		if (apiConsumer != null && accessToken != null) {
-            MendeleyOAuthService oAuthService =
-            	MendeleyOAuthServiceFactory.getInstance().createMendeleyOAuthService(apiConsumer.getConsumerKey(),
-                    apiConsumer.getConsumerSecret());
-            oAuthService.signRequestWithToken(request, accessToken);
-		}
-	}
+	protected abstract void signRequest(HttpURLConnection request);
 
 	/**
 	 * Gets the parameters string.

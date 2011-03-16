@@ -19,6 +19,6 @@ package com.mendeley.oapi.services;
 /**
  * The Interface MendeleyService.
  */
-public interface MendeleyService extends MendeleyAuthenticator {
+public interface MendeleyService {
 
 }

@@ -18,6 +18,8 @@ package com.mendeley.oapi.services;
 
 import java.util.Map;
 
+import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
+
 /**
  * The Interface MendeleyCommunicator.
  */
@@ -51,4 +53,11 @@ public interface MendeleyCommunicator {
      * @param headerName the header name
      */
     public void removeRequestHeader(String headerName);
+    
+    /**
+     * Sets the api consumer.
+     * 
+     * @param apiConsumer the new api consumer
+     */
+    public void setApiConsumer(MendeleyApiConsumer apiConsumer);
 }

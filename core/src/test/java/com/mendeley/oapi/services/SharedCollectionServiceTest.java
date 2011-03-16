@@ -16,15 +16,9 @@
  */
 package com.mendeley.oapi.services;
 
-import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.mendeley.oapi.schema.NetworkCommit;
-import com.mendeley.oapi.schema.NetworkMeta;
-import com.mendeley.oapi.services.constant.TestConstants;
 
 /**
  * The Class SharedCollectionServiceTest.
@@ -40,8 +34,7 @@ public class SharedCollectionServiceTest extends BaseMendeleyServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		service = factory.createSharedCollectionService();
-		service.setAuthentication(authentication);
+		service = factory.createSharedCollectionService(authentication);
 	}
 
 	/* (non-Javadoc)
@@ -54,38 +47,66 @@ public class SharedCollectionServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test get network data string string string.
+	 * Test add document to collection.
 	 */
 	@Test
-	public void testGetNetworkDataStringStringString() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Network Hash."), TestConstants.TEST_NETWORK_HASH);
-		List<NetworkCommit> commits = service.getNetworkData(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_NETWORK_HASH);
-		assertNotNullOrEmpty("Commits should not be null or empty.", commits);
+	public void testAddDocumentToCollection() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test get network data string string string int int.
+	 * Test create collection.
 	 */
 	@Test
-	public void testGetNetworkDataStringStringStringIntInt() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Network Hash."), TestConstants.TEST_NETWORK_HASH);
-		List<NetworkCommit> commits = service.getNetworkData(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_NETWORK_HASH, 1, 5);
-		assertNotNullOrEmpty("Commits should not be null or empty.", commits);
+	public void testCreateCollection() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test get network meta.
+	 * Test get collection documents string.
 	 */
 	@Test
-	public void testGetNetworkMeta() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-		NetworkMeta networkMeta = service.getNetworkMeta(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
-		assertNotNull("Network cannot be null", networkMeta);
+	public void testGetCollectionDocumentsString() {
+		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test get collection documents string int int.
+	 */
+	@Test
+	public void testGetCollectionDocumentsStringIntInt() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get collection members.
+	 */
+	@Test
+	public void testGetCollectionMembers() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get collections.
+	 */
+	@Test
+	public void testGetCollections() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test remove collection.
+	 */
+	@Test
+	public void testRemoveCollection() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test remove document from collection.
+	 */
+	@Test
+	public void testRemoveDocumentFromCollection() {
+		fail("Not yet implemented");
+	}
 }

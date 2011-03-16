@@ -17,69 +17,106 @@
 package com.mendeley.oapi.services.impl;
 
 import java.util.List;
+import java.util.Map;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-import com.mendeley.oapi.schema.NetworkCommit;
-import com.mendeley.oapi.schema.NetworkMeta;
+import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.schema.Collection;
+import com.mendeley.oapi.schema.User;
+import com.mendeley.oapi.schema.Collection.MembershipType;
 import com.mendeley.oapi.services.SharedCollectionService;
-import com.mendeley.oapi.services.constant.MendeleyApiUrls;
-import com.mendeley.oapi.services.constant.ParameterNames;
-import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
+import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
+import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
 /**
  * The Class SharedCollectionServiceImpl.
  */
-public class SharedCollectionServiceImpl extends BaseMendeleyService implements
+public class SharedCollectionServiceImpl extends BaseMendeleyPrivateService implements
 		SharedCollectionService {
 
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.NetworkService#getNetworkData(java.lang.String, java.lang.String, java.lang.String)
+	/**
+	 * Instantiates a new shared collection service impl.
+	 * 
+	 * @param apiConsumer the api consumer
+	 * @param accessToken the access token
 	 */
-	@Override
-	public List<NetworkCommit> getNetworkData(String userName, String repositoryName,
-			String networkHash) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.GET_NETWORK_DATA_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameter(ParameterNames.NET_HASH, networkHash).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
-        
-        return unmarshall(new TypeToken<List<NetworkCommit>>(){}, json.get("commits"));
+	public SharedCollectionServiceImpl(MendeleyApiConsumer apiConsumer,
+			MendeleyAccessToken accessToken) {
+		super(apiConsumer, accessToken);
 	}
 
 	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.NetworkService#getNetworkData(java.lang.String, java.lang.String, java.lang.String, int, int)
+	 * @see com.mendeley.oapi.services.SharedCollectionService#addDocumentToCollection(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<NetworkCommit> getNetworkData(String userName, String repositoryName,
-			String networkHash, int startIndex, int endIndex) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.GET_NETWORK_DATA_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameter(ParameterNames.NET_HASH, networkHash).withParameter(ParameterNames.START_INDEX, String.valueOf(startIndex)).withParameter(ParameterNames.END_INDEX, String.valueOf(endIndex)).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
-        
-        return unmarshall(new TypeToken<List<NetworkCommit>>(){}, json.get("commits"));
+	public String addDocumentToCollection(String collectionId, String documentId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.NetworkService#getNetworkMeta(java.lang.String, java.lang.String)
+	 * @see com.mendeley.oapi.services.SharedCollectionService#createCollection(java.lang.String)
 	 */
 	@Override
-	public NetworkMeta getNetworkMeta(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.GET_NETWORK_META_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
-        
-		Gson gson = getGsonBuilder().setDateFormat("yyyy-MM-dd").create();
-		return gson.fromJson(json, NetworkMeta.class);
+	public Collection createCollection(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
 	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.impl.BaseGitHubService#getGsonBuilder()
+	 * @see com.mendeley.oapi.services.SharedCollectionService#getCollectionDocuments(java.lang.String)
 	 */
-	protected GsonBuilder getGsonBuilder() {
-		GsonBuilder gson = super.getGsonBuilder();
-		gson.setDateFormat("yyyy-MM-dd HH:mm:ss");
-		return gson;
+	@Override
+	public PagedList<String> getCollectionDocuments(String collectionId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SharedCollectionService#getCollectionDocuments(java.lang.String, int, int)
+	 */
+	@Override
+	public PagedList<String> getCollectionDocuments(String collectionId,
+			int page, int itemsPerPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SharedCollectionService#getCollectionMembers(java.lang.String)
+	 */
+	@Override
+	public Map<MembershipType, List<User>> getCollectionMembers(
+			String collectionId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SharedCollectionService#getCollections()
+	 */
+	@Override
+	public PagedList<Collection> getCollections() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SharedCollectionService#removeCollection(java.lang.String)
+	 */
+	@Override
+	public void removeCollection(String collectionId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SharedCollectionService#removeDocumentFromCollection(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public void removeDocumentFromCollection(String collectionId,
+			String documentId) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

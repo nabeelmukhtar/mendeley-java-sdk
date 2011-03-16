@@ -16,74 +16,127 @@
  */
 package com.mendeley.oapi.services.impl;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-import com.mendeley.oapi.schema.PullRequest;
-import com.mendeley.oapi.schema.Issue.State;
+import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.schema.Document;
+import com.mendeley.oapi.schema.Document.Type;
 import com.mendeley.oapi.services.SearchService;
-import com.mendeley.oapi.services.constant.MendeleyApiUrls;
-import com.mendeley.oapi.services.constant.ParameterNames;
-import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
+import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
 /**
  * The Class SearchServiceImpl.
  */
-public class SearchServiceImpl extends BaseMendeleyService implements
+public class SearchServiceImpl extends BaseMendeleyPublicService implements
 		SearchService {
 
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.ObjectService#getBlob(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+	/**
+	 * Instantiates a new search service impl.
+	 * 
+	 * @param apiConsumer the api consumer
 	 */
-	@Override
-	public PullRequest getPullRequest(String userName, String repositoryName, int issueNumber) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.GET_PULL_REQUEST_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
-        
-        return unmarshall(new TypeToken<PullRequest>(){}, json.get("pull"));
+	public SearchServiceImpl(MendeleyApiConsumer apiConsumer) {
+		super(apiConsumer);
 	}
 
 	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.ObjectService#getBlobs(java.lang.String, java.lang.String, java.lang.String)
+	 * @see com.mendeley.oapi.services.SearchService#getDocumentDetails(java.lang.String)
 	 */
 	@Override
-	public List<PullRequest> getPullRequests(String userName, String repositoryName) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.GET_PULL_REQUESTS_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.STATE, "").buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
-        
-        return unmarshall(new TypeToken<List<PullRequest>>(){}, json.get("pulls"));
+	public Document getDocumentDetails(String documentId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.ObjectService#getBlobs(java.lang.String, java.lang.String, java.lang.String)
+	 * @see com.mendeley.oapi.services.SearchService#getDocumentDetails(java.lang.String, com.mendeley.oapi.schema.Document.Type)
 	 */
 	@Override
-	public List<PullRequest> getPullRequests(String userName, String repositoryName, State state) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.GET_PULL_REQUESTS_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.STATE, state.value()).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
-        
-        return unmarshall(new TypeToken<List<PullRequest>>(){}, json.get("pulls"));
+	public Document getDocumentDetails(String documentId, Type type) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
 	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.ObjectService#getObjectContent(java.lang.String, java.lang.String, java.lang.String)
+	 * @see com.mendeley.oapi.services.SearchService#getDocumentsByAuthor(java.lang.String)
 	 */
-	public PullRequest createPullRequest(String userName, String repositoryName, String base, String head, String title, String body) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.CREATE_PULL_REQUEST_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
-        Map<String, String> parameters = new HashMap<String, String>();
-        parameters.put("pull[" + ParameterNames.BASE + "]", base);
-        parameters.put("pull[" + ParameterNames.HEAD + "]", head);
-        parameters.put("pull[" + ParameterNames.TITLE + "]", title);
-        parameters.put("pull[" + ParameterNames.BODY + "]", body);
-        JsonObject json = unmarshall(callApiPost(apiUrl, parameters));
-        
-        return unmarshall(new TypeToken<PullRequest>(){}, json.get("pull"));
+	@Override
+	public PagedList<Document> getDocumentsByAuthor(String authorName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SearchService#getDocumentsByAuthor(java.lang.String, int)
+	 */
+	@Override
+	public PagedList<Document> getDocumentsByAuthor(String authorName, int year) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SearchService#getDocumentsByAuthor(java.lang.String, int, int)
+	 */
+	@Override
+	public PagedList<Document> getDocumentsByAuthor(String authorName,
+			int page, int itemsPerPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SearchService#getDocumentsByTag(java.lang.String)
+	 */
+	@Override
+	public PagedList<Document> getDocumentsByTag(String tag) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SearchService#getDocumentsByTag(java.lang.String, int, int)
+	 */
+	@Override
+	public PagedList<Document> getDocumentsByTag(String tag, int page,
+			int itemsPerPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SearchService#getDocumentsByTag(java.lang.String, java.lang.String, java.lang.String)
+	 */
+	@Override
+	public PagedList<Document> getDocumentsByTag(String tag, String category,
+			String subCategory) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SearchService#getRelatedDocuments(java.lang.String)
+	 */
+	@Override
+	public PagedList<Document> getRelatedDocuments(String documentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SearchService#search(java.lang.String[])
+	 */
+	@Override
+	public PagedList<Document> search(String... terms) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SearchService#search(java.lang.String, int, int)
+	 */
+	@Override
+	public PagedList<Document> search(String terms, int page, int itemsPerPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

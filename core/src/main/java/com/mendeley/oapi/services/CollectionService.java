@@ -16,11 +16,8 @@
  */
 package com.mendeley.oapi.services;
 
-import java.util.List;
-
-import com.mendeley.oapi.schema.Comment;
-import com.mendeley.oapi.schema.Issue;
-import com.mendeley.oapi.schema.Issue.State;
+import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.schema.Collection;
 
 /**
  * The Interface CollectionService.
@@ -28,142 +25,65 @@ import com.mendeley.oapi.schema.Issue.State;
 public interface CollectionService extends MendeleyService {
 	
 	/**
-	 * Search issues.
+	 * Gets the collections.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param state the state
-	 * @param keyword the keyword
-	 * 
-	 * @return the list< issue>
+	 * @return the collections
 	 */
-	public List<Issue> searchIssues(String userName, String repositoryName, State state, String keyword);
+	public PagedList<Collection> getCollections();
 	
 	/**
-	 * Gets the issues.
+	 * Gets the collection documents.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param label the label
+	 * @param collectionId the collection id
 	 * 
-	 * @return the issues
+	 * @return the collection documents
 	 */
-	public List<Issue> getIssues(String userName, String repositoryName, String label);
+	public PagedList<String> getCollectionDocuments(String collectionId);
 	
 	/**
-	 * Gets the issues.
+	 * Gets the collection documents.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param state the state
+	 * @param collectionId the collection id
+	 * @param page the page
+	 * @param itemsPerPage the items per page
 	 * 
-	 * @return the issues
+	 * @return the collection documents
 	 */
-	public List<Issue> getIssues(String userName, String repositoryName, State state);
+	public PagedList<String> getCollectionDocuments(String collectionId, int page, int itemsPerPage);
 	
 	/**
-	 * Gets the issue.
+	 * Adds the document to collection.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param issueNumber the issue number
+	 * @param collectionId the collection id
+	 * @param documentId the document id
 	 * 
-	 * @return the issue
+	 * @return the string
 	 */
-	public Issue getIssue(String userName, String repositoryName, int issueNumber);
+	public String addDocumentToCollection(String collectionId, String documentId);
 	
 	/**
-	 * Gets the issue comments.
+	 * Creates the collection.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param issueNumber the issue number
+	 * @param name the name
+	 * @param type the type
 	 * 
-	 * @return the issue comments
+	 * @return the collection
 	 */
-	public List<Comment> getIssueComments(String userName, String repositoryName, int issueNumber);
+	public Collection createCollection(String name, Collection.Type type);
 	
 	/**
-	 * Creates the issue.
+	 * Removes the collection.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param title the title
-	 * @param body the body
+	 * @param collectionId the collection id
 	 */
-	public void createIssue(String userName, String repositoryName, String title, String body);
+	public void removeCollection(String collectionId);
 	
 	/**
-	 * Close issue.
+	 * Removes the document from collection.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param issueNumber the issue number
+	 * @param collectionId the collection id
+	 * @param documentId the document id
 	 */
-	public void closeIssue(String userName, String repositoryName, int issueNumber);
+	public void removeDocumentFromCollection(String collectionId, String documentId);
 	
-	/**
-	 * Reopen issue.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param issueNumber the issue number
-	 */
-	public void reopenIssue(String userName, String repositoryName, int issueNumber);
-	
-	/**
-	 * Update issue.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param issueNumber the issue number
-	 * @param title the title
-	 * @param body the body
-	 */
-	public void updateIssue(String userName, String repositoryName, int issueNumber, String title, String body);
-	
-	/**
-	 * Gets the issue labels.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * 
-	 * @return the issue labels
-	 */
-	public List<String> getIssueLabels(String userName, String repositoryName);
-	
-	/**
-	 * Adds the label.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param issueNumber the issue number
-	 * @param label the label
-	 * 
-	 * @return the list< string>
-	 */
-	public List<String> addLabel(String userName, String repositoryName, int issueNumber, String label);
-	
-	/**
-	 * Removes the label.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param issueNumber the issue number
-	 * @param label the label
-	 * 
-	 * @return the list< string>
-	 */
-	public List<String> removeLabel(String userName, String repositoryName, int issueNumber, String label);
-	
-	/**
-	 * Adds the comment.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param issueNumber the issue number
-	 * @param comment the comment
-	 */
-	public void addComment(String userName, String repositoryName, int issueNumber, String comment);
-
 }

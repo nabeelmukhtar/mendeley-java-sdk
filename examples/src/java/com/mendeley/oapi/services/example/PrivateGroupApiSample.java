@@ -16,74 +16,50 @@
  */
 package com.mendeley.oapi.services.example;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.util.List;
 
-import com.mendeley.oapi.schema.Gist;
-import com.mendeley.oapi.services.PrivateGroupService;
+import com.mendeley.oapi.schema.Group;
 import com.mendeley.oapi.services.MendeleyServiceFactory;
+import com.mendeley.oapi.services.PrivateGroupService;
+import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 
 /**
  * The Class PrivateGroupApiSample.
  */
 public class PrivateGroupApiSample {
 
+	/** The Constant CONSUMER_KEY. */
+	private static final String CONSUMER_KEY = "fb5f4f918e29a86d60ccede660d3d68b04d37e9f6";
+	
+	/** The Constant CONSUMER_SECRET. */
+	private static final String CONSUMER_SECRET = "ecde8b6a67627dc6f3dd53ba59ba4553";
+	
+	/** The Constant ACCESS_TOKEN. */
+	private static final String ACCESS_TOKEN = "564d0e4e13273906aa55d53b903d48e204d7e0501";
+	
+	/** The Constant TOKEN_SECRET. */
+	private static final String TOKEN_SECRET = "1c8e2290a0a894bc1d1cbf4b0cc07484";
+	
     /**
      * The main method.
      * 
      * @param args the arguments
      */
 	public static void main(String[] args) {
-		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance();
-		PrivateGroupService service = factory.createPrivateGroupService();
-		Gist gist = service.getGist("289179");
-		printResult(gist);
-		System.out.println(convertStreamToString(service.getGistContent("289179", "TimeZoneDSTUtil.java")));
+		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance(CONSUMER_KEY, CONSUMER_SECRET);
+		PrivateGroupService service = factory.createPrivateGroupService(new MendeleyAccessToken(ACCESS_TOKEN, TOKEN_SECRET));
+		List<Group> groups = service.getGroups();
+		for (Group group : groups) {
+			printResult(group);
+		}
 	}
     
 	/**
 	 * Prints the result.
 	 * 
-	 * @param gist the gist
+	 * @param group the group
 	 */
-	private static void printResult(Gist gist) {
-		System.out.println(gist);
-	}
-
-	/**
-	 * Convert stream to string.
-	 * 
-	 * @param is the is
-	 * 
-	 * @return the string
-	 */
-	private static String convertStreamToString(InputStream is) {
-	    /*
-	     * To convert the InputStream to String we use the BufferedReader.readLine()
-	     * method. We iterate until the BufferedReader return null which means
-	     * there's no more data to read. Each line will appended to a StringBuilder
-	     * and returned as String.
-	     */
-	    BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-	    StringBuilder sb = new StringBuilder();
-	
-	    String line = null;
-	    try {
-	        while ((line = reader.readLine()) != null) {
-	            sb.append(line + "\n");
-	        }
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } finally {
-	        try {
-	            is.close();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	
-	    return sb.toString();
+	private static void printResult(Group group) {
+		System.out.println(group);
 	}
 }

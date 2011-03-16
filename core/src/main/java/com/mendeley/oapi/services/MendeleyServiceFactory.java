@@ -25,6 +25,8 @@ import com.mendeley.oapi.services.impl.PublicGroupServiceImpl;
 import com.mendeley.oapi.services.impl.PublicStatsServiceImpl;
 import com.mendeley.oapi.services.impl.SearchServiceImpl;
 import com.mendeley.oapi.services.impl.SharedCollectionServiceImpl;
+import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
+import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
 
 
@@ -33,56 +35,84 @@ import com.mendeley.oapi.services.impl.SharedCollectionServiceImpl;
  * A factory for creating MendeleyService objects.
  */
 public class MendeleyServiceFactory {
+	
+	/** The api consumer. */
+	private MendeleyApiConsumer apiConsumer;
 
     /**
      * Instantiates a new mendeley service factory.
+     * 
+     * @param apiConsumer the api consumer
      */
-	private MendeleyServiceFactory() {
+	private MendeleyServiceFactory(MendeleyApiConsumer apiConsumer) {
+		this.apiConsumer = apiConsumer;
     }
 	
     /**
      * New instance.
      * 
+     * @param apiConsumer the api consumer
+     * 
      * @return the mendeley service factory
      */
-    public static MendeleyServiceFactory newInstance() {
-        return new MendeleyServiceFactory();
+    public static MendeleyServiceFactory newInstance(MendeleyApiConsumer apiConsumer) {
+        return new MendeleyServiceFactory(apiConsumer);
+    }
+    
+    /**
+     * New instance.
+     * 
+     * @param consumerKey the consumer key
+     * @param consumerSecret the consumer secret
+     * 
+     * @return the mendeley service factory
+     */
+    public static MendeleyServiceFactory newInstance(String consumerKey, String consumerSecret) {
+        return new MendeleyServiceFactory(new MendeleyApiConsumer(consumerKey, consumerSecret));
     }
     
     /**
      * Creates a new MendeleyService object.
+     * 
+     * @param accessToken the access token
      * 
      * @return the private stats service
      */
-    public PrivateStatsService createPrivateStatsService() {
-    	return new PrivateStatsServiceImpl();
+    public PrivateStatsService createPrivateStatsService(MendeleyAccessToken accessToken) {
+    	return new PrivateStatsServiceImpl(apiConsumer, accessToken);
     }
     
     /**
      * Creates a new MendeleyService object.
+     * 
+     * @param accessToken the access token
      * 
      * @return the private group service
      */
-    public PrivateGroupService createPrivateGroupService() {
-    	return new PrivateGroupServiceImpl();
+    public PrivateGroupService createPrivateGroupService(MendeleyAccessToken accessToken) {
+    	return new PrivateGroupServiceImpl(apiConsumer, accessToken);
     }
     
     /**
      * Creates a new MendeleyService object.
+     * 
+     * @param accessToken the access token
      * 
      * @return the collection service
      */
-    public CollectionService createCollectionService() {
-    	return new CollectionServiceImpl();
+    public CollectionService createCollectionService(MendeleyAccessToken accessToken) {
+    	return new CollectionServiceImpl(apiConsumer, accessToken);
     }
     
     /**
      * Creates a new MendeleyService object.
      * 
+     * @param accessToken the access token
+     * 
      * @return the shared collection service
      */
-    public SharedCollectionService createSharedCollectionService() {
-    	return new SharedCollectionServiceImpl();
+    public SharedCollectionService createSharedCollectionService(MendeleyAccessToken accessToken) {
+    	return new SharedCollectionServiceImpl(apiConsumer, accessToken);
     }
 
     /**
@@ -91,37 +121,38 @@ public class MendeleyServiceFactory {
      * @return the public group service
      */
     public PublicGroupService createPublicGroupService() {
-    	return new PublicGroupServiceImpl();
+    	return new PublicGroupServiceImpl(apiConsumer);
     }
     
     /**
      * Creates a new MendeleyService object.
+     * 
+     * @param accessToken the access token
      * 
      * @return the profile service
      */
-    public ProfileService createProfileService() {
-    	return new ProfileServiceImpl();
+    public ProfileService createProfileService(MendeleyAccessToken accessToken) {
+    	return new ProfileServiceImpl(apiConsumer, accessToken);
     }
     
     /**
      * Creates a new MendeleyService object.
-     * 
-     * @param clientId the client id
-     * @param secret the secret
      * 
      * @return the public stats service
      */
-    public PublicStatsService createPublicStatsService(String clientId, String secret) {
-    	return new PublicStatsServiceImpl(clientId, secret);    	
+    public PublicStatsService createPublicStatsService() {
+    	return new PublicStatsServiceImpl(apiConsumer);    	
     }
     
     /**
      * Creates a new MendeleyService object.
      * 
+     * @param accessToken the access token
+     * 
      * @return the document service
      */
-    public DocumentService createDocumentService() {
-    	return new DocumentServiceImpl();    	
+    public DocumentService createDocumentService(MendeleyAccessToken accessToken) {
+    	return new DocumentServiceImpl(apiConsumer, accessToken);    	
     }
     
     /**
@@ -130,6 +161,6 @@ public class MendeleyServiceFactory {
      * @return the search service
      */
     public SearchService createSearchService() {
-    	return new SearchServiceImpl();    	
+    	return new SearchServiceImpl(apiConsumer);    	
     }
 }

@@ -16,15 +16,9 @@
  */
 package com.mendeley.oapi.services;
 
-import java.io.InputStream;
-import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.mendeley.oapi.schema.Gist;
-import com.mendeley.oapi.services.constant.TestConstants;
 
 /**
  * The Class PrivateGroupServiceTest.
@@ -40,8 +34,7 @@ public class PrivateGroupServiceTest extends BaseMendeleyServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		service = factory.createPrivateGroupService();
-		service.setAuthentication(authentication);
+		service = factory.createPrivateGroupService(authentication);
 	}
 
 	/* (non-Javadoc)
@@ -54,33 +47,58 @@ public class PrivateGroupServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test get gist.
+	 * Test create group.
 	 */
 	@Test
-	public void testGetGist() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Gist Id."), TestConstants.TEST_GIST_ID);
-		Gist gist = service.getGist(TestConstants.TEST_GIST_ID);
-		assertNotNull("Gist cannot be null", gist);
+	public void testCreateGroup() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test get gist content.
+	 * Test delete group.
 	 */
 	@Test
-	public void testGetGistContent() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Gist Id."), TestConstants.TEST_GIST_ID);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Gist File."), TestConstants.TEST_GIST_FILE);
-		InputStream gistContent = service.getGistContent(TestConstants.TEST_GIST_ID, TestConstants.TEST_GIST_FILE);
-		assertNotNullOrEmpty("Gist content cannot be null or empty", convertStreamToString(gistContent));
+	public void testDeleteGroup() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test get user gists.
+	 * Test get group details.
 	 */
 	@Test
-	public void testGetUserGists() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-		List<Gist> gists = service.getUserGists(TestConstants.TEST_USER_NAME);
-		assertNotNullOrEmpty("Gists cannot be null or empty.", gists);
+	public void testGetGroupDetails() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get group people.
+	 */
+	@Test
+	public void testGetGroupPeople() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get groups.
+	 */
+	@Test
+	public void testGetGroups() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test leave group.
+	 */
+	@Test
+	public void testLeaveGroup() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test unfollow group.
+	 */
+	@Test
+	public void testUnfollowGroup() {
+		fail("Not yet implemented");
 	}
 }

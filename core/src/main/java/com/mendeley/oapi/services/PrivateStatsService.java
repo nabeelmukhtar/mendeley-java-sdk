@@ -16,9 +16,11 @@
  */
 package com.mendeley.oapi.services;
 
-import java.util.List;
+import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.schema.Publication;
+import com.mendeley.oapi.schema.Tag;
+import com.mendeley.oapi.schema.User;
 
-import com.mendeley.oapi.schema.Commit;
 
 /**
  * The Interface PrivateStatsService.
@@ -26,48 +28,23 @@ import com.mendeley.oapi.schema.Commit;
 public interface PrivateStatsService extends MendeleyService {
 	
 	/**
-	 * Gets the commits.
+	 * Gets the authors.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param branch the branch
-	 * 
-	 * @return the commits
+	 * @return the authors
 	 */
-	public List<Commit> getCommits(String userName, String repositoryName, String branch);
+	public PagedList<User> getAuthors();
 	
 	/**
-	 * Gets the commits.
+	 * Gets the tags.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param branch the branch
-	 * @param pageNumber the page number
-	 * 
-	 * @return the commits
+	 * @return the tags
 	 */
-	public List<Commit> getCommits(String userName, String repositoryName, String branch, int pageNumber);
+	public PagedList<Tag> getTags();
 	
 	/**
-	 * Gets the commits.
+	 * Gets the publications.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param branch the branch
-	 * @param filePath the file path
-	 * 
-	 * @return the commits
+	 * @return the publications
 	 */
-	public List<Commit> getCommits(String userName, String repositoryName, String branch, String filePath);
-	
-	/**
-	 * Gets the commit.
-	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param sha the sha
-	 * 
-	 * @return the commit
-	 */
-	public Commit getCommit(String userName, String repositoryName, String sha);
+	public PagedList<Publication> getPublications();
 }

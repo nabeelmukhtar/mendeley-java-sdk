@@ -16,14 +16,9 @@
  */
 package com.mendeley.oapi.services;
 
-import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.mendeley.oapi.schema.PullRequest;
-import com.mendeley.oapi.services.constant.TestConstants;
 
 /**
  * The Class SearchServiceTest.
@@ -40,7 +35,6 @@ public class SearchServiceTest extends BaseMendeleyServiceTest {
 	public void setUp() throws Exception {
 		super.setUp();
 		service = factory.createSearchService();
-		service.setAuthentication(authentication);
 	}
 
 	/* (non-Javadoc)
@@ -53,38 +47,90 @@ public class SearchServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test get pull request.
+	 * Test get document details string.
 	 */
 	@Test
-	public void testGetPullRequest() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue Number."), TestConstants.TEST_ISSUE_NUMBER);
-		PullRequest pullRequest = service.getPullRequest(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER));
-		assertNotNull("Pull request cannot be null or empty", pullRequest);
+	public void testGetDocumentDetailsString() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test get pull requests.
+	 * Test get document details string type.
 	 */
 	@Test
-	public void testGetPullRequests() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Tree SHA."), TestConstants.TEST_TREE_SHA);
-		List<PullRequest> pullRequests = service.getPullRequests(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
-		assertNotNullOrEmpty("Pull requests cannot be null or empty", pullRequests);
+	public void testGetDocumentDetailsStringType() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test create pull request.
+	 * Test get documents by author string.
 	 */
 	@Test
-	public void testCreatePullRequest() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Base SHA."), TestConstants.TEST_BASE_SHA);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Head SHA."), TestConstants.TEST_HEAD_SHA);
-		service.createPullRequest(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_BASE_SHA, TestConstants.TEST_HEAD_SHA, TestConstants.TEST_ISSUE_TITLE, TestConstants.TEST_ISSUE_BODY);
+	public void testGetDocumentsByAuthorString() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get documents by author string int.
+	 */
+	@Test
+	public void testGetDocumentsByAuthorStringInt() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get documents by author string int int.
+	 */
+	@Test
+	public void testGetDocumentsByAuthorStringIntInt() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get documents by tag string.
+	 */
+	@Test
+	public void testGetDocumentsByTagString() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get documents by tag string int int.
+	 */
+	@Test
+	public void testGetDocumentsByTagStringIntInt() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get documents by tag string string string.
+	 */
+	@Test
+	public void testGetDocumentsByTagStringStringString() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test get related documents.
+	 */
+	@Test
+	public void testGetRelatedDocuments() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test search string array.
+	 */
+	@Test
+	public void testSearchStringArray() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test search string int int.
+	 */
+	@Test
+	public void testSearchStringIntInt() {
+		fail("Not yet implemented");
 	}
 }

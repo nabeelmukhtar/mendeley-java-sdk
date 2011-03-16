@@ -16,16 +16,9 @@
  */
 package com.mendeley.oapi.services;
 
-import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.mendeley.oapi.schema.Key;
-import com.mendeley.oapi.schema.Repository;
-import com.mendeley.oapi.schema.User;
-import com.mendeley.oapi.services.constant.TestConstants;
 
 /**
  * The Class ProfileServiceTest.
@@ -41,8 +34,7 @@ public class ProfileServiceTest extends BaseMendeleyServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		service = factory.createProfileService();
-		service.setAuthentication(authentication);
+		service = factory.createProfileService(authentication);
 	}
 
 	/* (non-Javadoc)
@@ -55,152 +47,18 @@ public class ProfileServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test add email.
+	 * Test add contact.
 	 */
 	@Test
-	public void testAddEmail() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Email."), TestConstants.TEST_EMAIL);
-		service.addEmail(TestConstants.TEST_EMAIL);
+	public void testAddContact() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test add key.
+	 * Test get contacts.
 	 */
 	@Test
-	public void testAddKey() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Key Title."), TestConstants.TEST_KEY_TITLE);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Key."), TestConstants.TEST_KEY);
-		service.addKey(TestConstants.TEST_KEY_TITLE, TestConstants.TEST_KEY);
-	}
-
-	/**
-	 * Test follow user.
-	 */
-	@Test
-	public void testFollowUser() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-		service.followUser(TestConstants.TEST_USER_NAME);
-	}
-
-	/**
-	 * Test get current user.
-	 */
-	@Test
-	public void testGetCurrentUser() {
-		User user = service.getCurrentUser();
-		assertNotNull("User cannot be null.", user);
-	}
-
-	/**
-	 * Test get emails.
-	 */
-	@Test
-	public void testGetEmails() {
-		List<String> emails = service.getEmails();
-		assertNotNullOrEmpty("Emails cannot be null or empty.", emails);
-	}
-
-	/**
-	 * Test get keys.
-	 */
-	@Test
-	public void testGetKeys() {
-		List<Key> keys = service.getKeys();
-		assertNotNullOrEmpty("Keys cannot be null or empty.", keys);
-	}
-
-	/**
-	 * Test get user by username.
-	 */
-	@Test
-	public void testGetUserByUsername() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-		User user = service.getUserByUsername(TestConstants.TEST_USER_NAME);
-		assertNotNull("User cannot be null.", user);
-	}
-
-	/**
-	 * Test get user followers.
-	 */
-	@Test
-	public void testGetUserFollowers() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-		List<String> userFollowers = service.getUserFollowers(TestConstants.TEST_USER_NAME);
-		assertNotNullOrEmpty("User followers cannot be null or empty.", userFollowers);
-	}
-
-	/**
-	 * Test get user following.
-	 */
-	@Test
-	public void testGetUserFollowing() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-		List<String> userFollowing = service.getUserFollowing(TestConstants.TEST_USER_NAME);
-		assertNotNullOrEmpty("User followering cannot be null or empty.", userFollowing);
-	}
-
-	/**
-	 * Test get watched repositories.
-	 */
-	@Test
-	public void testGetWatchedRepositories() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-		List<Repository> repositories = service.getWatchedRepositories(TestConstants.TEST_USER_NAME);
-		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
-	}
-
-	/**
-	 * Test remove email.
-	 */
-	@Test
-	public void testRemoveEmail() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Email."), TestConstants.TEST_EMAIL);
-		service.removeEmail(TestConstants.TEST_EMAIL);
-	}
-
-	/**
-	 * Test remove key.
-	 */
-	@Test
-	public void testRemoveKey() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Key Id."), TestConstants.TEST_KEY_ID);
-		service.removeKey(TestConstants.TEST_KEY_ID);
-	}
-
-	/**
-	 * Test get user by email.
-	 */
-	@Test
-	public void testGetUserByEmail() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Email."), TestConstants.TEST_EMAIL);
-		User user = service.getUserByEmail(TestConstants.TEST_EMAIL);
-		assertNotNull("User cannot be null or empty.", user);
-	}
-
-	/**
-	 * Test search users by name.
-	 */
-	@Test
-	public void testSearchUsersByName() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-		List<User> users = service.searchUsersByName(TestConstants.TEST_USER_NAME);
-		assertNotNullOrEmpty("Users cannot be null or empty.", users);
-	}
-
-	/**
-	 * Test unfollow user.
-	 */
-	@Test
-	public void testUnfollowUser() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-		service.unfollowUser(TestConstants.TEST_USER_NAME);
-	}
-
-	/**
-	 * Test update user.
-	 */
-	@Test
-	public void testUpdateUser() {
-//		service.updateUser(user);
+	public void testGetContacts() {
+		fail("Not yet implemented");
 	}
 }

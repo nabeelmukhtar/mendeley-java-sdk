@@ -16,203 +16,80 @@
  */
 package com.mendeley.oapi.services.impl;
 
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-import com.mendeley.oapi.schema.Feed;
+import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.schema.Document;
 import com.mendeley.oapi.services.DocumentService;
-import com.mendeley.oapi.services.MendeleyException;
-import com.mendeley.oapi.services.constant.MendeleyApiUrls;
-import com.mendeley.oapi.services.constant.ParameterNames;
-import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
+import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
+import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
 /**
  * The Class DocumentServiceImpl.
  */
-public class DocumentServiceImpl extends BaseMendeleyService implements
+public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
 		DocumentService {
-	
+
 	/**
 	 * Instantiates a new document service impl.
-	 */
-	public DocumentServiceImpl() {
-        // by default we compress contents
-        requestHeaders.put("Accept-Encoding", "gzip, deflate");
-	}
-
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.FeedService#getCommitFeed(java.lang.String, java.lang.String, java.lang.String, int)
-	 */
-	@Override
-	public Feed getCommitFeed(String userName, String repositoryName, String branchName, int count) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_COMMIT_FEED_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branchName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
-        return unmarshall(apiUrl);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.FeedService#getNetworkFeed(java.lang.String, java.lang.String, int)
-	 */
-	@Override
-	public Feed getNetworkFeed(String userName, String repositoryName, int count) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_NETWORK_FEED_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
-        return unmarshall(apiUrl);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.FeedService#getPrivateUserFeed(java.lang.String, int)
-	 */
-	@Override
-	public Feed getPrivateUserFeed(String userName, int count) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_PRIVATE_USER_FEED_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
-        return unmarshall(apiUrl);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.FeedService#getPublicTimelineFeed(int)
-	 */
-	@Override
-	public Feed getPublicTimelineFeed(int count) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_PUBLIC_TIMELINE_FEED_URL);
-        String                apiUrl  = builder.withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
-        return unmarshall(apiUrl);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.FeedService#getPublicUserFeed(java.lang.String, int)
-	 */
-	@Override
-	public Feed getPublicUserFeed(String userName, int count) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_PUBLIC_USER_FEED_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
-        return unmarshall(apiUrl);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.FeedService#getWikiFeed(java.lang.String, java.lang.String, int)
-	 */
-	@Override
-	public Feed getWikiFeed(String userName, String repositoryName, int count) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_WIKI_FEED_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
-        return unmarshall(apiUrl);
-	}
-	
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.FeedService#getBlogFeed(int)
-	 */
-	@Override
-	public Feed getBlogFeed(int count) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_BLOG_FEED_URL);
-        String                apiUrl  = builder.withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
-        return unmarshall(apiUrl);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.FeedService#getDiscussionsFeed(int)
-	 */
-	@Override
-	public Feed getDiscussionsFeed(int count) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_DISCUSSIONS_FEED_URL);
-        String                apiUrl  = builder.withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
-        return unmarshall(apiUrl);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.FeedService#getDiscussionsFeed(java.lang.String, int)
-	 */
-	@Override
-	public Feed getDiscussionsFeed(String topic, int count) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_DISCUSSIONS_FEED_BY_TOPIC_URL);
-        String                apiUrl  = builder.withField(ParameterNames.KEYWORD, topic).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
-        return unmarshall(apiUrl);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.FeedService#getJobPositionsFeed(int)
-	 */
-	@Override
-	public Feed getJobPositionsFeed(int count) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_JOB_POSITIONS_FEED_URL);
-        String                apiUrl  = builder.withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
-        return unmarshall(apiUrl);
-	}
-	
-	
-	/**
-	 * Unmarshall.
 	 * 
-	 * @param apiUrl the api url
-	 * 
-	 * @return the feed
+	 * @param apiConsumer the api consumer
+	 * @param accessToken the access token
 	 */
-	protected Feed unmarshall(String apiUrl) {
-        JsonObject response = unmarshall(callApiGet(apiUrl));
-    	if (response.isJsonObject()) {
-    		JsonObject json = response.getAsJsonObject();
-    		int status = json.get("responseStatus").getAsInt();
-    		if (status != 200) {
-    			throw new MendeleyException(json.get("responseDetails").getAsString());
-    		}
-    		JsonElement data = json.get("responseData");
-    		if (data != null) {
-    	        return unmarshall(new TypeToken<Feed>(){}, data.getAsJsonObject().get("feed"));
-    		}
-    	}
-    	return null;
+	public DocumentServiceImpl(MendeleyApiConsumer apiConsumer,
+			MendeleyAccessToken accessToken) {
+		super(apiConsumer, accessToken);
 	}
-	
+
 	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.impl.BaseGitHubService#getGsonBuilder()
+	 * @see com.mendeley.oapi.services.DocumentService#createDocument(com.mendeley.oapi.schema.Document)
 	 */
-	protected GsonBuilder getGsonBuilder() {
-		GsonBuilder gson = super.getGsonBuilder();
-		gson.setDateFormat("EEE', 'dd' 'MMM' 'yyyy' 'HH:mm:ss' 'Z");
-		return gson;
+	@Override
+	public void createDocument(Document document) {
+		// TODO Auto-generated method stub
+		
 	}
-	
-//	@SuppressWarnings("unchecked")
-//	private Feed populateFeed(SyndFeed feed) {
-//		Feed retVal = new Feed();
-//		retVal.setAuthor(feed.getAuthor());
-//		retVal.setDescription(feed.getDescription());
-//		retVal.setLink(feed.getLink());
-//		retVal.setTitle(feed.getTitle());
-//		List<FeedEntry> entries = new ArrayList<FeedEntry>(feed.getEntries().size());
-//		retVal.setEntries(entries);
-//		
-//		for (SyndEntry entry : (List<SyndEntry>) feed.getEntries()) {
-//			FeedEntry feedEntry = new FeedEntry();
-//			feedEntry.setAuthor(entry.getAuthor());
-////			feedEntry.setCategories(entry.getCategories());
-//			if (entry.getContents() != null) {
-//				StringBuilder builder = new StringBuilder();
-//				for (SyndContent content : (List<SyndContent>) entry.getContents()) {
-//					builder.append(content.getValue());
-//				}
-//				feedEntry.setContent(builder.toString());
-//			}
-//			feedEntry.setLink(entry.getLink());
-//			feedEntry.setPublishedDate(entry.getPublishedDate());
-//			feedEntry.setTitle(entry.getTitle());
-//			
-//			entries.add(feedEntry);
-//		}
-//		return retVal;
-//	}
-//
-//	/**
-//	 * Creates the git hub api url builder.
-//	 * 
-//	 * @param urlFormat
-//	 *            the url format
-//	 * 
-//	 * @return the git hub api url builder
-//	 */
-//	protected GitHubApiUrlBuilder createGitHubApiUrlBuilder(String urlFormat) {
-//		return new GitHubApiUrlBuilder(urlFormat);
-//	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.DocumentService#getAuthoredPublications()
+	 */
+	@Override
+	public PagedList<Document> getAuthoredPublications() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.DocumentService#getDocumentDetails(java.lang.String)
+	 */
+	@Override
+	public Document getDocumentDetails(String documentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.DocumentService#getDocumentIds()
+	 */
+	@Override
+	public PagedList<String> getDocumentIds() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.DocumentService#getDocumentIds(int, int)
+	 */
+	@Override
+	public PagedList<String> getDocumentIds(int page, int itemsPerPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.DocumentService#removeDocument(java.lang.String)
+	 */
+	@Override
+	public void removeDocument(String documentId) {
+		// TODO Auto-generated method stub
+		
+	}
 }

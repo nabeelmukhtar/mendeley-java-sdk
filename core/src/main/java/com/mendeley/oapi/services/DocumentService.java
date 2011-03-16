@@ -16,7 +16,9 @@
  */
 package com.mendeley.oapi.services;
 
-import com.mendeley.oapi.schema.Feed;
+import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.schema.Document;
+
 
 
 /**
@@ -25,102 +27,49 @@ import com.mendeley.oapi.schema.Feed;
 public interface DocumentService extends MendeleyService {
 	
 	/**
-	 * Gets the public user feed.
+	 * Gets the document ids.
 	 * 
-	 * @param userName the user name
-	 * @param count the count
-	 * 
-	 * @return the public user feed
+	 * @return the document ids
 	 */
-	public Feed getPublicUserFeed(String userName, int count);
+	public PagedList<String>	getDocumentIds();
 	
 	/**
-	 * Gets the private user feed.
+	 * Gets the document ids.
 	 * 
-	 * @param userName the user name
-	 * @param count the count
+	 * @param page the page
+	 * @param itemsPerPage the items per page
 	 * 
-	 * @return the private user feed
+	 * @return the document ids
 	 */
-	public Feed getPrivateUserFeed(String userName, int count);
+	public PagedList<String>	getDocumentIds(int page, int itemsPerPage);
 	
 	/**
-	 * Gets the commit feed.
+	 * Gets the authored publications.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param branchName the branch name
-	 * @param count the count
-	 * 
-	 * @return the commit feed
+	 * @return the authored publications
 	 */
-	public Feed getCommitFeed(String userName, String repositoryName, String branchName, int count);
+	public PagedList<Document> getAuthoredPublications();
 	
 	/**
-	 * Gets the network feed.
+	 * Gets the document details.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param count the count
+	 * @param documentId the document id
 	 * 
-	 * @return the network feed
+	 * @return the document details
 	 */
-	public Feed getNetworkFeed(String userName, String repositoryName, int count);
+	public Document getDocumentDetails(String documentId);
 	
 	/**
-	 * Gets the wiki feed.
+	 * Creates the document.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param count the count
-	 * 
-	 * @return the wiki feed
+	 * @param document the document
 	 */
-	public Feed getWikiFeed(String userName, String repositoryName, int count);
+	public void createDocument(Document document);
 	
 	/**
-	 * Gets the public timeline feed.
+	 * Removes the document.
 	 * 
-	 * @param count the count
-	 * 
-	 * @return the public timeline feed
+	 * @param documentId the document id
 	 */
-	public Feed getPublicTimelineFeed(int count);
-	
-	/**
-	 * Gets the discussions feed.
-	 * 
-	 * @param count the count
-	 * 
-	 * @return the discussions feed
-	 */
-	public Feed getDiscussionsFeed(int count);
-	
-	/**
-	 * Gets the discussions feed.
-	 * 
-	 * @param topic the topic
-	 * @param count the count
-	 * 
-	 * @return the discussions feed
-	 */
-	public Feed getDiscussionsFeed(String topic, int count);
-	
-	/**
-	 * Gets the job positions feed.
-	 * 
-	 * @param count the count
-	 * 
-	 * @return the job positions feed
-	 */
-	public Feed getJobPositionsFeed(int count);
-	
-	/**
-	 * Gets the blog feed.
-	 * 
-	 * @param count the count
-	 * 
-	 * @return the blog feed
-	 */
-	public Feed getBlogFeed(int count);
+	public void removeDocument(String documentId);
 }

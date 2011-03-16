@@ -18,35 +18,48 @@ package com.mendeley.oapi.services.example;
 
 import java.util.List;
 
-import com.mendeley.oapi.schema.NetworkCommit;
+import com.mendeley.oapi.schema.Collection;
 import com.mendeley.oapi.services.MendeleyServiceFactory;
 import com.mendeley.oapi.services.SharedCollectionService;
+import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 
 /**
  * The Class SharedCollectionApiSample.
  */
 public class SharedCollectionApiSample {
 
+	/** The Constant CONSUMER_KEY. */
+	private static final String CONSUMER_KEY = "fb5f4f918e29a86d60ccede660d3d68b04d37e9f6";
+	
+	/** The Constant CONSUMER_SECRET. */
+	private static final String CONSUMER_SECRET = "ecde8b6a67627dc6f3dd53ba59ba4553";
+	
+	/** The Constant ACCESS_TOKEN. */
+	private static final String ACCESS_TOKEN = "564d0e4e13273906aa55d53b903d48e204d7e0501";
+	
+	/** The Constant TOKEN_SECRET. */
+	private static final String TOKEN_SECRET = "1c8e2290a0a894bc1d1cbf4b0cc07484";
+	
     /**
      * The main method.
      * 
      * @param args the arguments
      */
 	public static void main(String[] args) {
-		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance();
-		SharedCollectionService service = factory.createSharedCollectionService();
-		List<NetworkCommit> commits = service.getNetworkData("facebook", "tornado", "7b80c2f4db226d6fa3a7f3dfa59277da1d642f91");
-		for (NetworkCommit commit : commits) {
-			printResult(commit);
+		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance(CONSUMER_KEY, CONSUMER_SECRET);
+		SharedCollectionService service = factory.createSharedCollectionService(new MendeleyAccessToken(ACCESS_TOKEN, TOKEN_SECRET));
+		List<Collection> collections = service.getCollections();
+		for (Collection collection : collections) {
+			printResult(collection);
 		}
 	}
     
 	/**
 	 * Prints the result.
 	 * 
-	 * @param commit the commit
+	 * @param collection the collection
 	 */
-	private static void printResult(NetworkCommit commit) {
-		System.out.println(commit);
+	private static void printResult(Collection collection) {
+		System.out.println(collection);
 	}
 }

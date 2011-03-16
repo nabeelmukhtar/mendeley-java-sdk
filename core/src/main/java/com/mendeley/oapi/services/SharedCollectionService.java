@@ -17,9 +17,11 @@
 package com.mendeley.oapi.services;
 
 import java.util.List;
+import java.util.Map;
 
-import com.mendeley.oapi.schema.NetworkCommit;
-import com.mendeley.oapi.schema.NetworkMeta;
+import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.schema.Collection;
+import com.mendeley.oapi.schema.User;
 
 /**
  * The Interface SharedCollectionService.
@@ -27,36 +29,72 @@ import com.mendeley.oapi.schema.NetworkMeta;
 public interface SharedCollectionService extends MendeleyService {
 	
 	/**
-	 * Gets the network meta.
+	 * Gets the collections.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * 
-	 * @return the network meta
+	 * @return the collections
 	 */
-	public NetworkMeta getNetworkMeta(String userName, String repositoryName);
+	public PagedList<Collection> getCollections();
 	
 	/**
-	 * Gets the network data.
+	 * Gets the collection documents.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param networkHash the network hash
+	 * @param collectionId the collection id
 	 * 
-	 * @return the network data
+	 * @return the collection documents
 	 */
-	public List<NetworkCommit> getNetworkData(String userName, String repositoryName, String networkHash);
+	public PagedList<String> getCollectionDocuments(String collectionId);
 	
 	/**
-	 * Gets the network data.
+	 * Gets the collection documents.
 	 * 
-	 * @param userName the user name
-	 * @param repositoryName the repository name
-	 * @param networkHash the network hash
-	 * @param startIndex the start index
-	 * @param endIndex the end index
+	 * @param collectionId the collection id
+	 * @param page the page
+	 * @param itemsPerPage the items per page
 	 * 
-	 * @return the network data
+	 * @return the collection documents
 	 */
-	public List<NetworkCommit> getNetworkData(String userName, String repositoryName, String networkHash, int startIndex, int endIndex);
+	public PagedList<String> getCollectionDocuments(String collectionId, int page, int itemsPerPage);
+	
+	/**
+	 * Gets the collection members.
+	 * 
+	 * @param collectionId the collection id
+	 * 
+	 * @return the collection members
+	 */
+	public Map<Collection.MembershipType, List<User>> getCollectionMembers(String collectionId);
+	
+	/**
+	 * Adds the document to collection.
+	 * 
+	 * @param collectionId the collection id
+	 * @param documentId the document id
+	 * 
+	 * @return the string
+	 */
+	public String addDocumentToCollection(String collectionId, String documentId);
+	
+	/**
+	 * Creates the collection.
+	 * 
+	 * @param name the name
+	 * 
+	 * @return the collection
+	 */
+	public Collection createCollection(String name);
+	
+	/**
+	 * Removes the collection.
+	 * 
+	 * @param collectionId the collection id
+	 */
+	public void removeCollection(String collectionId);
+	
+	/**
+	 * Removes the document from collection.
+	 * 
+	 * @param collectionId the collection id
+	 * @param documentId the document id
+	 */
+	public void removeDocumentFromCollection(String collectionId, String documentId);
 }

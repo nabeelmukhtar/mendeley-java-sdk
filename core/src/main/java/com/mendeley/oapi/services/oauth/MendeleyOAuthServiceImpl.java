@@ -283,4 +283,10 @@ class MendeleyOAuthServiceImpl extends MendeleyApiGateway implements MendeleyOAu
  
         return sb.toString();
     }
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.impl.MendeleyApiGateway#signRequest(java.net.HttpURLConnection)
+	 */
+	@Override
+	protected void signRequest(HttpURLConnection request) {}
 }

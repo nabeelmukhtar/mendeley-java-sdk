@@ -16,41 +16,50 @@
  */
 package com.mendeley.oapi.services.example;
 
-import com.mendeley.oapi.schema.Feed;
-import com.mendeley.oapi.schema.FeedEntry;
+import java.util.List;
+
+import com.mendeley.oapi.schema.Document;
 import com.mendeley.oapi.services.DocumentService;
 import com.mendeley.oapi.services.MendeleyServiceFactory;
+import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 
 /**
  * The Class DocumentSample.
  */
 public class DocumentSample {
 
+	/** The Constant CONSUMER_KEY. */
+	private static final String CONSUMER_KEY = "fb5f4f918e29a86d60ccede660d3d68b04d37e9f6";
+	
+	/** The Constant CONSUMER_SECRET. */
+	private static final String CONSUMER_SECRET = "ecde8b6a67627dc6f3dd53ba59ba4553";
+	
+	/** The Constant ACCESS_TOKEN. */
+	private static final String ACCESS_TOKEN = "564d0e4e13273906aa55d53b903d48e204d7e0501";
+	
+	/** The Constant TOKEN_SECRET. */
+	private static final String TOKEN_SECRET = "1c8e2290a0a894bc1d1cbf4b0cc07484";
+	
     /**
      * The main method.
      * 
      * @param args the arguments
      */
 	public static void main(String[] args) {
-		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance();
-		DocumentService service = factory.createDocumentService();
-		Feed feed = service.getPublicUserFeed("apache", 10);
-		printResult(feed);
+		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance(CONSUMER_KEY, CONSUMER_SECRET);
+		DocumentService service = factory.createDocumentService(new MendeleyAccessToken(ACCESS_TOKEN, TOKEN_SECRET));
+		List<String> documentIds = service.getDocumentIds();
+		System.out.println(documentIds);
+		Document document = service.getDocumentDetails("");
+		printResult(document);
 	}
 
 	/**
 	 * Prints the result.
 	 * 
-	 * @param feed the feed
+	 * @param document the document
 	 */
-	private static void printResult(Feed feed) {
-		if (feed != null) {
-			System.out.println(feed.getAuthor());
-			System.out.println(feed.getLink());
-			System.out.println(feed.getDescription());
-			for (FeedEntry entry : feed.getEntries()) {
-				System.out.println(entry);
-			}
-		}
+	private static void printResult(Document document) {
+		System.out.println(document);
 	}
 }

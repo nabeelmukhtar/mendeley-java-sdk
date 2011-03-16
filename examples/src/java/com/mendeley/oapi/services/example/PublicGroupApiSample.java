@@ -17,12 +17,8 @@
 package com.mendeley.oapi.services.example;
 
 import java.util.List;
-import java.util.Map;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 
-import com.mendeley.oapi.schema.Language;
-import com.mendeley.oapi.schema.Repository;
+import com.mendeley.oapi.schema.Group;
 import com.mendeley.oapi.services.MendeleyServiceFactory;
 import com.mendeley.oapi.services.PublicGroupService;
 
@@ -31,6 +27,12 @@ import com.mendeley.oapi.services.PublicGroupService;
  */
 public class PublicGroupApiSample {
 
+	/** The Constant CONSUMER_KEY. */
+	private static final String CONSUMER_KEY = "fb5f4f918e29a86d60ccede660d3d68b04d37e9f6";
+	
+	/** The Constant CONSUMER_SECRET. */
+	private static final String CONSUMER_SECRET = "ecde8b6a67627dc6f3dd53ba59ba4553";
+	
     /**
      * The main method.
      * 
@@ -39,27 +41,20 @@ public class PublicGroupApiSample {
      * @throws Exception the exception
      */
 	public static void main(String[] args) throws Exception {
-		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance();
+		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance(CONSUMER_KEY, CONSUMER_SECRET);
 		PublicGroupService service = factory.createPublicGroupService();
-		List<Repository> repositories = service.searchRepositories("hadoop");
-		for (Repository repository : repositories) {
-			printResult(repository);
-		}
-		Map<Language, Long> breakDown = service.getLanguageBreakdown("facebook", "tornado");
-		System.out.println(breakDown);
-		ZipInputStream zip = service.getRepositoryArchive("nabeelmukhtar", "github-java-sdk", Repository.MASTER);
-		ZipEntry entry = null;
-		while ((entry = zip.getNextEntry()) != null) {
-			System.out.println(entry.getName());
+		List<Group> groups = service.getGroups();
+		for (Group group : groups) {
+			printResult(group);
 		}
 	}
     
 	/**
 	 * Prints the result.
 	 * 
-	 * @param repository the repository
+	 * @param group the group
 	 */
-	private static void printResult(Repository repository) {
-		System.out.println(repository);
+	private static void printResult(Group group) {
+		System.out.println(group);
 	}
 }

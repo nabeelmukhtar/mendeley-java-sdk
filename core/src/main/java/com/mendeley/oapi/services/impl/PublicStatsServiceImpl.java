@@ -16,81 +16,117 @@
  */
 package com.mendeley.oapi.services.impl;
 
-import java.util.Set;
-import java.util.regex.Matcher;
-
-import com.mendeley.oapi.services.MendeleyException;
+import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.schema.Document;
+import com.mendeley.oapi.schema.Publication;
+import com.mendeley.oapi.schema.Tag;
+import com.mendeley.oapi.schema.User;
 import com.mendeley.oapi.services.PublicStatsService;
-import com.mendeley.oapi.services.constant.ApplicationConstants;
-import com.mendeley.oapi.services.constant.MendeleyApiUrls;
-import com.mendeley.oapi.services.constant.ParameterNames;
-import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
+import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
 /**
  * The Class PublicStatsServiceImpl.
  */
-public class PublicStatsServiceImpl extends BaseMendeleyService implements PublicStatsService {
+public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements PublicStatsService {
 
-    /** The client id. */
-    private final String clientId;
-    
-    /** The secret. */
-    private final String secret;
-
-    /**
-     * Instantiates a new public stats service impl.
-     * 
-     * @param clientId the client id
-     * @param secret the secret
-     */
-    public PublicStatsServiceImpl(String clientId, String secret) {
-    	this.clientId = clientId;
-    	this.secret = secret;
-    }
-    
-    /* (non-Javadoc)
-     * @see com.google.code.facebook.graph.client.oauth.FacebookOAuthService#getAuthorizationUrl(java.lang.String)
-     */
-    @Override
-	public String getAuthorizationUrl(String callBackUrl) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.OAuthUrls.AUTHORIZE_URL);
-		builder.withParameter(ParameterNames.CLIENT_ID, clientId).withParameter(ParameterNames.REDIRECT_URI, callBackUrl);
-		return builder.buildUrl();
+	/**
+	 * Instantiates a new public stats service impl.
+	 * 
+	 * @param apiConsumer the api consumer
+	 */
+	public PublicStatsServiceImpl(MendeleyApiConsumer apiConsumer) {
+		super(apiConsumer);
 	}
-    
+
 	/* (non-Javadoc)
-	 * @see com.google.code.facebook.graph.client.oauth.FacebookOAuthService#getAuthorizationUrl(java.lang.String, java.util.Set)
+	 * @see com.mendeley.oapi.services.PublicStatsService#getAuthors()
 	 */
 	@Override
-	public String getAuthorizationUrl(String callBackUrl,
-			Set<Scope> permissions) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.OAuthUrls.AUTHORIZE_URL);
-		builder.withParameter(ParameterNames.CLIENT_ID, clientId).withParameter(ParameterNames.REDIRECT_URI, callBackUrl);
-		builder.withParameterEnumSet(ParameterNames.SCOPE, permissions, ",");
-		return builder.buildUrl();
+	public PagedList<User> getAuthors() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-    /* (non-Javadoc)
-     * @see com.google.code.facebook.graph.client.oauth.FacebookOAuthService#getAccessToken(java.lang.String, java.lang.String)
-     */
-    @Override
-	public String getAccessToken(String callBackUrl, String code) {
-    	try {
-    		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.OAuthUrls.ACCESS_TOKEN_URL);
-    		builder.withParameter(ParameterNames.CLIENT_ID, clientId);
-    		builder.withParameter(ParameterNames.CLIENT_SECRET, secret);
-    		builder.withParameter(ParameterNames.REDIRECT_URI, callBackUrl);
-    		builder.withParameter(ParameterNames.CODE, code);
-    		
-			String response = convertStreamToString(callApiGet(builder.buildUrl()));
-			Matcher matcher = ApplicationConstants.ACCESS_TOKEN_PATTERN.matcher(response);
-			if (matcher.find()) {
-            	return matcher.group(1);
-            } else {
-            	throw new MendeleyException(response);
-            }
-		} catch (Exception e) {
-			throw new MendeleyException(e);
-		}
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PublicStatsService#getAuthors(java.lang.String)
+	 */
+	@Override
+	public PagedList<User> getAuthors(String disciplineId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PublicStatsService#getAuthors(java.lang.String, boolean)
+	 */
+	@Override
+	public PagedList<User> getAuthors(String disciplineId, boolean upandcoming) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PublicStatsService#getPapers()
+	 */
+	@Override
+	public PagedList<Document> getPapers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PublicStatsService#getPapers(java.lang.String)
+	 */
+	@Override
+	public PagedList<Document> getPapers(String disciplineId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PublicStatsService#getPapers(java.lang.String, boolean)
+	 */
+	@Override
+	public PagedList<Document> getPapers(String disciplineId,
+			boolean upandcoming) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PublicStatsService#getPublications()
+	 */
+	@Override
+	public PagedList<Publication> getPublications() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PublicStatsService#getPublications(java.lang.String)
+	 */
+	@Override
+	public PagedList<Publication> getPublications(String disciplineId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PublicStatsService#getPublications(java.lang.String, boolean)
+	 */
+	@Override
+	public PagedList<Publication> getPublications(String disciplineId,
+			boolean upandcoming) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PublicStatsService#getTags(java.lang.String)
+	 */
+	@Override
+	public PagedList<Tag> getTags(String disciplineId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -16,55 +16,96 @@
  */
 package com.mendeley.oapi.services.impl;
 
-import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-import com.mendeley.oapi.schema.Gist;
+import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.schema.Group;
+import com.mendeley.oapi.schema.User;
+import com.mendeley.oapi.schema.Group.MembershipType;
+import com.mendeley.oapi.schema.Group.Type;
 import com.mendeley.oapi.services.PrivateGroupService;
-import com.mendeley.oapi.services.constant.MendeleyApiUrls;
-import com.mendeley.oapi.services.constant.ParameterNames;
-import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
+import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
+import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
 /**
  * The Class PrivateGroupServiceImpl.
  */
-public class PrivateGroupServiceImpl extends BaseMendeleyService implements
+public class PrivateGroupServiceImpl extends BaseMendeleyPrivateService implements
 		PrivateGroupService {
 
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.GistService#getGist(java.lang.String)
+	/**
+	 * Instantiates a new private group service impl.
+	 * 
+	 * @param apiConsumer the api consumer
+	 * @param accessToken the access token
 	 */
-	@Override
-	public Gist getGist(String gistId) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_GIST_URL);
-        String                apiUrl  = builder.withField(ParameterNames.GIST_ID, gistId).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
-        
-        List<Gist> gists = unmarshall(new TypeToken<List<Gist>>(){}, json.get("gists"));
-        return (gists.isEmpty())? null : gists.get(0);
+	public PrivateGroupServiceImpl(MendeleyApiConsumer apiConsumer,
+			MendeleyAccessToken accessToken) {
+		super(apiConsumer, accessToken);
 	}
 
 	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.GistService#getGistContent(java.lang.String, java.lang.String)
+	 * @see com.mendeley.oapi.services.PrivateGroupService#createGroup(java.lang.String, com.mendeley.oapi.schema.Group.Type)
 	 */
 	@Override
-	public InputStream getGistContent(String gistId, String fileName) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_GIST_CONTENT_URL);
-        String                apiUrl  = builder.withField(ParameterNames.GIST_ID, gistId).withField(ParameterNames.FILE_NAME, fileName).buildUrl();
-        return callApiGet(apiUrl);
+	public Group createGroup(String name, Type type) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.GistService#getUserGists(java.lang.String)
+	 * @see com.mendeley.oapi.services.PrivateGroupService#deleteGroup(java.lang.String)
 	 */
 	@Override
-	public List<Gist> getUserGists(String userName) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_USER_GISTS_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
-        
-        return unmarshall(new TypeToken<List<Gist>>(){}, json.get("gists"));
+	public void deleteGroup(String groupId) {
+		// TODO Auto-generated method stub
+		
 	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PrivateGroupService#getGroupDetails(java.lang.String)
+	 */
+	@Override
+	public Group getGroupDetails(String groupId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PrivateGroupService#getGroupPeople(java.lang.String)
+	 */
+	@Override
+	public Map<MembershipType, List<User>> getGroupPeople(String groupId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PrivateGroupService#getGroups()
+	 */
+	@Override
+	public PagedList<Group> getGroups() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PrivateGroupService#leaveGroup(java.lang.String)
+	 */
+	@Override
+	public void leaveGroup(String groupId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.PrivateGroupService#unfollowGroup(java.lang.String)
+	 */
+	@Override
+	public void unfollowGroup(String groupId) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

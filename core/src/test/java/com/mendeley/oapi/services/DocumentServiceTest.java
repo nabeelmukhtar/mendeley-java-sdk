@@ -20,10 +20,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.mendeley.oapi.schema.Feed;
-import com.mendeley.oapi.schema.Repository;
-import com.mendeley.oapi.services.constant.TestConstants;
-
 /**
  * The Class DocumentServiceTest.
  */
@@ -38,8 +34,7 @@ public class DocumentServiceTest extends BaseMendeleyServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		service = factory.createDocumentService();
-		service.setAuthentication(authentication);
+		service = factory.createDocumentService(authentication);
 	}
 
 	/* (non-Javadoc)
@@ -52,110 +47,50 @@ public class DocumentServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test get commit feed.
+	 * Test create document.
 	 */
 	@Test
-	public void testGetCommitFeed() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	Feed feed = service.getCommitFeed(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Repository.MASTER, 10);
-    	assertNotNull("Feed cannot be null.", feed);
-    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
+	public void testCreateDocument() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test get network feed.
+	 * Test get authored publications.
 	 */
 	@Test
-	public void testGetNetworkFeed() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	Feed feed = service.getNetworkFeed(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, 10);
-    	assertNotNull("Feed cannot be null.", feed);
-    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
+	public void testGetAuthoredPublications() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test get private user feed.
+	 * Test get document details.
 	 */
 	@Test
-	public void testGetPrivateUserFeed() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	Feed feed = service.getPrivateUserFeed(TestConstants.TEST_USER_NAME, 10);
-    	assertNotNull("Feed cannot be null.", feed);
-    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
+	public void testGetDocumentDetails() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test get public timeline feed.
+	 * Test get document ids.
 	 */
 	@Test
-	public void testGetPublicTimelineFeed() {
-    	Feed feed = service.getPublicTimelineFeed(10);
-    	assertNotNull("Feed cannot be null.", feed);
-    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
+	public void testGetDocumentIds() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test get public user feed.
+	 * Test get document ids int int.
 	 */
 	@Test
-	public void testGetPublicUserFeed() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	Feed feed = service.getPublicUserFeed(TestConstants.TEST_USER_NAME, 10);
-    	assertNotNull("Feed cannot be null.", feed);
-    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
+	public void testGetDocumentIdsIntInt() {
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test get wiki feed.
+	 * Test remove document.
 	 */
 	@Test
-	public void testGetWikiFeed() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	Feed feed = service.getWikiFeed(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, 10);
-    	assertNotNull("Feed cannot be null.", feed);
-    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
-	}
-	
-	/**
-	 * Test get blog feed.
-	 */
-	@Test
-	public void testGetBlogFeed() {
-    	Feed feed = service.getBlogFeed(10);
-    	assertNotNull("Feed cannot be null.", feed);
-    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
-	}
-
-	/**
-	 * Test get discussions feed.
-	 */
-	@Test
-	public void testGetDiscussionsFeed() {
-    	Feed feed = service.getDiscussionsFeed(10);
-    	assertNotNull("Feed cannot be null.", feed);
-    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
-	}
-
-	/**
-	 * Test get discussions feed string.
-	 */
-	@Test
-	public void testGetDiscussionsFeedString() {
-    	Feed feed = service.getDiscussionsFeed("api", 10);
-    	assertNotNull("Feed cannot be null.", feed);
-    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
-	}
-
-	/**
-	 * Test get job positions feed.
-	 */
-	@Test
-	public void testGetJobPositionsFeed() {
-    	Feed feed = service.getJobPositionsFeed(10);
-    	assertNotNull("Feed cannot be null.", feed);
-    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
+	public void testRemoveDocument() {
+		fail("Not yet implemented");
 	}
 }
