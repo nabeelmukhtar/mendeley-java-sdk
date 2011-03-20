@@ -16,25 +16,15 @@
  */
 package com.mendeley.oapi.schema;
 
-import com.mendeley.oapi.common.ValueEnum;
-
 /**
- * The Class Document.
+ * The Class Publication.
  */
-public class Document extends SchemaEntity {
+public class Category extends SchemaEntity {
 
 	/**
 	 * The Enum Type.
 	 */
-	public enum Type implements ValueEnum {
-		;
-		
-		private String value;
-
-		@Override
-		public String value() {
-			return value;
-		}
+	public enum Type {
 
 	}
 

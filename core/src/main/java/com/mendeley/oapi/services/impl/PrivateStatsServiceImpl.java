@@ -16,11 +16,15 @@
  */
 package com.mendeley.oapi.services.impl;
 
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Publication;
 import com.mendeley.oapi.schema.Tag;
 import com.mendeley.oapi.schema.User;
 import com.mendeley.oapi.services.PrivateStatsService;
+import com.mendeley.oapi.services.constant.MendeleyApiUrls;
+import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
@@ -46,8 +50,11 @@ public class PrivateStatsServiceImpl extends BaseMendeleyPrivateService implemen
 	 */
 	@Override
 	public PagedList<User> getAuthors() {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_AUTHORS_URL);
+        String                apiUrl  = builder.buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<PagedList<User>>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -55,8 +62,11 @@ public class PrivateStatsServiceImpl extends BaseMendeleyPrivateService implemen
 	 */
 	@Override
 	public PagedList<Publication> getPublications() {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_PUBLICATIONS_URL);
+        String                apiUrl  = builder.buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<PagedList<Publication>>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -64,8 +74,11 @@ public class PrivateStatsServiceImpl extends BaseMendeleyPrivateService implemen
 	 */
 	@Override
 	public PagedList<Tag> getTags() {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_TAGS_URL);
+        String                apiUrl  = builder.buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<PagedList<Tag>>(){}, json);
 	}
 
 }

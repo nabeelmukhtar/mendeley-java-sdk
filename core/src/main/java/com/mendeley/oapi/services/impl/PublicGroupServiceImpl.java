@@ -19,12 +19,17 @@ package com.mendeley.oapi.services.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Document;
 import com.mendeley.oapi.schema.Group;
 import com.mendeley.oapi.schema.User;
 import com.mendeley.oapi.schema.Group.MembershipType;
 import com.mendeley.oapi.services.PublicGroupService;
+import com.mendeley.oapi.services.constant.MendeleyApiUrls;
+import com.mendeley.oapi.services.constant.ParameterNames;
+import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
 /**
@@ -47,36 +52,48 @@ public class PublicGroupServiceImpl extends BaseMendeleyPublicService implements
 	 */
 	@Override
 	public Group getGroupDetails(String groupId) {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_GROUP_DETAILS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<Group>(){}, json);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.mendeley.oapi.services.PublicGroupService#getGroupDocuments()
 	 */
 	@Override
-	public PagedList<Document> getGroupDocuments() {
-		// TODO Auto-generated method stub
-		return null;
+	public PagedList<Document> getGroupDocuments(String groupId) {
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_GROUP_DOCUMENTS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<PagedList<Document>>(){}, json);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.mendeley.oapi.services.PublicGroupService#getGroupDocuments(boolean)
 	 */
 	@Override
-	public PagedList<Document> getGroupDocuments(boolean details) {
-		// TODO Auto-generated method stub
-		return null;
+	public PagedList<Document> getGroupDocuments(String groupId, boolean details) {
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_GROUP_DOCUMENTS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, groupId).withParameter(ParameterNames.DETAILS, String.valueOf(details)).buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<PagedList<Document>>(){}, json);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.mendeley.oapi.services.PublicGroupService#getGroupDocuments(boolean, int, int)
 	 */
 	@Override
-	public PagedList<Document> getGroupDocuments(boolean details, int page,
+	public PagedList<Document> getGroupDocuments(String groupId, boolean details, int page,
 			int itemsPerPage) {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_GROUP_DOCUMENTS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, groupId).withParameter(ParameterNames.DETAILS, String.valueOf(details)).withParameter(ParameterNames.PAGE, String.valueOf(page)).withParameter(ParameterNames.ITEMS, String.valueOf(itemsPerPage)).buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<PagedList<Document>>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -93,8 +110,11 @@ public class PublicGroupServiceImpl extends BaseMendeleyPublicService implements
 	 */
 	@Override
 	public PagedList<Group> getGroups() {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_GROUPS_URL);
+        String                apiUrl  = builder.buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<PagedList<Group>>(){}, json);
 	}
 
 }

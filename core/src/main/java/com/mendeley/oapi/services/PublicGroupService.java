@@ -59,7 +59,7 @@ public interface PublicGroupService extends MendeleyService {
 	 * 
 	 * @return the group documents
 	 */
-	public PagedList<Document> getGroupDocuments();
+	public PagedList<Document> getGroupDocuments(String groupId);
 	
 	/**
 	 * Gets the group documents.
@@ -68,7 +68,7 @@ public interface PublicGroupService extends MendeleyService {
 	 * 
 	 * @return the group documents
 	 */
-	public PagedList<Document> getGroupDocuments(boolean details);
+	public PagedList<Document> getGroupDocuments(String groupId, boolean details);
 	
 	/**
 	 * Gets the group documents.
@@ -79,5 +79,5 @@ public interface PublicGroupService extends MendeleyService {
 	 * 
 	 * @return the group documents
 	 */
-	public PagedList<Document> getGroupDocuments(boolean details, int page, int itemsPerPage);
+	public PagedList<Document> getGroupDocuments(String groupId, boolean details, int page, int itemsPerPage);
 }

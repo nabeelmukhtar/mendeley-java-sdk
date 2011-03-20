@@ -17,6 +17,7 @@
 package com.mendeley.oapi.services;
 
 import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.schema.Category;
 import com.mendeley.oapi.schema.Document;
 
 
@@ -133,4 +134,8 @@ public interface SearchService extends MendeleyService {
 	 * @return the documents by tag
 	 */
 	public PagedList<Document> getDocumentsByTag(String tag, String category, String subCategory);
+	
+	public PagedList<Category> getCategories();
+	
+	public PagedList<Category> getSubCategories(String categoryId);
 }

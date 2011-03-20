@@ -171,4 +171,13 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 	protected MendeleyApiUrlBuilder createMendeleyApiUrlBuilder(String urlFormat) {
 		return new MendeleyApiUrlBuilder(urlFormat);
 	}
+	
+	protected String toString(String[] terms) {
+		StringBuilder builder = new StringBuilder();
+		for (String term : terms) {
+			builder.append(term);
+			builder.append(" ");
+		}
+		return builder.toString();
+	}
 }

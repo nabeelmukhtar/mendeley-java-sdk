@@ -285,20 +285,7 @@ public final class MendeleyApiUrls {
 	     * @param urlFormat the url format
 	     */
 	    public MendeleyApiUrlBuilder(String urlFormat) {
-	    	this(urlFormat, ApplicationConstants.DEFAULT_API_VERSION, ApplicationConstants.DEFAULT_FORMAT);
-    	}
-    	
-    	/**
-	     * Instantiates a new mendeley api url builder.
-	     * 
-	     * @param urlFormat the url format
-	     * @param apiVersion the api version
-	     * @param format the format
-	     */
-	    public MendeleyApiUrlBuilder(String urlFormat, String apiVersion, String format) {
     		this.urlFormat = urlFormat;
-    		fieldsMap.put(ParameterNames.VERSION, apiVersion);
-    		fieldsMap.put(ParameterNames.FORMAT, format);
     	}
 	    
     	/**
