@@ -16,9 +16,12 @@
  */
 package com.mendeley.oapi.services.impl;
 
+import com.google.gson.JsonElement;
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.User;
 import com.mendeley.oapi.services.ProfileService;
+import com.mendeley.oapi.services.constant.MendeleyApiUrls;
+import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
@@ -53,7 +56,10 @@ public class ProfileServiceImpl extends BaseMendeleyPrivateService implements
 	 */
 	@Override
 	public PagedList<User> getContacts() {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_CONTACTS_URL);
+        String                apiUrl  = builder.buildUrl();
+        JsonElement json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshallList(User.class, json);
 	}
 }

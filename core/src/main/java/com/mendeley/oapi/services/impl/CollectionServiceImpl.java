@@ -16,10 +16,14 @@
  */
 package com.mendeley.oapi.services.impl;
 
+import com.google.gson.JsonElement;
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Collection;
 import com.mendeley.oapi.schema.Collection.Type;
 import com.mendeley.oapi.services.CollectionService;
+import com.mendeley.oapi.services.constant.MendeleyApiUrls;
+import com.mendeley.oapi.services.constant.ParameterNames;
+import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
@@ -63,8 +67,11 @@ public class CollectionServiceImpl extends BaseMendeleyPrivateService implements
 	 */
 	@Override
 	public PagedList<String> getCollectionDocuments(String collectionId) {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_COLLECTION_DOCUMENTS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, collectionId).buildUrl();
+        JsonElement json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshallList(String.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -73,8 +80,11 @@ public class CollectionServiceImpl extends BaseMendeleyPrivateService implements
 	@Override
 	public PagedList<String> getCollectionDocuments(String collectionId,
 			int page, int itemsPerPage) {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_COLLECTION_DOCUMENTS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, collectionId).withParameter(ParameterNames.PAGE, String.valueOf(page)).withParameter(ParameterNames.ITEMS, String.valueOf(itemsPerPage)).buildUrl();
+        JsonElement json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshallList(String.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -82,8 +92,11 @@ public class CollectionServiceImpl extends BaseMendeleyPrivateService implements
 	 */
 	@Override
 	public PagedList<Collection> getCollections() {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_COLLECTIONS_URL);
+        String                apiUrl  = builder.buildUrl();
+        JsonElement json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshallList(Collection.class, json);
 	}
 
 	/* (non-Javadoc)

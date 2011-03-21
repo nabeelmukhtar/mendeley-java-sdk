@@ -19,12 +19,17 @@ package com.mendeley.oapi.services.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Group;
 import com.mendeley.oapi.schema.User;
 import com.mendeley.oapi.schema.Group.MembershipType;
 import com.mendeley.oapi.schema.Group.Type;
 import com.mendeley.oapi.services.PrivateGroupService;
+import com.mendeley.oapi.services.constant.MendeleyApiUrls;
+import com.mendeley.oapi.services.constant.ParameterNames;
+import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
@@ -68,8 +73,11 @@ public class PrivateGroupServiceImpl extends BaseMendeleyPrivateService implemen
 	 */
 	@Override
 	public Group getGroupDetails(String groupId) {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_GROUP_DETAILS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
+        JsonElement json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<Group>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -86,8 +94,11 @@ public class PrivateGroupServiceImpl extends BaseMendeleyPrivateService implemen
 	 */
 	@Override
 	public PagedList<Group> getGroups() {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_GROUPS_URL);
+        String                apiUrl  = builder.buildUrl();
+        JsonElement json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshallList(Group.class, json);
 	}
 
 	/* (non-Javadoc)

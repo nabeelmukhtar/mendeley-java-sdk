@@ -21,6 +21,7 @@ import java.net.HttpURLConnection;
 import com.mendeley.oapi.services.MendeleyAuthenticator;
 import com.mendeley.oapi.services.MendeleyException;
 import com.mendeley.oapi.services.MendeleyService;
+import com.mendeley.oapi.services.constant.ParameterNames;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 import com.mendeley.oapi.services.oauth.MendeleyOAuthService;
@@ -42,6 +43,7 @@ public abstract class BaseMendeleyPrivateService extends BaseMendeleyPublicServi
 	 */
 	public BaseMendeleyPrivateService(MendeleyApiConsumer apiConsumer, MendeleyAccessToken accessToken) {
 		super(apiConsumer);
+		requestParameters.remove(ParameterNames.CONSUMER_KEY);
 		this.accessToken = accessToken;
 	}
 

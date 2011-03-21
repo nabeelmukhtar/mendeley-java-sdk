@@ -19,7 +19,7 @@ package com.mendeley.oapi.services.impl;
 import java.util.List;
 import java.util.Map;
 
-import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Document;
@@ -54,7 +54,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyPublicService implements
 	public Group getGroupDetails(String groupId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_GROUP_DETAILS_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
         return unmarshall(new TypeToken<Group>(){}, json);
 	}
@@ -66,9 +66,9 @@ public class PublicGroupServiceImpl extends BaseMendeleyPublicService implements
 	public PagedList<Document> getGroupDocuments(String groupId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_GROUP_DOCUMENTS_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<Document>>(){}, json);
+        return unmarshallList(Document.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -78,9 +78,9 @@ public class PublicGroupServiceImpl extends BaseMendeleyPublicService implements
 	public PagedList<Document> getGroupDocuments(String groupId, boolean details) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_GROUP_DOCUMENTS_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, groupId).withParameter(ParameterNames.DETAILS, String.valueOf(details)).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<Document>>(){}, json);
+        return unmarshallList(Document.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -91,9 +91,9 @@ public class PublicGroupServiceImpl extends BaseMendeleyPublicService implements
 			int itemsPerPage) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_GROUP_DOCUMENTS_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, groupId).withParameter(ParameterNames.DETAILS, String.valueOf(details)).withParameter(ParameterNames.PAGE, String.valueOf(page)).withParameter(ParameterNames.ITEMS, String.valueOf(itemsPerPage)).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<Document>>(){}, json);
+        return unmarshallList(Document.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -112,9 +112,9 @@ public class PublicGroupServiceImpl extends BaseMendeleyPublicService implements
 	public PagedList<Group> getGroups() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicGroupApiUrls.GET_GROUPS_URL);
         String                apiUrl  = builder.buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<Group>>(){}, json);
+        return unmarshallList(Group.class, json);
 	}
 
 }

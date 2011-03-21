@@ -16,8 +16,7 @@
  */
 package com.mendeley.oapi.services.impl;
 
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
+import com.google.gson.JsonElement;
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Document;
 import com.mendeley.oapi.schema.Publication;
@@ -50,9 +49,9 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	public PagedList<User> getAuthors() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_AUTHORS_URL);
         String                apiUrl  = builder.buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<User>>(){}, json);
+        return unmarshallList(User.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -62,9 +61,9 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	public PagedList<User> getAuthors(String disciplineId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_AUTHORS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<User>>(){}, json);
+        return unmarshallList(User.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -74,9 +73,9 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	public PagedList<User> getAuthors(String disciplineId, boolean upandcoming) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_AUTHORS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).withParameter(ParameterNames.UPANDCOMING, String.valueOf(upandcoming)).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<User>>(){}, json);
+        return unmarshallList(User.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -86,9 +85,9 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	public PagedList<Document> getPapers() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PAPERS_URL);
         String                apiUrl  = builder.buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<Document>>(){}, json);
+        return unmarshallList(Document.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -98,9 +97,9 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	public PagedList<Document> getPapers(String disciplineId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PAPERS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<Document>>(){}, json);
+        return unmarshallList(Document.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -111,9 +110,9 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 			boolean upandcoming) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PAPERS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).withParameter(ParameterNames.UPANDCOMING, String.valueOf(upandcoming)).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<Document>>(){}, json);
+        return unmarshallList(Document.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -123,9 +122,9 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	public PagedList<Publication> getPublications() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PUBLICATIONS_URL);
         String                apiUrl  = builder.buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<Publication>>(){}, json);
+        return unmarshallList(Publication.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -135,9 +134,9 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	public PagedList<Publication> getPublications(String disciplineId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PUBLICATIONS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<Publication>>(){}, json);
+        return unmarshallList(Publication.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -148,9 +147,9 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 			boolean upandcoming) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PUBLICATIONS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).withParameter(ParameterNames.UPANDCOMING, String.valueOf(upandcoming)).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<Publication>>(){}, json);
+        return unmarshallList(Publication.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -160,8 +159,8 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	public PagedList<Tag> getTags(String disciplineId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_TAGS_URL);
         String                apiUrl  = builder.buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<Tag>>(){}, json);
+        return unmarshallList(Tag.class, json);
 	}
 }

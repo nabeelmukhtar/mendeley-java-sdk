@@ -16,9 +16,14 @@
  */
 package com.mendeley.oapi.services.impl;
 
+import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Document;
 import com.mendeley.oapi.services.DocumentService;
+import com.mendeley.oapi.services.constant.MendeleyApiUrls;
+import com.mendeley.oapi.services.constant.ParameterNames;
+import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
@@ -53,8 +58,11 @@ public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
 	 */
 	@Override
 	public PagedList<Document> getAuthoredPublications() {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_AUTHORED_PUBLICATIONS_URL);
+        String                apiUrl  = builder.buildUrl();
+        JsonElement json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshallList(Document.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -62,8 +70,11 @@ public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
 	 */
 	@Override
 	public Document getDocumentDetails(String documentId) {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_DOCUMENT_DETAILS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, documentId).buildUrl();
+        JsonElement json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<Document>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -71,8 +82,11 @@ public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
 	 */
 	@Override
 	public PagedList<String> getDocumentIds() {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_DOCUMENT_IDS_URL);
+        String                apiUrl  = builder.buildUrl();
+        JsonElement json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshallList(String.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -80,8 +94,11 @@ public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
 	 */
 	@Override
 	public PagedList<String> getDocumentIds(int page, int itemsPerPage) {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.GET_DOCUMENT_IDS_URL);
+        String                apiUrl  = builder.withParameter(ParameterNames.PAGE, String.valueOf(page)).withParameter(ParameterNames.ITEMS, String.valueOf(itemsPerPage)).buildUrl();
+        JsonElement json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshallList(String.class, json);
 	}
 
 	/* (non-Javadoc)

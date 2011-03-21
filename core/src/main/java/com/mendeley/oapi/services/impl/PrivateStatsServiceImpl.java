@@ -16,8 +16,7 @@
  */
 package com.mendeley.oapi.services.impl;
 
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
+import com.google.gson.JsonElement;
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Publication;
 import com.mendeley.oapi.schema.Tag;
@@ -52,9 +51,9 @@ public class PrivateStatsServiceImpl extends BaseMendeleyPrivateService implemen
 	public PagedList<User> getAuthors() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_AUTHORS_URL);
         String                apiUrl  = builder.buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<User>>(){}, json);
+        return unmarshallList(User.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -64,9 +63,9 @@ public class PrivateStatsServiceImpl extends BaseMendeleyPrivateService implemen
 	public PagedList<Publication> getPublications() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_PUBLICATIONS_URL);
         String                apiUrl  = builder.buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<Publication>>(){}, json);
+        return unmarshallList(Publication.class, json);
 	}
 
 	/* (non-Javadoc)
@@ -76,9 +75,9 @@ public class PrivateStatsServiceImpl extends BaseMendeleyPrivateService implemen
 	public PagedList<Tag> getTags() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_TAGS_URL);
         String                apiUrl  = builder.buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<PagedList<Tag>>(){}, json);
+        return unmarshallList(Tag.class, json);
 	}
 
 }

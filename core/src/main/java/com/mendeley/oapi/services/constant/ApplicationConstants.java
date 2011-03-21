@@ -46,28 +46,22 @@ public final class ApplicationConstants {
     }
 
     /** The Constant CONTENT_ENCODING. */
-    public static final String CONTENT_ENCODING = getProperty("com.github.api.v2.services.encoding");
+    public static final String CONTENT_ENCODING = getProperty("com.mendeley.oapi.services.encoding");
 
     /** The Constant DEFAULT_API_VERSION. */
-    public static final String DEFAULT_API_VERSION = getProperty("com.github.api.v2.services.defaultApiVersion");
+    public static final String DEFAULT_API_VERSION = getProperty("com.mendeley.oapi.services.defaultApiVersion");
     
     /** The Constant DEFAULT_FORMAT. */
-    public static final String DEFAULT_FORMAT = getProperty("com.github.api.v2.services.defaultFormat");
+    public static final String DEFAULT_FORMAT = getProperty("com.mendeley.oapi.services.defaultFormat");
     
     /** The Constant DATE_FORMAT. */
-    public static final String DATE_FORMAT = getProperty("com.github.api.v2.services.dateFormat");
+    public static final String DATE_FORMAT = getProperty("com.mendeley.oapi.services.dateFormat");
     
     /** The Constant CONNECT_TIMEOUT. */
-    public static final int CONNECT_TIMEOUT = getIntProperty("com.github.api.v2.services.connectTimeout");
+    public static final int CONNECT_TIMEOUT = getIntProperty("com.mendeley.oapi.services.connectTimeout");
     
     /** The Constant READ_TIMEOUT. */
-    public static final int READ_TIMEOUT = getIntProperty("com.github.api.v2.services.readTimeout");
-    
-    /** The Constant ACCESS_TOKEN_PATTERN. */
-    public static final Pattern ACCESS_TOKEN_PATTERN = getPatternProperty("com.github.api.v2.services.accessTokenPattern");
-    
-    /** The Constant ACCESS_DENIED_PATTERN. */
-    public static final Pattern ACCESS_DENIED_PATTERN = getPatternProperty("com.github.api.v2.services.accessDeniedPattern");
+    public static final int READ_TIMEOUT = getIntProperty("com.mendeley.oapi.services.readTimeout");
     
     /**
      * Instantiates a new application constants.

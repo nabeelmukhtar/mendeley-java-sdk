@@ -27,15 +27,17 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+import com.mendeley.oapi.common.PagedArrayList;
+import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.SchemaEntity;
 import com.mendeley.oapi.services.AsyncResponseHandler;
 import com.mendeley.oapi.services.MendeleyCommunicator;
 import com.mendeley.oapi.services.MendeleyException;
 import com.mendeley.oapi.services.MendeleyService;
 import com.mendeley.oapi.services.constant.ApplicationConstants;
+import com.mendeley.oapi.services.constant.ParameterNames;
 import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
@@ -65,6 +67,7 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 		this.apiConsumer = apiConsumer;
         // by default we compress contents
         requestHeaders.put("Accept-Encoding", "gzip, deflate");
+		requestParameters.put(ParameterNames.CONSUMER_KEY, apiConsumer.getConsumerKey());
 	}
 
 	/* (non-Javadoc)
@@ -73,7 +76,7 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 	@Override
 	public void setApiConsumer(MendeleyApiConsumer apiConsumer) {
 		this.apiConsumer = apiConsumer;
-		requestParameters.put("", apiConsumer.getConsumerKey());
+		requestParameters.put(ParameterNames.CONSUMER_KEY, apiConsumer.getConsumerKey());
 	}
 	
 	/**
@@ -84,12 +87,26 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 	 * 
 	 * @return the t
 	 */
-	@SuppressWarnings("unchecked")
 	protected <T> T unmarshall(TypeToken<T> typeToken, JsonElement response) {
 		Gson gson = getGsonBuilder().create();
-		return (T) gson.fromJson(response, typeToken.getType());
+		return gson.fromJson(response, typeToken.getType());
 	}
 
+	protected <T> T unmarshall(Class<T> type, JsonElement response) {
+		Gson gson = getGsonBuilder().create();
+		return gson.fromJson(response, type);
+	}
+	
+	protected <T> PagedList<T> unmarshallList(Class<T> clazz, JsonElement response) {
+		PagedList<T> retValue = new PagedArrayList<T>();
+		if (response.isJsonArray()) {
+			for (JsonElement element : response.getAsJsonArray()) {
+				retValue.add(unmarshall(clazz, element));
+			}
+		}
+		return retValue;
+	}
+	
 	/**
 	 * Notify observers.
 	 * 
@@ -146,14 +163,10 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 	 * 
 	 * @return the json object
 	 */
-	protected JsonObject unmarshall(InputStream jsonContent) {
+	protected JsonElement unmarshall(InputStream jsonContent) {
         try {
         	JsonElement element = parser.parse(new InputStreamReader(jsonContent, UTF_8_CHAR_SET));
-        	if (element.isJsonObject()) {
-        		return element.getAsJsonObject();
-        	} else {
-        		throw new MendeleyException("Unknown content found in response." + element);
-        	}
+        	return element;
         } catch (Exception e) {
             throw new MendeleyException(e);
         } finally {

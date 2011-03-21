@@ -36,5 +36,6 @@ public interface ParameterNames {
 	public static final String SUB_CATEGORY = "subcat";
 	public static final String TERMS = "terms";
 	public static final String DETAILS = "details";
+	public static final String CONSUMER_KEY = "consumer_key";
 	
 }
