@@ -49,8 +49,9 @@ public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
 	 */
 	@Override
 	public void createDocument(Document document) {
-		// TODO Auto-generated method stub
-		
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.CREATE_DOCUMENT_URL);
+        String                apiUrl  = builder.buildUrl();
+        callApiMethod(apiUrl, getGsonBuilder().create().toJson(document), "application/json", "POST", 200);
 	}
 
 	/* (non-Javadoc)
@@ -106,7 +107,8 @@ public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
 	 */
 	@Override
 	public void removeDocument(String documentId) {
-		// TODO Auto-generated method stub
-		
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.REMOVE_DOCUMENT_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, documentId).buildUrl();
+        callApiDelete(apiUrl, 204);
 	}
 }

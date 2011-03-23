@@ -37,5 +37,6 @@ public interface ParameterNames {
 	public static final String TERMS = "terms";
 	public static final String DETAILS = "details";
 	public static final String CONSUMER_KEY = "consumer_key";
-	
+	public static final String COLLECTION_ID = "collection_id";
+	public static final String DOCUMENT_ID = "document_id";
 }

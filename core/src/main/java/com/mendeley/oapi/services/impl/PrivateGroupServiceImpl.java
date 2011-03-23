@@ -55,8 +55,12 @@ public class PrivateGroupServiceImpl extends BaseMendeleyPrivateService implemen
 	 */
 	@Override
 	public Group createGroup(String name, Type type) {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.CREATE_GROUP_URL);
+        String                apiUrl  = builder.buildUrl();
+        Group group = new Group();
+        // TODO-NM: Populate group
+        JsonElement json = unmarshall(callApiMethod(apiUrl, getGsonBuilder().create().toJson(group), "application/json", "POST", 201));
+        return unmarshall(new TypeToken<Group>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -64,8 +68,9 @@ public class PrivateGroupServiceImpl extends BaseMendeleyPrivateService implemen
 	 */
 	@Override
 	public void deleteGroup(String groupId) {
-		// TODO Auto-generated method stub
-		
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.DELETE_GROUP_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
+        callApiDelete(apiUrl, 204);
 	}
 
 	/* (non-Javadoc)
@@ -106,8 +111,9 @@ public class PrivateGroupServiceImpl extends BaseMendeleyPrivateService implemen
 	 */
 	@Override
 	public void leaveGroup(String groupId) {
-		// TODO Auto-generated method stub
-		
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.LEAVE_GROUP_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
+        callApiDelete(apiUrl, 204);
 	}
 
 	/* (non-Javadoc)
@@ -115,8 +121,9 @@ public class PrivateGroupServiceImpl extends BaseMendeleyPrivateService implemen
 	 */
 	@Override
 	public void unfollowGroup(String groupId) {
-		// TODO Auto-generated method stub
-		
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.UNFOLLOW_GROUP_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
+        callApiDelete(apiUrl, 204);
 	}
 
 }

@@ -16,10 +16,12 @@
  */
 package com.mendeley.oapi.services.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Collection;
 import com.mendeley.oapi.schema.User;
@@ -53,8 +55,11 @@ public class SharedCollectionServiceImpl extends BaseMendeleyPrivateService impl
 	 */
 	@Override
 	public String addDocumentToCollection(String collectionId, String documentId) {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.ADD_DOCUMENT_TO_COLLECTION_URL);
+        String                apiUrl  = builder.withField(ParameterNames.COLLECTION_ID, collectionId).withField(ParameterNames.DOCUMENT_ID, documentId).buildUrl();
+        Map<String, String> parameters = new HashMap<String, String>();
+        JsonElement json = unmarshall(callApiPost(apiUrl, parameters));
+        return unmarshall(new TypeToken<String>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -62,8 +67,12 @@ public class SharedCollectionServiceImpl extends BaseMendeleyPrivateService impl
 	 */
 	@Override
 	public Collection createCollection(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.CREATE_COLLECTION_URL);
+        String                apiUrl  = builder.buildUrl();
+        Collection collection = new Collection();
+        // TODO-NM: Populate collection
+        JsonElement json = unmarshall(callApiMethod(apiUrl, getGsonBuilder().create().toJson(collection), "application/json", "POST", 201));
+        return unmarshall(new TypeToken<Collection>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -118,8 +127,9 @@ public class SharedCollectionServiceImpl extends BaseMendeleyPrivateService impl
 	 */
 	@Override
 	public void removeCollection(String collectionId) {
-		// TODO Auto-generated method stub
-		
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.REMOVE_COLLECTION_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, collectionId).buildUrl();
+        callApiDelete(apiUrl, 204);
 	}
 
 	/* (non-Javadoc)
@@ -128,8 +138,8 @@ public class SharedCollectionServiceImpl extends BaseMendeleyPrivateService impl
 	@Override
 	public void removeDocumentFromCollection(String collectionId,
 			String documentId) {
-		// TODO Auto-generated method stub
-		
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.REMOVE_DOCUMENT_FROM_COLLECTION_URL);
+        String                apiUrl  = builder.withField(ParameterNames.COLLECTION_ID, collectionId).withField(ParameterNames.DOCUMENT_ID, documentId).buildUrl();
+        callApiDelete(apiUrl, 204);
 	}
-
 }
