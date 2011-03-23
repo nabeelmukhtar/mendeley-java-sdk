@@ -34,32 +34,32 @@ public class PagedArrayList<E> extends ArrayList<E> implements PagedList<E> {
 	 * @see org.worldbank.api.common.PagedList#page()
 	 */
 	@Override
-	public long page() {
-		return cursor.getPage();
+	public long totalResults() {
+		return cursor.getTotalResults();
 	}
 
 	/* (non-Javadoc)
 	 * @see org.worldbank.api.common.PagedList#pages()
 	 */
 	@Override
-	public long pages() {
-		return cursor.getPages();
+	public long totalPages() {
+		return cursor.getTotalPages();
 	}
 
 	/* (non-Javadoc)
 	 * @see org.worldbank.api.common.PagedList#perPage()
 	 */
 	@Override
-	public long perPage() {
-		return cursor.getPerPage();
+	public long currentPage() {
+		return cursor.getCurrentPage();
 	}
 
 	/* (non-Javadoc)
 	 * @see org.worldbank.api.common.PagedList#total()
 	 */
 	@Override
-	public long total() {
-		return cursor.getTotal();
+	public long itemsPerPage() {
+		return cursor.getItemsPerPage();
 	}
 	
 	/**
@@ -85,88 +85,72 @@ public class PagedArrayList<E> extends ArrayList<E> implements PagedList<E> {
 	 */
 	public static class Cursor {
 		
-		/** The page. */
-		private long page;
+		/** The totalResults. */
+		private long totalResults;
 		
 		/** The pages. */
-		private long pages;
+		private long totalPages;
 		
 		/** The per page. */
-		private long perPage;
+		private long currentPage;
 		
 		/** The total. */
-		private long total;
-		
+		private long itemsPerPage;
+
 		/**
-		 * Gets the page.
-		 * 
-		 * @return the page
+		 * @return the totalResults
 		 */
-		public long getPage() {
-			return page;
+		public long getTotalResults() {
+			return totalResults;
 		}
-		
+
 		/**
-		 * Sets the page.
-		 * 
-		 * @param page the new page
+		 * @param totalResults the totalResults to set
 		 */
-		public void setPage(long page) {
-			this.page = page;
+		public void setTotalResults(long totalResults) {
+			this.totalResults = totalResults;
 		}
-		
+
 		/**
-		 * Gets the pages.
-		 * 
-		 * @return the pages
+		 * @return the totalPages
 		 */
-		public long getPages() {
-			return pages;
+		public long getTotalPages() {
+			return totalPages;
 		}
-		
+
 		/**
-		 * Sets the pages.
-		 * 
-		 * @param pages the new pages
+		 * @param totalPages the totalPages to set
 		 */
-		public void setPages(long pages) {
-			this.pages = pages;
+		public void setTotalPages(long totalPages) {
+			this.totalPages = totalPages;
 		}
-		
+
 		/**
-		 * Gets the per page.
-		 * 
-		 * @return the per page
+		 * @return the currentPage
 		 */
-		public long getPerPage() {
-			return perPage;
+		public long getCurrentPage() {
+			return currentPage;
 		}
-		
+
 		/**
-		 * Sets the per page.
-		 * 
-		 * @param perPage the new per page
+		 * @param currentPage the currentPage to set
 		 */
-		public void setPerPage(long perPage) {
-			this.perPage = perPage;
+		public void setCurrentPage(long currentPage) {
+			this.currentPage = currentPage;
 		}
-		
+
 		/**
-		 * Gets the total.
-		 * 
-		 * @return the total
+		 * @return the itemsPerPage
 		 */
-		public long getTotal() {
-			return total;
+		public long getItemsPerPage() {
+			return itemsPerPage;
 		}
-		
+
 		/**
-		 * Sets the total.
-		 * 
-		 * @param total the new total
+		 * @param itemsPerPage the itemsPerPage to set
 		 */
-		public void setTotal(long total) {
-			this.total = total;
+		public void setItemsPerPage(long itemsPerPage) {
+			this.itemsPerPage = itemsPerPage;
 		}
 	}
 }

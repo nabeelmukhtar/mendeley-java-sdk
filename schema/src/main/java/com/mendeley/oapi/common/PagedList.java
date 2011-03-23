@@ -28,26 +28,26 @@ public interface PagedList<E> extends List<E> {
 	 * 
 	 * @return the long
 	 */
-	public long page();
+	public long totalResults();
 	
 	/**
 	 * Pages.
 	 * 
 	 * @return the long
 	 */
-	public long pages();
+	public long totalPages();
 	
 	/**
 	 * Per page.
 	 * 
 	 * @return the long
 	 */
-	public long perPage();
+	public long currentPage();
 	
 	/**
 	 * Total.
 	 * 
 	 * @return the long
 	 */
-	public long total();
+	public long itemsPerPage();
 }
