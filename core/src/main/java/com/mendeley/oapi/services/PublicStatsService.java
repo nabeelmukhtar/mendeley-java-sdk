@@ -17,7 +17,7 @@
 package com.mendeley.oapi.services;
 
 import com.mendeley.oapi.common.PagedList;
-import com.mendeley.oapi.schema.Document;
+import com.mendeley.oapi.schema.Paper;
 import com.mendeley.oapi.schema.Publication;
 import com.mendeley.oapi.schema.Tag;
 import com.mendeley.oapi.schema.User;
@@ -93,7 +93,7 @@ public interface PublicStatsService extends MendeleyService {
 	 * 
 	 * @return the papers
 	 */
-	public PagedList<Document> getPapers();
+	public PagedList<Paper> getPapers();
 	
 	/**
 	 * Gets the papers.
@@ -102,7 +102,7 @@ public interface PublicStatsService extends MendeleyService {
 	 * 
 	 * @return the papers
 	 */
-	public PagedList<Document> getPapers(String disciplineId);
+	public PagedList<Paper> getPapers(String disciplineId);
 	
 	/**
 	 * Gets the papers.
@@ -112,5 +112,5 @@ public interface PublicStatsService extends MendeleyService {
 	 * 
 	 * @return the papers
 	 */
-	public PagedList<Document> getPapers(String disciplineId, boolean upandcoming);
+	public PagedList<Paper> getPapers(String disciplineId, boolean upandcoming);
 }

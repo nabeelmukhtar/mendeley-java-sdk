@@ -19,26 +19,13 @@ package com.mendeley.oapi.schema;
 /**
  * The Class Publication.
  */
-public class Category extends SchemaEntity {
+public class Discipline extends SchemaEntity {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3484450630735705441L;
-	
-	private int id;
+
 	private String name;
-	private String slug;
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
+	private String id;
 	/**
 	 * @return the name
 	 */
@@ -52,15 +39,15 @@ public class Category extends SchemaEntity {
 		this.name = name;
 	}
 	/**
-	 * @return the slug
+	 * @return the value
 	 */
-	public String getSlug() {
-		return slug;
+	public String getId() {
+		return id;
 	}
 	/**
-	 * @param slug the slug to set
+	 * @param value the value to set
 	 */
-	public void setSlug(String slug) {
-		this.slug = slug;
+	public void setId(String id) {
+		this.id = id;
 	}
 }

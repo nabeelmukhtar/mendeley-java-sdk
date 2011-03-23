@@ -18,7 +18,7 @@ package com.mendeley.oapi.services.impl;
 
 import com.google.gson.JsonElement;
 import com.mendeley.oapi.common.PagedList;
-import com.mendeley.oapi.schema.Document;
+import com.mendeley.oapi.schema.Paper;
 import com.mendeley.oapi.schema.Publication;
 import com.mendeley.oapi.schema.Tag;
 import com.mendeley.oapi.schema.User;
@@ -82,37 +82,37 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	 * @see com.mendeley.oapi.services.PublicStatsService#getPapers()
 	 */
 	@Override
-	public PagedList<Document> getPapers() {
+	public PagedList<Paper> getPapers() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PAPERS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Paper.class, json);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.mendeley.oapi.services.PublicStatsService#getPapers(java.lang.String)
 	 */
 	@Override
-	public PagedList<Document> getPapers(String disciplineId) {
+	public PagedList<Paper> getPapers(String disciplineId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PAPERS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Paper.class, json);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.mendeley.oapi.services.PublicStatsService#getPapers(java.lang.String, boolean)
 	 */
 	@Override
-	public PagedList<Document> getPapers(String disciplineId,
+	public PagedList<Paper> getPapers(String disciplineId,
 			boolean upandcoming) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PAPERS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).withParameter(ParameterNames.UPANDCOMING, String.valueOf(upandcoming)).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Paper.class, json);
 	}
 
 	/* (non-Javadoc)

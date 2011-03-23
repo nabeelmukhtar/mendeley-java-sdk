@@ -21,14 +21,47 @@ package com.mendeley.oapi.schema;
  */
 public class User extends SchemaEntity {
 
-	/**
-	 * The Enum Type.
-	 */
-	public enum Type {
-
-	}
-
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3484450630735705441L;
-
+	
+	private String name;
+	private String value;
+	private String userId;
+	
+	/**
+	 * @return the userId
+	 */
+	public String getUserId() {
+		return userId;
+	}
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	/**
+	 * @return the value
+	 */
+	public String getValue() {
+		return value;
+	}
+	/**
+	 * @param value the value to set
+	 */
+	public void setValue(String value) {
+		this.value = value;
+	}
 }

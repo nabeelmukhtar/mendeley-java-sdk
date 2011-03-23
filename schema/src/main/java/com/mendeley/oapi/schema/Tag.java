@@ -21,14 +21,34 @@ package com.mendeley.oapi.schema;
  */
 public class Tag extends SchemaEntity {
 
-	/**
-	 * The Enum Type.
-	 */
-	public enum Type {
-
-	}
-
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3484450630735705441L;
-
+	
+	private String period;
+	private String tags;
+	
+	/**
+	 * @return the period
+	 */
+	public String getPeriod() {
+		return period;
+	}
+	/**
+	 * @param period the period to set
+	 */
+	public void setPeriod(String period) {
+		this.period = period;
+	}
+	/**
+	 * @return the tags
+	 */
+	public String getTags() {
+		return tags;
+	}
+	/**
+	 * @param tags the tags to set
+	 */
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
 }
