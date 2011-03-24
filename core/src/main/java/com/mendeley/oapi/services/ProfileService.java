@@ -16,7 +16,8 @@
  */
 package com.mendeley.oapi.services;
 
-import com.mendeley.oapi.common.PagedList;
+import java.util.List;
+
 import com.mendeley.oapi.schema.User;
 
 
@@ -30,7 +31,7 @@ public interface ProfileService extends MendeleyService {
 	 * 
 	 * @return the contacts
 	 */
-	public PagedList<User> getContacts();
+	public List<User> getContacts();
 	
 	/**
 	 * Adds the contact.

@@ -22,7 +22,7 @@ import java.util.List;
 import com.mendeley.oapi.common.ValueEnum;
 
 /**
- * The Class Document.
+ * The Class Paper.
  */
 public class Paper extends SchemaEntity {
 
@@ -32,12 +32,21 @@ public class Paper extends SchemaEntity {
 	public enum Type implements ValueEnum {
 		;
 		
+		/** The value. */
 		private String value;
 
+		/**
+		 * Instantiates a new type.
+		 * 
+		 * @param value the value
+		 */
 		Type(String value) {
 			this.value = value;
 		}
 		
+		/* (non-Javadoc)
+		 * @see com.mendeley.oapi.common.ValueEnum#value()
+		 */
 		@Override
 		public String value() {
 			return value;
@@ -48,82 +57,139 @@ public class Paper extends SchemaEntity {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3484450630735705441L;
 	
+	/** The title. */
 	private String title;
+	
+	/** The value. */
 	private String value;
+	
+	/** The publication. */
 	private String publication;
+	
+	/** The year. */
 	private int year;
+	
+	/** The link. */
 	private String link;
+	
+	/** The authors. */
 	private List<String> authors = new ArrayList<String>();
+	
 	/**
+	 * Gets the title.
+	 * 
 	 * @return the title
 	 */
 	public String getTitle() {
 		return title;
 	}
+	
 	/**
-	 * @param title the title to set
+	 * Sets the title.
+	 * 
+	 * @param title the new title
 	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
 	/**
+	 * Gets the value.
+	 * 
 	 * @return the value
 	 */
 	public String getValue() {
 		return value;
 	}
+	
 	/**
-	 * @param value the value to set
+	 * Sets the value.
+	 * 
+	 * @param value the new value
 	 */
 	public void setValue(String value) {
 		this.value = value;
 	}
+	
 	/**
+	 * Gets the publication.
+	 * 
 	 * @return the publication
 	 */
 	public String getPublication() {
 		return publication;
 	}
+	
 	/**
-	 * @param publication the publication to set
+	 * Sets the publication.
+	 * 
+	 * @param publication the new publication
 	 */
 	public void setPublication(String publication) {
 		this.publication = publication;
 	}
+	
 	/**
+	 * Gets the year.
+	 * 
 	 * @return the year
 	 */
 	public int getYear() {
 		return year;
 	}
+	
 	/**
-	 * @param year the year to set
+	 * Sets the year.
+	 * 
+	 * @param year the new year
 	 */
 	public void setYear(int year) {
 		this.year = year;
 	}
+	
 	/**
+	 * Gets the link.
+	 * 
 	 * @return the link
 	 */
 	public String getLink() {
 		return link;
 	}
+	
 	/**
-	 * @param link the link to set
+	 * Sets the link.
+	 * 
+	 * @param link the new link
 	 */
 	public void setLink(String link) {
 		this.link = link;
 	}
+	
 	/**
+	 * Gets the authors.
+	 * 
 	 * @return the authors
 	 */
 	public List<String> getAuthors() {
 		return authors;
 	}
+	
 	/**
-	 * @param authors the authors to set
+	 * Sets the authors.
+	 * 
+	 * @param authors the new authors
 	 */
 	public void setAuthors(List<String> authors) {
 		this.authors = authors;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Paper [authors=" + authors + ", link=" + link
+				+ ", publication=" + publication + ", title=" + title
+				+ ", value=" + value + ", year=" + year + "]";
 	}
 }

@@ -31,6 +31,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.mendeley.oapi.common.PagedArrayList;
 import com.mendeley.oapi.common.PagedList;
+import com.mendeley.oapi.common.PagedArrayList.Cursor;
 import com.mendeley.oapi.schema.SchemaEntity;
 import com.mendeley.oapi.services.AsyncResponseHandler;
 import com.mendeley.oapi.services.MendeleyCommunicator;
@@ -92,16 +93,55 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 		return gson.fromJson(response, typeToken.getType());
 	}
 
+	/**
+	 * Unmarshall.
+	 * 
+	 * @param type the type
+	 * @param response the response
+	 * 
+	 * @return the t
+	 */
 	protected <T> T unmarshall(Class<T> type, JsonElement response) {
 		Gson gson = getGsonBuilder().create();
 		return gson.fromJson(response, type);
 	}
 	
-	protected <T> PagedList<T> unmarshallList(Class<T> clazz, JsonElement response) {
+	/**
+	 * Unmarshall list.
+	 * 
+	 * @param clazz the clazz
+	 * @param response the response
+	 * 
+	 * @return the list< t>
+	 */
+	protected <T> List<T> unmarshallList(Class<T> clazz, JsonElement response) {
 		PagedList<T> retValue = new PagedArrayList<T>();
 		if (response.isJsonArray()) {
 			for (JsonElement element : response.getAsJsonArray()) {
 				retValue.add(unmarshall(clazz, element));
+			}
+		}
+		return retValue;
+	}
+	
+	/**
+	 * Unmarshall list.
+	 * 
+	 * @param clazz the clazz
+	 * @param response the response
+	 * @param listName the list name
+	 * 
+	 * @return the paged list< t>
+	 */
+	protected <T> PagedList<T> unmarshallList(Class<T> clazz, JsonElement response, String listName) {
+		PagedArrayList<T> retValue = new PagedArrayList<T>();
+		if (response.isJsonObject()) {
+			retValue.setCursor(unmarshall(Cursor.class, response));
+			JsonElement jsonObject = response.getAsJsonObject().get(listName);
+			if (jsonObject != null && jsonObject.isJsonArray()) {
+				for (JsonElement element : jsonObject.getAsJsonArray()) {
+					retValue.add(unmarshall(clazz, element));
+				}
 			}
 		}
 		return retValue;
@@ -161,7 +201,7 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 	 * 
 	 * @param jsonContent the json content
 	 * 
-	 * @return the json object
+	 * @return the json element
 	 */
 	protected JsonElement unmarshall(InputStream jsonContent) {
         try {
@@ -185,6 +225,13 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 		return new MendeleyApiUrlBuilder(urlFormat);
 	}
 	
+	/**
+	 * To string.
+	 * 
+	 * @param terms the terms
+	 * 
+	 * @return the string
+	 */
 	protected String toString(String[] terms) {
 		StringBuilder builder = new StringBuilder();
 		for (String term : terms) {

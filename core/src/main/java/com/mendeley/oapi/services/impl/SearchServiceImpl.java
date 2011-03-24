@@ -16,6 +16,8 @@
  */
 package com.mendeley.oapi.services.impl;
 
+import java.util.List;
+
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import com.mendeley.oapi.common.PagedList;
@@ -76,7 +78,7 @@ public class SearchServiceImpl extends BaseMendeleyPublicService implements
         String                apiUrl  = builder.withField(ParameterNames.NAME, authorName).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Document.class, json, "documents");
 	}
 
 	/* (non-Javadoc)
@@ -88,7 +90,7 @@ public class SearchServiceImpl extends BaseMendeleyPublicService implements
         String                apiUrl  = builder.withField(ParameterNames.NAME, authorName).withParameter(ParameterNames.YEAR, String.valueOf(year)).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Document.class, json, "documents");
 	}
 
 	/* (non-Javadoc)
@@ -101,7 +103,7 @@ public class SearchServiceImpl extends BaseMendeleyPublicService implements
         String                apiUrl  = builder.withField(ParameterNames.NAME, authorName).withParameter(ParameterNames.PAGE, String.valueOf(page)).withParameter(ParameterNames.ITEMS, String.valueOf(itemsPerPage)).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Document.class, json, "documents");
 	}
 
 	/* (non-Javadoc)
@@ -113,7 +115,7 @@ public class SearchServiceImpl extends BaseMendeleyPublicService implements
         String                apiUrl  = builder.withField(ParameterNames.TAG, tag).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Document.class, json, "documents");
 	}
 
 	/* (non-Javadoc)
@@ -126,7 +128,7 @@ public class SearchServiceImpl extends BaseMendeleyPublicService implements
         String                apiUrl  = builder.withField(ParameterNames.TAG, tag).withParameter(ParameterNames.PAGE, String.valueOf(page)).withParameter(ParameterNames.ITEMS, String.valueOf(itemsPerPage)).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Document.class, json, "documents");
 	}
 
 	/* (non-Javadoc)
@@ -139,7 +141,7 @@ public class SearchServiceImpl extends BaseMendeleyPublicService implements
         String                apiUrl  = builder.withField(ParameterNames.TAG, tag).withParameter(ParameterNames.CATEGORY, category).withParameter(ParameterNames.SUB_CATEGORY, subCategory).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Document.class, json, "documents");
 	}
 
 	/* (non-Javadoc)
@@ -151,7 +153,7 @@ public class SearchServiceImpl extends BaseMendeleyPublicService implements
         String                apiUrl  = builder.withField(ParameterNames.ID, documentId).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Document.class, json, "documents");
 	}
 
 	/* (non-Javadoc)
@@ -159,11 +161,11 @@ public class SearchServiceImpl extends BaseMendeleyPublicService implements
 	 */
 	@Override
 	public PagedList<Document> search(String... terms) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.GET_RELATED_DOCUMENTS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.SEARCH_URL);
         String                apiUrl  = builder.withField(ParameterNames.TERMS, toString(terms)).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Document.class, json, "documents");
 	}
 
 	/* (non-Javadoc)
@@ -171,15 +173,18 @@ public class SearchServiceImpl extends BaseMendeleyPublicService implements
 	 */
 	@Override
 	public PagedList<Document> search(String terms, int page, int itemsPerPage) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.GET_RELATED_DOCUMENTS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.SEARCH_URL);
         String                apiUrl  = builder.withField(ParameterNames.TERMS, terms).withParameter(ParameterNames.PAGE, String.valueOf(page)).withParameter(ParameterNames.ITEMS, String.valueOf(itemsPerPage)).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Document.class, json, "documents");
 	}
 
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SearchService#getCategories()
+	 */
 	@Override
-	public PagedList<Category> getCategories() {
+	public List<Category> getCategories() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.GET_CATEGORIES_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
@@ -187,13 +192,15 @@ public class SearchServiceImpl extends BaseMendeleyPublicService implements
         return unmarshallList(Category.class, json);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.SearchService#getSubCategories(java.lang.String)
+	 */
 	@Override
-	public PagedList<Category> getSubCategories(String categoryId) {
+	public List<Category> getSubCategories(String categoryId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SearchApiUrls.GET_SUB_CATEGORIES_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, categoryId).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
         return unmarshallList(Category.class, json);
 	}
-
 }

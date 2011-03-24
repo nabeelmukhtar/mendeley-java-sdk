@@ -24,44 +24,75 @@ public class User extends SchemaEntity {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3484450630735705441L;
 	
+	/** The name. */
 	private String name;
+	
+	/** The value. */
 	private String value;
+	
+	/** The user id. */
 	private String userId;
 	
 	/**
-	 * @return the userId
+	 * Gets the user id.
+	 * 
+	 * @return the user id
 	 */
 	public String getUserId() {
 		return userId;
 	}
+	
 	/**
-	 * @param userId the userId to set
+	 * Sets the user id.
+	 * 
+	 * @param userId the new user id
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	
 	/**
+	 * Gets the name.
+	 * 
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+	
 	/**
-	 * @param name the name to set
+	 * Sets the name.
+	 * 
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	/**
+	 * Gets the value.
+	 * 
 	 * @return the value
 	 */
 	public String getValue() {
 		return value;
 	}
+	
 	/**
-	 * @param value the value to set
+	 * Sets the value.
+	 * 
+	 * @param value the new value
 	 */
 	public void setValue(String value) {
 		this.value = value;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", userId=" + userId + ", value=" + value
+				+ "]";
 	}
 }

@@ -16,7 +16,8 @@
  */
 package com.mendeley.oapi.services;
 
-import com.mendeley.oapi.common.PagedList;
+import java.util.List;
+
 import com.mendeley.oapi.schema.Paper;
 import com.mendeley.oapi.schema.Publication;
 import com.mendeley.oapi.schema.Tag;
@@ -32,7 +33,7 @@ public interface PublicStatsService extends MendeleyService {
 	 * 
 	 * @return the authors
 	 */
-	public PagedList<User> getAuthors();
+	public List<User> getAuthors();
 	
 	/**
 	 * Gets the authors.
@@ -41,7 +42,7 @@ public interface PublicStatsService extends MendeleyService {
 	 * 
 	 * @return the authors
 	 */
-	public PagedList<User> getAuthors(String disciplineId);
+	public List<User> getAuthors(String disciplineId);
 	
 	/**
 	 * Gets the authors.
@@ -51,7 +52,7 @@ public interface PublicStatsService extends MendeleyService {
 	 * 
 	 * @return the authors
 	 */
-	public PagedList<User> getAuthors(String disciplineId, boolean upandcoming);
+	public List<User> getAuthors(String disciplineId, boolean upandcoming);
 	
 	/**
 	 * Gets the tags.
@@ -60,14 +61,14 @@ public interface PublicStatsService extends MendeleyService {
 	 * 
 	 * @return the tags
 	 */
-	public PagedList<Tag> getTags(String disciplineId);
+	public List<Tag> getTags(String disciplineId);
 	
 	/**
 	 * Gets the publications.
 	 * 
 	 * @return the publications
 	 */
-	public PagedList<Publication> getPublications();
+	public List<Publication> getPublications();
 	
 	/**
 	 * Gets the publications.
@@ -76,7 +77,7 @@ public interface PublicStatsService extends MendeleyService {
 	 * 
 	 * @return the publications
 	 */
-	public PagedList<Publication> getPublications(String disciplineId);
+	public List<Publication> getPublications(String disciplineId);
 	
 	/**
 	 * Gets the publications.
@@ -86,14 +87,14 @@ public interface PublicStatsService extends MendeleyService {
 	 * 
 	 * @return the publications
 	 */
-	public PagedList<Publication> getPublications(String disciplineId, boolean upandcoming);
+	public List<Publication> getPublications(String disciplineId, boolean upandcoming);
 	
 	/**
 	 * Gets the papers.
 	 * 
 	 * @return the papers
 	 */
-	public PagedList<Paper> getPapers();
+	public List<Paper> getPapers();
 	
 	/**
 	 * Gets the papers.
@@ -102,7 +103,7 @@ public interface PublicStatsService extends MendeleyService {
 	 * 
 	 * @return the papers
 	 */
-	public PagedList<Paper> getPapers(String disciplineId);
+	public List<Paper> getPapers(String disciplineId);
 	
 	/**
 	 * Gets the papers.
@@ -112,5 +113,5 @@ public interface PublicStatsService extends MendeleyService {
 	 * 
 	 * @return the papers
 	 */
-	public PagedList<Paper> getPapers(String disciplineId, boolean upandcoming);
+	public List<Paper> getPapers(String disciplineId, boolean upandcoming);
 }

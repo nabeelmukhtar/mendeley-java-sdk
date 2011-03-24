@@ -84,7 +84,7 @@ public class SharedCollectionServiceImpl extends BaseMendeleyPrivateService impl
         String                apiUrl  = builder.withField(ParameterNames.ID, collectionId).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(String.class, json);
+        return unmarshallList(String.class, json, "document_ids");
 	}
 
 	/* (non-Javadoc)
@@ -97,7 +97,7 @@ public class SharedCollectionServiceImpl extends BaseMendeleyPrivateService impl
         String                apiUrl  = builder.withField(ParameterNames.ID, collectionId).withParameter(ParameterNames.PAGE, String.valueOf(page)).withParameter(ParameterNames.ITEMS, String.valueOf(itemsPerPage)).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(String.class, json);
+        return unmarshallList(String.class, json, "document_ids");
 	}
 
 	/* (non-Javadoc)
@@ -114,7 +114,7 @@ public class SharedCollectionServiceImpl extends BaseMendeleyPrivateService impl
 	 * @see com.mendeley.oapi.services.SharedCollectionService#getCollections()
 	 */
 	@Override
-	public PagedList<Collection> getCollections() {
+	public List<Collection> getCollections() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.GET_COLLECTIONS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));

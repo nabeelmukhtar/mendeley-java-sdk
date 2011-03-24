@@ -57,6 +57,8 @@ public interface PublicGroupService extends MendeleyService {
 	/**
 	 * Gets the group documents.
 	 * 
+	 * @param groupId the group id
+	 * 
 	 * @return the group documents
 	 */
 	public PagedList<Document> getGroupDocuments(String groupId);
@@ -64,6 +66,7 @@ public interface PublicGroupService extends MendeleyService {
 	/**
 	 * Gets the group documents.
 	 * 
+	 * @param groupId the group id
 	 * @param details the details
 	 * 
 	 * @return the group documents
@@ -73,6 +76,7 @@ public interface PublicGroupService extends MendeleyService {
 	/**
 	 * Gets the group documents.
 	 * 
+	 * @param groupId the group id
 	 * @param details the details
 	 * @param page the page
 	 * @param itemsPerPage the items per page

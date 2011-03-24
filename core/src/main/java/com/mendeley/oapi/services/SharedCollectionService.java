@@ -33,7 +33,7 @@ public interface SharedCollectionService extends MendeleyService {
 	 * 
 	 * @return the collections
 	 */
-	public PagedList<Collection> getCollections();
+	public List<Collection> getCollections();
 	
 	/**
 	 * Gets the collection documents.

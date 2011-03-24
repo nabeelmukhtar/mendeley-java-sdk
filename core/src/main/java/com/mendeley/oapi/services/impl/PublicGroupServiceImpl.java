@@ -68,7 +68,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyPublicService implements
         String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Document.class, json, "documents");
 	}
 
 	/* (non-Javadoc)
@@ -80,7 +80,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyPublicService implements
         String                apiUrl  = builder.withField(ParameterNames.ID, groupId).withParameter(ParameterNames.DETAILS, String.valueOf(details)).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Document.class, json, "documents");
 	}
 
 	/* (non-Javadoc)
@@ -93,7 +93,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyPublicService implements
         String                apiUrl  = builder.withField(ParameterNames.ID, groupId).withParameter(ParameterNames.DETAILS, String.valueOf(details)).withParameter(ParameterNames.PAGE, String.valueOf(page)).withParameter(ParameterNames.ITEMS, String.valueOf(itemsPerPage)).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Document.class, json);
+        return unmarshallList(Document.class, json, "documents");
 	}
 
 	/* (non-Javadoc)
@@ -114,7 +114,7 @@ public class PublicGroupServiceImpl extends BaseMendeleyPublicService implements
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Group.class, json);
+        return unmarshallList(Group.class, json, "groups");
 	}
 
 }

@@ -19,7 +19,6 @@ package com.mendeley.oapi.services;
 import java.util.List;
 import java.util.Map;
 
-import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Group;
 import com.mendeley.oapi.schema.User;
 
@@ -34,7 +33,7 @@ public interface PrivateGroupService extends MendeleyService {
 	 * 
 	 * @return the groups
 	 */
-	public PagedList<Group> getGroups();
+	public List<Group> getGroups();
 	
 	/**
 	 * Gets the group people.

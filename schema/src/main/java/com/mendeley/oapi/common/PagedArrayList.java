@@ -85,69 +85,85 @@ public class PagedArrayList<E> extends ArrayList<E> implements PagedList<E> {
 	 */
 	public static class Cursor {
 		
-		/** The totalResults. */
+		/** The total results. */
 		private long totalResults;
 		
-		/** The pages. */
+		/** The total pages. */
 		private long totalPages;
 		
-		/** The per page. */
+		/** The current page. */
 		private long currentPage;
 		
-		/** The total. */
+		/** The items per page. */
 		private long itemsPerPage;
 
 		/**
-		 * @return the totalResults
+		 * Gets the total results.
+		 * 
+		 * @return the total results
 		 */
 		public long getTotalResults() {
 			return totalResults;
 		}
 
 		/**
-		 * @param totalResults the totalResults to set
+		 * Sets the total results.
+		 * 
+		 * @param totalResults the new total results
 		 */
 		public void setTotalResults(long totalResults) {
 			this.totalResults = totalResults;
 		}
 
 		/**
-		 * @return the totalPages
+		 * Gets the total pages.
+		 * 
+		 * @return the total pages
 		 */
 		public long getTotalPages() {
 			return totalPages;
 		}
 
 		/**
-		 * @param totalPages the totalPages to set
+		 * Sets the total pages.
+		 * 
+		 * @param totalPages the new total pages
 		 */
 		public void setTotalPages(long totalPages) {
 			this.totalPages = totalPages;
 		}
 
 		/**
-		 * @return the currentPage
+		 * Gets the current page.
+		 * 
+		 * @return the current page
 		 */
 		public long getCurrentPage() {
 			return currentPage;
 		}
 
 		/**
-		 * @param currentPage the currentPage to set
+		 * Sets the current page.
+		 * 
+		 * @param currentPage the new current page
 		 */
 		public void setCurrentPage(long currentPage) {
 			this.currentPage = currentPage;
 		}
 
 		/**
-		 * @return the itemsPerPage
+		 * Gets the items per page.
+		 * 
+		 * @return the items per page
 		 */
 		public long getItemsPerPage() {
 			return itemsPerPage;
 		}
 
 		/**
-		 * @param itemsPerPage the itemsPerPage to set
+		 * Sets the items per page.
+		 * 
+		 * @param itemsPerPage the new items per page
 		 */
 		public void setItemsPerPage(long itemsPerPage) {
 			this.itemsPerPage = itemsPerPage;

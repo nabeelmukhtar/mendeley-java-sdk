@@ -24,31 +24,53 @@ public class Tag extends SchemaEntity {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3484450630735705441L;
 	
+	/** The period. */
 	private String period;
+	
+	/** The tags. */
 	private String tags;
 	
 	/**
+	 * Gets the period.
+	 * 
 	 * @return the period
 	 */
 	public String getPeriod() {
 		return period;
 	}
+	
 	/**
-	 * @param period the period to set
+	 * Sets the period.
+	 * 
+	 * @param period the new period
 	 */
 	public void setPeriod(String period) {
 		this.period = period;
 	}
+	
 	/**
+	 * Gets the tags.
+	 * 
 	 * @return the tags
 	 */
 	public String getTags() {
 		return tags;
 	}
+	
 	/**
-	 * @param tags the tags to set
+	 * Sets the tags.
+	 * 
+	 * @param tags the new tags
 	 */
 	public void setTags(String tags) {
 		this.tags = tags;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Tag [period=" + period + ", tags=" + tags + "]";
 	}
 }

@@ -17,6 +17,7 @@
 package com.mendeley.oapi.services.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.JsonElement;
@@ -82,7 +83,7 @@ public class CollectionServiceImpl extends BaseMendeleyPrivateService implements
         String                apiUrl  = builder.withField(ParameterNames.ID, collectionId).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(String.class, json);
+        return unmarshallList(String.class, json, "document_ids");
 	}
 
 	/* (non-Javadoc)
@@ -95,14 +96,14 @@ public class CollectionServiceImpl extends BaseMendeleyPrivateService implements
         String                apiUrl  = builder.withField(ParameterNames.ID, collectionId).withParameter(ParameterNames.PAGE, String.valueOf(page)).withParameter(ParameterNames.ITEMS, String.valueOf(itemsPerPage)).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(String.class, json);
+        return unmarshallList(String.class, json, "document_ids");
 	}
 
 	/* (non-Javadoc)
 	 * @see com.mendeley.oapi.services.CollectionService#getCollections()
 	 */
 	@Override
-	public PagedList<Collection> getCollections() {
+	public List<Collection> getCollections() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.CollectionApiUrls.GET_COLLECTIONS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));

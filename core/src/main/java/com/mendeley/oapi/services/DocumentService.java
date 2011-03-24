@@ -44,11 +44,11 @@ public interface DocumentService extends MendeleyService {
 	public PagedList<String>	getDocumentIds(int page, int itemsPerPage);
 	
 	/**
-	 * Gets the authored publications.
+	 * Gets the authored document ids.
 	 * 
-	 * @return the authored publications
+	 * @return the authored document ids
 	 */
-	public PagedList<Document> getAuthoredPublications();
+	public PagedList<String> getAuthoredDocumentIds();
 	
 	/**
 	 * Gets the document details.

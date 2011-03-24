@@ -16,8 +16,9 @@
  */
 package com.mendeley.oapi.services.impl;
 
+import java.util.List;
+
 import com.google.gson.JsonElement;
-import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Publication;
 import com.mendeley.oapi.schema.Tag;
 import com.mendeley.oapi.schema.User;
@@ -48,7 +49,7 @@ public class PrivateStatsServiceImpl extends BaseMendeleyPrivateService implemen
 	 * @see com.mendeley.oapi.services.PrivateStatsService#getAuthors()
 	 */
 	@Override
-	public PagedList<User> getAuthors() {
+	public List<User> getAuthors() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_AUTHORS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
@@ -60,7 +61,7 @@ public class PrivateStatsServiceImpl extends BaseMendeleyPrivateService implemen
 	 * @see com.mendeley.oapi.services.PrivateStatsService#getPublications()
 	 */
 	@Override
-	public PagedList<Publication> getPublications() {
+	public List<Publication> getPublications() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_PUBLICATIONS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
@@ -72,7 +73,7 @@ public class PrivateStatsServiceImpl extends BaseMendeleyPrivateService implemen
 	 * @see com.mendeley.oapi.services.PrivateStatsService#getTags()
 	 */
 	@Override
-	public PagedList<Tag> getTags() {
+	public List<Tag> getTags() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateStatsApiUrls.GET_TAGS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));

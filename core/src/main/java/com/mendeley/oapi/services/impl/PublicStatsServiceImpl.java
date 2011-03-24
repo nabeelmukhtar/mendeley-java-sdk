@@ -16,8 +16,9 @@
  */
 package com.mendeley.oapi.services.impl;
 
+import java.util.List;
+
 import com.google.gson.JsonElement;
-import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Paper;
 import com.mendeley.oapi.schema.Publication;
 import com.mendeley.oapi.schema.Tag;
@@ -46,7 +47,7 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	 * @see com.mendeley.oapi.services.PublicStatsService#getAuthors()
 	 */
 	@Override
-	public PagedList<User> getAuthors() {
+	public List<User> getAuthors() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_AUTHORS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
@@ -58,7 +59,7 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	 * @see com.mendeley.oapi.services.PublicStatsService#getAuthors(java.lang.String)
 	 */
 	@Override
-	public PagedList<User> getAuthors(String disciplineId) {
+	public List<User> getAuthors(String disciplineId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_AUTHORS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
@@ -70,7 +71,7 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	 * @see com.mendeley.oapi.services.PublicStatsService#getAuthors(java.lang.String, boolean)
 	 */
 	@Override
-	public PagedList<User> getAuthors(String disciplineId, boolean upandcoming) {
+	public List<User> getAuthors(String disciplineId, boolean upandcoming) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_AUTHORS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).withParameter(ParameterNames.UPANDCOMING, String.valueOf(upandcoming)).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
@@ -82,7 +83,7 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	 * @see com.mendeley.oapi.services.PublicStatsService#getPapers()
 	 */
 	@Override
-	public PagedList<Paper> getPapers() {
+	public List<Paper> getPapers() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PAPERS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
@@ -94,7 +95,7 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	 * @see com.mendeley.oapi.services.PublicStatsService#getPapers(java.lang.String)
 	 */
 	@Override
-	public PagedList<Paper> getPapers(String disciplineId) {
+	public List<Paper> getPapers(String disciplineId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PAPERS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
@@ -106,7 +107,7 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	 * @see com.mendeley.oapi.services.PublicStatsService#getPapers(java.lang.String, boolean)
 	 */
 	@Override
-	public PagedList<Paper> getPapers(String disciplineId,
+	public List<Paper> getPapers(String disciplineId,
 			boolean upandcoming) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PAPERS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).withParameter(ParameterNames.UPANDCOMING, String.valueOf(upandcoming)).buildUrl();
@@ -119,7 +120,7 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	 * @see com.mendeley.oapi.services.PublicStatsService#getPublications()
 	 */
 	@Override
-	public PagedList<Publication> getPublications() {
+	public List<Publication> getPublications() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PUBLICATIONS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
@@ -131,7 +132,7 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	 * @see com.mendeley.oapi.services.PublicStatsService#getPublications(java.lang.String)
 	 */
 	@Override
-	public PagedList<Publication> getPublications(String disciplineId) {
+	public List<Publication> getPublications(String disciplineId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PUBLICATIONS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
@@ -143,7 +144,7 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	 * @see com.mendeley.oapi.services.PublicStatsService#getPublications(java.lang.String, boolean)
 	 */
 	@Override
-	public PagedList<Publication> getPublications(String disciplineId,
+	public List<Publication> getPublications(String disciplineId,
 			boolean upandcoming) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_PUBLICATIONS_URL);
         String                apiUrl  = builder.withParameter(ParameterNames.DISCIPLINE_ID, disciplineId).withParameter(ParameterNames.UPANDCOMING, String.valueOf(upandcoming)).buildUrl();
@@ -156,7 +157,7 @@ public class PublicStatsServiceImpl extends BaseMendeleyPublicService implements
 	 * @see com.mendeley.oapi.services.PublicStatsService#getTags(java.lang.String)
 	 */
 	@Override
-	public PagedList<Tag> getTags(String disciplineId) {
+	public List<Tag> getTags(String disciplineId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PublicStatsApiUrls.GET_TAGS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));

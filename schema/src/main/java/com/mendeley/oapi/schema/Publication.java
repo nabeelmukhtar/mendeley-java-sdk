@@ -24,30 +24,53 @@ public class Publication extends SchemaEntity {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3484450630735705441L;
 
+	/** The name. */
 	private String name;
+	
+	/** The value. */
 	private String value;
+	
 	/**
+	 * Gets the name.
+	 * 
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+	
 	/**
-	 * @param name the name to set
+	 * Sets the name.
+	 * 
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	/**
+	 * Gets the value.
+	 * 
 	 * @return the value
 	 */
 	public String getValue() {
 		return value;
 	}
+	
 	/**
-	 * @param value the value to set
+	 * Sets the value.
+	 * 
+	 * @param value the new value
 	 */
 	public void setValue(String value) {
 		this.value = value;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Publication [name=" + name + ", value=" + value + "]";
 	}
 }

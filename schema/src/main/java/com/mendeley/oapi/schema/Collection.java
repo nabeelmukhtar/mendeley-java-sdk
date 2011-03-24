@@ -27,14 +27,31 @@ public class Collection extends SchemaEntity {
 	 * The Enum MembershipType.
 	 */
 	public enum MembershipType implements ValueEnum {
-		ADMINS("admins"), FOLLOWERS("followers"), MEMBERS("members"), OWNER("owner");
 		
+		/** The ADMINS. */
+		ADMINS("admins"), 
+ /** The FOLLOWERS. */
+ FOLLOWERS("followers"), 
+ /** The MEMBERS. */
+ MEMBERS("members"), 
+ /** The OWNER. */
+ OWNER("owner");
+		
+		/** The value. */
 		private String value;
 		
+		/**
+		 * Instantiates a new membership type.
+		 * 
+		 * @param value the value
+		 */
 		MembershipType(String value) {
 			this.value = value;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.mendeley.oapi.common.ValueEnum#value()
+		 */
 		@Override
 		public String value() {
 			return value;
@@ -46,14 +63,29 @@ public class Collection extends SchemaEntity {
 	 * The Enum Type.
 	 */
 	public enum Type implements ValueEnum {
-		PRIVATE("private"), PUBLIC("public"), SHARED("shared");
 		
+		/** The PRIVATE. */
+		PRIVATE("private"), 
+ /** The PUBLIC. */
+ PUBLIC("public"), 
+ /** The SHARED. */
+ SHARED("shared");
+		
+		/** The value. */
 		private String value;
 		
+		/**
+		 * Instantiates a new type.
+		 * 
+		 * @param value the value
+		 */
 		Type(String value) {
 			this.value = value;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.mendeley.oapi.common.ValueEnum#value()
+		 */
 		@Override
 		public String value() {
 			return value;
@@ -63,56 +95,96 @@ public class Collection extends SchemaEntity {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3484450630735705441L;
 	
+	/** The id. */
 	private String id;
+	
+	/** The name. */
 	private String name;
+	
+	/** The type. */
 	private Type type;
+	
+	/** The size. */
 	private int size;
+	
 	/**
+	 * Gets the id.
+	 * 
 	 * @return the id
 	 */
 	public String getId() {
 		return id;
 	}
+	
 	/**
-	 * @param id the id to set
+	 * Sets the id.
+	 * 
+	 * @param id the new id
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
+	
 	/**
+	 * Gets the name.
+	 * 
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+	
 	/**
-	 * @param name the name to set
+	 * Sets the name.
+	 * 
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	/**
+	 * Gets the type.
+	 * 
 	 * @return the type
 	 */
 	public Type getType() {
 		return type;
 	}
+	
 	/**
-	 * @param type the type to set
+	 * Sets the type.
+	 * 
+	 * @param type the new type
 	 */
 	public void setType(Type type) {
 		this.type = type;
 	}
+	
 	/**
+	 * Gets the size.
+	 * 
 	 * @return the size
 	 */
 	public int getSize() {
 		return size;
 	}
+	
 	/**
-	 * @param size the size to set
+	 * Sets the size.
+	 * 
+	 * @param size the new size
 	 */
 	public void setSize(int size) {
 		this.size = size;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Collection [id=" + id + ", name=" + name + ", size=" + size
+				+ ", type=" + type + "]";
 	}
 }

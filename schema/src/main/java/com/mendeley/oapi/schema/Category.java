@@ -17,50 +17,81 @@
 package com.mendeley.oapi.schema;
 
 /**
- * The Class Publication.
+ * The Class Category.
  */
 public class Category extends SchemaEntity {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3484450630735705441L;
 	
+	/** The id. */
 	private int id;
+	
+	/** The name. */
 	private String name;
+	
+	/** The slug. */
 	private String slug;
+	
 	/**
+	 * Gets the id.
+	 * 
 	 * @return the id
 	 */
 	public int getId() {
 		return id;
 	}
+	
 	/**
-	 * @param id the id to set
+	 * Sets the id.
+	 * 
+	 * @param id the new id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	/**
+	 * Gets the name.
+	 * 
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+	
 	/**
-	 * @param name the name to set
+	 * Sets the name.
+	 * 
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	/**
+	 * Gets the slug.
+	 * 
 	 * @return the slug
 	 */
 	public String getSlug() {
 		return slug;
 	}
+	
 	/**
-	 * @param slug the slug to set
+	 * Sets the slug.
+	 * 
+	 * @param slug the new slug
 	 */
 	public void setSlug(String slug) {
 		this.slug = slug;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", slug=" + slug + "]";
 	}
 }

@@ -16,8 +16,9 @@
  */
 package com.mendeley.oapi.services.impl;
 
+import java.util.List;
+
 import com.google.gson.JsonElement;
-import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.User;
 import com.mendeley.oapi.services.ProfileService;
 import com.mendeley.oapi.services.constant.MendeleyApiUrls;
@@ -55,7 +56,7 @@ public class ProfileServiceImpl extends BaseMendeleyPrivateService implements
 	 * @see com.mendeley.oapi.services.ProfileService#getContacts()
 	 */
 	@Override
-	public PagedList<User> getContacts() {
+	public List<User> getContacts() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_CONTACTS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));

@@ -23,20 +23,52 @@ public interface ParameterNames {
 
 	/** The Constant VERSION. */
 	public static final String VERSION = "version";
+	
+	/** The Constant DISCIPLINE_ID. */
 	public static final String DISCIPLINE_ID = "discipline_id";
+	
+	/** The Constant UPANDCOMING. */
 	public static final String UPANDCOMING = "upandcoming";
+	
+	/** The Constant ID. */
 	public static final String ID = "id";
+	
+	/** The Constant TYPE. */
 	public static final String TYPE = "type";
+	
+	/** The Constant NAME. */
 	public static final String NAME = "name";
+	
+	/** The Constant PAGE. */
 	public static final String PAGE = "page";
+	
+	/** The Constant ITEMS. */
 	public static final String ITEMS = "items";
+	
+	/** The Constant YEAR. */
 	public static final String YEAR = "year";
+	
+	/** The Constant TAG. */
 	public static final String TAG = "tag";
+	
+	/** The Constant CATEGORY. */
 	public static final String CATEGORY = "cat";
+	
+	/** The Constant SUB_CATEGORY. */
 	public static final String SUB_CATEGORY = "subcat";
+	
+	/** The Constant TERMS. */
 	public static final String TERMS = "terms";
+	
+	/** The Constant DETAILS. */
 	public static final String DETAILS = "details";
+	
+	/** The Constant CONSUMER_KEY. */
 	public static final String CONSUMER_KEY = "consumer_key";
+	
+	/** The Constant COLLECTION_ID. */
 	public static final String COLLECTION_ID = "collection_id";
+	
+	/** The Constant DOCUMENT_ID. */
 	public static final String DOCUMENT_ID = "document_id";
 }

@@ -21,7 +21,6 @@ import java.util.Map;
 
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
-import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Group;
 import com.mendeley.oapi.schema.User;
 import com.mendeley.oapi.schema.Group.MembershipType;
@@ -98,7 +97,7 @@ public class PrivateGroupServiceImpl extends BaseMendeleyPrivateService implemen
 	 * @see com.mendeley.oapi.services.PrivateGroupService#getGroups()
 	 */
 	@Override
-	public PagedList<Group> getGroups() {
+	public List<Group> getGroups() {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_GROUPS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));

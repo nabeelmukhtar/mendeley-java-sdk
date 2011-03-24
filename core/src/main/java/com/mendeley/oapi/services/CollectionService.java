@@ -16,6 +16,8 @@
  */
 package com.mendeley.oapi.services;
 
+import java.util.List;
+
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Collection;
 
@@ -29,7 +31,7 @@ public interface CollectionService extends MendeleyService {
 	 * 
 	 * @return the collections
 	 */
-	public PagedList<Collection> getCollections();
+	public List<Collection> getCollections();
 	
 	/**
 	 * Gets the collection documents.

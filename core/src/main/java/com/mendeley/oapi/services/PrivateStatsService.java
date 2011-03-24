@@ -16,7 +16,8 @@
  */
 package com.mendeley.oapi.services;
 
-import com.mendeley.oapi.common.PagedList;
+import java.util.List;
+
 import com.mendeley.oapi.schema.Publication;
 import com.mendeley.oapi.schema.Tag;
 import com.mendeley.oapi.schema.User;
@@ -32,19 +33,19 @@ public interface PrivateStatsService extends MendeleyService {
 	 * 
 	 * @return the authors
 	 */
-	public PagedList<User> getAuthors();
+	public List<User> getAuthors();
 	
 	/**
 	 * Gets the tags.
 	 * 
 	 * @return the tags
 	 */
-	public PagedList<Tag> getTags();
+	public List<Tag> getTags();
 	
 	/**
 	 * Gets the publications.
 	 * 
 	 * @return the publications
 	 */
-	public PagedList<Publication> getPublications();
+	public List<Publication> getPublications();
 }
