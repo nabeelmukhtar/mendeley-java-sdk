@@ -34,6 +34,11 @@ public class User extends SchemaEntity {
 	private String userId;
 	
 	/**
+	 * The profile id.
+	 */
+	private String profileId;
+	
+	/**
 	 * Gets the user id.
 	 * 
 	 * @return the user id
@@ -85,6 +90,20 @@ public class User extends SchemaEntity {
 	 */
 	public void setValue(String value) {
 		this.value = value;
+	}
+	
+	/**
+	 * @return the profileId
+	 */
+	public String getProfileId() {
+		return profileId;
+	}
+
+	/**
+	 * @param profileId the profileId to set
+	 */
+	public void setProfileId(String profileId) {
+		this.profileId = profileId;
 	}
 
 	/* (non-Javadoc)

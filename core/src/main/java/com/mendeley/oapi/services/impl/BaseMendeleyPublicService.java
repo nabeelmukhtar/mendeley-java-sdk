@@ -26,12 +26,19 @@ import java.util.List;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.mendeley.oapi.common.PagedArrayList;
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.common.PagedArrayList.Cursor;
+import com.mendeley.oapi.schema.Collection;
+import com.mendeley.oapi.schema.Document;
+import com.mendeley.oapi.schema.Group;
+import com.mendeley.oapi.schema.Paper;
 import com.mendeley.oapi.schema.SchemaEntity;
 import com.mendeley.oapi.services.AsyncResponseHandler;
 import com.mendeley.oapi.services.MendeleyCommunicator;
@@ -179,13 +186,54 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 		GsonBuilder builder = new GsonBuilder();
 		builder.setDateFormat(ApplicationConstants.DATE_FORMAT);
 		builder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
-//		builder.registerTypeAdapter(Issue.State.class, new JsonDeserializer<Issue.State>() {
-//			@Override
-//			public Issue.State deserialize(JsonElement arg0, Type arg1,
-//					JsonDeserializationContext arg2) throws JsonParseException {
-//				return Issue.State.fromValue(arg0.getAsString());
-//			}
-//		});
+		builder.registerTypeAdapter(Collection.MembershipType.class, new JsonDeserializer<Collection.MembershipType>() {
+			@Override
+			public Collection.MembershipType deserialize(JsonElement arg0,
+					java.lang.reflect.Type arg1, JsonDeserializationContext arg2)
+					throws JsonParseException {
+				return Collection.MembershipType.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Group.MembershipType.class, new JsonDeserializer<Group.MembershipType>() {
+			@Override
+			public Group.MembershipType deserialize(JsonElement arg0,
+					java.lang.reflect.Type arg1, JsonDeserializationContext arg2)
+					throws JsonParseException {
+				return Group.MembershipType.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Collection.Type.class, new JsonDeserializer<Collection.Type>() {
+			@Override
+			public Collection.Type deserialize(JsonElement arg0,
+					java.lang.reflect.Type arg1, JsonDeserializationContext arg2)
+					throws JsonParseException {
+				return Collection.Type.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Document.Type.class, new JsonDeserializer<Document.Type>() {
+			@Override
+			public Document.Type deserialize(JsonElement arg0,
+					java.lang.reflect.Type arg1, JsonDeserializationContext arg2)
+					throws JsonParseException {
+				return Document.Type.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Group.Type.class, new JsonDeserializer<Group.Type>() {
+			@Override
+			public Group.Type deserialize(JsonElement arg0,
+					java.lang.reflect.Type arg1, JsonDeserializationContext arg2)
+					throws JsonParseException {
+				return Group.Type.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Paper.Type.class, new JsonDeserializer<Paper.Type>() {
+			@Override
+			public Paper.Type deserialize(JsonElement arg0,
+					java.lang.reflect.Type arg1, JsonDeserializationContext arg2)
+					throws JsonParseException {
+				return Paper.Type.fromValue(arg0.getAsString());
+			}
+		});
 		return builder;
 	}
 	

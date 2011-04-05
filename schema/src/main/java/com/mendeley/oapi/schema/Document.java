@@ -17,7 +17,9 @@
 package com.mendeley.oapi.schema;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.mendeley.oapi.common.ValueEnum;
 
@@ -31,6 +33,16 @@ public class Document extends SchemaEntity {
 	 */
 	public enum Type implements ValueEnum {
 		;
+		
+		
+	    /** The Constant stringToEnum. */
+		private static final Map<String, Type> stringToEnum = new HashMap<String, Type>();
+
+		static { // Initialize map from constant name to enum constant
+			for (Type op : values()) {
+				stringToEnum.put(op.value(), op);
+			}
+		}
 		
 		/** The value. */
 		private String value;
@@ -52,6 +64,16 @@ public class Document extends SchemaEntity {
 			return value;
 		}
 
+		/**
+		 * From value.
+		 * 
+		 * @param value the value
+		 * 
+		 * @return the image color
+		 */
+		public static Type fromValue(String value) {
+			return stringToEnum.get(value);
+		}
 	}
 
 	/** The Constant serialVersionUID. */
@@ -79,7 +101,7 @@ public class Document extends SchemaEntity {
 	private String doi;
 	
 	/** The authors. */
-	private List<String> authors = new ArrayList<String>();
+	private String authors;
 	
 	/** The editors. */
 	private List<String> editors = new ArrayList<String>();
@@ -227,7 +249,7 @@ public class Document extends SchemaEntity {
 	 * 
 	 * @return the authors
 	 */
-	public List<String> getAuthors() {
+	public String getAuthors() {
 		return authors;
 	}
 	
@@ -236,7 +258,7 @@ public class Document extends SchemaEntity {
 	 * 
 	 * @param authors the new authors
 	 */
-	public void setAuthors(List<String> authors) {
+	public void setAuthors(String authors) {
 		this.authors = authors;
 	}
 	

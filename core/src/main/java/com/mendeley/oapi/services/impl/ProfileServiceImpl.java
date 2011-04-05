@@ -16,12 +16,15 @@
  */
 package com.mendeley.oapi.services.impl;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.JsonElement;
 import com.mendeley.oapi.schema.User;
 import com.mendeley.oapi.services.ProfileService;
 import com.mendeley.oapi.services.constant.MendeleyApiUrls;
+import com.mendeley.oapi.services.constant.ParameterNames;
 import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
@@ -46,10 +49,12 @@ public class ProfileServiceImpl extends BaseMendeleyPrivateService implements
 	/* (non-Javadoc)
 	 * @see com.mendeley.oapi.services.ProfileService#addContact(java.lang.String)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void addContact(String userId) {
-		// TODO Auto-generated method stub
-		
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.ADD_CONTACT_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, userId).buildUrl();
+        callApiPost(apiUrl, (Map<String, String>) Collections.EMPTY_MAP);
 	}
 
 	/* (non-Javadoc)

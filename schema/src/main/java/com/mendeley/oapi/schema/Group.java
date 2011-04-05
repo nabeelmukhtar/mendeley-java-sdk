@@ -40,6 +40,15 @@ public class Group extends SchemaEntity {
  /** The OWNER. */
  OWNER("owner");
 		
+	    /** The Constant stringToEnum. */
+		private static final Map<String, MembershipType> stringToEnum = new HashMap<String, MembershipType>();
+
+		static { // Initialize map from constant name to enum constant
+			for (MembershipType op : values()) {
+				stringToEnum.put(op.value(), op);
+			}
+		}
+		
 		/** The value. */
 		private String value;
 		
@@ -60,6 +69,16 @@ public class Group extends SchemaEntity {
 			return value;
 		}
 
+		/**
+		 * From value.
+		 * 
+		 * @param value the value
+		 * 
+		 * @return the image color
+		 */
+		public static MembershipType fromValue(String value) {
+			return stringToEnum.get(value);
+		}
 	}
 
 	/**
@@ -71,6 +90,15 @@ public class Group extends SchemaEntity {
 		PRIVATE("private"), 
  /** The PUBLIC. */
  PUBLIC("public");
+		
+	    /** The Constant stringToEnum. */
+		private static final Map<String, Type> stringToEnum = new HashMap<String, Type>();
+
+		static { // Initialize map from constant name to enum constant
+			for (Type op : values()) {
+				stringToEnum.put(op.value(), op);
+			}
+		}
 		
 		/** The value. */
 		private String value;
@@ -90,6 +118,17 @@ public class Group extends SchemaEntity {
 		@Override
 		public String value() {
 			return value;
+		}
+		
+		/**
+		 * From value.
+		 * 
+		 * @param value the value
+		 * 
+		 * @return the image color
+		 */
+		public static Type fromValue(String value) {
+			return stringToEnum.get(value);
 		}
 	}
 

@@ -16,6 +16,9 @@
  */
 package com.mendeley.oapi.schema;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.mendeley.oapi.common.ValueEnum;
 
 /**
@@ -37,6 +40,15 @@ public class Collection extends SchemaEntity {
  /** The OWNER. */
  OWNER("owner");
 		
+	    /** The Constant stringToEnum. */
+		private static final Map<String, MembershipType> stringToEnum = new HashMap<String, MembershipType>();
+
+		static { // Initialize map from constant name to enum constant
+			for (MembershipType op : values()) {
+				stringToEnum.put(op.value(), op);
+			}
+		}
+		
 		/** The value. */
 		private String value;
 		
@@ -56,7 +68,17 @@ public class Collection extends SchemaEntity {
 		public String value() {
 			return value;
 		}
-
+		
+		/**
+		 * From value.
+		 * 
+		 * @param value the value
+		 * 
+		 * @return the image color
+		 */
+		public static MembershipType fromValue(String value) {
+			return stringToEnum.get(value);
+		}
 	}
 	
 	/**
@@ -70,6 +92,15 @@ public class Collection extends SchemaEntity {
  PUBLIC("public"), 
  /** The SHARED. */
  SHARED("shared");
+		
+	    /** The Constant stringToEnum. */
+		private static final Map<String, Type> stringToEnum = new HashMap<String, Type>();
+
+		static { // Initialize map from constant name to enum constant
+			for (Type op : values()) {
+				stringToEnum.put(op.value(), op);
+			}
+		}
 		
 		/** The value. */
 		private String value;
@@ -89,6 +120,17 @@ public class Collection extends SchemaEntity {
 		@Override
 		public String value() {
 			return value;
+		}
+		
+		/**
+		 * From value.
+		 * 
+		 * @param value the value
+		 * 
+		 * @return the image color
+		 */
+		public static Type fromValue(String value) {
+			return stringToEnum.get(value);
 		}
 	}
 
