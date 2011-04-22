@@ -6,7 +6,6 @@
               as the first entry and export the buildfile again. -->
 <project basedir="." default="build" name="mendeley-java-sdk">
     <property environment="env"/>
-    <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
     <property name="source" value="1.6"/>
@@ -14,6 +13,8 @@
         <pathelement location="target"/>
         <pathelement location="dev-lib/junit-4.5.jar"/>
         <pathelement location="lib/gson-1.4.jar"/>
+        <pathelement location="lib/commons-codec-1.3.jar"/>
+        <pathelement location="lib/signpost-core-1.1-SNAPSHOT.jar"/>
     </path>
     <target name="init">
         <mkdir dir="target"/>
@@ -31,9 +32,6 @@
         </copy>
         <copy includeemptydirs="false" todir="target">
             <fileset dir="core/src/test/resources" excludes="**/*.launch, **/*.java"/>
-        </copy>
-        <copy includeemptydirs="false" todir="target">
-            <fileset dir="examples/src/resources" excludes="**/*.launch, **/*.java"/>
         </copy>
         <copy includeemptydirs="false" todir="target">
             <fileset dir="examples/src/java" excludes="**/*.launch, **/*.java"/>
@@ -68,122 +66,61 @@
             <classpath refid="mendeley-java-sdk.classpath"/>
         </javac>
         <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
-            <src path="examples/src/resources"/>
-            <classpath refid="mendeley-java-sdk.classpath"/>
-        </javac>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
             <src path="examples/src/java"/>
             <classpath refid="mendeley-java-sdk.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
-    <target name="AllTests">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="com.mendeley.api.v2.services.AllTests" todir="${junit.output.dir}"/>
-            <classpath refid="mendeley-java-sdk.classpath"/>
-        </junit>
-    </target>
-    <target name="CommitApiSample">
-        <java classname="com.mendeley.api.v2.services.example.CommitApiSample" failonerror="true" fork="yes">
+    <target name="CollectionApiSample">
+        <java classname="com.mendeley.oapi.services.example.CollectionApiSample" failonerror="true" fork="yes">
             <classpath refid="mendeley-java-sdk.classpath"/>
         </java>
     </target>
-    <target name="CommitServiceTest">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="com.mendeley.api.v2.services.CommitServiceTest" todir="${junit.output.dir}"/>
-            <classpath refid="mendeley-java-sdk.classpath"/>
-        </junit>
-    </target>
-    <target name="GistApiSample">
-        <java classname="com.mendeley.api.v2.services.example.GistApiSample" failonerror="true" fork="yes">
+    <target name="DocumentSample">
+        <java classname="com.mendeley.oapi.services.example.DocumentSample" failonerror="true" fork="yes">
             <classpath refid="mendeley-java-sdk.classpath"/>
         </java>
     </target>
-    <target name="GistServiceTest">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="com.mendeley.api.v2.services.GistServiceTest" todir="${junit.output.dir}"/>
-            <classpath refid="mendeley-java-sdk.classpath"/>
-        </junit>
-    </target>
-    <target name="IssueApiSample">
-        <java classname="com.mendeley.api.v2.services.example.IssueApiSample" failonerror="true" fork="yes">
+    <target name="OAuthExample (2)">
+        <java classname="com.mendeley.oapi.services.example.OAuthExample" failonerror="true" fork="yes">
+            <jvmarg line="-Ddebug=true"/>
             <classpath refid="mendeley-java-sdk.classpath"/>
         </java>
     </target>
-    <target name="IssueServiceTest">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="com.mendeley.api.v2.services.IssueServiceTest" todir="${junit.output.dir}"/>
-            <classpath refid="mendeley-java-sdk.classpath"/>
-        </junit>
-    </target>
-    <target name="NetworkApiSample">
-        <java classname="com.mendeley.api.v2.services.example.NetworkApiSample" failonerror="true" fork="yes">
+    <target name="PrivateGroupApiSample">
+        <java classname="com.mendeley.oapi.services.example.PrivateGroupApiSample" failonerror="true" fork="yes">
             <classpath refid="mendeley-java-sdk.classpath"/>
         </java>
     </target>
-    <target name="NetworkServiceTest">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="com.mendeley.api.v2.services.NetworkServiceTest" todir="${junit.output.dir}"/>
-            <classpath refid="mendeley-java-sdk.classpath"/>
-        </junit>
-    </target>
-    <target name="OAuthExample (1)">
-        <java classname="com.mendeley.api.v2.services.example.OAuthExample" failonerror="true" fork="yes">
+    <target name="PrivateStatsApiSample">
+        <java classname="com.mendeley.oapi.services.example.PrivateStatsApiSample" failonerror="true" fork="yes">
+            <jvmarg line="-Ddebug=true"/>
             <classpath refid="mendeley-java-sdk.classpath"/>
         </java>
     </target>
-    <target name="ObjectApiSample">
-        <java classname="com.mendeley.api.v2.services.example.ObjectApiSample" failonerror="true" fork="yes">
+    <target name="ProfileApiSample">
+        <java classname="com.mendeley.oapi.services.example.ProfileApiSample" failonerror="true" fork="yes">
             <classpath refid="mendeley-java-sdk.classpath"/>
         </java>
     </target>
-    <target name="ObjectServiceTest">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="com.mendeley.api.v2.services.ObjectServiceTest" todir="${junit.output.dir}"/>
-            <classpath refid="mendeley-java-sdk.classpath"/>
-        </junit>
-    </target>
-    <target name="RepositoryApiSample">
-        <java classname="com.mendeley.api.v2.services.example.RepositoryApiSample" failonerror="true" fork="yes">
+    <target name="PublicGroupApiSample">
+        <java classname="com.mendeley.oapi.services.example.PublicGroupApiSample" failonerror="true" fork="yes">
             <classpath refid="mendeley-java-sdk.classpath"/>
         </java>
     </target>
-    <target name="UserApiSample">
-        <java classname="com.mendeley.api.v2.services.example.UserApiSample" failonerror="true" fork="yes">
+    <target name="PublicStatsApiSample">
+        <java classname="com.mendeley.oapi.services.example.PublicStatsApiSample" failonerror="true" fork="yes">
             <classpath refid="mendeley-java-sdk.classpath"/>
         </java>
     </target>
-    <target name="FeedSample">
-        <java classname="com.mendeley.api.v2.services.example.FeedSample" failonerror="true" fork="yes">
+    <target name="SearchApiSample">
+        <java classname="com.mendeley.oapi.services.example.SearchApiSample" failonerror="true" fork="yes">
             <classpath refid="mendeley-java-sdk.classpath"/>
         </java>
     </target>
-    <target name="FeedServiceTest">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="com.mendeley.api.v2.services.FeedServiceTest" todir="${junit.output.dir}"/>
+    <target name="SharedCollectionApiSample">
+        <java classname="com.mendeley.oapi.services.example.SharedCollectionApiSample" failonerror="true" fork="yes">
             <classpath refid="mendeley-java-sdk.classpath"/>
-        </junit>
-    </target>
-    <target name="junitreport">
-        <junitreport todir="${junit.output.dir}">
-            <fileset dir="${junit.output.dir}">
-                <include name="TEST-*.xml"/>
-            </fileset>
-            <report format="frames" todir="${junit.output.dir}"/>
-        </junitreport>
+        </java>
     </target>
 </project>
