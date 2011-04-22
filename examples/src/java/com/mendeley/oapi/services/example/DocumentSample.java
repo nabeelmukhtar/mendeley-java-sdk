@@ -50,7 +50,7 @@ public class DocumentSample {
 		DocumentService service = factory.createDocumentService(new MendeleyAccessToken(ACCESS_TOKEN, TOKEN_SECRET));
 		List<String> documentIds = service.getDocumentIds();
 		System.out.println(documentIds);
-		Document document = service.getDocumentDetails("");
+		Document document = service.getDocumentDetails(documentIds.get(0));
 		printResult(document);
 	}
 
