@@ -33,8 +33,9 @@ public class AllTests {
 		TestSuite suite = new TestSuite("Test for com.github.api.v2.services");
 		//$JUnit-BEGIN$
 		suite.addTestSuite(PrivateStatsServiceTest.class);
-		suite.addTestSuite(CollectionServiceTest.class);
-		suite.addTestSuite(SharedCollectionServiceTest.class);
+//		suite.addTestSuite(CollectionServiceTest.class);
+//		suite.addTestSuite(SharedCollectionServiceTest.class);
+		suite.addTestSuite(FolderServiceTest.class);
 		suite.addTestSuite(PrivateGroupServiceTest.class);
 		suite.addTestSuite(DocumentServiceTest.class);
 		suite.addTestSuite(PublicGroupServiceTest.class);

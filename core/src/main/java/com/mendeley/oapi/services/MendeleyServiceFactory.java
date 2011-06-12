@@ -18,6 +18,7 @@ package com.mendeley.oapi.services;
 
 import com.mendeley.oapi.services.impl.CollectionServiceImpl;
 import com.mendeley.oapi.services.impl.DocumentServiceImpl;
+import com.mendeley.oapi.services.impl.FolderServiceImpl;
 import com.mendeley.oapi.services.impl.PrivateGroupServiceImpl;
 import com.mendeley.oapi.services.impl.PrivateStatsServiceImpl;
 import com.mendeley.oapi.services.impl.ProfileServiceImpl;
@@ -100,6 +101,7 @@ public class MendeleyServiceFactory {
      * 
      * @return the collection service
      */
+    @Deprecated
     public CollectionService createCollectionService(MendeleyAccessToken accessToken) {
     	return new CollectionServiceImpl(apiConsumer, accessToken);
     }
@@ -111,10 +113,20 @@ public class MendeleyServiceFactory {
      * 
      * @return the shared collection service
      */
+    @Deprecated
     public SharedCollectionService createSharedCollectionService(MendeleyAccessToken accessToken) {
     	return new SharedCollectionServiceImpl(apiConsumer, accessToken);
     }
 
+    /**
+     * Creates a new MendeleyService object.
+     * 
+     * @return the folder service
+     */
+    public FolderService createFolderService(MendeleyAccessToken accessToken) {
+    	return new FolderServiceImpl(apiConsumer, accessToken);
+    }
+    
     /**
      * Creates a new MendeleyService object.
      * 

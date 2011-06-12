@@ -18,17 +18,16 @@ package com.mendeley.oapi.services.example;
 
 import java.util.List;
 
-import com.mendeley.oapi.schema.Collection;
+import com.mendeley.oapi.schema.Folder;
+import com.mendeley.oapi.services.FolderService;
 import com.mendeley.oapi.services.MendeleyServiceFactory;
-import com.mendeley.oapi.services.SharedCollectionService;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 
 /**
- * The Class SharedCollectionApiSample.
+ * The Class FolderApiSample.
  */
-@Deprecated
-public class SharedCollectionApiSample {
-
+public class FolderApiSample {
+	
 	/** The Constant CONSUMER_KEY. */
 	private static final String CONSUMER_KEY = "fb5f4f918e29a86d60ccede660d3d68b04d37e9f6";
 	
@@ -40,7 +39,7 @@ public class SharedCollectionApiSample {
 	
 	/** The Constant TOKEN_SECRET. */
 	private static final String TOKEN_SECRET = "1c8e2290a0a894bc1d1cbf4b0cc07484";
-	
+
     /**
      * The main method.
      * 
@@ -48,9 +47,9 @@ public class SharedCollectionApiSample {
      */
 	public static void main(String[] args) {
 		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance(CONSUMER_KEY, CONSUMER_SECRET);
-		SharedCollectionService service = factory.createSharedCollectionService(new MendeleyAccessToken(ACCESS_TOKEN, TOKEN_SECRET));
-		List<Collection> collections = service.getCollections();
-		for (Collection collection : collections) {
+		FolderService service = factory.createFolderService(new MendeleyAccessToken(ACCESS_TOKEN, TOKEN_SECRET));
+		List<Folder> collections = service.getFolders();
+		for (Folder collection : collections) {
 			printResult(collection);
 		}
 	}
@@ -60,7 +59,7 @@ public class SharedCollectionApiSample {
 	 * 
 	 * @param collection the collection
 	 */
-	private static void printResult(Collection collection) {
+	private static void printResult(Folder collection) {
 		System.out.println(collection);
 	}
 }

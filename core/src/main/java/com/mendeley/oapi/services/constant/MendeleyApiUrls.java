@@ -103,6 +103,30 @@ public final class MendeleyApiUrls {
     }
     
     /**
+     * The Interface FolderApiUrls.
+     */
+    public static interface FolderApiUrls {
+    	
+	    /** The Constant GET_COLLECTIONS_URL. */
+	    public static final String GET_FOLDERS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.folderService.getFolders");
+    	
+	    /** The Constant GET_COLLECTION_DOCUMENTS_URL. */
+	    public static final String GET_FOLDER_DOCUMENTS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.folderService.getFolderDocuments");
+    	
+	    /** The Constant ADD_DOCUMENT_TO_COLLECTION_URL. */
+	    public static final String ADD_DOCUMENT_TO_FOLDER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.folderService.addDocumentToFolder");
+    	
+	    /** The Constant CREATE_COLLECTION_URL. */
+	    public static final String CREATE_FOLDER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.folderService.createFolder");
+    	
+	    /** The Constant REMOVE_COLLECTION_URL. */
+	    public static final String REMOVE_FOLDER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.folderService.removeFolder");
+    	
+	    /** The Constant REMOVE_DOCUMENT_FROM_COLLECTION_URL. */
+	    public static final String REMOVE_DOCUMENT_FROM_FOLDER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.folderService.removeDocumentFromFolder");
+    }
+    
+    /**
      * The Interface PrivateGroupApiUrls.
      */
     public static interface PrivateGroupApiUrls {

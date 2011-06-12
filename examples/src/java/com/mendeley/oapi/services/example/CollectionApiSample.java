@@ -26,6 +26,7 @@ import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 /**
  * The Class CollectionApiSample.
  */
+@Deprecated
 public class CollectionApiSample {
 	
 	/** The Constant CONSUMER_KEY. */

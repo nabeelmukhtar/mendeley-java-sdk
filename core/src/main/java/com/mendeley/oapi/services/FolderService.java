@@ -19,20 +19,19 @@ package com.mendeley.oapi.services;
 import java.util.List;
 
 import com.mendeley.oapi.common.PagedList;
-import com.mendeley.oapi.schema.Collection;
+import com.mendeley.oapi.schema.Folder;
 
 /**
- * The Interface CollectionService.
+ * The Interface FolderService.
  */
-@Deprecated
-public interface CollectionService extends MendeleyService {
+public interface FolderService extends MendeleyService {
 	
 	/**
 	 * Gets the collections.
 	 * 
 	 * @return the collections
 	 */
-	public List<Collection> getCollections();
+	public List<Folder> getFolders();
 	
 	/**
 	 * Gets the collection documents.
@@ -41,7 +40,7 @@ public interface CollectionService extends MendeleyService {
 	 * 
 	 * @return the collection documents
 	 */
-	public PagedList<String> getCollectionDocuments(String collectionId);
+	public PagedList<String> getFolderDocuments(String collectionId);
 	
 	/**
 	 * Gets the collection documents.
@@ -52,7 +51,7 @@ public interface CollectionService extends MendeleyService {
 	 * 
 	 * @return the collection documents
 	 */
-	public PagedList<String> getCollectionDocuments(String collectionId, int page, int itemsPerPage);
+	public PagedList<String> getFolderDocuments(String collectionId, int page, int itemsPerPage);
 	
 	/**
 	 * Adds the document to collection.
@@ -62,7 +61,7 @@ public interface CollectionService extends MendeleyService {
 	 * 
 	 * @return the string
 	 */
-	public String addDocumentToCollection(String collectionId, String documentId);
+	public String addDocumentToFolder(String collectionId, String documentId);
 	
 	/**
 	 * Creates the collection.
@@ -72,14 +71,14 @@ public interface CollectionService extends MendeleyService {
 	 * 
 	 * @return the collection
 	 */
-	public Collection createCollection(String name, Collection.Type type);
+	public Folder createFolder(String name, Folder.Type type);
 	
 	/**
 	 * Removes the collection.
 	 * 
 	 * @param collectionId the collection id
 	 */
-	public void removeCollection(String collectionId);
+	public void removeFolder(String collectionId);
 	
 	/**
 	 * Removes the document from collection.
@@ -87,6 +86,6 @@ public interface CollectionService extends MendeleyService {
 	 * @param collectionId the collection id
 	 * @param documentId the document id
 	 */
-	public void removeDocumentFromCollection(String collectionId, String documentId);
+	public void removeDocumentFromFolder(String collectionId, String documentId);
 	
 }

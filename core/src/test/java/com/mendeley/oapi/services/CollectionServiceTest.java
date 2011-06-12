@@ -23,6 +23,7 @@ import org.junit.Test;
 /**
  * The Class CollectionServiceTest.
  */
+@Deprecated
 public class CollectionServiceTest extends BaseMendeleyServiceTest {
 	
 	/** The service. */

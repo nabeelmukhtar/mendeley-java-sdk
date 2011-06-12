@@ -26,6 +26,7 @@ import com.mendeley.oapi.schema.User;
 /**
  * The Interface SharedCollectionService.
  */
+@Deprecated
 public interface SharedCollectionService extends MendeleyService {
 	
 	/**

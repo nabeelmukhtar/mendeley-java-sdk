@@ -21,13 +21,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * The Class SharedCollectionServiceTest.
+ * The Class CollectionServiceTest.
  */
-@Deprecated
-public class SharedCollectionServiceTest extends BaseMendeleyServiceTest {
+public class FolderServiceTest extends BaseMendeleyServiceTest {
 	
 	/** The service. */
-	private SharedCollectionService service;
+	private FolderService service;
 
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.BaseGitHubServiceTest#setUp()
@@ -35,7 +34,7 @@ public class SharedCollectionServiceTest extends BaseMendeleyServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		service = factory.createSharedCollectionService(authentication);
+		service = factory.createFolderService(authentication);
 	}
 
 	/* (non-Javadoc)
@@ -51,7 +50,7 @@ public class SharedCollectionServiceTest extends BaseMendeleyServiceTest {
 	 * Test add document to collection.
 	 */
 	@Test
-	public void testAddDocumentToCollection() {
+	public void testAddDocumentToFolder() {
 		fail("Not yet implemented");
 	}
 
@@ -59,7 +58,7 @@ public class SharedCollectionServiceTest extends BaseMendeleyServiceTest {
 	 * Test create collection.
 	 */
 	@Test
-	public void testCreateCollection() {
+	public void testCreateFolder() {
 		fail("Not yet implemented");
 	}
 
@@ -67,7 +66,7 @@ public class SharedCollectionServiceTest extends BaseMendeleyServiceTest {
 	 * Test get collection documents string.
 	 */
 	@Test
-	public void testGetCollectionDocumentsString() {
+	public void testGetFolderDocumentsString() {
 		fail("Not yet implemented");
 	}
 
@@ -75,15 +74,7 @@ public class SharedCollectionServiceTest extends BaseMendeleyServiceTest {
 	 * Test get collection documents string int int.
 	 */
 	@Test
-	public void testGetCollectionDocumentsStringIntInt() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test get collection members.
-	 */
-	@Test
-	public void testGetCollectionMembers() {
+	public void testGetFolderDocumentsStringIntInt() {
 		fail("Not yet implemented");
 	}
 
@@ -91,7 +82,7 @@ public class SharedCollectionServiceTest extends BaseMendeleyServiceTest {
 	 * Test get collections.
 	 */
 	@Test
-	public void testGetCollections() {
+	public void testGetFolders() {
 		fail("Not yet implemented");
 	}
 
@@ -99,7 +90,7 @@ public class SharedCollectionServiceTest extends BaseMendeleyServiceTest {
 	 * Test remove collection.
 	 */
 	@Test
-	public void testRemoveCollection() {
+	public void testRemoveFolder() {
 		fail("Not yet implemented");
 	}
 
@@ -107,7 +98,7 @@ public class SharedCollectionServiceTest extends BaseMendeleyServiceTest {
 	 * Test remove document from collection.
 	 */
 	@Test
-	public void testRemoveDocumentFromCollection() {
+	public void testRemoveDocumentFromFolder() {
 		fail("Not yet implemented");
 	}
 }

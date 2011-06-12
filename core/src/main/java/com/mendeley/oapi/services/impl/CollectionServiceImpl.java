@@ -35,6 +35,7 @@ import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 /**
  * The Class CollectionServiceImpl.
  */
+@Deprecated
 public class CollectionServiceImpl extends BaseMendeleyPrivateService implements
 		CollectionService {
 

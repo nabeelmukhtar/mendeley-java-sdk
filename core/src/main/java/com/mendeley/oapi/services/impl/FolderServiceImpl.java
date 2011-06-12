@@ -23,10 +23,9 @@ import java.util.Map;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import com.mendeley.oapi.common.PagedList;
-import com.mendeley.oapi.schema.Collection;
-import com.mendeley.oapi.schema.User;
-import com.mendeley.oapi.schema.Collection.MembershipType;
-import com.mendeley.oapi.services.SharedCollectionService;
+import com.mendeley.oapi.schema.Folder;
+import com.mendeley.oapi.schema.Folder.Type;
+import com.mendeley.oapi.services.FolderService;
 import com.mendeley.oapi.services.constant.MendeleyApiUrls;
 import com.mendeley.oapi.services.constant.ParameterNames;
 import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
@@ -34,29 +33,28 @@ import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
 /**
- * The Class SharedCollectionServiceImpl.
+ * The Class FolderServiceImpl.
  */
-@Deprecated
-public class SharedCollectionServiceImpl extends BaseMendeleyPrivateService implements
-		SharedCollectionService {
+public class FolderServiceImpl extends BaseMendeleyPrivateService implements
+		FolderService {
 
 	/**
-	 * Instantiates a new shared collection service impl.
+	 * Instantiates a new collection service impl.
 	 * 
 	 * @param apiConsumer the api consumer
 	 * @param accessToken the access token
 	 */
-	public SharedCollectionServiceImpl(MendeleyApiConsumer apiConsumer,
+	public FolderServiceImpl(MendeleyApiConsumer apiConsumer,
 			MendeleyAccessToken accessToken) {
 		super(apiConsumer, accessToken);
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mendeley.oapi.services.SharedCollectionService#addDocumentToCollection(java.lang.String, java.lang.String)
+	 * @see com.mendeley.oapi.services.FolderService#addDocumentToFolder(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public String addDocumentToCollection(String collectionId, String documentId) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.ADD_DOCUMENT_TO_COLLECTION_URL);
+	public String addDocumentToFolder(String collectionId, String documentId) {
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.FolderApiUrls.ADD_DOCUMENT_TO_FOLDER_URL);
         String                apiUrl  = builder.withField(ParameterNames.COLLECTION_ID, collectionId).withField(ParameterNames.DOCUMENT_ID, documentId).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         JsonElement json = unmarshall(callApiPost(apiUrl, parameters));
@@ -64,24 +62,24 @@ public class SharedCollectionServiceImpl extends BaseMendeleyPrivateService impl
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mendeley.oapi.services.SharedCollectionService#createCollection(java.lang.String)
+	 * @see com.mendeley.oapi.services.FolderService#createFolder(java.lang.String, com.mendeley.oapi.schema.Folder.Type)
 	 */
 	@Override
-	public Collection createCollection(String name) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.CREATE_COLLECTION_URL);
+	public Folder createFolder(String name, Type type) {
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.FolderApiUrls.CREATE_FOLDER_URL);
         String                apiUrl  = builder.buildUrl();
-        Collection collection = new Collection();
+        Folder collection = new Folder();
         // TODO-NM: Populate collection
-        JsonElement json = unmarshall(callApiMethod(apiUrl, getGsonBuilder().create().toJson(collection), "application/json", "POST", 201));
-        return unmarshall(new TypeToken<Collection>(){}, json);
+        JsonElement json = unmarshall(callApiMethod(apiUrl, getGsonBuilder().create().toJson(collection), "application/json", "POST", 200));
+        return unmarshall(new TypeToken<Folder>(){}, json);
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mendeley.oapi.services.SharedCollectionService#getCollectionDocuments(java.lang.String)
+	 * @see com.mendeley.oapi.services.FolderService#getFolderDocuments(java.lang.String)
 	 */
 	@Override
-	public PagedList<String> getCollectionDocuments(String collectionId) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.GET_COLLECTION_DOCUMENTS_URL);
+	public PagedList<String> getFolderDocuments(String collectionId) {
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.FolderApiUrls.GET_FOLDER_DOCUMENTS_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, collectionId).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
@@ -89,12 +87,12 @@ public class SharedCollectionServiceImpl extends BaseMendeleyPrivateService impl
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mendeley.oapi.services.SharedCollectionService#getCollectionDocuments(java.lang.String, int, int)
+	 * @see com.mendeley.oapi.services.FolderService#getFolderDocuments(java.lang.String, int, int)
 	 */
 	@Override
-	public PagedList<String> getCollectionDocuments(String collectionId,
+	public PagedList<String> getFolderDocuments(String collectionId,
 			int page, int itemsPerPage) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.GET_COLLECTION_DOCUMENTS_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.FolderApiUrls.GET_FOLDER_DOCUMENTS_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, collectionId).withParameter(ParameterNames.PAGE, String.valueOf(page)).withParameter(ParameterNames.ITEMS, String.valueOf(itemsPerPage)).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
@@ -102,44 +100,34 @@ public class SharedCollectionServiceImpl extends BaseMendeleyPrivateService impl
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mendeley.oapi.services.SharedCollectionService#getCollectionMembers(java.lang.String)
+	 * @see com.mendeley.oapi.services.FolderService#getFolders()
 	 */
 	@Override
-	public Map<MembershipType, List<User>> getCollectionMembers(
-			String collectionId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see com.mendeley.oapi.services.SharedCollectionService#getCollections()
-	 */
-	@Override
-	public List<Collection> getCollections() {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.GET_COLLECTIONS_URL);
+	public List<Folder> getFolders() {
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.FolderApiUrls.GET_FOLDERS_URL);
         String                apiUrl  = builder.buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshallList(Collection.class, json);
+        return unmarshallList(Folder.class, json);
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mendeley.oapi.services.SharedCollectionService#removeCollection(java.lang.String)
+	 * @see com.mendeley.oapi.services.FolderService#removeFolder(java.lang.String)
 	 */
 	@Override
-	public void removeCollection(String collectionId) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.REMOVE_COLLECTION_URL);
+	public void removeFolder(String collectionId) {
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.FolderApiUrls.REMOVE_FOLDER_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, collectionId).buildUrl();
         callApiDelete(apiUrl, 204);
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mendeley.oapi.services.SharedCollectionService#removeDocumentFromCollection(java.lang.String, java.lang.String)
+	 * @see com.mendeley.oapi.services.FolderService#removeDocumentFromFolder(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void removeDocumentFromCollection(String collectionId,
+	public void removeDocumentFromFolder(String collectionId,
 			String documentId) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.SharedCollectionApiUrls.REMOVE_DOCUMENT_FROM_COLLECTION_URL);
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.FolderApiUrls.REMOVE_DOCUMENT_FROM_FOLDER_URL);
         String                apiUrl  = builder.withField(ParameterNames.COLLECTION_ID, collectionId).withField(ParameterNames.DOCUMENT_ID, documentId).buildUrl();
         callApiDelete(apiUrl, 204);
 	}
