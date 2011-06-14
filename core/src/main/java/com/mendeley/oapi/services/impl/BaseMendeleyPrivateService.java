@@ -18,6 +18,8 @@ package com.mendeley.oapi.services.impl;
 
 import java.net.HttpURLConnection;
 
+import org.apache.http.HttpRequest;
+
 import com.mendeley.oapi.services.MendeleyAuthenticator;
 import com.mendeley.oapi.services.MendeleyException;
 import com.mendeley.oapi.services.MendeleyService;
@@ -66,6 +68,17 @@ public abstract class BaseMendeleyPrivateService extends BaseMendeleyPublicServi
 	 * @see com.mendeley.oapi.services.impl.BaseMendeleyPublicService#signRequest(java.net.HttpURLConnection)
 	 */
 	protected void signRequest(HttpURLConnection request) {
+		if (apiConsumer != null && accessToken != null) {
+            MendeleyOAuthService oAuthService =
+            	MendeleyOAuthServiceFactory.getInstance().createMendeleyOAuthService(apiConsumer.getConsumerKey(),
+                    apiConsumer.getConsumerSecret());
+            oAuthService.signRequestWithToken(request, accessToken);
+		} else {
+			throw new MendeleyException("Authentication parameters are incomplete.");
+		}
+	}
+
+	protected void signRequest(HttpRequest request) {
 		if (apiConsumer != null && accessToken != null) {
             MendeleyOAuthService oAuthService =
             	MendeleyOAuthServiceFactory.getInstance().createMendeleyOAuthService(apiConsumer.getConsumerKey(),

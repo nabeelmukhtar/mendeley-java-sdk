@@ -16,6 +16,8 @@
  */
 package com.mendeley.oapi.services;
 
+import java.io.InputStream;
+
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.schema.Document;
 
@@ -31,7 +33,7 @@ public interface DocumentService extends MendeleyService {
 	 * 
 	 * @return the document ids
 	 */
-	public PagedList<String>	getDocumentIds();
+	public PagedList<String> getDocumentIds();
 	
 	/**
 	 * Gets the document ids.
@@ -41,7 +43,7 @@ public interface DocumentService extends MendeleyService {
 	 * 
 	 * @return the document ids
 	 */
-	public PagedList<String>	getDocumentIds(int page, int itemsPerPage);
+	public PagedList<String> getDocumentIds(int page, int itemsPerPage);
 	
 	/**
 	 * Gets the authored document ids.
@@ -72,4 +74,6 @@ public interface DocumentService extends MendeleyService {
 	 * @param documentId the document id
 	 */
 	public void removeDocument(String documentId);
+	
+	public void uploadFile(String documentId, InputStream file);
 }

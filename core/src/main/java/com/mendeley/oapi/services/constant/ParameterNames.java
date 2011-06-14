@@ -71,4 +71,10 @@ public interface ParameterNames {
 	
 	/** The Constant DOCUMENT_ID. */
 	public static final String DOCUMENT_ID = "document_id";
+
+	public static final String FOLDER = "folder";
+
+	public static final String DOCUMENT = "document";
+
+	public static final String GROUP = "group";
 }

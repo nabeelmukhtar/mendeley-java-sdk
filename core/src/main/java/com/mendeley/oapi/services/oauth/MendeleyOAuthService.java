@@ -18,6 +18,8 @@ package com.mendeley.oapi.services.oauth;
 
 import java.net.HttpURLConnection;
 
+import org.apache.http.HttpRequest;
+
 import com.mendeley.oapi.services.MendeleyService;
 
 /**
@@ -58,6 +60,8 @@ public interface MendeleyOAuthService extends MendeleyService {
      * @param accessToken the access token
      */
     public void signRequestWithToken(HttpURLConnection request, MendeleyAccessToken accessToken);
+    
+    public void signRequestWithToken(HttpRequest request, MendeleyAccessToken accessToken);
     
     /**
      * Invalidate access token.

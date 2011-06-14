@@ -276,6 +276,8 @@ public final class MendeleyApiUrls {
 
 	    /** The Constant REMOVE_DOCUMENT_URL. */
 	    public static final String REMOVE_DOCUMENT_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.documentService.removeDocument");
+	    
+	    public static final String UPLOAD_FILE_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.documentService.uploadFile");
     }
     
     /**

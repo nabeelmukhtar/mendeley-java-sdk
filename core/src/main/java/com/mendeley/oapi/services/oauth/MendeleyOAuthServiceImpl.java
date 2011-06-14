@@ -30,9 +30,10 @@ import java.util.SortedSet;
 import oauth.signpost.OAuth;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
-import oauth.signpost.basic.DefaultOAuthConsumer;
-import oauth.signpost.basic.DefaultOAuthProvider;
-import oauth.signpost.signature.SignatureMethod;
+import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
+import oauth.signpost.commonshttp.CommonsHttpOAuthProvider;
+
+import org.apache.http.HttpRequest;
 
 import com.mendeley.oapi.services.constant.MendeleyApiUrls;
 import com.mendeley.oapi.services.impl.MendeleyApiGateway;
@@ -99,10 +100,10 @@ class MendeleyOAuthServiceImpl extends MendeleyApiGateway implements MendeleyOAu
     	}
         try {
         	final OAuthConsumer consumer = getOAuthConsumer();
-        	final OAuthProvider provider = getOAuthProvider(consumer);
+        	final OAuthProvider provider = getOAuthProvider();
         	
         	consumer.setTokenWithSecret(requestToken.getToken(), requestToken.getTokenSecret());
-            provider.retrieveAccessToken(oauthVerifier);
+            provider.retrieveAccessToken(consumer, oauthVerifier);
 
             MendeleyAccessToken accessToken = new MendeleyAccessToken(consumer.getToken(), consumer.getTokenSecret());
             
@@ -122,9 +123,9 @@ class MendeleyOAuthServiceImpl extends MendeleyApiGateway implements MendeleyOAu
     public MendeleyRequestToken getOAuthRequestToken() {
         try {
         	final OAuthConsumer consumer = getOAuthConsumer();
-        	final OAuthProvider provider = getOAuthProvider(consumer);
+        	final OAuthProvider provider = getOAuthProvider();
         	
-            String               authorizationUrl = provider.retrieveRequestToken(OAuth.OUT_OF_BAND);
+            String               authorizationUrl = provider.retrieveRequestToken(consumer, OAuth.OUT_OF_BAND);
             MendeleyRequestToken requestToken     = new MendeleyRequestToken(consumer.getToken(),
                                                         consumer.getTokenSecret());
 
@@ -146,9 +147,9 @@ class MendeleyOAuthServiceImpl extends MendeleyApiGateway implements MendeleyOAu
     public MendeleyRequestToken getOAuthRequestToken(String callBackUrl) {
         try {
         	final OAuthConsumer consumer = getOAuthConsumer();
-        	final OAuthProvider provider = getOAuthProvider(consumer);
+        	final OAuthProvider provider = getOAuthProvider();
         	
-            String               authorizationUrl = provider.retrieveRequestToken(callBackUrl);
+            String               authorizationUrl = provider.retrieveRequestToken(consumer, callBackUrl);
             MendeleyRequestToken requestToken     = new MendeleyRequestToken(consumer.getToken(),
                                                         consumer.getTokenSecret());
 
@@ -171,6 +172,20 @@ class MendeleyOAuthServiceImpl extends MendeleyApiGateway implements MendeleyOAu
         try {
         	final OAuthConsumer consumer = getOAuthConsumer();
             consumer.setTokenWithSecret(accessToken.getToken(), accessToken.getTokenSecret());
+            consumer.sign(request);
+        } catch (Exception e) {
+            throw new MendeleyOAuthServiceException(e);
+        }
+    }
+    
+    @Override
+    public void signRequestWithToken(HttpRequest request, MendeleyAccessToken accessToken) {
+    	if (accessToken == null) {
+    		throw new IllegalArgumentException("access token cannot be null.");
+    	}
+        try {
+        	final OAuthConsumer consumer = getOAuthConsumer();
+        	consumer.setTokenWithSecret(accessToken.getToken(), accessToken.getTokenSecret());
             consumer.sign(request);
         } catch (Exception e) {
             throw new MendeleyOAuthServiceException(e);
@@ -209,11 +224,11 @@ class MendeleyOAuthServiceImpl extends MendeleyApiGateway implements MendeleyOAu
      * 
      * @return the o auth provider
      */
-    protected OAuthProvider getOAuthProvider(OAuthConsumer consumer) {
-    	DefaultOAuthProvider provider = new DefaultOAuthProvider(consumer, MendeleyApiUrls.OAuthUrls.REQUEST_TOKEN_URL,
+    protected OAuthProvider getOAuthProvider() {
+    	OAuthProvider provider = new CommonsHttpOAuthProvider(MendeleyApiUrls.OAuthUrls.REQUEST_TOKEN_URL,
     			MendeleyApiUrls.OAuthUrls.ACCESS_TOKEN_URL, MendeleyApiUrls.OAuthUrls.AUTHORIZE_URL);
     	
-//    	provider.setOAuth10a(true);
+    	provider.setOAuth10a(true);
 //        for (String headerName : requestHeaders.keySet()) {
 //        	provider.setRequestHeader(headerName, requestHeaders.get(headerName));
 //        }
@@ -227,7 +242,7 @@ class MendeleyOAuthServiceImpl extends MendeleyApiGateway implements MendeleyOAu
      * @return the o auth consumer
      */
 	protected OAuthConsumer getOAuthConsumer() {
-		DefaultOAuthConsumer consumer = new DefaultOAuthConsumer(apiConsumer.getConsumerKey(), apiConsumer.getConsumerSecret(), SignatureMethod.HMAC_SHA1);
+		OAuthConsumer consumer = new CommonsHttpOAuthConsumer(apiConsumer.getConsumerKey(), apiConsumer.getConsumerSecret());
 //		consumer.setMessageSigner(new HmacSha1MessageSigner());
 //		consumer.setSigningStrategy(new AuthorizationHeaderSigningStrategy());
 		return consumer;
@@ -289,4 +304,6 @@ class MendeleyOAuthServiceImpl extends MendeleyApiGateway implements MendeleyOAu
 	 */
 	@Override
 	protected void signRequest(HttpURLConnection request) {}
+	@Override
+	protected void signRequest(HttpRequest request) {}
 }

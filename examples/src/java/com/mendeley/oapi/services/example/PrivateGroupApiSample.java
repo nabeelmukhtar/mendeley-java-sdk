@@ -52,6 +52,7 @@ public class PrivateGroupApiSample {
 		for (Group group : groups) {
 			printResult(group);
 		}
+		service.createGroup("Papers", Group.Type.INVITE);
 	}
     
 	/**

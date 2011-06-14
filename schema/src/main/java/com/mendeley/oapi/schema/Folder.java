@@ -147,7 +147,7 @@ public class Folder extends SchemaEntity {
 	private Type type;
 	
 	/** The size. */
-	private int size;
+	private Integer size;
 	
 	/**
 	 * Gets the id.

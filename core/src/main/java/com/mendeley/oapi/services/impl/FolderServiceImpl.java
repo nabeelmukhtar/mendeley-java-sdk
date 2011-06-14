@@ -16,6 +16,7 @@
  */
 package com.mendeley.oapi.services.impl;
 
+import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,9 +69,12 @@ public class FolderServiceImpl extends BaseMendeleyPrivateService implements
 	public Folder createFolder(String name, Type type) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.FolderApiUrls.CREATE_FOLDER_URL);
         String                apiUrl  = builder.buildUrl();
-        Folder collection = new Folder();
-        // TODO-NM: Populate collection
-        JsonElement json = unmarshall(callApiMethod(apiUrl, getGsonBuilder().create().toJson(collection), "application/json", "POST", 200));
+        Folder folder = new Folder();
+        folder.setName(name);
+//        folder.setType(type);
+        Map<String, String> parameters = new HashMap<String, String>();
+        parameters.put(ParameterNames.FOLDER, getGsonBuilder().create().toJson(folder));
+        JsonElement json = unmarshall(callApiPost(apiUrl, parameters, HttpURLConnection.HTTP_CREATED));
         return unmarshall(new TypeToken<Folder>(){}, json);
 	}
 
@@ -118,7 +122,7 @@ public class FolderServiceImpl extends BaseMendeleyPrivateService implements
 	public void removeFolder(String collectionId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.FolderApiUrls.REMOVE_FOLDER_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, collectionId).buildUrl();
-        callApiDelete(apiUrl, 204);
+        callApiDelete(apiUrl, HttpURLConnection.HTTP_NO_CONTENT);
 	}
 
 	/* (non-Javadoc)
@@ -129,6 +133,6 @@ public class FolderServiceImpl extends BaseMendeleyPrivateService implements
 			String documentId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.FolderApiUrls.REMOVE_DOCUMENT_FROM_FOLDER_URL);
         String                apiUrl  = builder.withField(ParameterNames.COLLECTION_ID, collectionId).withField(ParameterNames.DOCUMENT_ID, documentId).buildUrl();
-        callApiDelete(apiUrl, 204);
+        callApiDelete(apiUrl, HttpURLConnection.HTTP_NO_CONTENT);
 	}
 }

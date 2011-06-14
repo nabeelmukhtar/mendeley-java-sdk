@@ -18,10 +18,13 @@ package com.mendeley.oapi.services.impl;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.http.HttpRequest;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -31,12 +34,15 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 import com.mendeley.oapi.common.PagedArrayList;
 import com.mendeley.oapi.common.PagedList;
 import com.mendeley.oapi.common.PagedArrayList.Cursor;
-import com.mendeley.oapi.schema.Collection;
 import com.mendeley.oapi.schema.Document;
+import com.mendeley.oapi.schema.Folder;
 import com.mendeley.oapi.schema.Group;
 import com.mendeley.oapi.schema.Paper;
 import com.mendeley.oapi.schema.SchemaEntity;
@@ -186,12 +192,12 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 		GsonBuilder builder = new GsonBuilder();
 		builder.setDateFormat(ApplicationConstants.DATE_FORMAT);
 		builder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
-		builder.registerTypeAdapter(Collection.MembershipType.class, new JsonDeserializer<Collection.MembershipType>() {
+		builder.registerTypeAdapter(Folder.MembershipType.class, new JsonDeserializer<Folder.MembershipType>() {
 			@Override
-			public Collection.MembershipType deserialize(JsonElement arg0,
+			public Folder.MembershipType deserialize(JsonElement arg0,
 					java.lang.reflect.Type arg1, JsonDeserializationContext arg2)
 					throws JsonParseException {
-				return Collection.MembershipType.fromValue(arg0.getAsString());
+				return Folder.MembershipType.fromValue(arg0.getAsString());
 			}
 		});
 		builder.registerTypeAdapter(Group.MembershipType.class, new JsonDeserializer<Group.MembershipType>() {
@@ -202,14 +208,22 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 				return Group.MembershipType.fromValue(arg0.getAsString());
 			}
 		});
-		builder.registerTypeAdapter(Collection.Type.class, new JsonDeserializer<Collection.Type>() {
+		builder.registerTypeAdapter(Folder.Type.class, new JsonDeserializer<Folder.Type>() {
 			@Override
-			public Collection.Type deserialize(JsonElement arg0,
+			public Folder.Type deserialize(JsonElement arg0,
 					java.lang.reflect.Type arg1, JsonDeserializationContext arg2)
 					throws JsonParseException {
-				return Collection.Type.fromValue(arg0.getAsString());
+				return Folder.Type.fromValue(arg0.getAsString());
 			}
 		});
+		builder.registerTypeAdapter(Folder.Type.class, new JsonSerializer<Folder.Type>() {
+			@Override
+			public JsonElement serialize(Folder.Type arg0, Type arg1,
+					JsonSerializationContext arg2) {
+				return new JsonPrimitive(arg0.value());
+			}
+		});
+		
 		builder.registerTypeAdapter(Document.Type.class, new JsonDeserializer<Document.Type>() {
 			@Override
 			public Document.Type deserialize(JsonElement arg0,
@@ -243,6 +257,8 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 	protected void signRequest(HttpURLConnection request) {
 	}
 	
+	protected void signRequest(HttpRequest request) {
+	}
     
 	/**
 	 * Unmarshall.

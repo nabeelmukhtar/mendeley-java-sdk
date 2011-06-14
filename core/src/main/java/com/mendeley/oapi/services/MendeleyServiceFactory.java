@@ -16,7 +16,6 @@
  */
 package com.mendeley.oapi.services;
 
-import com.mendeley.oapi.services.impl.CollectionServiceImpl;
 import com.mendeley.oapi.services.impl.DocumentServiceImpl;
 import com.mendeley.oapi.services.impl.FolderServiceImpl;
 import com.mendeley.oapi.services.impl.PrivateGroupServiceImpl;
@@ -25,7 +24,6 @@ import com.mendeley.oapi.services.impl.ProfileServiceImpl;
 import com.mendeley.oapi.services.impl.PublicGroupServiceImpl;
 import com.mendeley.oapi.services.impl.PublicStatsServiceImpl;
 import com.mendeley.oapi.services.impl.SearchServiceImpl;
-import com.mendeley.oapi.services.impl.SharedCollectionServiceImpl;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
@@ -94,30 +92,6 @@ public class MendeleyServiceFactory {
     	return new PrivateGroupServiceImpl(apiConsumer, accessToken);
     }
     
-    /**
-     * Creates a new MendeleyService object.
-     * 
-     * @param accessToken the access token
-     * 
-     * @return the collection service
-     */
-    @Deprecated
-    public CollectionService createCollectionService(MendeleyAccessToken accessToken) {
-    	return new CollectionServiceImpl(apiConsumer, accessToken);
-    }
-    
-    /**
-     * Creates a new MendeleyService object.
-     * 
-     * @param accessToken the access token
-     * 
-     * @return the shared collection service
-     */
-    @Deprecated
-    public SharedCollectionService createSharedCollectionService(MendeleyAccessToken accessToken) {
-    	return new SharedCollectionServiceImpl(apiConsumer, accessToken);
-    }
-
     /**
      * Creates a new MendeleyService object.
      * 

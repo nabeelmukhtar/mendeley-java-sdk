@@ -16,10 +16,13 @@
  */
 package com.mendeley.oapi.services.impl;
 
+import java.net.HttpURLConnection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.mendeley.oapi.schema.Group;
 import com.mendeley.oapi.schema.User;
@@ -57,8 +60,11 @@ public class PrivateGroupServiceImpl extends BaseMendeleyPrivateService implemen
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.CREATE_GROUP_URL);
         String                apiUrl  = builder.buildUrl();
         Group group = new Group();
-        // TODO-NM: Populate group
-        JsonElement json = unmarshall(callApiMethod(apiUrl, getGsonBuilder().create().toJson(group), "application/json", "POST", 201));
+        group.setName(name);
+        group.setType(type);
+        Map<String, String> parameters = new HashMap<String, String>();
+        parameters.put(ParameterNames.GROUP, getGsonBuilder().create().toJson(group));
+        JsonElement json = unmarshall(callApiPost(apiUrl, parameters, HttpURLConnection.HTTP_CREATED));
         return unmarshall(new TypeToken<Group>(){}, json);
 	}
 
@@ -69,7 +75,7 @@ public class PrivateGroupServiceImpl extends BaseMendeleyPrivateService implemen
 	public void deleteGroup(String groupId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.DELETE_GROUP_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
-        callApiDelete(apiUrl, 204);
+        callApiDelete(apiUrl, HttpURLConnection.HTTP_NO_CONTENT);
 	}
 
 	/* (non-Javadoc)
@@ -89,8 +95,16 @@ public class PrivateGroupServiceImpl extends BaseMendeleyPrivateService implemen
 	 */
 	@Override
 	public Map<MembershipType, List<User>> getGroupPeople(String groupId) {
-		// TODO Auto-generated method stub
-		return null;
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_GROUP_PEOPLE_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl)).getAsJsonObject();
+        Map<MembershipType, List<User>> groupPeople = new HashMap<MembershipType, List<User>>();
+        for (MembershipType type : MembershipType.values()) {
+        	if (json.get(type.value()) != null) {
+        		groupPeople.put(type, unmarshall(new TypeToken<List<User>>(){}, json.get(type.value())));
+        	}
+        }
+		return groupPeople;
 	}
 
 	/* (non-Javadoc)
@@ -112,7 +126,7 @@ public class PrivateGroupServiceImpl extends BaseMendeleyPrivateService implemen
 	public void leaveGroup(String groupId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.LEAVE_GROUP_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
-        callApiDelete(apiUrl, 204);
+        callApiDelete(apiUrl, HttpURLConnection.HTTP_NO_CONTENT);
 	}
 
 	/* (non-Javadoc)
@@ -122,7 +136,7 @@ public class PrivateGroupServiceImpl extends BaseMendeleyPrivateService implemen
 	public void unfollowGroup(String groupId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.UNFOLLOW_GROUP_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
-        callApiDelete(apiUrl, 204);
+        callApiDelete(apiUrl, HttpURLConnection.HTTP_NO_CONTENT);
 	}
 
 }

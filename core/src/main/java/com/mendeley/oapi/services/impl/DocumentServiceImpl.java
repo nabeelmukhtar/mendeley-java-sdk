@@ -16,6 +16,11 @@
  */
 package com.mendeley.oapi.services.impl;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import com.mendeley.oapi.common.PagedList;
@@ -51,7 +56,16 @@ public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
 	public void createDocument(Document document) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.CREATE_DOCUMENT_URL);
         String                apiUrl  = builder.buildUrl();
-        callApiMethod(apiUrl, getGsonBuilder().create().toJson(document), "application/json", "POST", 200);
+        Map<String, String> parameters = new HashMap<String, String>();
+        parameters.put(ParameterNames.DOCUMENT, getGsonBuilder().create().toJson(document));
+        callApiPost(apiUrl, parameters);
+	}
+
+	@Override
+	public void uploadFile(String documentId, InputStream file) {
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.UPLOAD_FILE_URL);
+        String                apiUrl  = builder.buildUrl();
+        callApiPut(apiUrl, file, null, HttpURLConnection.HTTP_CREATED);
 	}
 
 	/* (non-Javadoc)
@@ -109,6 +123,6 @@ public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
 	public void removeDocument(String documentId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.REMOVE_DOCUMENT_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, documentId).buildUrl();
-        callApiDelete(apiUrl, 204);
+        callApiDelete(apiUrl, HttpURLConnection.HTTP_NO_CONTENT);
 	}
 }

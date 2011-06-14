@@ -19,6 +19,7 @@ package com.mendeley.oapi.services.example;
 import java.util.List;
 
 import com.mendeley.oapi.schema.Folder;
+import com.mendeley.oapi.schema.Folder.Type;
 import com.mendeley.oapi.services.FolderService;
 import com.mendeley.oapi.services.MendeleyServiceFactory;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
@@ -35,10 +36,10 @@ public class FolderApiSample {
 	private static final String CONSUMER_SECRET = "ecde8b6a67627dc6f3dd53ba59ba4553";
 	
 	/** The Constant ACCESS_TOKEN. */
-	private static final String ACCESS_TOKEN = "564d0e4e13273906aa55d53b903d48e204d7e0501";
+	private static final String ACCESS_TOKEN = "368802aab500301f1b041b746cf0ff4a04df62936";
 	
 	/** The Constant TOKEN_SECRET. */
-	private static final String TOKEN_SECRET = "1c8e2290a0a894bc1d1cbf4b0cc07484";
+	private static final String TOKEN_SECRET = "a24a794e6c0872081b5a7f045bef884e";
 
     /**
      * The main method.
@@ -48,18 +49,19 @@ public class FolderApiSample {
 	public static void main(String[] args) {
 		MendeleyServiceFactory factory = MendeleyServiceFactory.newInstance(CONSUMER_KEY, CONSUMER_SECRET);
 		FolderService service = factory.createFolderService(new MendeleyAccessToken(ACCESS_TOKEN, TOKEN_SECRET));
-		List<Folder> collections = service.getFolders();
-		for (Folder collection : collections) {
-			printResult(collection);
+		List<Folder> folders = service.getFolders();
+		for (Folder folder : folders) {
+			printResult(folder);
 		}
+		service.createFolder("Hadoop", Type.PRIVATE);
 	}
     
 	/**
 	 * Prints the result.
 	 * 
-	 * @param collection the collection
+	 * @param folder the folder
 	 */
-	private static void printResult(Folder collection) {
-		System.out.println(collection);
+	private static void printResult(Folder folder) {
+		System.out.println(folder);
 	}
 }

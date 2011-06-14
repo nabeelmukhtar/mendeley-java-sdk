@@ -57,6 +57,9 @@ public final class ApplicationConstants {
     /** The Constant DATE_FORMAT. */
     public static final String DATE_FORMAT = getProperty("com.mendeley.oapi.services.dateFormat");
     
+    /** The Constant CONTENT_TYPE. */
+    public static final String CONTENT_TYPE_JSON = getProperty("com.mendeley.oapi.services.contentTypeJson");
+    
     /** The Constant CONNECT_TIMEOUT. */
     public static final int CONNECT_TIMEOUT = getIntProperty("com.mendeley.oapi.services.connectTimeout");
     

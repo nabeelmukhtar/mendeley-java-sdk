@@ -87,7 +87,9 @@ public class Group extends SchemaEntity {
 	public enum Type implements ValueEnum {
 		
 		/** The PRIVATE. */
-		PRIVATE("private"), 
+		PRIVATE("private"),
+		INVITE("invite"), 
+		OPEN("open"),
  /** The PUBLIC. */
  PUBLIC("public");
 		
