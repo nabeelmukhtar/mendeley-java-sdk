@@ -77,4 +77,8 @@ public interface ParameterNames {
 	public static final String DOCUMENT = "document";
 
 	public static final String GROUP = "group";
+	
+	public static final String SECTION = "section";
+	public static final String SUBSECTION = "subsection";
+	public static final String FILE_HASH = "file_hash";
 }

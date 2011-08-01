@@ -76,4 +76,8 @@ public interface DocumentService extends MendeleyService {
 	public void removeDocument(String documentId);
 	
 	public void uploadFile(String documentId, InputStream file);
+	
+	public InputStream downloadFile(String documentId, String fileHash);
+	
+	public InputStream downloadFile(String documentId, String fileHash, String groupId);
 }

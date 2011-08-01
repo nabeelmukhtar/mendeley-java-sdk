@@ -22,6 +22,7 @@ import java.util.Map;
 
 import com.google.gson.JsonElement;
 import com.mendeley.oapi.schema.User;
+import com.mendeley.oapi.schema.User.Section;
 import com.mendeley.oapi.services.ProfileService;
 import com.mendeley.oapi.services.constant.MendeleyApiUrls;
 import com.mendeley.oapi.services.constant.ParameterNames;
@@ -67,5 +68,32 @@ public class ProfileServiceImpl extends BaseMendeleyPrivateService implements
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
         return unmarshallList(User.class, json);
+	}
+
+	@Override
+	public User getProfile(String userId) {
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_PROFILE_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, userId).buildUrl();
+        JsonElement json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(User.class, json);
+	}
+	
+	@Override
+	public User getProfile(String userId, Section section) {
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_PROFILE_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, userId).withParameterEnum(ParameterNames.SECTION, section).buildUrl();
+        JsonElement json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(User.class, json);
+	}
+
+	@Override
+	public User getProfile(String userId, Section section, Section subsection) {
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_PROFILE_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, userId).withParameterEnum(ParameterNames.SECTION, section).withParameterEnum(ParameterNames.SUBSECTION, subsection).buildUrl();
+        JsonElement json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(User.class, json);
 	}
 }

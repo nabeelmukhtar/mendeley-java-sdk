@@ -16,6 +16,11 @@
  */
 package com.mendeley.oapi.schema;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.mendeley.oapi.common.ValueEnum;
+
 /**
  * The Class User.
  */
@@ -23,6 +28,54 @@ public class User extends SchemaEntity {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3484450630735705441L;
+	
+	/**
+	 * The Enum Type.
+	 */
+	public enum Section implements ValueEnum {
+		MAIN("main"), AWARDS("awards"), CV("cv"), CONTACT("contact"), CONSULTING("consulting"), EDUCATION("education"), EMPLOYMENT("employment");
+		
+		
+	    /** The Constant stringToEnum. */
+		private static final Map<String, Section> stringToEnum = new HashMap<String, Section>();
+
+		static { // Initialize map from constant name to enum constant
+			for (Section op : values()) {
+				stringToEnum.put(op.value(), op);
+			}
+		}
+		
+		/** The value. */
+		private String value;
+
+		/**
+		 * Instantiates a new type.
+		 * 
+		 * @param value the value
+		 */
+		Section(String value) {
+			this.value = value;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.mendeley.oapi.common.ValueEnum#value()
+		 */
+		@Override
+		public String value() {
+			return value;
+		}
+
+		/**
+		 * From value.
+		 * 
+		 * @param value the value
+		 * 
+		 * @return the image color
+		 */
+		public static Section fromValue(String value) {
+			return stringToEnum.get(value);
+		}
+	}
 	
 	/** The name. */
 	private String name;

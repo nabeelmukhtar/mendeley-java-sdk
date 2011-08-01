@@ -125,4 +125,19 @@ public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
         String                apiUrl  = builder.withField(ParameterNames.ID, documentId).buildUrl();
         callApiDelete(apiUrl, HttpURLConnection.HTTP_NO_CONTENT);
 	}
+
+	@Override
+	public InputStream downloadFile(String documentId, String fileHash) {
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.DOWNLOAD_FILE_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, documentId).withField(ParameterNames.FILE_HASH, fileHash).buildUrl();
+		return callApiGet(apiUrl);
+	}
+
+	@Override
+	public InputStream downloadFile(String documentId, String fileHash,
+			String groupId) {
+		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.DOWNLOAD_FILE_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ID, documentId).withField(ParameterNames.FILE_HASH, fileHash).buildUrl();
+		return callApiGet(apiUrl);
+	}
 }

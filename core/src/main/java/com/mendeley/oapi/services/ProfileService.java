@@ -19,6 +19,7 @@ package com.mendeley.oapi.services;
 import java.util.List;
 
 import com.mendeley.oapi.schema.User;
+import com.mendeley.oapi.schema.User.Section;
 
 
 /**
@@ -39,4 +40,10 @@ public interface ProfileService extends MendeleyService {
 	 * @param userId the user id
 	 */
 	public void addContact(String userId);
+	
+	public User getProfile(String userId);
+	
+	public User getProfile(String userId, Section section);
+	
+	public User getProfile(String userId, Section section, Section subsection);
 }
