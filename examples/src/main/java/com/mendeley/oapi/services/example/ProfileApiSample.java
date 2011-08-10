@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -18,6 +18,7 @@ package com.mendeley.oapi.services.example;
 
 import java.util.List;
 
+import com.mendeley.oapi.schema.Profile;
 import com.mendeley.oapi.schema.User;
 import com.mendeley.oapi.services.MendeleyServiceFactory;
 import com.mendeley.oapi.services.ProfileService;
@@ -52,8 +53,19 @@ public class ProfileApiSample {
 		for (User user : users) {
 			printResult(user);			
 		}
+		Profile profile = service.getProfile(Profile.ME);
+		printResult(profile);
 	}
     
+	/**
+	 * Prints the result.
+	 * 
+	 * @param profile the profile
+	 */
+	private static void printResult(Profile profile) {
+		System.out.println(profile);
+	}
+
 	/**
 	 * Prints the result.
 	 * 

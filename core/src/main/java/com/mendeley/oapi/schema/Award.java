@@ -16,39 +16,41 @@
  */
 package com.mendeley.oapi.schema;
 
+import java.util.Date;
+
 /**
- * The Class Category.
+ * The Class Award.
  */
-public class Category extends SchemaEntity {
+public class Award extends SchemaEntity {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3484450630735705441L;
 	
-	/** The id. */
-	private int id;
+	/** The date. */
+	private Date date;
 	
 	/** The name. */
 	private String name;
 	
-	/** The slug. */
-	private String slug;
+	/** The website. */
+	private String website;
 	
 	/**
-	 * Gets the id.
+	 * Gets the date.
 	 * 
-	 * @return the id
+	 * @return the date
 	 */
-	public int getId() {
-		return id;
+	public Date getDate() {
+		return date;
 	}
 	
 	/**
-	 * Sets the id.
+	 * Sets the date.
 	 * 
-	 * @param id the new id
+	 * @param date the new date
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	
 	/**
@@ -70,28 +72,28 @@ public class Category extends SchemaEntity {
 	}
 	
 	/**
-	 * Gets the slug.
+	 * Gets the website.
 	 * 
-	 * @return the slug
+	 * @return the website
 	 */
-	public String getSlug() {
-		return slug;
+	public String getWebsite() {
+		return website;
 	}
 	
 	/**
-	 * Sets the slug.
+	 * Sets the website.
 	 * 
-	 * @param slug the new slug
+	 * @param website the new website
 	 */
-	public void setSlug(String slug) {
-		this.slug = slug;
+	public void setWebsite(String website) {
+		this.website = website;
 	}
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", slug=" + slug + "]";
+		return "Award [date=" + date + ", name=" + name + ", website="
+				+ website + "]";
 	}
 }

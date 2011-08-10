@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -178,6 +178,9 @@ class MendeleyOAuthServiceImpl extends MendeleyApiGateway implements MendeleyOAu
         }
     }
     
+    /* (non-Javadoc)
+     * @see com.mendeley.oapi.services.oauth.MendeleyOAuthService#signRequestWithToken(org.apache.http.HttpRequest, com.mendeley.oapi.services.oauth.MendeleyAccessToken)
+     */
     @Override
     public void signRequestWithToken(HttpRequest request, MendeleyAccessToken accessToken) {
     	if (accessToken == null) {
@@ -219,8 +222,6 @@ class MendeleyOAuthServiceImpl extends MendeleyApiGateway implements MendeleyOAu
     
     /**
      * Gets the o auth provider.
-     * 
-     * @param consumer the consumer
      * 
      * @return the o auth provider
      */
@@ -304,6 +305,10 @@ class MendeleyOAuthServiceImpl extends MendeleyApiGateway implements MendeleyOAu
 	 */
 	@Override
 	protected void signRequest(HttpURLConnection request) {}
+	
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.impl.MendeleyApiGateway#signRequest(org.apache.http.HttpRequest)
+	 */
 	@Override
 	protected void signRequest(HttpRequest request) {}
 }

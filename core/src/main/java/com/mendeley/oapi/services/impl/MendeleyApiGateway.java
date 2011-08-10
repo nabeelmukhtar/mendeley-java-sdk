@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -113,8 +113,7 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Sets the api version.
 	 * 
-	 * @param apiVersion
-	 *            the new api version
+	 * @param apiVersion the new api version
 	 */
 	public void setApiVersion(String apiVersion) {
 		this.apiVersion = apiVersion;
@@ -123,8 +122,7 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Sets the request headers.
 	 * 
-	 * @param requestHeaders
-	 *            the request headers
+	 * @param requestHeaders the request headers
 	 */
 	public void setRequestHeaders(Map<String, String> requestHeaders) {
 		this.requestHeaders = requestHeaders;
@@ -142,10 +140,8 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Adds the request header.
 	 * 
-	 * @param headerName
-	 *            the header name
-	 * @param headerValue
-	 *            the header value
+	 * @param headerName the header name
+	 * @param headerValue the header value
 	 */
 	public void addRequestHeader(String headerName, String headerValue) {
 		requestHeaders.put(headerName, headerValue);
@@ -154,8 +150,7 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Removes the request header.
 	 * 
-	 * @param headerName
-	 *            the header name
+	 * @param headerName the header name
 	 */
 	public void removeRequestHeader(String headerName) {
 		requestHeaders.remove(headerName);
@@ -164,8 +159,7 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Sets the referrer.
 	 * 
-	 * @param referrer
-	 *            the new referrer
+	 * @param referrer the new referrer
 	 */
 	public void setReferrer(String referrer) {
 		requestHeaders.put(REFERRER, referrer);
@@ -174,8 +168,7 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Sets the user ip address.
 	 * 
-	 * @param userIpAddress
-	 *            the new user ip address
+	 * @param userIpAddress the new user ip address
 	 */
 	public void setUserIpAddress(String userIpAddress) {
 		this.userIpAddress = userIpAddress;
@@ -184,8 +177,7 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Convert stream to string.
 	 * 
-	 * @param is
-	 *            the is
+	 * @param is the is
 	 * 
 	 * @return the string
 	 */
@@ -220,8 +212,7 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Call api get.
 	 * 
-	 * @param apiUrl
-	 *            the api url
+	 * @param apiUrl the api url
 	 * 
 	 * @return the input stream
 	 */
@@ -232,10 +223,8 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Call api get.
 	 * 
-	 * @param apiUrl
-	 *            the api url
-	 * @param expected
-	 *            the expected
+	 * @param apiUrl the api url
+	 * @param expected the expected
 	 * 
 	 * @return the input stream
 	 */
@@ -317,10 +306,8 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Call api post.
 	 * 
-	 * @param apiUrl
-	 *            the api url
-	 * @param parameters
-	 *            the parameters
+	 * @param apiUrl the api url
+	 * @param parameters the parameters
 	 * 
 	 * @return the input stream
 	 */
@@ -332,12 +319,9 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Call api post.
 	 * 
-	 * @param apiUrl
-	 *            the api url
-	 * @param parameters
-	 *            the parameters
-	 * @param expected
-	 *            the expected
+	 * @param apiUrl the api url
+	 * @param parameters the parameters
+	 * @param expected the expected
 	 * 
 	 * @return the input stream
 	 */
@@ -432,8 +416,7 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Call api delete.
 	 * 
-	 * @param apiUrl
-	 *            the api url
+	 * @param apiUrl the api url
 	 * 
 	 * @return the input stream
 	 */
@@ -444,10 +427,8 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Call api delete.
 	 * 
-	 * @param apiUrl
-	 *            the api url
-	 * @param expected
-	 *            the expected
+	 * @param apiUrl the api url
+	 * @param expected the expected
 	 * 
 	 * @return the input stream
 	 */
@@ -516,20 +497,26 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Sign request.
 	 * 
-	 * @param request
-	 *            the request
+	 * @param request the request
 	 */
 	protected abstract void signRequest(HttpURLConnection request);
 
+	/**
+	 * Sign request.
+	 * 
+	 * @param request the request
+	 */
 	protected abstract void signRequest(HttpRequest request);
 
 	/**
-	 * Gets the parameters string.
+	 * Call api put.
 	 * 
-	 * @param parameters
-	 *            the parameters
+	 * @param apiUrl the api url
+	 * @param content the content
+	 * @param contentType the content type
+	 * @param expected the expected
 	 * 
-	 * @return the parameters string
+	 * @return the input stream
 	 */
 //	protected String getParametersString(Map<String, String> parameters) {
 //		StringBuilder builder = new StringBuilder();
@@ -666,6 +653,14 @@ public abstract class MendeleyApiGateway {
 		}
 	}
 
+	/**
+	 * Copy stream.
+	 * 
+	 * @param in the in
+	 * @param out the out
+	 * 
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	protected void copyStream(InputStream in, OutputStream out)
 			throws IOException {
 		try {
@@ -684,8 +679,7 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Close stream.
 	 * 
-	 * @param is
-	 *            the is
+	 * @param is the is
 	 */
 	protected void closeStream(Closeable is) {
 		try {
@@ -701,8 +695,7 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Close connection.
 	 * 
-	 * @param connection
-	 *            the connection
+	 * @param connection the connection
 	 */
 	protected void closeConnection(HttpURLConnection connection) {
 		try {
@@ -718,15 +711,11 @@ public abstract class MendeleyApiGateway {
 	/**
 	 * Gets the wrapped input stream.
 	 * 
-	 * @param is
-	 *            the is
-	 * @param gzip
-	 *            the gzip
+	 * @param entity the entity
 	 * 
 	 * @return the wrapped input stream
 	 * 
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	protected InputStream getWrappedInputStream(HttpEntity entity)
 			throws IOException {
@@ -739,12 +728,7 @@ public abstract class MendeleyApiGateway {
 	}
 
 	/**
-	 * Encode url.
-	 * 
-	 * @param original
-	 *            the original
-	 * 
-	 * @return the string
+	 * The Class Rfc3986FormEntity.
 	 */
 //	private static String encodeUrl(String original) {
 //		try {
@@ -759,15 +743,12 @@ public abstract class MendeleyApiGateway {
 	public static class Rfc3986FormEntity extends StringEntity {
 
 		/**
-		 * Constructs a new {@link Rfc3986FormEntity} with the list of
-		 * parameters in the specified encoding.
+		 * Instantiates a new rfc3986 form entity.
 		 * 
-		 * @param parameters
-		 *            list of name/value pairs
-		 * @param encoding
-		 *            encoding the name/value pairs be encoded with
-		 * @throws UnsupportedEncodingException
-		 *             if the encoding isn't supported
+		 * @param parameters the parameters
+		 * @param encoding the encoding
+		 * 
+		 * @throws UnsupportedEncodingException the unsupported encoding exception
 		 */
 		public Rfc3986FormEntity(
 				final List<? extends NameValuePair> parameters,
@@ -779,6 +760,14 @@ public abstract class MendeleyApiGateway {
 							: HTTP.DEFAULT_CONTENT_CHARSET));
 		}
 
+		/**
+		 * Format.
+		 * 
+		 * @param parameters the parameters
+		 * @param encoding the encoding
+		 * 
+		 * @return the string
+		 */
 		private static String format(List<? extends NameValuePair> parameters,
 				String encoding) {
 			String encoded = URLEncodedUtils.format(parameters, encoding);
@@ -786,14 +775,11 @@ public abstract class MendeleyApiGateway {
 		}
 
 		/**
-		 * Constructs a new {@link Rfc3986FormEntity} with the list of
-		 * parameters with the default encoding of
-		 * {@link HTTP#DEFAULT_CONTENT_CHARSET}
+		 * Instantiates a new rfc3986 form entity.
 		 * 
-		 * @param parameters
-		 *            list of name/value pairs
-		 * @throws UnsupportedEncodingException
-		 *             if the default encoding isn't supported
+		 * @param parameters the parameters
+		 * 
+		 * @throws UnsupportedEncodingException the unsupported encoding exception
 		 */
 		public Rfc3986FormEntity(final List<? extends NameValuePair> parameters)
 				throws UnsupportedEncodingException {

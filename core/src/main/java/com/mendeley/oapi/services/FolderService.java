@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -27,34 +27,34 @@ import com.mendeley.oapi.schema.Folder;
 public interface FolderService extends MendeleyService {
 	
 	/**
-	 * Gets the collections.
+	 * Gets the folders.
 	 * 
-	 * @return the collections
+	 * @return the folders
 	 */
 	public List<Folder> getFolders();
 	
 	/**
-	 * Gets the collection documents.
+	 * Gets the folder documents.
 	 * 
 	 * @param collectionId the collection id
 	 * 
-	 * @return the collection documents
+	 * @return the folder documents
 	 */
 	public PagedList<String> getFolderDocuments(String collectionId);
 	
 	/**
-	 * Gets the collection documents.
+	 * Gets the folder documents.
 	 * 
 	 * @param collectionId the collection id
 	 * @param page the page
 	 * @param itemsPerPage the items per page
 	 * 
-	 * @return the collection documents
+	 * @return the folder documents
 	 */
 	public PagedList<String> getFolderDocuments(String collectionId, int page, int itemsPerPage);
 	
 	/**
-	 * Adds the document to collection.
+	 * Adds the document to folder.
 	 * 
 	 * @param collectionId the collection id
 	 * @param documentId the document id
@@ -64,24 +64,24 @@ public interface FolderService extends MendeleyService {
 	public String addDocumentToFolder(String collectionId, String documentId);
 	
 	/**
-	 * Creates the collection.
+	 * Creates the folder.
 	 * 
 	 * @param name the name
 	 * @param type the type
 	 * 
-	 * @return the collection
+	 * @return the folder
 	 */
 	public Folder createFolder(String name, Folder.Type type);
 	
 	/**
-	 * Removes the collection.
+	 * Removes the folder.
 	 * 
 	 * @param collectionId the collection id
 	 */
 	public void removeFolder(String collectionId);
 	
 	/**
-	 * Removes the document from collection.
+	 * Removes the document from folder.
 	 * 
 	 * @param collectionId the collection id
 	 * @param documentId the document id

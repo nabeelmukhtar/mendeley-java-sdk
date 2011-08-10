@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -40,7 +40,7 @@ public class FolderServiceImpl extends BaseMendeleyPrivateService implements
 		FolderService {
 
 	/**
-	 * Instantiates a new collection service impl.
+	 * Instantiates a new folder service impl.
 	 * 
 	 * @param apiConsumer the api consumer
 	 * @param accessToken the access token

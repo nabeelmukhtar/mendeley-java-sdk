@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -18,8 +18,9 @@ package com.mendeley.oapi.services;
 
 import java.util.List;
 
+import com.mendeley.oapi.schema.Profile;
 import com.mendeley.oapi.schema.User;
-import com.mendeley.oapi.schema.User.Section;
+import com.mendeley.oapi.schema.Profile.Section;
 
 
 /**
@@ -41,9 +42,33 @@ public interface ProfileService extends MendeleyService {
 	 */
 	public void addContact(String userId);
 	
-	public User getProfile(String userId);
+	/**
+	 * Gets the profile.
+	 * 
+	 * @param userId the user id
+	 * 
+	 * @return the profile
+	 */
+	public Profile getProfile(String userId);
 	
-	public User getProfile(String userId, Section section);
+	/**
+	 * Gets the profile.
+	 * 
+	 * @param userId the user id
+	 * @param section the section
+	 * 
+	 * @return the profile
+	 */
+	public Profile getProfile(String userId, Section section);
 	
-	public User getProfile(String userId, Section section, Section subsection);
+	/**
+	 * Gets the profile.
+	 * 
+	 * @param userId the user id
+	 * @param section the section
+	 * @param subsection the subsection
+	 * 
+	 * @return the profile
+	 */
+	public Profile getProfile(String userId, Section section, Section subsection);
 }

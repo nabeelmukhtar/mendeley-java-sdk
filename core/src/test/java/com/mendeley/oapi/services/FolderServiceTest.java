@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -21,7 +21,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * The Class CollectionServiceTest.
+ * The Class FolderServiceTest.
  */
 public class FolderServiceTest extends BaseMendeleyServiceTest {
 	
@@ -47,7 +47,7 @@ public class FolderServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test add document to collection.
+	 * Test add document to folder.
 	 */
 	@Test
 	public void testAddDocumentToFolder() {
@@ -55,7 +55,7 @@ public class FolderServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test create collection.
+	 * Test create folder.
 	 */
 	@Test
 	public void testCreateFolder() {
@@ -63,7 +63,7 @@ public class FolderServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test get collection documents string.
+	 * Test get folder documents string.
 	 */
 	@Test
 	public void testGetFolderDocumentsString() {
@@ -71,7 +71,7 @@ public class FolderServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test get collection documents string int int.
+	 * Test get folder documents string int int.
 	 */
 	@Test
 	public void testGetFolderDocumentsStringIntInt() {
@@ -79,7 +79,7 @@ public class FolderServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test get collections.
+	 * Test get folders.
 	 */
 	@Test
 	public void testGetFolders() {
@@ -87,7 +87,7 @@ public class FolderServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test remove collection.
+	 * Test remove folder.
 	 */
 	@Test
 	public void testRemoveFolder() {
@@ -95,7 +95,7 @@ public class FolderServiceTest extends BaseMendeleyServiceTest {
 	}
 
 	/**
-	 * Test remove document from collection.
+	 * Test remove document from folder.
 	 */
 	@Test
 	public void testRemoveDocumentFromFolder() {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -61,6 +61,9 @@ public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
         callApiPost(apiUrl, parameters);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.DocumentService#uploadFile(java.lang.String, java.io.InputStream)
+	 */
 	@Override
 	public void uploadFile(String documentId, InputStream file) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.UPLOAD_FILE_URL);
@@ -126,6 +129,9 @@ public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
         callApiDelete(apiUrl, HttpURLConnection.HTTP_NO_CONTENT);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.DocumentService#downloadFile(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public InputStream downloadFile(String documentId, String fileHash) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.DOWNLOAD_FILE_URL);
@@ -133,6 +139,9 @@ public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
 		return callApiGet(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.DocumentService#downloadFile(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public InputStream downloadFile(String documentId, String fileHash,
 			String groupId) {

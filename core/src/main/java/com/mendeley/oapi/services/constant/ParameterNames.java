@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -72,13 +72,21 @@ public interface ParameterNames {
 	/** The Constant DOCUMENT_ID. */
 	public static final String DOCUMENT_ID = "document_id";
 
+	/** The Constant FOLDER. */
 	public static final String FOLDER = "folder";
 
+	/** The Constant DOCUMENT. */
 	public static final String DOCUMENT = "document";
 
+	/** The Constant GROUP. */
 	public static final String GROUP = "group";
 	
+	/** The Constant SECTION. */
 	public static final String SECTION = "section";
+	
+	/** The Constant SUBSECTION. */
 	public static final String SUBSECTION = "subsection";
+	
+	/** The Constant FILE_HASH. */
 	public static final String FILE_HASH = "file_hash";
 }

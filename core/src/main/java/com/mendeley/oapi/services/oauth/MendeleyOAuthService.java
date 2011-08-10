@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -61,6 +61,12 @@ public interface MendeleyOAuthService extends MendeleyService {
      */
     public void signRequestWithToken(HttpURLConnection request, MendeleyAccessToken accessToken);
     
+    /**
+     * Sign request with token.
+     * 
+     * @param request the request
+     * @param accessToken the access token
+     */
     public void signRequestWithToken(HttpRequest request, MendeleyAccessToken accessToken);
     
     /**

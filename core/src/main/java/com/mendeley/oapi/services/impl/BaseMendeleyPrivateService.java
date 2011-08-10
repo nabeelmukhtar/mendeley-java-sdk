@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -78,6 +78,9 @@ public abstract class BaseMendeleyPrivateService extends BaseMendeleyPublicServi
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.impl.BaseMendeleyPublicService#signRequest(org.apache.http.HttpRequest)
+	 */
 	protected void signRequest(HttpRequest request) {
 		if (apiConsumer != null && accessToken != null) {
             MendeleyOAuthService oAuthService =

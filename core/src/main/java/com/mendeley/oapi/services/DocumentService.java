@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -75,9 +75,32 @@ public interface DocumentService extends MendeleyService {
 	 */
 	public void removeDocument(String documentId);
 	
+	/**
+	 * Upload file.
+	 * 
+	 * @param documentId the document id
+	 * @param file the file
+	 */
 	public void uploadFile(String documentId, InputStream file);
 	
+	/**
+	 * Download file.
+	 * 
+	 * @param documentId the document id
+	 * @param fileHash the file hash
+	 * 
+	 * @return the input stream
+	 */
 	public InputStream downloadFile(String documentId, String fileHash);
 	
+	/**
+	 * Download file.
+	 * 
+	 * @param documentId the document id
+	 * @param fileHash the file hash
+	 * @param groupId the group id
+	 * 
+	 * @return the input stream
+	 */
 	public InputStream downloadFile(String documentId, String fileHash, String groupId);
 }

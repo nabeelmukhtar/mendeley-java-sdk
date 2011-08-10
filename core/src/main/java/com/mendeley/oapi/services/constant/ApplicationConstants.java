@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -57,7 +57,7 @@ public final class ApplicationConstants {
     /** The Constant DATE_FORMAT. */
     public static final String DATE_FORMAT = getProperty("com.mendeley.oapi.services.dateFormat");
     
-    /** The Constant CONTENT_TYPE. */
+    /** The Constant CONTENT_TYPE_JSON. */
     public static final String CONTENT_TYPE_JSON = getProperty("com.mendeley.oapi.services.contentTypeJson");
     
     /** The Constant CONNECT_TIMEOUT. */

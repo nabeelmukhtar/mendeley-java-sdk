@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -22,7 +22,7 @@ import java.util.Map;
 import com.mendeley.oapi.common.ValueEnum;
 
 /**
- * The Class Collection.
+ * The Class Folder.
  */
 public class Folder extends SchemaEntity {
 
@@ -33,10 +33,13 @@ public class Folder extends SchemaEntity {
 		
 		/** The ADMINS. */
 		ADMINS("admins"), 
+ 
  /** The FOLLOWERS. */
  FOLLOWERS("followers"), 
+ 
  /** The MEMBERS. */
  MEMBERS("members"), 
+ 
  /** The OWNER. */
  OWNER("owner");
 		
@@ -74,7 +77,7 @@ public class Folder extends SchemaEntity {
 		 * 
 		 * @param value the value
 		 * 
-		 * @return the image color
+		 * @return the membership type
 		 */
 		public static MembershipType fromValue(String value) {
 			return stringToEnum.get(value);
@@ -88,8 +91,10 @@ public class Folder extends SchemaEntity {
 		
 		/** The PRIVATE. */
 		PRIVATE("private"), 
+ 
  /** The PUBLIC. */
  PUBLIC("public"), 
+ 
  /** The SHARED. */
  SHARED("shared");
 		
@@ -127,7 +132,7 @@ public class Folder extends SchemaEntity {
 		 * 
 		 * @param value the value
 		 * 
-		 * @return the image color
+		 * @return the type
 		 */
 		public static Type fromValue(String value) {
 			return stringToEnum.get(value);

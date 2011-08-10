@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -16,10 +16,6 @@
  */
 package com.mendeley.oapi.schema;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import com.mendeley.oapi.common.ValueEnum;
 
 /**
  * The Class User.
@@ -28,54 +24,6 @@ public class User extends SchemaEntity {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3484450630735705441L;
-	
-	/**
-	 * The Enum Type.
-	 */
-	public enum Section implements ValueEnum {
-		MAIN("main"), AWARDS("awards"), CV("cv"), CONTACT("contact"), CONSULTING("consulting"), EDUCATION("education"), EMPLOYMENT("employment");
-		
-		
-	    /** The Constant stringToEnum. */
-		private static final Map<String, Section> stringToEnum = new HashMap<String, Section>();
-
-		static { // Initialize map from constant name to enum constant
-			for (Section op : values()) {
-				stringToEnum.put(op.value(), op);
-			}
-		}
-		
-		/** The value. */
-		private String value;
-
-		/**
-		 * Instantiates a new type.
-		 * 
-		 * @param value the value
-		 */
-		Section(String value) {
-			this.value = value;
-		}
-
-		/* (non-Javadoc)
-		 * @see com.mendeley.oapi.common.ValueEnum#value()
-		 */
-		@Override
-		public String value() {
-			return value;
-		}
-
-		/**
-		 * From value.
-		 * 
-		 * @param value the value
-		 * 
-		 * @return the image color
-		 */
-		public static Section fromValue(String value) {
-			return stringToEnum.get(value);
-		}
-	}
 	
 	/** The name. */
 	private String name;
@@ -86,10 +34,32 @@ public class User extends SchemaEntity {
 	/** The user id. */
 	private String userId;
 	
-	/**
-	 * The profile id.
-	 */
+	/** The profile id. */
 	private String profileId;
+	
+	/** The discipline id. */
+	private String disciplineId;
+	
+	/** The discipline name. */
+	private String disciplineName;
+	
+	/** The academic status. */
+	private String academicStatus;
+	
+	/** The research interests. */
+	private String researchInterests;
+	
+	/** The location. */
+	private String location;
+	
+	/** The bio. */
+	private String bio;
+	
+	/** The photo. */
+	private String photo;
+	
+	/** The url. */
+	private String url;
 	
 	/**
 	 * Gets the user id.
@@ -146,17 +116,165 @@ public class User extends SchemaEntity {
 	}
 	
 	/**
-	 * @return the profileId
+	 * Gets the profile id.
+	 * 
+	 * @return the profile id
 	 */
 	public String getProfileId() {
 		return profileId;
 	}
 
 	/**
-	 * @param profileId the profileId to set
+	 * Sets the profile id.
+	 * 
+	 * @param profileId the new profile id
 	 */
 	public void setProfileId(String profileId) {
 		this.profileId = profileId;
+	}
+	
+	/**
+	 * Gets the discipline id.
+	 * 
+	 * @return the discipline id
+	 */
+	public String getDisciplineId() {
+		return disciplineId;
+	}
+
+	/**
+	 * Sets the discipline id.
+	 * 
+	 * @param disciplineId the new discipline id
+	 */
+	public void setDisciplineId(String disciplineId) {
+		this.disciplineId = disciplineId;
+	}
+
+	/**
+	 * Gets the discipline name.
+	 * 
+	 * @return the discipline name
+	 */
+	public String getDisciplineName() {
+		return disciplineName;
+	}
+
+	/**
+	 * Sets the discipline name.
+	 * 
+	 * @param disciplineName the new discipline name
+	 */
+	public void setDisciplineName(String disciplineName) {
+		this.disciplineName = disciplineName;
+	}
+
+	/**
+	 * Gets the academic status.
+	 * 
+	 * @return the academic status
+	 */
+	public String getAcademicStatus() {
+		return academicStatus;
+	}
+
+	/**
+	 * Sets the academic status.
+	 * 
+	 * @param academicStatus the new academic status
+	 */
+	public void setAcademicStatus(String academicStatus) {
+		this.academicStatus = academicStatus;
+	}
+
+	/**
+	 * Gets the research interests.
+	 * 
+	 * @return the research interests
+	 */
+	public String getResearchInterests() {
+		return researchInterests;
+	}
+
+	/**
+	 * Sets the research interests.
+	 * 
+	 * @param researchInterests the new research interests
+	 */
+	public void setResearchInterests(String researchInterests) {
+		this.researchInterests = researchInterests;
+	}
+
+	/**
+	 * Gets the location.
+	 * 
+	 * @return the location
+	 */
+	public String getLocation() {
+		return location;
+	}
+
+	/**
+	 * Sets the location.
+	 * 
+	 * @param location the new location
+	 */
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	/**
+	 * Gets the bio.
+	 * 
+	 * @return the bio
+	 */
+	public String getBio() {
+		return bio;
+	}
+
+	/**
+	 * Sets the bio.
+	 * 
+	 * @param bio the new bio
+	 */
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+
+	/**
+	 * Gets the photo.
+	 * 
+	 * @return the photo
+	 */
+	public String getPhoto() {
+		return photo;
+	}
+
+	/**
+	 * Sets the photo.
+	 * 
+	 * @param photo the new photo
+	 */
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	/**
+	 * Gets the url.
+	 * 
+	 * @return the url
+	 */
+	public String getUrl() {
+		return url;
+	}
+
+	/**
+	 * Sets the url.
+	 * 
+	 * @param url the new url
+	 */
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	/* (non-Javadoc)
@@ -164,7 +282,11 @@ public class User extends SchemaEntity {
 	 */
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", userId=" + userId + ", value=" + value
-				+ "]";
+		return "User [academicStatus=" + academicStatus + ", bio=" + bio
+				+ ", disciplineId=" + disciplineId + ", disciplineName="
+				+ disciplineName + ", location=" + location + ", name=" + name
+				+ ", photo=" + photo + ", profileId=" + profileId
+				+ ", researchInterests=" + researchInterests + ", url=" + url
+				+ ", userId=" + userId + ", value=" + value + "]";
 	}
 }

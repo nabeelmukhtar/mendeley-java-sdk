@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -110,22 +110,22 @@ public final class MendeleyApiUrls {
      */
     public static interface FolderApiUrls {
     	
-	    /** The Constant GET_COLLECTIONS_URL. */
+	    /** The Constant GET_FOLDERS_URL. */
 	    public static final String GET_FOLDERS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.folderService.getFolders");
     	
-	    /** The Constant GET_COLLECTION_DOCUMENTS_URL. */
+	    /** The Constant GET_FOLDER_DOCUMENTS_URL. */
 	    public static final String GET_FOLDER_DOCUMENTS_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.folderService.getFolderDocuments");
     	
-	    /** The Constant ADD_DOCUMENT_TO_COLLECTION_URL. */
+	    /** The Constant ADD_DOCUMENT_TO_FOLDER_URL. */
 	    public static final String ADD_DOCUMENT_TO_FOLDER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.folderService.addDocumentToFolder");
     	
-	    /** The Constant CREATE_COLLECTION_URL. */
+	    /** The Constant CREATE_FOLDER_URL. */
 	    public static final String CREATE_FOLDER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.folderService.createFolder");
     	
-	    /** The Constant REMOVE_COLLECTION_URL. */
+	    /** The Constant REMOVE_FOLDER_URL. */
 	    public static final String REMOVE_FOLDER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.folderService.removeFolder");
     	
-	    /** The Constant REMOVE_DOCUMENT_FROM_COLLECTION_URL. */
+	    /** The Constant REMOVE_DOCUMENT_FROM_FOLDER_URL. */
 	    public static final String REMOVE_DOCUMENT_FROM_FOLDER_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.folderService.removeDocumentFromFolder");
     }
     
@@ -280,9 +280,11 @@ public final class MendeleyApiUrls {
 	    /** The Constant REMOVE_DOCUMENT_URL. */
 	    public static final String REMOVE_DOCUMENT_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.documentService.removeDocument");
 	    
-	    public static final String UPLOAD_FILE_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.documentService.uploadFile");
+	    /** The Constant UPLOAD_FILE_URL. */
+    	public static final String UPLOAD_FILE_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.documentService.uploadFile");
 
-	    public static final String DOWNLOAD_FILE_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.documentService.downloadFile");
+	    /** The Constant DOWNLOAD_FILE_URL. */
+    	public static final String DOWNLOAD_FILE_URL = mendeleyApiUrls.getProperty("com.mendeley.oapi.services.documentService.downloadFile");
     }
     
     /**

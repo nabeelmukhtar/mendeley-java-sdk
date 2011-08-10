@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -21,8 +21,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.gson.JsonElement;
+import com.mendeley.oapi.schema.Profile;
 import com.mendeley.oapi.schema.User;
-import com.mendeley.oapi.schema.User.Section;
+import com.mendeley.oapi.schema.Profile.Section;
 import com.mendeley.oapi.services.ProfileService;
 import com.mendeley.oapi.services.constant.MendeleyApiUrls;
 import com.mendeley.oapi.services.constant.ParameterNames;
@@ -70,30 +71,39 @@ public class ProfileServiceImpl extends BaseMendeleyPrivateService implements
         return unmarshallList(User.class, json);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.ProfileService#getProfile(java.lang.String)
+	 */
 	@Override
-	public User getProfile(String userId) {
+	public Profile getProfile(String userId) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_PROFILE_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, userId).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
-        
-        return unmarshall(User.class, json);
+
+        return unmarshall(Profile.class, json);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.ProfileService#getProfile(java.lang.String, com.mendeley.oapi.schema.Profile.Section)
+	 */
 	@Override
-	public User getProfile(String userId, Section section) {
+	public Profile getProfile(String userId, Section section) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_PROFILE_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, userId).withParameterEnum(ParameterNames.SECTION, section).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(User.class, json);
+        return unmarshall(Profile.class, json);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.mendeley.oapi.services.ProfileService#getProfile(java.lang.String, com.mendeley.oapi.schema.Profile.Section, com.mendeley.oapi.schema.Profile.Section)
+	 */
 	@Override
-	public User getProfile(String userId, Section section, Section subsection) {
+	public Profile getProfile(String userId, Section section, Section subsection) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.ProfileApiUrls.GET_PROFILE_URL);
         String                apiUrl  = builder.withField(ParameterNames.ID, userId).withParameterEnum(ParameterNames.SECTION, section).withParameterEnum(ParameterNames.SUBSECTION, subsection).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(User.class, json);
+        return unmarshall(Profile.class, json);
 	}
 }

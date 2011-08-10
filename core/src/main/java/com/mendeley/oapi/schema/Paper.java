@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2011 Nabeel Mukhtar 
+ * Copyright 2011 Nabeel Mukhtar 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -68,7 +68,7 @@ public class Paper extends SchemaEntity {
 		 * 
 		 * @param value the value
 		 * 
-		 * @return the image color
+		 * @return the type
 		 */
 		public static Type fromValue(String value) {
 			return stringToEnum.get(value);
