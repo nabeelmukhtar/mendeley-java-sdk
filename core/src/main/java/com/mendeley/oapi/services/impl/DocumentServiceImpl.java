@@ -67,7 +67,7 @@ public class DocumentServiceImpl extends BaseMendeleyPrivateService implements
 	@Override
 	public void uploadFile(String documentId, InputStream file) {
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.DocumentApiUrls.UPLOAD_FILE_URL);
-        String                apiUrl  = builder.buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.ID, documentId).buildUrl();
         callApiPut(apiUrl, file, null, HttpURLConnection.HTTP_CREATED);
 	}
 

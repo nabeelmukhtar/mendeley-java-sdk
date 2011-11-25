@@ -81,7 +81,6 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 		this.apiConsumer = apiConsumer;
         // by default we compress contents
         requestHeaders.put("Accept-Encoding", "gzip, deflate");
-		requestParameters.put(ParameterNames.CONSUMER_KEY, apiConsumer.getConsumerKey());
 	}
 
 	/* (non-Javadoc)
@@ -90,7 +89,6 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 	@Override
 	public void setApiConsumer(MendeleyApiConsumer apiConsumer) {
 		this.apiConsumer = apiConsumer;
-		requestParameters.put(ParameterNames.CONSUMER_KEY, apiConsumer.getConsumerKey());
 	}
 	
 	/**
@@ -290,7 +288,9 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 	 * @return the mendeley api url builder
 	 */
 	protected MendeleyApiUrlBuilder createMendeleyApiUrlBuilder(String urlFormat) {
-		return new MendeleyApiUrlBuilder(urlFormat);
+		MendeleyApiUrlBuilder builder = new MendeleyApiUrlBuilder(urlFormat);
+		builder.withParameter(ParameterNames.CONSUMER_KEY, apiConsumer.getConsumerKey());
+		return builder;
 	}
 	
 	/**
@@ -306,6 +306,6 @@ public abstract class BaseMendeleyPublicService extends MendeleyApiGateway imple
 			builder.append(term);
 			builder.append(" ");
 		}
-		return builder.toString();
+		return builder.toString().trim();
 	}
 }

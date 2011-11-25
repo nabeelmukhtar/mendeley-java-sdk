@@ -23,7 +23,7 @@ import org.apache.http.HttpRequest;
 import com.mendeley.oapi.services.MendeleyAuthenticator;
 import com.mendeley.oapi.services.MendeleyException;
 import com.mendeley.oapi.services.MendeleyService;
-import com.mendeley.oapi.services.constant.ParameterNames;
+import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 import com.mendeley.oapi.services.oauth.MendeleyOAuthService;
@@ -45,7 +45,6 @@ public abstract class BaseMendeleyPrivateService extends BaseMendeleyPublicServi
 	 */
 	public BaseMendeleyPrivateService(MendeleyApiConsumer apiConsumer, MendeleyAccessToken accessToken) {
 		super(apiConsumer);
-		requestParameters.remove(ParameterNames.CONSUMER_KEY);
 		this.accessToken = accessToken;
 	}
 
@@ -56,12 +55,15 @@ public abstract class BaseMendeleyPrivateService extends BaseMendeleyPublicServi
     	this.accessToken = accessToken;
     }
     
-	/* (non-Javadoc)
-	 * @see com.mendeley.oapi.services.impl.BaseMendeleyPublicService#setApiConsumer(com.mendeley.oapi.services.oauth.MendeleyApiConsumer)
+	/**
+	 * Creates the mendeley api url builder.
+	 * 
+	 * @param urlFormat the url format
+	 * 
+	 * @return the mendeley api url builder
 	 */
-	@Override
-	public void setApiConsumer(MendeleyApiConsumer apiConsumer) {
-		this.apiConsumer = apiConsumer;
+	protected MendeleyApiUrlBuilder createMendeleyApiUrlBuilder(String urlFormat) {
+		return new MendeleyApiUrlBuilder(urlFormat);
 	}
 	
 	/* (non-Javadoc)

@@ -8,7 +8,7 @@
   <groupId>com.googlecode.mendeley-java-sdk</groupId>
   <artifactId>mendeley-java-sdk</artifactId>
   <packaging>pom</packaging>
-  <version>1.0</version>
+  <version>1.0.22-SNAPSHOT</version>
   <name>mendeley-java-sdk</name>
   <inceptionYear>2010</inceptionYear>
   <description>A Java wrapper for Mendeley APIs.</description>
@@ -26,11 +26,10 @@
   </issueManagement>
 
   <scm>
-    <connection>http://mendeley-java-sdk.googlecode.com/svn/trunk</connection>
-    <developerConnection>scm:svn:https://mendeley-java-sdk.googlecode.com/svn/trunk/</developerConnection>
-    <url>http://mendeley-java-sdk.googlecode.com/svn/trunk/</url>
+    <connection>scm:hg:http://code.google.com/p/mendeley-java-sdk/</connection>
+    <developerConnection>scm:hg:https://nabeelmukhtar@code.google.com/p/mendeley-java-sdk/</developerConnection>
+    <url>http://code.google.com/p/mendeley-java-sdk/</url>
   </scm>
-
   <developers>
     <developer>
       <name>Nabeel Mukhtar</name>

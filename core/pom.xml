@@ -3,7 +3,7 @@
   <parent>
     <groupId>com.googlecode.mendeley-java-sdk</groupId>
     <artifactId>mendeley-java-sdk</artifactId>
-    <version>1.0</version>
+    <version>1.0.22-SNAPSHOT</version>
   </parent>
   <artifactId>mendeley-java-sdk-core</artifactId>
   <packaging>jar</packaging>
