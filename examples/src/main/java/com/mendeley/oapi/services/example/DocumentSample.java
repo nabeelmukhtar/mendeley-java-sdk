@@ -29,16 +29,16 @@ import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 public class DocumentSample {
 
 	/** The Constant CONSUMER_KEY. */
-	private static final String CONSUMER_KEY = "fb5f4f918e29a86d60ccede660d3d68b04d37e9f6";
+	private static final String CONSUMER_KEY = "";
 	
 	/** The Constant CONSUMER_SECRET. */
-	private static final String CONSUMER_SECRET = "ecde8b6a67627dc6f3dd53ba59ba4553";
+	private static final String CONSUMER_SECRET = "";
 	
 	/** The Constant ACCESS_TOKEN. */
-	private static final String ACCESS_TOKEN = "564d0e4e13273906aa55d53b903d48e204d7e0501";
+	private static final String ACCESS_TOKEN = "";
 	
 	/** The Constant TOKEN_SECRET. */
-	private static final String TOKEN_SECRET = "1c8e2290a0a894bc1d1cbf4b0cc07484";
+	private static final String TOKEN_SECRET = "";
 	
     /**
      * The main method.
