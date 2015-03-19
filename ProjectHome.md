@@ -1,0 +1,1 @@
+A Java wrapper for Mendeley API. (http://dev.mendeley.com/)
